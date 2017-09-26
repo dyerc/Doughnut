@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="66px" height="66px" viewBox="0 0 66 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M30,60 C13.4314575,60 0,46.5685425 0,30 C0,13.4314575 13.4314575,0 30,0 C46.5685425,0 60,13.4314575 60,30 C60,46.5685425 46.5685425,60 30,60 Z M30.5,40 C35.7467051,40 40,35.7467051 40,30.5 C40,25.2532949 35.7467051,21 30.5,21 C25.2532949,21 21,25.2532949 21,30.5 C21,35.7467051 25.2532949,40 30.5,40 Z" id="path-1"></path>
+        <filter x="-7.5%" y="-5.8%" width="115.0%" height="115.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-2.000000, -3.000000)">
+            <g id="Group" transform="translate(5.000000, 5.000000)">
+                <g id="Combined-Shape">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use stroke="#D38D55" stroke-width="2" fill="#F2AC74" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <path d="M30.5,57.3330078 C26.9160156,54.8310547 26.9799805,53.1296387 23.2685547,52.8076172 C19.5571289,52.4855957 19.6655273,54.7658691 16.1447754,53.6345215 C12.6240234,52.5031738 13.5336914,48.333252 11.2548828,46.3481445 C8.97607422,44.3630371 5.00732422,44.5864258 3.48828125,39.453125 C1.96923828,34.3198242 1.36279297,32.3896484 2.39575195,27.9035645 C3.42871094,23.4174805 2.59667969,19.8686523 5.86230469,17.0566406 C9.12792969,14.2446289 7.06933594,11.6655273 11.2548828,7.81103516 C12.1758773,6.9628865 15.3222656,4.19384766 19.1762695,2.66552734 C21.7203723,1.65665346 22.454834,4.14331055 24.6904297,4.14331055 C26.9260254,4.14331055 29.0667638,2.66552734 30.8305664,2.66552734 C36.2056461,2.66552734 36.8277392,5.9514002 40.9042969,8.83789062 C43.8522647,10.9252598 48.128554,9.31022544 50.9882813,12.8730469 C52.6350487,14.9246895 52.0622559,16.0075684 56.0739746,20.4997559 C60.0856934,24.9919434 57.3947754,31.4904224 57.3947754,33.4182129 C57.3947754,36.8052976 56.9751137,43.35719 53.6633301,46.3481445 C52.1205656,47.7414537 49.2221705,47.1295099 45.6933594,49.3032227 C43.6910984,50.5365956 42.4307247,54.8206497 40,56.2229004 C37.5692753,57.625151 34.0839844,59.8349609 30.5,57.3330078 Z M30.5,40 C35.7467051,40 40,35.7467051 40,30.5 C40,25.2532949 35.7467051,21 30.5,21 C25.2532949,21 21,25.2532949 21,30.5 C21,35.7467051 25.2532949,40 30.5,40 Z" id="Combined-Shape" stroke="#D92875" stroke-width="2" fill="#FF6DAD"></path>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(10.040897, 27.500000) rotate(-16.000000) translate(-10.040897, -27.500000) " x="9.04089661" y="25" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#189D3D" transform="translate(5.691252, 30.678792) rotate(110.000000) translate(-5.691252, -30.678792) " x="4.6912517" y="28.1787916" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(6.732148, 37.794743) rotate(70.000000) translate(-6.732148, -37.794743) " x="5.73214831" y="35.294743" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#2982C6" transform="translate(12.456868, 35.526993) rotate(138.000000) translate(-12.456868, -35.526993) " x="11.456868" y="33.0269927" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#EBD624" transform="translate(14.710621, 22.540973) rotate(17.000000) translate(-14.710621, -22.540973) " x="13.7106208" y="20.0409729" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(12.749978, 14.536948) rotate(309.000000) translate(-12.749978, -14.536948) " x="11.7499782" y="12.0369477" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(40.613082, 46.350447) rotate(309.000000) translate(-40.613082, -46.350447) " x="39.6130819" y="43.8504469" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(40.613082, 23.350447) rotate(371.000000) translate(-40.613082, -23.350447) " x="39.6130819" y="20.8504469" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(40.419671, 8.625655) rotate(351.000000) translate(-40.419671, -8.625655) " x="39.4196711" y="6.12565532" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(41.419671, 15.625655) rotate(293.000000) translate(-41.419671, -15.625655) " x="40.4196711" y="13.1256553" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(46.622047, 12.436350) rotate(227.000000) translate(-46.622047, -12.436350) " x="45.622047" y="9.9363496" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#199D3D" transform="translate(9.798422, 17.961874) rotate(345.000000) translate(-9.798422, -17.961874) " x="8.79842171" y="15.461874" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(5.450243, 23.544224) rotate(402.000000) translate(-5.450243, -23.544224) " x="4.45024349" y="21.0442241" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#AF2222" transform="translate(19.730261, 39.759439) rotate(-71.000000) translate(-19.730261, -39.759439) " x="18.7302612" y="37.259439" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(29.431155, 48.759439) rotate(-71.000000) translate(-29.431155, -48.759439) " x="28.4311551" y="46.259439" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#199D3D" transform="translate(34.730261, 18.759439) rotate(-71.000000) translate(-34.730261, -18.759439) " x="33.7302612" y="16.259439" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(22.730261, 49.759439) rotate(-71.000000) translate(-22.730261, -49.759439) " x="21.7302612" y="47.259439" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#2982C6" transform="translate(49.456868, 41.588273) rotate(138.000000) translate(-49.456868, -41.588273) " x="48.456868" y="39.0882729" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#2982C6" transform="translate(26.456868, 6.473007) rotate(166.000000) translate(-26.456868, -6.473007) " x="25.456868" y="3.97300733" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#EBD624" transform="translate(50.185605, 34.683134) rotate(17.000000) translate(-50.185605, -34.683134) " x="49.1856053" y="32.1831336" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#EBD624" transform="translate(24.728131, 43.683134) rotate(45.000000) translate(-24.728131, -43.683134) " x="23.7281306" y="41.1831336" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#EBD624" transform="translate(13.515770, 41.474874) rotate(-39.000000) translate(-13.515770, -41.474874) " x="12.5157703" y="38.9748737" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#EBD624" transform="translate(9.185448, 43.448804) rotate(19.000000) translate(-9.185448, -43.448804) " x="8.18544827" y="40.9488036" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#AF2222" transform="translate(52.757791, 23.350447) rotate(309.000000) translate(-52.757791, -23.350447) " x="51.7577906" y="20.8504469" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(54.613082, 27.828345) rotate(244.000000) translate(-54.613082, -27.828345) " x="53.6130819" y="25.3283447" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#199D3D" transform="translate(46.653870, 23.734914) rotate(345.000000) translate(-46.653870, -23.734914) " x="45.65387" y="21.2349138" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#199D3D" transform="translate(50.653870, 15.673634) rotate(432.000000) translate(-50.653870, -15.673634) " x="49.65387" y="13.1736336" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#199D3D" transform="translate(39.653870, 53.724089) rotate(345.000000) translate(-39.653870, -53.724089) " x="38.65387" y="51.2240892" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(45.456868, 32.526993) rotate(402.000000) translate(-45.456868, -32.526993) " x="44.456868" y="30.0269927" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(44.456868, 43.526993) rotate(341.000000) translate(-44.456868, -43.526993) " x="43.456868" y="41.0269927" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#AF2222" transform="translate(33.759439, 42.689365) rotate(341.000000) translate(-33.759439, -42.689365) " x="32.759439" y="40.1893646" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#2982C6" transform="translate(34.391344, 53.572185) rotate(219.000000) translate(-34.391344, -53.572185) " x="33.3913435" y="51.0721853" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#EBD624" transform="translate(34.391344, 11.572185) rotate(219.000000) translate(-34.391344, -11.572185) " x="33.3913435" y="9.07218529" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(40.346982, 38.572185) rotate(219.000000) translate(-40.346982, -38.572185) " x="39.3469821" y="36.0721853" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#199D3D" transform="translate(16.391344, 48.478270) rotate(219.000000) translate(-16.391344, -48.478270) " x="15.3913435" y="45.9782703" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#AF2222" transform="translate(22.391344, 15.758686) rotate(219.000000) translate(-22.391344, -15.758686) " x="21.3913435" y="13.2586861" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(28.031968, 17.572185) rotate(265.000000) translate(-28.031968, -17.572185) " x="27.0319684" y="15.0721853" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(21.515770, 22.474874) rotate(315.000000) translate(-21.515770, -22.474874) " x="20.5157703" y="19.9748737" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(17.797037, 30.474874) rotate(315.000000) translate(-17.797037, -30.474874) " x="16.7970373" y="27.9748737" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(31.515770, 5.474874) rotate(315.000000) translate(-31.515770, -5.474874) " x="30.5157703" y="2.97487373" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#AF2222" transform="translate(15.515770, 8.711627) rotate(269.000000) translate(-15.515770, -8.711627) " x="14.5157703" y="6.21162707" width="2" height="5" rx="1"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" transform="translate(21.515770, 9.474874) rotate(389.000000) translate(-21.515770, -9.474874) " x="20.5157703" y="6.97487373" width="2" height="5" rx="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSSplitViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,6 +22,10 @@ class ViewController: NSViewController {
     }
   }
 
-
+  @IBAction func play(_ sender: NSSegmentedControl) {
+    let alert = NSAlert()
+    alert.messageText = "Hello World"
+    alert.runModal()
+  }
 }
 
