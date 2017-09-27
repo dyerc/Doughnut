@@ -14,17 +14,17 @@ class PodcastCellView: NSTableCellView {
   @IBOutlet weak var author: NSTextField!
   @IBOutlet weak var episodeCount: NSTextField!
   
-  override func draw(_ dirtyRect: NSRect) {
-    super.draw(dirtyRect)
-    
-    if self.backgroundStyle == .dark {
-      title.textColor = NSColor.white
-      author.textColor = NSColor.init(white: 0.9, alpha: 1.0)
-      episodeCount.textColor = NSColor.init(white: 0.9, alpha: 1.0)
-    } else {
-      title.textColor = NSColor.labelColor
-      author.textColor = NSColor.secondaryLabelColor
-      episodeCount.textColor = NSColor.secondaryLabelColor
+  override var backgroundStyle: NSView.BackgroundStyle {
+    willSet {
+      if newValue == .dark {
+        title.textColor = NSColor.white
+        author.textColor = NSColor.init(white: 0.9, alpha: 1.0)
+        episodeCount.textColor = NSColor.init(white: 0.9, alpha: 1.0)
+      } else {
+        title.textColor = NSColor.labelColor
+        author.textColor = NSColor.secondaryLabelColor
+        episodeCount.textColor = NSColor.secondaryLabelColor
+      }
     }
   }
 }
