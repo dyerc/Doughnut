@@ -19,6 +19,7 @@
 		838257D51F759F6F00DB4FD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 838257D31F759F6F00DB4FD1 /* Main.storyboard */; };
 		838257E11F759F6F00DB4FD1 /* DoughnutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257E01F759F6F00DB4FD1 /* DoughnutTests.swift */; };
 		838257EC1F759F6F00DB4FD1 /* DoughnutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257EB1F759F6F00DB4FD1 /* DoughnutUITests.swift */; };
+		83FB4EB81F7BD9A1001CD842 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		838257E71F759F6F00DB4FD1 /* DoughnutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoughnutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		838257EB1F759F6F00DB4FD1 /* DoughnutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutUITests.swift; sourceTree = "<group>"; };
 		838257ED1F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83FB4EB71F7BD9A1001CD842 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		83FB4EBA1F7BD9DF001CD842 /* FeedKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FeedKit.framework; path = Carthage/Build/Mac/FeedKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 				838257DF1F759F6F00DB4FD1 /* DoughnutTests */,
 				838257EA1F759F6F00DB4FD1 /* DoughnutUITests */,
 				838257CB1F759F6F00DB4FD1 /* Products */,
+				83FB4EB91F7BD9DF001CD842 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +132,7 @@
 		838257CC1F759F6F00DB4FD1 /* Doughnut */ = {
 			isa = PBXGroup;
 			children = (
+				83FB4EB61F7BD996001CD842 /* Library */,
 				830B15991F7B97250086C121 /* Views */,
 				83667DEE1F76D1F300F1ABC0 /* View Controllers */,
 				838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */,
@@ -156,6 +161,22 @@
 				838257ED1F759F6F00DB4FD1 /* Info.plist */,
 			);
 			path = DoughnutUITests;
+			sourceTree = "<group>";
+		};
+		83FB4EB61F7BD996001CD842 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				83FB4EB71F7BD9A1001CD842 /* Library.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		83FB4EB91F7BD9DF001CD842 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83FB4EBA1F7BD9DF001CD842 /* FeedKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +320,7 @@
 				83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */,
 				83667DF21F76D21900F1ABC0 /* EpisodeViewController.swift in Sources */,
 				838257CE1F759F6F00DB4FD1 /* AppDelegate.swift in Sources */,
+				83FB4EB81F7BD9A1001CD842 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +480,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.Doughnut;
@@ -473,6 +499,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.Doughnut;

@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     // Insert code here to initialize your application
+    Library.global.subscribe(url: "http://feeds.feedburner.com/TellEmSteveDave")
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {

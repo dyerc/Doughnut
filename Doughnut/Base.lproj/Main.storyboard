@@ -992,7 +992,7 @@
                                                                         <constraint firstAttribute="height" constant="28" id="Gcc-Ah-iA1"/>
                                                                     </constraints>
                                                                     <textFieldCell key="cell" truncatesLastVisibleLine="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Lorem ipsum sit amet dolor lorem ipsum sit amet dolor" id="a3v-2U-25d">
-                                                                        <font key="font" metaFont="system" size="11"/>
+                                                                        <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -1004,7 +1004,7 @@
                                                                         <constraint firstAttribute="height" constant="16" id="tMV-BN-fml"/>
                                                                     </constraints>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="27/09/2017" id="KeL-LS-SqF">
-                                                                        <font key="font" metaFont="system" size="11"/>
+                                                                        <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -1039,7 +1039,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="7Si-iI-Qlx"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="r32-FB-sgI">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="r32-FB-sgI">
                                     <rect key="frame" x="0.0" y="404" width="331" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
