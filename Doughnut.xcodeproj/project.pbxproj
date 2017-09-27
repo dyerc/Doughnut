@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B159A1F7B97910086C121 /* PodcastCellView.swift */; };
 		832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
 		83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */; };
 		83667DF21F76D21900F1ABC0 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
 		832A04331F76EBDC00C92D25 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		830B15991F7B97250086C121 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				830B159A1F7B97910086C121 /* PodcastCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		83667DEE1F76D1F300F1ABC0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 		838257CC1F759F6F00DB4FD1 /* Doughnut */ = {
 			isa = PBXGroup;
 			children = (
+				830B15991F7B97250086C121 /* Views */,
 				83667DEE1F76D1F300F1ABC0 /* View Controllers */,
 				838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */,
 				838257D11F759F6F00DB4FD1 /* Assets.xcassets */,
@@ -279,6 +290,7 @@
 			files = (
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
+				830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */,
 				838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */,
 				83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */,
 				83667DF21F76D21900F1ABC0 /* EpisodeViewController.swift in Sources */,

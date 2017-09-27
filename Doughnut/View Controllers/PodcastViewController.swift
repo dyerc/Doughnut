@@ -23,11 +23,13 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-    return nil
+    let result = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "defaultRow"), owner: self) as! PodcastCellView
+    return result
   }
   
-  func tableViewSelectionDidChange(_ notification: Notification) {
-    
+  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    print("Click \(row)")
+    return true
   }
   
 }
