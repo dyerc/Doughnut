@@ -33,8 +33,8 @@ class Library: NSObject {
     return Preference.libraryPath().appendingPathComponent("Doughnut Library.dnl").absoluteString
   }
   
-  func subscribe(url: String) {
-    guard let feedUrl = URL(string: url) else { return }
+  func subscribe(url: String) -> String? {
+    guard let feedUrl = URL(string: url) else { return nil }
     
     if let parser = FeedParser(URL: feedUrl) {
       let result = parser.parse()
@@ -43,10 +43,13 @@ class Library: NSObject {
         print(result.error as Any)
       } else {
         if let feed = result.rssFeed {
-          parseFeed(feed: feed)
+          // parseFeed(feed: feed)
+          return feed.title
         }
       }
     }
+    
+    return nil
   }
   
   func reload() {

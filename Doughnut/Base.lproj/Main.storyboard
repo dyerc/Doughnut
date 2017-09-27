@@ -779,7 +779,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="recessed" title="Episodes" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Wc-f2-Rhv">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="systemBold" size="11"/>
+                                            <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
                                     </button>
                                 </toolbarItem>
@@ -792,7 +792,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="recessed" title="Podcasts" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B7H-1a-TNL">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="systemBold" size="11"/>
+                                            <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
                                     </button>
                                 </toolbarItem>
@@ -916,9 +916,9 @@
                                                                 </textField>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VjX-tN-caV">
                                                                     <rect key="frame" x="191" y="18" width="34" height="17"/>
-                                                                    <buttonCell key="cell" type="inline" title="65" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="WIz-5f-hnz">
-                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                        <font key="font" metaFont="systemBold" size="11"/>
+                                                                    <buttonCell key="cell" type="inline" title="65" bezelStyle="inline" alignment="center" refusesFirstResponder="YES" borderStyle="border" inset="2" id="WIz-5f-hnz">
+                                                                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                                                        <font key="font" metaFont="smallSystemBold"/>
                                                                     </buttonCell>
                                                                 </button>
                                                             </subviews>

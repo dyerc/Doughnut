@@ -11,7 +11,16 @@ import Cocoa
 class Preference {
   static func libraryPath() -> URL {
     #if DEBUG
-      let path = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
+      let env = ProcessInfo.processInfo.environment
+      var path: URL
+      print(env)
+      if env["TEST"] != nil {
+        path = Preference.userMusicPath().appendingPathComponent("Doughnut_test")
+        print("TEST Library \(path)")
+      } else {
+        path = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
+        print("DEBUG Library \(path)")
+      }
     #else
       let path = Preference.userMusicPath().appendingPathComponent("Doughnut")
     #endif
