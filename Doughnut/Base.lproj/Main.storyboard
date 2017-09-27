@@ -680,7 +680,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="-266"/>
+            <point key="canvasLocation" x="-50" y="-383"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -756,13 +756,52 @@
                                         </textFieldCell>
                                     </textField>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="FB7DD304-05A4-4837-AB64-B6E3EEE8F67B" label="Doughnut" paletteLabel="Custom View" id="Tt0-EZ-l4D">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="38" height="17"/>
+                                    <size key="maxSize" width="38" height="17"/>
+                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DNR-jh-ir1">
+                                        <rect key="frame" x="19" y="14" width="38" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Zhi-6Q-U57">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="DCA3564F-DD86-4FB3-A7C4-7327233BF184" label="Custom View" paletteLabel="Custom View" id="UdX-zy-Uba">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="75" height="19"/>
+                                    <size key="maxSize" width="75" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="erp-nT-kd5">
+                                        <rect key="frame" x="1" y="14" width="75" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="recessed" title="Episodes" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Wc-f2-Rhv">
+                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="systemBold" size="11"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="F8E7139A-1097-4EC9-9875-0FAB2336FC65" label="Custom View" paletteLabel="Custom View" id="kDe-15-3rO">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="75" height="18"/>
+                                    <size key="maxSize" width="75" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="0x1-F9-vTA">
+                                        <rect key="frame" x="1" y="14" width="75" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="recessed" title="Podcasts" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B7H-1a-TNL">
+                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="systemBold" size="11"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
+                                <toolbarItem reference="kDe-15-3rO"/>
+                                <toolbarItem reference="UdX-zy-Uba"/>
                                 <toolbarItem reference="cKK-pR-jXd"/>
-                                <toolbarItem reference="ifp-Gz-Z87"/>
-                                <toolbarItem reference="1EG-bm-den"/>
-                                <toolbarItem reference="MMf-Jf-Si6"/>
-                                <toolbarItem reference="HiO-Ea-Iqg"/>
+                                <toolbarItem reference="Tt0-EZ-l4D"/>
                                 <toolbarItem reference="cKK-pR-jXd"/>
                             </defaultToolbarItems>
                         </toolbar>
@@ -771,12 +810,13 @@
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="toolbarPlayer" destination="Tt0-EZ-l4D" id="riY-sq-4RH"/>
                         <segue destination="zrU-nU-rD6" kind="relationship" relationship="window.shadowedContentViewController" id="KFV-RY-whX"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="98" y="90"/>
+            <point key="canvasLocation" x="-50" y="58"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tQb-WI-UYn">
@@ -844,7 +884,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yFZ-qJ-tU0">
-                                                                    <rect key="frame" x="59" y="35" width="156" height="17"/>
+                                                                    <rect key="frame" x="59" y="35" width="127" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Podcast Name" id="zzu-C6-FLg">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -854,12 +894,12 @@
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WuW-3B-toC">
                                                                     <rect key="frame" x="3" y="3" width="50" height="49"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="50" id="9V2-O7-XMJ"/>
+                                                                        <constraint firstAttribute="width" constant="50" id="EpI-fE-tbT"/>
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSNetwork" id="ayK-fp-XA4"/>
                                                                 </imageView>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pkl-Lr-qxa">
-                                                                    <rect key="frame" x="59" y="4" width="156" height="14"/>
+                                                                    <rect key="frame" x="59" y="4" width="127" height="14"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0 Episodes" id="fVY-pM-lBf">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -867,29 +907,37 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AHY-Ts-qj2">
-                                                                    <rect key="frame" x="59" y="20" width="156" height="14"/>
+                                                                    <rect key="frame" x="59" y="20" width="127" height="14"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Author" id="6x3-rW-yIi">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VjX-tN-caV">
+                                                                    <rect key="frame" x="191" y="18" width="34" height="17"/>
+                                                                    <buttonCell key="cell" type="inline" title="65" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="WIz-5f-hnz">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="systemBold" size="11"/>
+                                                                    </buttonCell>
+                                                                </button>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="centerY" secondItem="Caz-b2-UzS" secondAttribute="centerY" id="5cH-Db-0SM"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="centerY" secondItem="Caz-b2-UzS" secondAttribute="centerY" id="BvF-Fg-zOT"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="top" secondItem="yFZ-qJ-tU0" secondAttribute="bottom" constant="1" id="CBB-6k-VCB"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="trailing" secondItem="Pkl-Lr-qxa" secondAttribute="trailing" id="DlW-GF-cfx"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="Pkl-Lr-qxa" secondAttribute="leading" id="F3W-St-UAw"/>
-                                                                <constraint firstAttribute="bottom" secondItem="WuW-3B-toC" secondAttribute="bottom" constant="3" id="GSo-hc-nVn"/>
-                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="trailing" secondItem="AHY-Ts-qj2" secondAttribute="trailing" id="Izx-xa-0MN"/>
-                                                                <constraint firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" constant="15" id="TNg-Og-xO9"/>
-                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="top" secondItem="yFZ-qJ-tU0" secondAttribute="top" id="Vmf-6b-4Q9"/>
-                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="leading" secondItem="Caz-b2-UzS" secondAttribute="leading" constant="3" id="Y2a-XG-Evy"/>
-                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="top" secondItem="AHY-Ts-qj2" secondAttribute="bottom" constant="2" id="caM-kt-qQh"/>
-                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="WuW-3B-toC" secondAttribute="trailing" constant="8" symbolic="YES" id="nP3-yN-TZU"/>
-                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="leading" id="qPr-9i-6Cr"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Pkl-Lr-qxa" secondAttribute="bottom" constant="4" id="soC-0L-2D7"/>
+                                                                <constraint firstAttribute="trailing" secondItem="VjX-tN-caV" secondAttribute="trailing" constant="3" id="2iH-7j-gMn"/>
+                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="leading" id="8RY-yH-s2T"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="baseline" secondItem="VjX-tN-caV" secondAttribute="baseline" id="9rz-n6-uRz"/>
+                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="leading" secondItem="Caz-b2-UzS" secondAttribute="leading" constant="3" id="WhY-p2-HkI"/>
+                                                                <constraint firstAttribute="bottom" secondItem="WuW-3B-toC" secondAttribute="bottom" constant="3" id="Xx6-uW-ZGB"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="Pkl-Lr-qxa" secondAttribute="leading" id="c7w-YQ-jtp"/>
+                                                                <constraint firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" constant="44" id="dPm-eQ-ORM"/>
+                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="WuW-3B-toC" secondAttribute="trailing" constant="8" symbolic="YES" id="f6P-qR-hfr"/>
+                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="top" secondItem="AHY-Ts-qj2" secondAttribute="bottom" constant="2" id="fBl-g5-dop"/>
+                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="top" secondItem="Caz-b2-UzS" secondAttribute="top" constant="3" id="fgK-5T-wJ7"/>
+                                                                <constraint firstItem="VjX-tN-caV" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="trailing" constant="7" id="fzx-ma-5OZ"/>
+                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="top" secondItem="yFZ-qJ-tU0" secondAttribute="top" id="gth-f7-7KT"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="trailing" secondItem="Pkl-Lr-qxa" secondAttribute="trailing" id="hGA-CC-AvH"/>
+                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="trailing" secondItem="AHY-Ts-qj2" secondAttribute="trailing" id="kM1-XF-6q4"/>
+                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="centerY" secondItem="AHY-Ts-qj2" secondAttribute="centerY" id="sbU-e7-36Z"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="artwork" destination="WuW-3B-toC" id="Lus-7p-rwp"/>
@@ -911,7 +959,7 @@
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="BGo-jI-6uJ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="8o2-oW-nrC"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="EBJ-uF-a0C">
                                     <rect key="frame" x="0.0" y="405" width="200" height="16"/>
@@ -924,10 +972,10 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Olf-xm-4xZ" firstAttribute="leading" secondItem="D1G-wk-4ey" secondAttribute="leading" id="1uw-ar-Plt"/>
-                            <constraint firstAttribute="trailing" secondItem="Olf-xm-4xZ" secondAttribute="trailing" id="4kJ-vi-c5G"/>
-                            <constraint firstItem="Olf-xm-4xZ" firstAttribute="top" secondItem="D1G-wk-4ey" secondAttribute="top" id="GCl-0B-LwF"/>
-                            <constraint firstAttribute="bottom" secondItem="Olf-xm-4xZ" secondAttribute="bottom" id="p3G-ib-LAM"/>
+                            <constraint firstAttribute="trailing" secondItem="Olf-xm-4xZ" secondAttribute="trailing" id="3ph-zn-ewk"/>
+                            <constraint firstItem="Olf-xm-4xZ" firstAttribute="top" secondItem="D1G-wk-4ey" secondAttribute="top" id="ApF-0S-5Yv"/>
+                            <constraint firstAttribute="bottom" secondItem="Olf-xm-4xZ" secondAttribute="bottom" id="PGc-Iv-hD3"/>
+                            <constraint firstItem="Olf-xm-4xZ" firstAttribute="leading" secondItem="D1G-wk-4ey" secondAttribute="leading" id="bIB-df-ua9"/>
                         </constraints>
                     </view>
                     <connections>

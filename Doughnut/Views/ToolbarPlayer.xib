@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="WindowController" customModule="Doughnut" customModuleProvider="target">
+            <connections>
+                <outlet property="toolbarPlayerView" destination="c22-O7-iKe" id="5R4-Ca-dmn"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="455" height="28"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1pZ-4i-fW7">
+                    <rect key="frame" x="36" y="1" width="26" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="LkS-ZV-UkL"/>
+                    </constraints>
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="ReverseIcon" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d5F-DD-c8c">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T5f-h5-4hX">
+                    <rect key="frame" x="64" y="1" width="26" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="H4X-cg-DfE"/>
+                    </constraints>
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="PlayIcon" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EdU-2r-XcP">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dPJ-Gp-hjm">
+                    <rect key="frame" x="-3" y="-3" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="28" id="86Z-JO-xQu"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" id="XEd-Vj-Bzp"/>
+                </imageView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TXJ-Hp-Bug">
+                    <rect key="frame" x="91" y="1" width="26" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="55X-Uf-Qd3"/>
+                    </constraints>
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="ForwardIcon" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Pc-Ch-Cez">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="T5f-h5-4hX" firstAttribute="top" secondItem="TXJ-Hp-Bug" secondAttribute="top" id="9FZ-JI-BCz"/>
+                <constraint firstItem="TXJ-Hp-Bug" firstAttribute="leading" secondItem="T5f-h5-4hX" secondAttribute="trailing" constant="1" id="9WQ-oG-Aag"/>
+                <constraint firstItem="1pZ-4i-fW7" firstAttribute="leading" secondItem="dPJ-Gp-hjm" secondAttribute="trailing" constant="8" symbolic="YES" id="BYj-Er-uwd"/>
+                <constraint firstItem="T5f-h5-4hX" firstAttribute="leading" secondItem="1pZ-4i-fW7" secondAttribute="trailing" constant="2" id="FvZ-Pv-zIV"/>
+                <constraint firstItem="dPJ-Gp-hjm" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="J05-1v-LRo"/>
+                <constraint firstAttribute="bottom" secondItem="dPJ-Gp-hjm" secondAttribute="bottom" id="Lsx-vh-1dj"/>
+                <constraint firstItem="dPJ-Gp-hjm" firstAttribute="centerY" secondItem="1pZ-4i-fW7" secondAttribute="centerY" id="ZKN-o3-WMX"/>
+                <constraint firstItem="1pZ-4i-fW7" firstAttribute="top" secondItem="T5f-h5-4hX" secondAttribute="top" id="cfZ-8a-3TI"/>
+                <constraint firstItem="dPJ-Gp-hjm" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="iMa-Hc-Qxc"/>
+            </constraints>
+            <point key="canvasLocation" x="298" y="3"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="ForwardIcon" width="11" height="7"/>
+        <image name="PlayIcon" width="8" height="11"/>
+        <image name="ReverseIcon" width="11" height="7"/>
+    </resources>
+</document>

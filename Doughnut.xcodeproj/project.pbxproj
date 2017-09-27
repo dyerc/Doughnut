@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D7B5D7B127AE8F635350D7F /* Pods_DoughnutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */; };
+		2AB07BF789841271ED80EA26 /* Pods_DoughnutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25D4796441E8F7922FCDAF9A /* Pods_DoughnutUITests.framework */; };
+		4125A143137AD05319B3DEFC /* Pods_Doughnut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */; };
 		830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B159A1F7B97910086C121 /* PodcastCellView.swift */; };
 		832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
+		8341B8391F7BE4F100B50A5D /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
+		8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
+		8341B83D1F7BF0FB00B50A5D /* ToolbarPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83C1F7BF0FB00B50A5D /* ToolbarPlayer.swift */; };
+		8341B83F1F7BF20500B50A5D /* ToolbarPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8341B83E1F7BF20500B50A5D /* ToolbarPlayer.xib */; };
 		83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */; };
 		83667DF21F76D21900F1ABC0 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */; };
 		83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF31F76D22600F1ABC0 /* DetailViewController.swift */; };
@@ -40,8 +47,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		25D4796441E8F7922FCDAF9A /* Pods_DoughnutUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doughnut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		368B5540FC7D1B6258BCF776 /* Pods-DoughnutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.debug.xcconfig"; sourceTree = "<group>"; };
 		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
 		832A04331F76EBDC00C92D25 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		8341B8381F7BE4F100B50A5D /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		8341B83A1F7BEB0500B50A5D /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
+		8341B83C1F7BF0FB00B50A5D /* ToolbarPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPlayer.swift; sourceTree = "<group>"; };
+		8341B83E1F7BF20500B50A5D /* ToolbarPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolbarPlayer.xib; sourceTree = "<group>"; };
 		83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
 		83667DF31F76D22600F1ABC0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +77,10 @@
 		838257ED1F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83FB4EB71F7BD9A1001CD842 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		83FB4EBA1F7BD9DF001CD842 /* FeedKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FeedKit.framework; path = Carthage/Build/Mac/FeedKit.framework; sourceTree = "<group>"; };
+		BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.release.xcconfig"; sourceTree = "<group>"; };
+		BB240160D5A85A2E90992A2D /* Pods-DoughnutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BEF72BD12131100ABCE132D0 /* Pods-DoughnutUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F9F9819E5AC05F35AC9BF7E6 /* Pods-DoughnutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4125A143137AD05319B3DEFC /* Pods_Doughnut.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D7B5D7B127AE8F635350D7F /* Pods_DoughnutTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,17 +104,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AB07BF789841271ED80EA26 /* Pods_DoughnutUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F37DC96B4D6909BC9F7B09C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */,
+				BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */,
+				BB240160D5A85A2E90992A2D /* Pods-DoughnutTests.debug.xcconfig */,
+				F9F9819E5AC05F35AC9BF7E6 /* Pods-DoughnutTests.release.xcconfig */,
+				368B5540FC7D1B6258BCF776 /* Pods-DoughnutUITests.debug.xcconfig */,
+				BEF72BD12131100ABCE132D0 /* Pods-DoughnutUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		830B15991F7B97250086C121 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				830B159A1F7B97910086C121 /* PodcastCellView.swift */,
 				837068121F7BBD63007FE973 /* EpisodeCellView.swift */,
+				8341B83C1F7BF0FB00B50A5D /* ToolbarPlayer.swift */,
+				8341B83E1F7BF20500B50A5D /* ToolbarPlayer.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,6 +154,7 @@
 				838257EA1F759F6F00DB4FD1 /* DoughnutUITests */,
 				838257CB1F759F6F00DB4FD1 /* Products */,
 				83FB4EB91F7BD9DF001CD842 /* Frameworks */,
+				6F37DC96B4D6909BC9F7B09C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +180,7 @@
 				838257D61F759F6F00DB4FD1 /* Info.plist */,
 				838257D71F759F6F00DB4FD1 /* Doughnut.entitlements */,
 				832A04331F76EBDC00C92D25 /* WindowController.swift */,
+				8341B8381F7BE4F100B50A5D /* Preference.swift */,
 			);
 			path = Doughnut;
 			sourceTree = "<group>";
@@ -167,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				83FB4EB71F7BD9A1001CD842 /* Library.swift */,
+				8341B83A1F7BEB0500B50A5D /* Migrations.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -175,6 +216,9 @@
 			isa = PBXGroup;
 			children = (
 				83FB4EBA1F7BD9DF001CD842 /* FeedKit.framework */,
+				2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */,
+				558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */,
+				25D4796441E8F7922FCDAF9A /* Pods_DoughnutUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -186,9 +230,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 838257F01F759F6F00DB4FD1 /* Build configuration list for PBXNativeTarget "Doughnut" */;
 			buildPhases = (
+				5D28D79F73E4F029E1F5DBB6 /* [CP] Check Pods Manifest.lock */,
 				838257C61F759F6F00DB4FD1 /* Sources */,
 				838257C71F759F6F00DB4FD1 /* Frameworks */,
 				838257C81F759F6F00DB4FD1 /* Resources */,
+				4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */,
+				D4838B1A99983D51CEADAC8F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,9 +250,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 838257F31F759F6F00DB4FD1 /* Build configuration list for PBXNativeTarget "DoughnutTests" */;
 			buildPhases = (
+				6F9C7ADA61728CAC04952B62 /* [CP] Check Pods Manifest.lock */,
 				838257D81F759F6F00DB4FD1 /* Sources */,
 				838257D91F759F6F00DB4FD1 /* Frameworks */,
 				838257DA1F759F6F00DB4FD1 /* Resources */,
+				4884278946C85C4A6BB9F0A4 /* [CP] Embed Pods Frameworks */,
+				C83709E703A41DA12E6C8DEC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -221,9 +271,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 838257F61F759F6F00DB4FD1 /* Build configuration list for PBXNativeTarget "DoughnutUITests" */;
 			buildPhases = (
+				A3819D0A54A45BF19A833E00 /* [CP] Check Pods Manifest.lock */,
 				838257E31F759F6F00DB4FD1 /* Sources */,
 				838257E41F759F6F00DB4FD1 /* Frameworks */,
 				838257E51F759F6F00DB4FD1 /* Resources */,
+				4CA645B81661E94A849CAD6B /* [CP] Embed Pods Frameworks */,
+				B5DA5A39F57B6A18D009684E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -286,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8341B83F1F7BF20500B50A5D /* ToolbarPlayer.xib in Resources */,
 				838257D21F759F6F00DB4FD1 /* Assets.xcassets in Resources */,
 				838257D51F759F6F00DB4FD1 /* Main.storyboard in Resources */,
 			);
@@ -307,11 +361,165 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4884278946C85C4A6BB9F0A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CA645B81661E94A849CAD6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D28D79F73E4F029E1F5DBB6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Doughnut-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F9C7ADA61728CAC04952B62 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoughnutTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3819D0A54A45BF19A833E00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoughnutUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5DA5A39F57B6A18D009684E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C83709E703A41DA12E6C8DEC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4838B1A99983D51CEADAC8F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		838257C61F759F6F00DB4FD1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8341B8391F7BE4F100B50A5D /* Preference.swift in Sources */,
+				8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */,
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
 				830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */,
@@ -320,6 +528,7 @@
 				83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */,
 				83667DF21F76D21900F1ABC0 /* EpisodeViewController.swift in Sources */,
 				838257CE1F759F6F00DB4FD1 /* AppDelegate.swift in Sources */,
+				8341B83D1F7BF0FB00B50A5D /* ToolbarPlayer.swift in Sources */,
 				83FB4EB81F7BD9A1001CD842 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +684,7 @@
 		};
 		838257F11F759F6F00DB4FD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -494,6 +704,7 @@
 		};
 		838257F21F759F6F00DB4FD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -513,6 +724,7 @@
 		};
 		838257F41F759F6F00DB4FD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB240160D5A85A2E90992A2D /* Pods-DoughnutTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -530,6 +742,7 @@
 		};
 		838257F51F759F6F00DB4FD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9F9819E5AC05F35AC9BF7E6 /* Pods-DoughnutTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -547,6 +760,7 @@
 		};
 		838257F71F759F6F00DB4FD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 368B5540FC7D1B6258BCF776 /* Pods-DoughnutUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -563,6 +777,7 @@
 		};
 		838257F81F759F6F00DB4FD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEF72BD12131100ABCE132D0 /* Pods-DoughnutUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -9,8 +9,15 @@
 import Cocoa
 
 class WindowController: NSWindowController {
+  @IBOutlet weak var toolbarPlayer: NSToolbarItem!
+  @IBOutlet var toolbarPlayerView: NSView!
+  
   override func windowDidLoad() {
     super.windowDidLoad()
     window?.titleVisibility = .hidden
+    
+    Bundle.main.loadNibNamed(NSNib.Name(rawValue: "ToolbarPlayer"), owner: self, topLevelObjects: nil)
+    toolbarPlayerView.bounds = (toolbarPlayer.view?.bounds)!
+    toolbarPlayer.view = toolbarPlayerView
   }
 }

@@ -8,9 +8,30 @@
 
 import Foundation
 import FeedKit
+import GRDB
 
 class Library: NSObject {
   static var global = Library()
+  var db: DatabaseQueue?
+  
+  func connect() -> Bool {
+    do {
+      db = try DatabaseQueue(path: databaseFile())
+      
+      if let db = db {
+        try LibraryMigrations.migrate(db: db)
+        return true
+      } else {
+        return false
+      }
+    } catch {
+      return false
+    }
+  }
+  
+  private func databaseFile() -> String {
+    return Preference.libraryPath().appendingPathComponent("Doughnut Library.dnl").absoluteString
+  }
   
   func subscribe(url: String) {
     guard let feedUrl = URL(string: url) else { return }
