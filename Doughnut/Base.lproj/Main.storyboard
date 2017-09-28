@@ -915,7 +915,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VjX-tN-caV">
-                                                                    <rect key="frame" x="191" y="18" width="34" height="17"/>
+                                                                    <rect key="frame" x="192" y="16" width="34" height="17"/>
                                                                     <buttonCell key="cell" type="inline" title="65" bezelStyle="inline" alignment="center" refusesFirstResponder="YES" borderStyle="border" inset="2" id="WIz-5f-hnz">
                                                                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="smallSystemBold"/>
@@ -923,9 +923,9 @@
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="VjX-tN-caV" secondAttribute="trailing" constant="3" id="2iH-7j-gMn"/>
+                                                                <constraint firstItem="VjX-tN-caV" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="trailing" constant="8" symbolic="YES" id="2aZ-Kx-dmv"/>
                                                                 <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="leading" id="8RY-yH-s2T"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="baseline" secondItem="VjX-tN-caV" secondAttribute="baseline" id="9rz-n6-uRz"/>
+                                                                <constraint firstAttribute="trailing" secondItem="VjX-tN-caV" secondAttribute="trailing" constant="2" id="BBh-hK-Ovx"/>
                                                                 <constraint firstItem="WuW-3B-toC" firstAttribute="leading" secondItem="Caz-b2-UzS" secondAttribute="leading" constant="3" id="WhY-p2-HkI"/>
                                                                 <constraint firstAttribute="bottom" secondItem="WuW-3B-toC" secondAttribute="bottom" constant="3" id="Xx6-uW-ZGB"/>
                                                                 <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="Pkl-Lr-qxa" secondAttribute="leading" id="c7w-YQ-jtp"/>
@@ -933,10 +933,10 @@
                                                                 <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="WuW-3B-toC" secondAttribute="trailing" constant="8" symbolic="YES" id="f6P-qR-hfr"/>
                                                                 <constraint firstItem="Pkl-Lr-qxa" firstAttribute="top" secondItem="AHY-Ts-qj2" secondAttribute="bottom" constant="2" id="fBl-g5-dop"/>
                                                                 <constraint firstItem="WuW-3B-toC" firstAttribute="top" secondItem="Caz-b2-UzS" secondAttribute="top" constant="3" id="fgK-5T-wJ7"/>
-                                                                <constraint firstItem="VjX-tN-caV" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="trailing" constant="7" id="fzx-ma-5OZ"/>
                                                                 <constraint firstItem="WuW-3B-toC" firstAttribute="top" secondItem="yFZ-qJ-tU0" secondAttribute="top" id="gth-f7-7KT"/>
                                                                 <constraint firstItem="AHY-Ts-qj2" firstAttribute="trailing" secondItem="Pkl-Lr-qxa" secondAttribute="trailing" id="hGA-CC-AvH"/>
                                                                 <constraint firstItem="yFZ-qJ-tU0" firstAttribute="trailing" secondItem="AHY-Ts-qj2" secondAttribute="trailing" id="kM1-XF-6q4"/>
+                                                                <constraint firstItem="VjX-tN-caV" firstAttribute="top" secondItem="Caz-b2-UzS" secondAttribute="top" constant="22" id="pom-Jy-u3O"/>
                                                                 <constraint firstItem="WuW-3B-toC" firstAttribute="centerY" secondItem="AHY-Ts-qj2" secondAttribute="centerY" id="sbU-e7-36Z"/>
                                                             </constraints>
                                                             <connections>

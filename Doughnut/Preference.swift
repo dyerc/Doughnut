@@ -9,30 +9,37 @@
 import Cocoa
 
 class Preference {
-  static func libraryPath() -> URL {
+  static let kLibraryPath = "LibraryPath"
+  
+  static func libraryPath() -> URL? {
+    if let path = UserDefaults.standard.string(forKey: kLibraryPath) {
+      return URL(string: path)
+    } else {
+      return nil
+    }
+  }
+  
+  static func defaultLibraryPath() -> URL {
     #if DEBUG
-      let env = ProcessInfo.processInfo.environment
-      var path: URL
-      print(env)
-      if env["TEST"] != nil {
-        path = Preference.userMusicPath().appendingPathComponent("Doughnut_test")
-        print("TEST Library \(path)")
-      } else {
-        path = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
-        print("DEBUG Library \(path)")
-      }
+      let path = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
     #else
       let path = Preference.userMusicPath().appendingPathComponent("Doughnut")
     #endif
     
-    var isDir = ObjCBool(true)
-    if FileManager.default.fileExists(atPath: path.absoluteString, isDirectory: &isDir) == false {
-      do {
-        try FileManager.default.createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
-      } catch {}
-    }
+    createLibraryIfNotExists(path)
     
     return path
+  }
+  
+  static func createLibraryIfNotExists(_ url: URL) {
+    var isDir = ObjCBool(true)
+    if FileManager.default.fileExists(atPath: url.path, isDirectory: &isDir) == false {
+      do {
+        try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+      } catch {
+        print("Failed to create directory \(error)")
+      }
+    }
   }
   
   private static func userMusicPath() -> URL {
