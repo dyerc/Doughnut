@@ -11,31 +11,27 @@ import FeedKit
 import GRDB
 
 class Library: NSObject {
-  static var global = Library(nil)
+  static var global = Library()
   static let databaseFilename = "Doughnut Library.dnl"
   
   let path: URL
   var dbQueue: DatabaseQueue?
   
-  init(_ withPath: URL?) {
-    if let path = withPath {
-      self.path = path
-    } else {
-      // Look for libaryPath stoed as in prefs
-      if let prefPath = Preference.libraryPath() {
-        if FileManager.default.fileExists(atPath: Library.databaseFile(inPath: prefPath).path) {
-          self.path = prefPath
-        } else {
-          // A previous library was created that we can't access, prompt the user
-          if let path = Library.locate() {
-            self.path = path
-          } else {
-            fatalError("No library located!")
-          }
-        }
+  override init() {
+    // Look for libaryPath stoed as in prefs
+    if let prefPath = Preference.libraryPath() {
+      if FileManager.default.fileExists(atPath: Library.databaseFile(inPath: prefPath).path) {
+        self.path = prefPath
       } else {
-        self.path = Preference.defaultLibraryPath()
+        // A previous library was created that we can't access, prompt the user
+        if let path = Library.locate() {
+          self.path = path
+        } else {
+          fatalError("No library located!")
+        }
       }
+    } else {
+      self.path = Preference.defaultLibraryPath()
     }
   }
   
@@ -134,19 +130,19 @@ class Library: NSObject {
     
   }
   
-  func reload() {
+  func podcast(id: Int64) -> Podcast? {
+    guard let dbQueue = dbQueue else { return nil }
     
+    do {
+      return try dbQueue.inDatabase { db -> Podcast? in
+        return try Podcast.fetchOne(db, key: id)
+      }
+    } catch {}
+    
+    return nil
   }
   
-  func parseFeed(feed: RSSFeed) {
-    print(feed.title)
-    print(feed.copyright)
+  func reload() {
     
-    if let items = feed.items {
-      print("Episodes \(items.count)")
-      
-      let first = feed.items?.first
-      print(first?.enclosure?.attributes?.url)
-    }
   }
 }

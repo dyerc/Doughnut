@@ -16,7 +16,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     // Insert code here to initialize your application
     // Library.global.subscribe(url: "http://feeds.feedburner.com/TellEmSteveDave")
-    Library.global.connect()
+    let connected = Library.global.connect()
+    if !connected {
+      let alert = NSAlert()
+      alert.messageText = "Failed to connect to library"
+      alert.runModal()
+      abort()
+    }
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {

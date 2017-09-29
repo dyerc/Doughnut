@@ -43,6 +43,13 @@ class Podcast: Record {
     path = row["path"]
     feed = row["feed"]
     description = row["description"]
+    link = row["link"]
+    author = row["author"]
+    language = row["language"]
+    copyright = row["copyright"]
+    pubDate = row["pub_date"]
+    imageUrl = row["image_url"]
+    lastParsed = row["last_parsed"]
     subscribedAt = row["subscribed_at"]
     
     super.init(row: row)
@@ -54,6 +61,14 @@ class Podcast: Record {
     container["path"] = path
     container["feed"] = feed
     container["description"] = description
+    container["link"] = link
+    container["author"] = author
+    container["language"] = language
+    container["copyright"] = copyright
+    container["pub_date"] = pubDate
+    container["image_url"] = imageUrl
+    container["last_parsed"] = lastParsed
+    container["subscribed_at"] = subscribedAt
   }
   
   override func didInsert(with rowID: Int64, for column: String?) {

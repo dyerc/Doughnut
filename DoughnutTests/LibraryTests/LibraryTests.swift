@@ -14,18 +14,19 @@ class LibraryTests: BaseTestCase {
   
   override func setUp() {
     super.setUp()
-    let libraryPath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
-    
-    Preference.createLibraryIfNotExists(libraryPath)
-    
-    self.library = Library(URL(fileURLWithPath: libraryPath.path))
-    XCTAssertEqual(self.library?.connect(), true)
+    XCTAssertEqual(Library.global.connect(), true)
+    print("Using library at \(Library.global.path)")
   }
   
   func testSubscribe() {
-    let sub = library!.subscribe(url: fixtureURL("ValidFeed", type: "xml").absoluteString)
+    let sub = Library.global.subscribe(url: fixtureURL("ValidFeed", type: "xml").absoluteString)
     
     XCTAssertEqual(sub!.title, "Test Feed")
+    XCTAssertEqual(sub!.author, "CD1212")
     XCTAssertGreaterThan(sub!.id!, 0)
+    
+    // Try querying it back
+    let pod = Library.global.podcast(id: sub!.id!)
+    XCTAssertEqual(pod!.title, sub!.title)
   }
 }

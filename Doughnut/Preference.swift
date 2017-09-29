@@ -24,7 +24,9 @@ class Preference {
   }
   
   static func defaultLibraryPath() -> URL {
-    #if DEBUG
+    #if TEST
+      let path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
+    #elseif DEBUG
       let path = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
     #else
       let path = Preference.userMusicPath().appendingPathComponent("Doughnut")
