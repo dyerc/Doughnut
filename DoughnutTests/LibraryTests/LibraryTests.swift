@@ -14,11 +14,11 @@ class LibraryTests: BaseTestCase {
   
   override func setUp() {
     super.setUp()
-    let libraryPath = URL(string: NSTemporaryDirectory())?.appendingPathComponent("Doughtnut_test")
+    let libraryPath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
     
-    Preference.createLibraryIfNotExists(libraryPath!)
+    Preference.createLibraryIfNotExists(libraryPath)
     
-    self.library = Library(URL(string: (libraryPath?.path)!))
+    self.library = Library(URL(fileURLWithPath: libraryPath.path))
     XCTAssertEqual(self.library?.connect(), true)
   }
   
