@@ -25,6 +25,7 @@ class LibraryMigrations {
         t.column("language", .text)
         t.column("copyright", .text)
         t.column("pub_date", .datetime)
+        t.column("image", .blob)
         t.column("image_url", .text)
         t.column("last_parsed", .datetime)
         t.column("subscribed_at", .datetime)

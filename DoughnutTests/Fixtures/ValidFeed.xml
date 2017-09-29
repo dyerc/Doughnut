@@ -24,7 +24,7 @@
       <itunes:keywords/>
       <itunes:duration>1:05</itunes:duration>
       <title>Test Podcast Episode #2</title>
-      <guid isPermaLink="true">https://github.com/CD1212/Doughnut#1</guid>
+      <guid isPermaLink="true">https://github.com/CD1212/Doughnut#2</guid>
       <description>Lorem ipsum sit amet dolor</description>
       
       <category>Comedy</category>
@@ -32,17 +32,17 @@
       <enclosure length="1037273" url="enclosure.mp3" type="audio/mpeg"/>
     </item>
     <item>
-      <itunes:author>Jane Brody of The New York Times</itunes:author>
+      <itunes:author>CD1212</itunes:author>
       <itunes:keywords/>
       
       <itunes:duration>1:05</itunes:duration>
-      <title>NYT: Health Update for 03/18/2008</title>
-      <guid isPermaLink="true">http://podcasts.nytimes.com/podcasts/2008/03/14/18healthupdate.mp3</guid>
-      <description>Why do teenagers do such dumb things?.</description>
+      <title>Test Podcast Episode #1</title>
+      <guid isPermaLink="true">https://github.com/CD1212/Doughnut#1</guid>
+      <description>Lorem ipsum sit amet dolor</description>
       <category>News</category>
-      <pubDate>Fri, 14 Mar 2008 09:51:00 EDT</pubDate>
+      <pubDate>Sun, 24 Sep 2017 23:30:07 GMT</pubDate>
       
-      <enclosure length="1039363" url="http://podcasts.nytimes.com/podcasts/2008/03/14/18healthupdate.mp3" type="audio/mpeg"/>
+      <enclosure length="1039363" url="enclosure.mp3" type="audio/mpeg"/>
     </item>
   </channel>
 </rss>

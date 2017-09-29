@@ -14,13 +14,27 @@ class Library: NSObject {
   static var global = Library()
   static let databaseFilename = "Doughnut Library.dnl"
   
+  enum Events:String {
+    case Subscribed = "Subscribed"
+    case Unsubscribed = "Unsubscribed"
+    case Loaded = "Loaded"
+    case Reloaded = "Reloaded"
+    
+    var notification: Notification.Name {
+      return Notification.Name(rawValue: self.rawValue)
+    }
+  }
+  
   let path: URL
   var dbQueue: DatabaseQueue?
+  
+  var podcasts = [Podcast]()
   
   override init() {
     // Look for libaryPath stoed as in prefs
     if let prefPath = Preference.libraryPath() {
-      if FileManager.default.fileExists(atPath: Library.databaseFile(inPath: prefPath).path) {
+      var isDir = ObjCBool(true)
+      if FileManager.default.fileExists(atPath: prefPath.path, isDirectory: &isDir) {
         self.path = prefPath
       } else {
         // A previous library was created that we can't access, prompt the user
@@ -42,6 +56,12 @@ class Library: NSObject {
       if let dbQueue = dbQueue {
         try LibraryMigrations.migrate(db: dbQueue)
         print("Connected to Doughnut library at \(path.path)")
+        
+        try dbQueue.inDatabase({ db in
+          podcasts = try Podcast.fetchAll(db)
+          NotificationCenter.default.post(name: Events.Loaded.notification, object: nil)
+        })
+        
         return true
       } else {
         return false
@@ -90,6 +110,8 @@ class Library: NSObject {
     guard let dbQueue = self.dbQueue else { return nil }
     guard let feedUrl = URL(string: url) else { return nil }
     
+    // Check if the podcast is already subscribed to
+    
     if let parser = FeedParser(URL: feedUrl) {
       let result = parser.parse()
       
@@ -97,14 +119,15 @@ class Library: NSObject {
         print(result.error as Any)
       } else {
         if let feed = result.rssFeed {
-          guard let podcast = Podcast.parse(response: feed) else { return nil }
-          
-          podcast.feed = feedUrl.absoluteString
+          guard let podcast = Podcast.parse(feedUrl: feedUrl, response: feed) else { return nil }
           
           do {
             try dbQueue.inDatabase { db in
               try podcast.insert(db)
             }
+            
+            podcasts.append(podcast)
+            NotificationCenter.default.post(name: Events.Subscribed.notification, object: podcast)
             
             return podcast
             
