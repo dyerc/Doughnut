@@ -13,10 +13,20 @@ class EpisodeCellView: NSTableCellView {
   @IBOutlet weak var summary: NSTextField!
   @IBOutlet weak var date: NSTextField!
   
+  var episode: Episode? {
+    didSet {
+      title.stringValue = episode?.title ?? ""
+      summary.stringValue = episode?.description ?? ""
+      
+      // Needed in order for favourite, played marks etc to be updated
+      needsDisplay = true
+    }
+  }
+  
   override func draw(_ dirtyRect: NSRect) {
     super.draw(dirtyRect)
     
-    if false {
+    if episode?.favourite ?? false {
       NSColor.init(red: 1.0, green: 0.824, blue: 0.180, alpha: 1.0).setFill()
       __NSRectFill(NSRect(x: 0, y: -0, width: 3, height: self.bounds.height))
     }

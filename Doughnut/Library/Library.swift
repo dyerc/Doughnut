@@ -19,6 +19,7 @@ class Library: NSObject {
     case Unsubscribed = "Unsubscribed"
     case Loaded = "Loaded"
     case Reloaded = "Reloaded"
+    case PodcastUpdated = "PodcastUpdated"
     
     var notification: Notification.Name {
       return Notification.Name(rawValue: self.rawValue)
@@ -188,5 +189,17 @@ class Library: NSObject {
   
   func reload() {
     
+  }
+  
+  func save(episode: Episode) {
+    do {
+      try dbQueue?.inDatabase { db in
+        try episode.save(db)
+      }
+      
+      NotificationCenter.default.post(name: Events.PodcastUpdated.notification, object: nil, userInfo: ["podcastId": episode.podcastId ?? 0])
+    } catch let error as DatabaseError {
+      Library.handleDatabaseError(error)
+    } catch {}
   }
 }

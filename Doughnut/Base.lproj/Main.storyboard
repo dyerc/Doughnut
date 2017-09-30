@@ -996,16 +996,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="331" height="420"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="78" horizontalPageScroll="10" verticalLineScroll="78" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPG-xC-7JH">
+                            <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="76" horizontalPageScroll="10" verticalLineScroll="76" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPG-xC-7JH">
                                 <rect key="frame" x="0.0" y="0.0" width="331" height="420"/>
                                 <clipView key="contentView" id="Ugp-W0-ujw">
                                     <rect key="frame" x="0.0" y="0.0" width="331" height="420"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="76" viewBased="YES" id="Xrx-cp-IWJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="333" height="420"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="331" height="420"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <size key="intercellSpacing" width="2" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
@@ -1023,7 +1022,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="duq-gB-b2g" customClass="EpisodeCellView" customModule="Doughnut" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="331" height="76"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="331" height="76"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c7R-O5-skY">
@@ -1083,6 +1082,7 @@
                                             <connections>
                                                 <outlet property="dataSource" destination="GEj-8A-BQz" id="wjd-ZR-sbQ"/>
                                                 <outlet property="delegate" destination="GEj-8A-BQz" id="J2Y-v9-Tl6"/>
+                                                <outlet property="menu" destination="qqK-ah-ZRe" id="Kzf-aD-wB1"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -1090,7 +1090,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="7Si-iI-Qlx"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="r32-FB-sgI">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="r32-FB-sgI">
                                     <rect key="frame" x="0.0" y="404" width="331" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1112,8 +1112,46 @@
                     </connections>
                 </viewController>
                 <customObject id="qq1-Uz-mef" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="qqK-ah-ZRe">
+                    <items>
+                        <menuItem title="Play Now" id="WYr-jP-7SK">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="playNow:" target="GEj-8A-BQz" id="Y5y-Dg-kDj"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="tAQ-3D-E3U"/>
+                        <menuItem title="Mark as Played" id="sAj-NI-EpU">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="markAsPlayed:" target="GEj-8A-BQz" id="rCh-vf-blD"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Mark as Unplayed" id="NdV-Fl-a2L">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="markAsUnplayed:" target="GEj-8A-BQz" id="eaz-Bw-pwF"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Mark as Favourite" id="ZU1-sa-mhd">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="markAsFavourite:" target="GEj-8A-BQz" id="sQh-Ae-2hn"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Unmark Favourite" id="JO7-nZ-bKZ">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="unmarkAsFavourite:" target="GEj-8A-BQz" id="Z7S-bH-h12"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="GEj-8A-BQz" id="8C1-kL-iJw"/>
+                    </connections>
+                </menu>
             </objects>
-            <point key="canvasLocation" x="795.5" y="890"/>
+            <point key="canvasLocation" x="804" y="1027"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="IJf-sZ-gIZ">
