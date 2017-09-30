@@ -35,6 +35,7 @@ class LibraryMigrations {
       
       try db.create(table: "episodes", body: { t in
         t.column("id", .integer).primaryKey()
+        t.column("podcast_id", .integer).references("podcasts", onDelete: .cascade)
         t.column("title", .text).notNull()
         t.column("description", .text)
         t.column("guid", .text)
@@ -42,12 +43,12 @@ class LibraryMigrations {
         t.column("link", .text)
         t.column("enclosure_url", .text)
         t.column("enclosure_size", .integer)
+        t.column("file_name", .text)
         t.column("favourite", .boolean).notNull().defaults(to: false)
         t.column("downloaded", .boolean).notNull().defaults(to: false)
         t.column("played", .boolean).notNull().defaults(to: false)
-        t.column("playPosition", .integer).notNull().defaults(to: 0)
+        t.column("play_position", .integer).notNull().defaults(to: 0)
         t.column("duration", .integer)
-        t.column("created_at", .datetime)
       })
     }
     

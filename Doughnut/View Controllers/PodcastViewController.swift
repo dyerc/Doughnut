@@ -40,12 +40,13 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     result.title.stringValue = podcast.title
     result.author.stringValue = podcast.author ?? ""
     result.imageView?.image = podcast.image
+    result.episodeCount.stringValue = "\(podcast.episodes.count) episodes"
     
     return result
   }
   
   func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-    print("Click \(row)")
+    NotificationCenter.default.post(name: ViewController.Events.PodcastSelected.notification, object: nil, userInfo: ["podcast": podcasts[row]])
     return true
   }
   

@@ -26,7 +26,7 @@ class Podcast: Record {
   var lastParsed: Date?
   var subscribedAt: Date
   
-  //var episodes = [Episode]()
+  var episodes = [Episode]()
   
   override class var databaseTableName: String {
     return "podcasts"
@@ -83,9 +83,54 @@ class Podcast: Record {
   
   override func didInsert(with rowID: Int64, for column: String?) {
     id = rowID
+    
+    for episode in episodes {
+      episode.podcastId = self.id
+    }
   }
   
-  func storeImage(_ url: URL) {
+  func fetchEpisodes(db: Database) {
+    do {
+      episodes = try Episode.filter(Column("podcast_id") == self.id).fetchAll(db)
+    } catch let error as DatabaseError {
+      Library.handleDatabaseError(error)
+    } catch {}
+  }
+  
+  func invokeSave(dbQueue: DatabaseQueue) -> Bool {
+    do {
+      try dbQueue.inDatabase { db in
+        try self.save(db)
+      }
+    } catch let error as DatabaseError {
+      Library.handleDatabaseError(error)
+      return false
+    } catch {
+      return false
+    }
+    
+    return true
+  }
+  
+  func saveEpisodes(dbQueue: DatabaseQueue) -> Bool {
+    do {
+      for episode in episodes {
+        try dbQueue.inDatabase { db in
+          print("Saving episode for podcast \(episode.podcastId)")
+          try episode.save(db)
+        }
+      }
+    } catch let error as DatabaseError {
+      Library.handleDatabaseError(error)
+      return false
+    } catch {
+      return false
+    }
+    
+    return true
+  }
+  
+  private func storeImage(_ url: URL) {
     imageUrl = url.absoluteString
     
     if let downloaded = NSImage(contentsOf: url) {
@@ -93,41 +138,54 @@ class Podcast: Record {
     }
   }
   
-  func compressImage() -> Data? {
+  private func compressImage() -> Data? {
     guard let image = image else { return nil }
     guard let tiffData = image.tiffRepresentation else { return nil }
     guard let imageRep = NSBitmapImageRep(data: tiffData) else { return nil }
     return imageRep.representation(using: .jpeg, properties: [:])
   }
   
-  static func parse(feedUrl: URL, response: RSSFeed) -> Podcast? {
-    if let title = response.title {
-      let podcast = Podcast(title: title)
-      podcast.feed = feedUrl.absoluteString
-      podcast.description = response.description
-      podcast.link = response.link
-      podcast.author = response.iTunes?.iTunesAuthor
-      podcast.language = response.language
-      podcast.copyright = response.copyright
-      podcast.pubDate = response.pubDate
-      
-      // Prioritize iTunes image url over regular RSS
-      if let iTunesImageUrl = response.iTunes?.iTunesImage?.attributes?.href {
-        if let imageUrl = URL(string: iTunesImageUrl, relativeTo: feedUrl) {
-          podcast.storeImage(imageUrl)
-        }
-      } else if let rssImageUrl = response.image?.url {
-        if let imageUrl = URL(string: rssImageUrl, relativeTo: feedUrl) {
-          podcast.storeImage(imageUrl)
-        }
-      }
-      
-      podcast.lastParsed = Date()
-      
-      return podcast
-    } else {
-      return nil
+  func parseEpisode(feedItem: RSSFeedItem) -> Episode? {
+    guard let episode = Episode.parse(response: feedItem) else { return nil }
+    episode.podcastId = self.id
+    
+    let duplicate = episodes.contains(where: { (e) -> Bool in
+      e.guid == episode.guid && e.title == episode.title
+    })
+    
+    if !duplicate {
+      episodes.append(episode)
     }
+    
+    return episode
+  }
+  
+  static func parse(feedUrl: URL, response: RSSFeed) -> Podcast? {
+    guard let title = response.title else { return nil }
+    
+    let podcast = Podcast(title: title)
+    podcast.feed = feedUrl.absoluteString
+    podcast.description = response.description
+    podcast.link = response.link
+    podcast.author = response.iTunes?.iTunesAuthor
+    podcast.language = response.language
+    podcast.copyright = response.copyright
+    podcast.pubDate = response.pubDate
+    
+    // Prioritize iTunes image url over regular RSS
+    if let iTunesImageUrl = response.iTunes?.iTunesImage?.attributes?.href {
+      if let imageUrl = URL(string: iTunesImageUrl, relativeTo: feedUrl) {
+        podcast.storeImage(imageUrl)
+      }
+    } else if let rssImageUrl = response.image?.url {
+      if let imageUrl = URL(string: rssImageUrl, relativeTo: feedUrl) {
+        podcast.storeImage(imageUrl)
+      }
+    }
+    
+    podcast.lastParsed = Date()
+    
+    return podcast
   }
   
   static func sanitizePodcastPath(_ path: String) -> String {

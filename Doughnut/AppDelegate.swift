@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       abort()
     }
     
-    // Library.global.subscribe(url: "http://feeds.feedburner.com/TellEmSteveDave")
+    //  Library.global.subscribe(url: "http://feeds.feedburner.com/TellEmSteveDave")
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {

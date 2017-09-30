@@ -34,6 +34,8 @@
 		83D4CA5E1F7C3988002EDC36 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
 		83D4CA5F1F7C39A4002EDC36 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
 		83D4CA611F7C39AD002EDC36 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
+		83D59CF71F7ED15C00F25A66 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D59CF61F7ED15C00F25A66 /* Episode.swift */; };
+		83D59CF81F7ED15F00F25A66 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D59CF61F7ED15C00F25A66 /* Episode.swift */; };
 		83FB4EB81F7BD9A1001CD842 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,7 @@
 		83D4CA591F7C3779002EDC36 /* ValidFeed.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ValidFeed.xml; sourceTree = "<group>"; };
 		83D4CA5B1F7C3848002EDC36 /* enclosure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enclosure.mp3; sourceTree = "<group>"; };
 		83D4CA5C1F7C3902002EDC36 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
+		83D59CF61F7ED15C00F25A66 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		83FB4EB71F7BD9A1001CD842 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		83FB4EBA1F7BD9DF001CD842 /* FeedKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FeedKit.framework; path = Carthage/Build/Mac/FeedKit.framework; sourceTree = "<group>"; };
 		BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +158,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		834342661F801DD600913C0B /* Preference */ = {
+			isa = PBXGroup;
+			children = (
+				8341B8381F7BE4F100B50A5D /* Preference.swift */,
+			);
+			path = Preference;
+			sourceTree = "<group>";
+		};
 		83667DEE1F76D1F300F1ABC0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,7 +211,7 @@
 				838257D61F759F6F00DB4FD1 /* Info.plist */,
 				838257D71F759F6F00DB4FD1 /* Doughnut.entitlements */,
 				832A04331F76EBDC00C92D25 /* WindowController.swift */,
-				8341B8381F7BE4F100B50A5D /* Preference.swift */,
+				834342661F801DD600913C0B /* Preference */,
 			);
 			path = Doughnut;
 			sourceTree = "<group>";
@@ -250,6 +261,7 @@
 				83FB4EB71F7BD9A1001CD842 /* Library.swift */,
 				8341B83A1F7BEB0500B50A5D /* Migrations.swift */,
 				83659AB71F7D8A0300E09833 /* Podcast.swift */,
+				83D59CF61F7ED15C00F25A66 /* Episode.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -570,6 +582,7 @@
 				83659AB81F7D8A0300E09833 /* Podcast.swift in Sources */,
 				837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */,
 				83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */,
+				83D59CF71F7ED15C00F25A66 /* Episode.swift in Sources */,
 				83667DF21F76D21900F1ABC0 /* EpisodeViewController.swift in Sources */,
 				838257CE1F759F6F00DB4FD1 /* AppDelegate.swift in Sources */,
 				8341B83D1F7BF0FB00B50A5D /* ToolbarPlayer.swift in Sources */,
@@ -582,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83D4CA5F1F7C39A4002EDC36 /* Preference.swift in Sources */,
+				83D59CF81F7ED15F00F25A66 /* Episode.swift in Sources */,
 				83659AB91F7DA17500E09833 /* Podcast.swift in Sources */,
 				838257E11F759F6F00DB4FD1 /* DoughnutTests.swift in Sources */,
 				83D4CA611F7C39AD002EDC36 /* Migrations.swift in Sources */,

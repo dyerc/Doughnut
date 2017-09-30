@@ -1107,6 +1107,9 @@
                             <constraint firstAttribute="bottom" secondItem="aPG-xC-7JH" secondAttribute="bottom" id="kEV-Ns-r9e"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Xrx-cp-IWJ" id="WVH-k1-4XS"/>
+                    </connections>
                 </viewController>
                 <customObject id="qq1-Uz-mef" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -59,6 +59,15 @@ class Library: NSObject {
         
         try dbQueue.inDatabase({ db in
           podcasts = try Podcast.fetchAll(db)
+          
+          for podcast in podcasts {
+            podcast.fetchEpisodes(db: db)
+            
+            #if DEBUG
+            print("Loading \(podcast.title) with \(podcast.episodes.count) episodes")
+            #endif
+          }
+          
           NotificationCenter.default.post(name: Events.Loaded.notification, object: nil)
         })
         
@@ -103,6 +112,11 @@ class Library: NSObject {
     }
   }
   
+  static func handleDatabaseError(_ error: Error) {
+    let alert = NSAlert()
+    
+  }
+  
   //
   // General library methods
   
@@ -111,6 +125,18 @@ class Library: NSObject {
     guard let feedUrl = URL(string: url) else { return nil }
     
     // Check if the podcast is already subscribed to
+    do {
+      let existing = try dbQueue.inDatabase({ db -> Podcast? in
+        return try Podcast.filter(Column("feed") == feedUrl.absoluteString).fetchOne(db)
+      })
+        
+      if existing != nil {
+        return existing
+      }
+    } catch {
+      Library.handleDatabaseError(error)
+      return nil
+    }
     
     if let parser = FeedParser(URL: feedUrl) {
       let result = parser.parse()
@@ -121,20 +147,15 @@ class Library: NSObject {
         if let feed = result.rssFeed {
           guard let podcast = Podcast.parse(feedUrl: feedUrl, response: feed) else { return nil }
           
-          do {
-            try dbQueue.inDatabase { db in
-              try podcast.insert(db)
-            }
-            
+          for item in feed.items ?? [] {
+            let _ = podcast.parseEpisode(feedItem: item)
+          }
+          
+          if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
             podcasts.append(podcast)
             NotificationCenter.default.post(name: Events.Subscribed.notification, object: podcast)
             
             return podcast
-            
-          } catch let error as DatabaseError {
-            print(error.message as Any)
-            return nil
-          } catch {
           }
           
         } else {

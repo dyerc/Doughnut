@@ -9,17 +9,18 @@
 import Cocoa
 
 class ViewController: NSSplitViewController {
+  enum Events:String {
+    case PodcastSelected = "PodcastSelected"
+    
+    var notification: Notification.Name {
+      return Notification.Name(rawValue: self.rawValue)
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    // Do any additional setup after loading the view.
-  }
-
-  override var representedObject: Any? {
-    didSet {
-    // Update the view, if already loaded.
-    }
+    
   }
 
   @IBAction func play(_ sender: NSSegmentedControl) {
