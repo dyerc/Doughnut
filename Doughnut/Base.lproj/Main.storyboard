@@ -756,10 +756,10 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" label="Custom View" paletteLabel="Player View" tag="-1" id="Psv-5X-LNl">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="420" height="25"/>
-                                    <size key="maxSize" width="420" height="96"/>
+                                    <size key="minSize" width="460" height="38"/>
+                                    <size key="maxSize" width="460" height="41"/>
                                     <customView key="view" id="qY3-fM-qgT" customClass="PlayerView" customModule="Doughnut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="420" height="25"/>
+                                        <rect key="frame" x="0.0" y="14" width="460" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </customView>
                                 </toolbarItem>

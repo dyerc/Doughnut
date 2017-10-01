@@ -30,7 +30,7 @@ class Player: NSObject {
   var loadStatus: PlayerLoadStatus = .none
   var avPlayer: AVPlayer?
   
-  var volume = UserDefaults.standard.float(forKey: Preference.kVolume) {
+  var volume: Float = 0.6 { //UserDefaults.standard.float(forKey: Preference.kVolume) {
     didSet {
       avPlayer?.volume = volume
       UserDefaults.standard.set(volume, forKey: Preference.kVolume)
@@ -61,7 +61,7 @@ class Player: NSObject {
           self.buffered = CMTimeRangeGetEnd(bufferedRange.timeRangeValue).seconds
         }
         
-        NotificationCenter.default.post(name: Events.StatusChange.notification, object: nil)
+        NotificationCenter.default.post(name: Events.TimeChange.notification, object: nil)
       })
       
       avPlayer.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions(rawValue: 0), context: nil)
@@ -101,5 +101,10 @@ class Player: NSObject {
   func pause() {
     guard let av = avPlayer else { return }
     av.pause()
+  }
+  
+  func seek(seconds: Double) {
+    guard let av = avPlayer else { return }
+    av.seek(to: CMTime(seconds: seconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
   }
 }
