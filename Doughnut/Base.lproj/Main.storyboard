@@ -715,9 +715,9 @@
                     <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="500" height="460"/>
+                        <rect key="contentRect" x="29" y="240" width="667" height="460"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="480" height="300"/>
+                        <value key="minSize" type="size" width="680" height="300"/>
                         <toolbar key="toolbar" implicitIdentifier="5EA9AEAC-FA45-4A90-AB14-9E623C1C2711" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="2lC-Jl-fGD">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="24m-vf-dRH"/>
@@ -756,10 +756,10 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" label="Custom View" paletteLabel="Player View" tag="-1" id="Psv-5X-LNl">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="460" height="38"/>
-                                    <size key="maxSize" width="460" height="41"/>
+                                    <size key="minSize" width="465" height="38"/>
+                                    <size key="maxSize" width="465" height="41"/>
                                     <customView key="view" id="qY3-fM-qgT" customClass="PlayerView" customModule="Doughnut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="460" height="38"/>
+                                        <rect key="frame" x="0.0" y="14" width="465" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </customView>
                                 </toolbarItem>
@@ -774,18 +774,19 @@
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
-                            <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="F8A-Sb-plI"/>
                         </connections>
                     </window>
                     <connections>
                         <outlet property="allToggle" destination="0x1-F9-vTA" id="5Ik-2C-flf"/>
                         <outlet property="newToggle" destination="lAe-YH-TAR" id="0xd-Ho-EFT"/>
+                        <outlet property="playerView" destination="Psv-5X-LNl" id="WFu-8c-S1d"/>
                         <segue destination="zrU-nU-rD6" kind="relationship" relationship="window.shadowedContentViewController" id="KFV-RY-whX"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-50" y="58"/>
+            <point key="canvasLocation" x="-133.5" y="58"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tQb-WI-UYn">

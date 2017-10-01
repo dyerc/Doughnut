@@ -8,9 +8,10 @@
 
 import Cocoa
 
-class WindowController: NSWindowController {
+class WindowController: NSWindowController, NSWindowDelegate {
   @IBOutlet var allToggle: NSButton!
   @IBOutlet var newToggle: NSButton!
+  @IBOutlet var playerView: NSToolbarItem!
   
   override func windowDidLoad() {
     super.windowDidLoad()
@@ -27,4 +28,15 @@ class WindowController: NSWindowController {
     newToggle.state = .on
   }
   
+  func windowDidResignKey(_ notification: Notification) {
+    if let player = playerView.view as? PlayerView {
+      player.needsDisplay = true
+    }
+  }
+  
+  func windowDidBecomeKey(_ notification: Notification) {
+    if let player = playerView.view as? PlayerView {
+      player.needsDisplay = true
+    }
+  }
 }

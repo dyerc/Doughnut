@@ -20,7 +20,7 @@ extension String {
 }
 
 class PlayerView: NSView {
-  let width = 420
+  let width = 425
   let baseline: CGFloat = 6
   
   var loadingIdc: NSProgressIndicator!
@@ -109,10 +109,17 @@ class PlayerView: NSView {
   }
   
   override func draw(_ dirtyRect: NSRect) {
-    let bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.945, green: 0.945, blue: 0.945, alpha: 1.0), ending: NSColor(calibratedRed: 0.894, green: 0.894, blue: 0.894, alpha: 1.0))
-    bgGradient?.draw(in: self.bounds, angle: 270)
-    
-    NSColor(calibratedRed: 0.784, green: 0.784, blue: 0.784, alpha: 1.0).setStroke()
+    if self.window?.isMainWindow ?? false {
+      let bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.945, green: 0.945, blue: 0.945, alpha: 1.0), ending: NSColor(calibratedRed: 0.894, green: 0.894, blue: 0.894, alpha: 1.0))
+      bgGradient?.draw(in: self.bounds, angle: 270)
+      
+      NSColor(calibratedRed: 0.784, green: 0.784, blue: 0.784, alpha: 1.0).setStroke()
+    } else {
+      let bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.980, green: 0.980, blue: 0.980, alpha: 1.0), ending: NSColor(calibratedRed: 0.980, green: 0.980, blue: 0.980, alpha: 1.0))
+      bgGradient?.draw(in: self.bounds, angle: 270)
+      
+      NSColor(calibratedRed: 0.902, green: 0.902, blue: 0.902, alpha: 1.0).setStroke()
+    }
     
     let leftBorder = NSBezierPath()
     leftBorder.move(to: NSPoint(x: 0.5, y: 0))
