@@ -81,6 +81,18 @@ class Episode: Record {
     id = rowID
   }
   
+  func fileExists() -> Bool {
+    guard let file = file() else { return false }
+    return FileManager.default.fileExists(atPath: file.path)
+  }
+  
+  func file() -> URL? {
+    guard let fileName = fileName else { return nil }
+    guard let podcastPath = Library.global.podcast(id: self.podcastId ?? 0)?.storagePath() else { return nil }
+    
+    return podcastPath.appendingPathComponent(fileName)
+  }
+  
   func invokeSave(dbQueue: DatabaseQueue) -> Bool {
     do {
       try dbQueue.inDatabase { db in

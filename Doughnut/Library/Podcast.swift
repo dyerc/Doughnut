@@ -89,6 +89,10 @@ class Podcast: Record {
     }
   }
   
+  func storagePath() -> URL? {
+    return URL(fileURLWithPath: self.path, relativeTo: Library.global.path)
+  }
+  
   func fetchEpisodes(db: Database) {
     do {
       episodes = try Episode.filter(Column("podcast_id") == self.id).fetchAll(db)

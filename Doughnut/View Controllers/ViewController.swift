@@ -16,6 +16,8 @@ class ViewController: NSSplitViewController {
       return Notification.Name(rawValue: self.rawValue)
     }
   }
+  
+  
 
   override func viewDidLoad() {
     super.viewDidLoad()

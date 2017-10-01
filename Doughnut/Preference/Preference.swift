@@ -10,6 +10,7 @@ import Cocoa
 
 class Preference {
   static let kLibraryPath = "LibraryPath"
+  static let kVolume = "Volume"
   
   static func libraryPath() -> URL? {
     #if TEST

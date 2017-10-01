@@ -176,15 +176,9 @@ class Library: NSObject {
   }
   
   func podcast(id: Int64) -> Podcast? {
-    guard let dbQueue = dbQueue else { return nil }
-    
-    do {
-      return try dbQueue.inDatabase { db -> Podcast? in
-        return try Podcast.fetchOne(db, key: id)
-      }
-    } catch {}
-    
-    return nil
+    return podcasts.first { (podcast) -> Bool in
+      podcast.id == id
+    }
   }
   
   func reload() {

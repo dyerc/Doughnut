@@ -9,15 +9,22 @@
 import Cocoa
 
 class WindowController: NSWindowController {
-  @IBOutlet weak var toolbarPlayer: NSToolbarItem!
-  @IBOutlet var toolbarPlayerView: NSView!
+  @IBOutlet var allToggle: NSButton!
+  @IBOutlet var newToggle: NSButton!
   
   override func windowDidLoad() {
     super.windowDidLoad()
     window?.titleVisibility = .hidden
-    
-    Bundle.main.loadNibNamed(NSNib.Name(rawValue: "ToolbarPlayer"), owner: self, topLevelObjects: nil)
-    toolbarPlayerView.bounds = (toolbarPlayer.view?.bounds)!
-    toolbarPlayer.view = toolbarPlayerView
   }
+  
+  @IBAction func toggleAllEpisodes(_ sender: Any) {
+    allToggle.state = .on
+    newToggle.state = .off
+  }
+  
+  @IBAction func toggleNewEpisodes(_ sender: Any) {
+    allToggle.state = .off
+    newToggle.state = .on
+  }
+  
 }

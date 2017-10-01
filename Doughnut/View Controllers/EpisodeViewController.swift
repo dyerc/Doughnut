@@ -68,7 +68,9 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   @IBAction func playNow(_ sender: Any) {
-    
+    if let episode = podcast?.episodes[tableView.clickedRow] {
+      Player.global.play(episode: episode)
+    }
   }
   
   @IBAction func markAsPlayed(_ sender: Any) {

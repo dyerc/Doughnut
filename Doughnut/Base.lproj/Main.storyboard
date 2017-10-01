@@ -682,6 +682,32 @@
             </objects>
             <point key="canvasLocation" x="-50" y="-383"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="EBj-CY-kdg">
+            <objects>
+                <viewController id="rBp-AI-2pt" sceneMemberID="viewController">
+                    <view key="view" id="Sf8-6h-z7X">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="8Xf-Oh-Vwf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1618" y="-215"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ffU-5Q-bfq">
+            <objects>
+                <viewController id="n0y-gl-jUb" sceneMemberID="viewController">
+                    <view key="view" id="zMJ-tT-ByS">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="ez9-QG-xEh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1618" y="157"/>
+        </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
@@ -691,118 +717,60 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="500" height="460"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="450" height="300"/>
+                        <value key="minSize" type="size" width="480" height="300"/>
                         <toolbar key="toolbar" implicitIdentifier="5EA9AEAC-FA45-4A90-AB14-9E623C1C2711" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="2lC-Jl-fGD">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="24m-vf-dRH"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="cKK-pR-jXd"/>
-                                <toolbarItem implicitItemIdentifier="78748B04-4031-4D23-B7A8-88C94DF8E8F2" label="" paletteLabel="Play Controls" id="ifp-Gz-Z87">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="86" height="24"/>
-                                    <size key="maxSize" width="90" height="27"/>
-                                    <segmentedControl key="view" verticalHuggingPriority="750" id="y0B-mV-jKh">
-                                        <rect key="frame" x="0.0" y="14" width="90" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="4x3-IP-Co2">
-                                            <font key="font" metaFont="system"/>
-                                            <segments>
-                                                <segment image="ReverseIcon" width="26"/>
-                                                <segment image="PlayIcon" width="26" tag="1"/>
-                                                <segment image="ForwardIcon" width="26">
-                                                    <nil key="label"/>
-                                                </segment>
-                                            </segments>
-                                        </segmentedCell>
-                                        <connections>
-                                            <action selector="play:" target="Oky-zY-oP4" id="tVK-td-iPU"/>
-                                        </connections>
-                                    </segmentedControl>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="9AE5F452-3A77-468F-8F5C-F8D222C2A9EB" label="" paletteLabel="Past Time" id="1EG-bm-den">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="38" height="17"/>
-                                    <size key="maxSize" width="46" height="24"/>
-                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="pMb-Vn-SPj">
-                                        <rect key="frame" x="9" y="14" width="42" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="00:00:00" usesSingleLineMode="YES" id="y5t-xe-G5L">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="7193DE7C-B9FB-4B9C-87AF-3878FC10A32E" label="" paletteLabel="Seek Slider" id="MMf-Jf-Si6">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="96" height="21"/>
-                                    <size key="maxSize" width="200" height="21"/>
-                                    <slider key="view" verticalHuggingPriority="750" id="p1Y-eg-7VJ">
-                                        <rect key="frame" x="0.0" y="14" width="96" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="CQy-bw-Rab"/>
-                                    </slider>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="7D93A7AC-D9A1-41DF-9090-F66EC47E623F" label="" paletteLabel="Future Time" id="HiO-Ea-Iqg">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="38" height="17"/>
-                                    <size key="maxSize" width="46" height="17"/>
-                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="K1d-Ii-nW9">
-                                        <rect key="frame" x="12" y="14" width="46" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="0:59:59" usesSingleLineMode="YES" id="fm2-aB-7Df">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="FB7DD304-05A4-4837-AB64-B6E3EEE8F67B" label="Doughnut" paletteLabel="Custom View" id="Tt0-EZ-l4D">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="38" height="17"/>
-                                    <size key="maxSize" width="38" height="17"/>
-                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DNR-jh-ir1">
-                                        <rect key="frame" x="19" y="14" width="38" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Zhi-6Q-U57">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="DCA3564F-DD86-4FB3-A7C4-7327233BF184" label="Custom View" paletteLabel="Custom View" id="UdX-zy-Uba">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="75" height="19"/>
-                                    <size key="maxSize" width="75" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="erp-nT-kd5">
-                                        <rect key="frame" x="1" y="14" width="75" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="recessed" title="Episodes" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Wc-f2-Rhv">
-                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
-                                        </buttonCell>
-                                    </button>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="F8E7139A-1097-4EC9-9875-0FAB2336FC65" label="Custom View" paletteLabel="Custom View" id="kDe-15-3rO">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="75" height="18"/>
-                                    <size key="maxSize" width="75" height="25"/>
+                                    <size key="minSize" width="40" height="18"/>
+                                    <size key="maxSize" width="40" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="0x1-F9-vTA">
-                                        <rect key="frame" x="1" y="14" width="75" height="20"/>
+                                        <rect key="frame" x="18" y="14" width="40" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="recessed" title="Podcasts" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B7H-1a-TNL">
+                                        <buttonCell key="cell" type="recessed" title="All" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B7H-1a-TNL">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
                                     </button>
+                                    <connections>
+                                        <action selector="toggleAllEpisodes:" target="B8D-0N-5wS" id="gpj-C0-hOS"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="8965E721-3D66-41BE-9EA1-7C449D303C1B" label="Custom View" paletteLabel="Custom View" id="6L2-aH-OKv">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="40" height="18"/>
+                                    <size key="maxSize" width="40" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="lAe-YH-TAR">
+                                        <rect key="frame" x="18" y="14" width="40" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="recessed" title="New" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LOi-LR-sxa">
+                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystemBold"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="toggleNewEpisodes:" target="B8D-0N-5wS" id="AqT-s0-Y6z"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" label="Custom View" paletteLabel="Player View" tag="-1" id="Psv-5X-LNl">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="420" height="25"/>
+                                    <size key="maxSize" width="420" height="96"/>
+                                    <customView key="view" id="qY3-fM-qgT" customClass="PlayerView" customModule="Doughnut" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="14" width="420" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </customView>
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="kDe-15-3rO"/>
-                                <toolbarItem reference="UdX-zy-Uba"/>
+                                <toolbarItem reference="6L2-aH-OKv"/>
                                 <toolbarItem reference="cKK-pR-jXd"/>
-                                <toolbarItem reference="Tt0-EZ-l4D"/>
+                                <toolbarItem reference="Psv-5X-LNl"/>
                                 <toolbarItem reference="cKK-pR-jXd"/>
+                                <toolbarItem reference="24m-vf-dRH"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -810,7 +778,8 @@
                         </connections>
                     </window>
                     <connections>
-                        <outlet property="toolbarPlayer" destination="Tt0-EZ-l4D" id="riY-sq-4RH"/>
+                        <outlet property="allToggle" destination="0x1-F9-vTA" id="5Ik-2C-flf"/>
+                        <outlet property="newToggle" destination="lAe-YH-TAR" id="0xd-Ho-EFT"/>
                         <segue destination="zrU-nU-rD6" kind="relationship" relationship="window.shadowedContentViewController" id="KFV-RY-whX"/>
                     </connections>
                 </windowController>
@@ -1151,7 +1120,7 @@
                     </connections>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="804" y="1027"/>
+            <point key="canvasLocation" x="804" y="891"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="IJf-sZ-gIZ">
@@ -1179,13 +1148,40 @@
                 </viewController>
                 <customObject id="Jkj-YK-feH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="290.5" y="1307.5"/>
+            <point key="canvasLocation" x="408" y="1280"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ed0-da-yjZ">
+            <objects>
+                <viewController id="4rl-KQ-Nlv" sceneMemberID="viewController">
+                    <view key="view" id="KNV-m6-ibp">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="27"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LHX-oe-VbQ">
+                                <rect key="frame" x="206" y="1" width="39" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="UpJ-fS-t4k"/>
+                                </constraints>
+                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="PlayIcon" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nEy-GR-a8Y">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="LHX-oe-VbQ" firstAttribute="centerY" secondItem="KNV-m6-ibp" secondAttribute="centerY" id="GMh-Lo-zx8"/>
+                            <constraint firstItem="LHX-oe-VbQ" firstAttribute="centerX" secondItem="KNV-m6-ibp" secondAttribute="centerX" id="zst-O3-UUp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="UHI-Js-apU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="477" y="-178.5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ForwardIcon" width="11" height="7"/>
         <image name="PlaceholderIcon" width="158" height="157"/>
-        <image name="PlayIcon" width="8" height="11"/>
-        <image name="ReverseIcon" width="11" height="7"/>
+        <image name="PlayIcon" width="9" height="12"/>
     </resources>
 </document>
