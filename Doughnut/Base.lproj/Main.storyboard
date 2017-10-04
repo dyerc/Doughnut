@@ -925,6 +925,7 @@
                                             <connections>
                                                 <outlet property="dataSource" destination="hBf-lZ-L6q" id="jzl-Jy-JI8"/>
                                                 <outlet property="delegate" destination="hBf-lZ-L6q" id="TYr-3R-V9E"/>
+                                                <outlet property="menu" destination="RPF-kg-TtX" id="jlm-lW-lBC"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -955,6 +956,33 @@
                     </connections>
                 </viewController>
                 <customObject id="ioO-eb-ohg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="RPF-kg-TtX">
+                    <items>
+                        <menuItem title="Reload" id="HHt-fT-pA2">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="reloadPodcast:" target="hBf-lZ-L6q" id="9hD-nz-8bE"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="Ofk-Zu-gyv"/>
+                        <menuItem title="Copy Podcast URL" id="BLd-TA-a55">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="copyPodcastURL:" target="hBf-lZ-L6q" id="VhC-yN-qHk"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Unsubscribe" id="np2-b1-9R4">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="unsubscribe:" target="hBf-lZ-L6q" id="bqD-3A-so3"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="kJo-hr-MrU"/>
+                        <menuItem title="Refresh All" id="Got-xW-SqM">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="753.5" y="403.5"/>
         </scene>

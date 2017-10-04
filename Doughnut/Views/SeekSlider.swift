@@ -27,6 +27,14 @@ class SeekSlider: NSSlider {
 class SeekSliderCell: NSSliderCell {
   var streamed: Double = 0
   
+  override var knobThickness: CGFloat {
+    return knobWidth
+  }
+  
+  let knobWidth: CGFloat = 4
+  let knobHeight: CGFloat = 17
+  let knobRadius: CGFloat = 2
+  
   override init() {
     super.init()
   }
@@ -69,10 +77,25 @@ class SeekSliderCell: NSSliderCell {
   }
   
   override func drawKnob(_ knobRect: NSRect) {
-    let path = NSBezierPath(roundedRect: knobRect.insetBy(dx: 1.5, dy: 3), xRadius: 2, yRadius: 3)
     NSColor.white.setFill()
-    NSColor(calibratedRed: 0.478, green: 0.478, blue: 0.478, alpha: 1.0).setStroke()
-    path.stroke()
+    NSColor(calibratedRed: 0.6, green: 0.6, blue: 0.6, alpha: 1.0).setStroke()
+    
+    let rect = NSMakeRect(round(knobRect.origin.x),
+                          knobRect.origin.y + 0.5 * (knobRect.height - knobHeight),
+                          knobRect.width,
+                          knobHeight)
+    let path = NSBezierPath(roundedRect: rect, xRadius: knobRadius, yRadius: knobRadius)
     path.fill()
+    path.stroke()
+  }
+  
+  override func knobRect(flipped: Bool) -> NSRect {
+    let slider = self.controlView as! NSSlider
+    let bounds = super.barRect(flipped: flipped)
+    let percentage = slider.doubleValue / (slider.maxValue - slider.minValue)
+    let pos = min(CGFloat(percentage) * bounds.width, bounds.width - 1);
+    let rect = super.knobRect(flipped: flipped)
+    let flippedMultiplier = flipped ? CGFloat(-1) : CGFloat(1)
+    return NSMakeRect(pos - flippedMultiplier * 0.5 * knobWidth, rect.origin.y, knobWidth, rect.height)
   }
 }

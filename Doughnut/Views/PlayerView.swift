@@ -32,6 +32,9 @@ class PlayerView: NSView {
   var seekSlider: SeekSlider!
   var playedRemainingLbl: NSTextField!
   
+  let playIcon = NSImage(imageLiteralResourceName: "PlayIcon")
+  let pauseIcon = NSImage(imageLiteralResourceName: "PauseIcon")
+  
   override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
   }
@@ -66,19 +69,25 @@ class PlayerView: NSView {
     reverseBtn.stringValue = ""
     reverseBtn.bezelStyle = .texturedRounded
     reverseBtn.image = NSImage(imageLiteralResourceName: "ReverseIcon")
+    reverseBtn.action = #selector(skipBack)
+    reverseBtn.target = self
     addSubview(reverseBtn)
     
     playBtn.stringValue = ""
     playBtn.bezelStyle = .texturedRounded
-    playBtn.image = NSImage(imageLiteralResourceName: "PlayIcon")
+    playBtn.image = playIcon
+    playBtn.action = #selector(playPause)
+    playBtn.target = self
     addSubview(playBtn)
     
     forwardBtn.stringValue = ""
     forwardBtn.bezelStyle = .texturedRounded
     forwardBtn.image = NSImage(imageLiteralResourceName: "ForwardIcon")
+    forwardBtn.action = #selector(skipAhead)
+    forwardBtn.target = self
     addSubview(forwardBtn)
     
-    playedDurationLbl.stringValue = "0:54:05"
+    playedDurationLbl.stringValue = "0:00:00"
     playedDurationLbl.isBezeled = false
     playedDurationLbl.drawsBackground = false
     playedDurationLbl.isSelectable = false
@@ -96,7 +105,7 @@ class PlayerView: NSView {
     seekSlider.action = #selector(seek)
     addSubview(seekSlider)
     
-    playedRemainingLbl.stringValue = "0:54:05"
+    playedRemainingLbl.stringValue = "0:00:00"
     playedRemainingLbl.isBezeled = false
     playedRemainingLbl.drawsBackground = false
     playedRemainingLbl.isSelectable = false
@@ -155,7 +164,6 @@ class PlayerView: NSView {
       artworkImg.isHidden = false
     }
     
-    
   }
   
   @objc func updateTimeState(_ notification: NSNotification) {
@@ -177,6 +185,24 @@ class PlayerView: NSView {
     if event?.type == .leftMouseDragged {
       Player.global.seek(seconds: seekSlider.doubleValue)
     }
+  }
+  
+  @objc func playPause(_ sender: Any) {
+    if Player.global.isPlaying() {
+      Player.global.pause()
+      playBtn.image = playIcon
+    } else if (Player.global.canPlay()) {
+      Player.global.play()
+      playBtn.image = pauseIcon
+    }
+  }
+  
+  @objc func skipAhead(_ sender: Any) {
+    
+  }
+  
+  @objc func skipBack(_ sender: Any) {
+    
   }
   
   static private func controlX(_ view: NSView) -> CGFloat {

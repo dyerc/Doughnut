@@ -42,6 +42,8 @@ class Player: NSObject {
   var buffered: Double = 0
   var duration: Double = 0
   
+  var skipDuration: Double = 10.0
+  
   func play(episode: Episode) {
     if episode.downloaded && episode.fileExists() {
       avPlayer = AVPlayer(url: episode.file()!)
@@ -101,6 +103,41 @@ class Player: NSObject {
   func pause() {
     guard let av = avPlayer else { return }
     av.pause()
+  }
+  
+  func isPlaying() -> Bool {
+    guard let av = avPlayer else { return false }
+    return (av.rate != 0) && (av.error == nil)
+  }
+  
+  func canPlay() -> Bool {
+    guard let av = avPlayer else { return false }
+    return av.error != nil
+  }
+  
+  func skipAhead() {
+    guard let av = avPlayer else { return }
+    guard let duration = av.currentItem?.duration else { return }
+    
+    let currentTime = CMTimeGetSeconds(av.currentTime())
+    let targetTime = currentTime + skipDuration
+    
+    if targetTime < (CMTimeGetSeconds(duration) - skipDuration) {
+      av.seek(to: CMTime(seconds: targetTime, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+    }
+  }
+  
+  func skipBack() {
+    guard let av = avPlayer else { return }
+    
+    let currentTime = CMTimeGetSeconds(av.currentTime())
+    var targetTime = currentTime - skipDuration
+    
+    if targetTime < 0 {
+      targetTime = 0
+    }
+    
+    av.seek(to: CMTime(seconds: targetTime, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
   }
   
   func seek(seconds: Double) {

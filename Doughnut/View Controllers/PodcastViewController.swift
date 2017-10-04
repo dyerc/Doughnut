@@ -50,4 +50,16 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     return true
   }
   
+  @IBAction func reloadPodcast(_ sender: Any) {
+  }
+  
+  @IBAction func copyPodcastURL(_ sender: Any) {
+    if let feed = podcasts[tableView.clickedRow].feed {
+      NSPasteboard.general.declareTypes([.string], owner: nil)
+      NSPasteboard.general.setString(feed, forType: .string)
+    }
+  }
+  
+  @IBAction func unsubscribe(_ sender: Any) {
+  }
 }
