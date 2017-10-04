@@ -82,7 +82,7 @@ class Library: NSObject {
     }
   }
   
-  private func databaseFile() -> URL {
+  func databaseFile() -> URL {
     return self.path.appendingPathComponent(Library.databaseFilename)
   }
   
@@ -121,6 +121,10 @@ class Library: NSObject {
   //
   // General library methods
   
+  func detectedNewEpisodes(podcast: Podcast, episodes: [Episode]) {
+    
+  }
+  
   func subscribe(url: String) -> Podcast? {
     guard let dbQueue = self.dbQueue else { return nil }
     guard let feedUrl = URL(string: url) else { return nil }
@@ -139,32 +143,13 @@ class Library: NSObject {
       return nil
     }
     
-    if let parser = FeedParser(URL: feedUrl) {
-      let result = parser.parse()
-      
-      if result.isFailure {
-        print(result.error as Any)
-      } else {
-        if let feed = result.rssFeed {
-          guard let podcast = Podcast.parse(feedUrl: feedUrl, response: feed) else { return nil }
-          
-          for item in feed.items ?? [] {
-            let _ = podcast.parseEpisode(feedItem: item)
-          }
-          
-          if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
-            podcasts.append(podcast)
-            NotificationCenter.default.post(name: Events.Subscribed.notification, object: podcast)
-            
-            return podcast
-          }
-          
-        } else {
-          let alert = NSAlert()
-          alert.messageText = "Invalid Feed"
-          alert.informativeText = "The response was not a valid RSS feed"
-          alert.runModal()
-        }
+    if let podcast = Podcast.subscribe(feedUrl: feedUrl) {
+      if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
+        podcasts.append(podcast)
+        NotificationCenter.default.post(name: Events.Subscribed.notification, object: nil)
+        detectedNewEpisodes(podcast: podcast, episodes: podcast.episodes)
+        
+        return podcast
       }
     }
     
@@ -181,8 +166,14 @@ class Library: NSObject {
     }
   }
   
-  func reload() {
+  func reload(podcast: Podcast) {
+    guard let dbQueue = self.dbQueue else { return }
     
+    let newEpisodes = podcast.fetch()
+    if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
+      NotificationCenter.default.post(name: Events.Reloaded.notification, object: nil)
+      detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
+    }
   }
   
   func save(episode: Episode) {
@@ -192,6 +183,18 @@ class Library: NSObject {
       }
       
       NotificationCenter.default.post(name: Events.PodcastUpdated.notification, object: nil, userInfo: ["podcastId": episode.podcastId ?? 0])
+    } catch let error as DatabaseError {
+      Library.handleDatabaseError(error)
+    } catch {}
+  }
+  
+  func save(podcast: Podcast) {
+    do {
+      try dbQueue?.inDatabase { db in
+        try podcast.save(db)
+      }
+      
+      NotificationCenter.default.post(name: Events.PodcastUpdated.notification, object: nil, userInfo: ["podcastId": podcast.id ?? 0])
     } catch let error as DatabaseError {
       Library.handleDatabaseError(error)
     } catch {}

@@ -12,6 +12,8 @@
 		4125A143137AD05319B3DEFC /* Pods_Doughnut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */; };
 		830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B159A1F7B97910086C121 /* PodcastCellView.swift */; };
 		832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
+		8335D48C1F856E120060D8D8 /* ValidFeedx3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8335D48B1F856E120060D8D8 /* ValidFeedx3.xml */; };
+		8335D48D1F8571150060D8D8 /* enclosure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 83D4CA5B1F7C3848002EDC36 /* enclosure.mp3 */; };
 		8341B8391F7BE4F100B50A5D /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
 		8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
 		8341B83D1F7BF0FB00B50A5D /* ToolbarPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83C1F7BF0FB00B50A5D /* ToolbarPlayer.swift */; };
@@ -68,6 +70,7 @@
 		5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.debug.xcconfig"; sourceTree = "<group>"; };
 		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
 		832A04331F76EBDC00C92D25 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		8335D48B1F856E120060D8D8 /* ValidFeedx3.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ValidFeedx3.xml; sourceTree = "<group>"; };
 		8341B8381F7BE4F100B50A5D /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		8341B83A1F7BEB0500B50A5D /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
 		8341B83C1F7BF0FB00B50A5D /* ToolbarPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPlayer.swift; sourceTree = "<group>"; };
@@ -263,6 +266,7 @@
 				83D4CA5B1F7C3848002EDC36 /* enclosure.mp3 */,
 				83D4CA581F7C3763002EDC36 /* image.jpg */,
 				83D4CA591F7C3779002EDC36 /* ValidFeed.xml */,
+				8335D48B1F856E120060D8D8 /* ValidFeedx3.xml */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -416,6 +420,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				83D4CA5A1F7C3779002EDC36 /* ValidFeed.xml in Resources */,
+				8335D48D1F8571150060D8D8 /* enclosure.mp3 in Resources */,
+				8335D48C1F856E120060D8D8 /* ValidFeedx3.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,7 +946,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					"TEST=1",
 				);
 				INFOPLIST_FILE = DoughnutTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -980,7 +985,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					"TEST=1",
 				);
 				INFOPLIST_FILE = DoughnutUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

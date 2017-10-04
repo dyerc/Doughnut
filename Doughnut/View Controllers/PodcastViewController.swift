@@ -19,6 +19,7 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     podcasts = Library.global.podcasts
     NotificationCenter.default.addObserver(self, selector: #selector(updatePodcasts), name: Library.Events.Loaded.notification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(updatePodcasts), name: Library.Events.Subscribed.notification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(updatePodcasts), name: Library.Events.Reloaded.notification, object: nil)
     
     // Do any additional setup after loading the view.
   }
@@ -51,6 +52,7 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   @IBAction func reloadPodcast(_ sender: Any) {
+    Library.global.reload(podcast: podcasts[tableView.clickedRow])
   }
   
   @IBAction func copyPodcastURL(_ sender: Any) {

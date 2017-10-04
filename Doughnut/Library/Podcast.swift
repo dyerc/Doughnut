@@ -149,47 +149,87 @@ class Podcast: Record {
     return imageRep.representation(using: .jpeg, properties: [:])
   }
   
-  func parseEpisode(feedItem: RSSFeedItem) -> Episode? {
-    guard let episode = Episode.parse(response: feedItem) else { return nil }
-    episode.podcastId = self.id
+  // Called within subscribe or reload
+  // 1. Update feed properties
+  // 2. Check for new episodes
+  func parse(feed: RSSFeed) -> [Episode] {
+    self.description = feed.description
+    self.link = feed.link
+    self.author = feed.iTunes?.iTunesAuthor
+    self.language = feed.language
+    self.copyright = feed.copyright
+    self.pubDate = feed.pubDate
     
-    let duplicate = episodes.contains(where: { (e) -> Bool in
-      e.guid == episode.guid && e.title == episode.title
-    })
-    
-    if !duplicate {
-      episodes.append(episode)
+    if let feedUrl = URL(string: self.feed ?? "") {
+      // Prioritize iTunes image url over regular RSS
+      if let iTunesImageUrl = feed.iTunes?.iTunesImage?.attributes?.href {
+        if let imageUrl = URL(string: iTunesImageUrl, relativeTo: feedUrl) {
+          storeImage(imageUrl)
+        }
+      } else if let rssImageUrl = feed.image?.url {
+        if let imageUrl = URL(string: rssImageUrl, relativeTo: feedUrl) {
+          storeImage(imageUrl)
+        }
+      }
     }
     
-    return episode
+    self.lastParsed = Date()
+    
+    var newEpisodes = [Episode]()
+    
+    for item in feed.items ?? [] {
+      if let episode = Episode.parse(response: item) {
+        episode.podcastId = self.id
+        
+        let exists = self.episodes.contains(where: { (e) -> Bool in
+          e.guid == episode.guid || e.title == episode.title
+        })
+        
+        if exists {
+          
+        } else {
+          self.episodes.append(episode)
+          newEpisodes.append(episode)
+        }
+      }
+    }
+    
+    return newEpisodes
+  }
+
+  func fetch() -> [Episode] {
+    guard let feed = self.feed else { return [] }
+    guard let feedUrl = URL(string: feed) else { return [] }
+    guard let parser = FeedParser(URL: feedUrl) else { return [] }
+    
+    let result = parser.parse()
+    if result.isFailure && result.error != nil {
+      print("Error reloading \(self.title): \(String(describing: result.error?.debugDescription))")
+      return []
+    } else {
+      guard let rssFeed = result.rssFeed else { return [] }
+      
+      return self.parse(feed: rssFeed)
+    }
   }
   
-  static func parse(feedUrl: URL, response: RSSFeed) -> Podcast? {
-    guard let title = response.title else { return nil }
-    
-    let podcast = Podcast(title: title)
-    podcast.feed = feedUrl.absoluteString
-    podcast.description = response.description
-    podcast.link = response.link
-    podcast.author = response.iTunes?.iTunesAuthor
-    podcast.language = response.language
-    podcast.copyright = response.copyright
-    podcast.pubDate = response.pubDate
-    
-    // Prioritize iTunes image url over regular RSS
-    if let iTunesImageUrl = response.iTunes?.iTunesImage?.attributes?.href {
-      if let imageUrl = URL(string: iTunesImageUrl, relativeTo: feedUrl) {
-        podcast.storeImage(imageUrl)
-      }
-    } else if let rssImageUrl = response.image?.url {
-      if let imageUrl = URL(string: rssImageUrl, relativeTo: feedUrl) {
-        podcast.storeImage(imageUrl)
-      }
+  static func subscribe(feedUrl: URL) -> Podcast? {
+    guard let parser = FeedParser(URL: feedUrl) else { return nil }
+      
+    let result = parser.parse()
+    if result.isFailure && result.error != nil {
+      NSApplication.shared.presentError(result.error!)
+      return nil
+    } else {
+      guard let rssFeed = result.rssFeed else { return nil }
+      guard let title = rssFeed.title else { return nil }
+      
+      let podcast = Podcast(title: title)
+      podcast.feed = feedUrl.absoluteString
+      let _ = podcast.parse(feed: rssFeed)
+      
+      return podcast
     }
-    
-    podcast.lastParsed = Date()
-    
-    return podcast
   }
   
   static func sanitizePodcastPath(_ path: String) -> String {

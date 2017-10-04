@@ -682,32 +682,6 @@
             </objects>
             <point key="canvasLocation" x="-50" y="-383"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="EBj-CY-kdg">
-            <objects>
-                <viewController id="rBp-AI-2pt" sceneMemberID="viewController">
-                    <view key="view" id="Sf8-6h-z7X">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="8Xf-Oh-Vwf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1618" y="-215"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ffU-5Q-bfq">
-            <objects>
-                <viewController id="n0y-gl-jUb" sceneMemberID="viewController">
-                    <view key="view" id="zMJ-tT-ByS">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="ez9-QG-xEh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1618" y="157"/>
-        </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
@@ -864,7 +838,6 @@
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WuW-3B-toC">
                                                                     <rect key="frame" x="3" y="3" width="50" height="50"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="bvw-PM-Lqe"/>
                                                                         <constraint firstAttribute="height" constant="50" id="hec-cg-7uM"/>
                                                                         <constraint firstAttribute="width" constant="50" id="oQB-Sh-Z8s"/>
                                                                     </constraints>
@@ -895,21 +868,20 @@
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="leading" id="4RB-nt-SlG"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="trailing" secondItem="Pkl-Lr-qxa" secondAttribute="trailing" id="4n1-j5-DD9"/>
                                                                 <constraint firstItem="VjX-tN-caV" firstAttribute="leading" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" constant="8" symbolic="YES" id="9hW-sK-SkQ"/>
                                                                 <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="WuW-3B-toC" secondAttribute="trailing" constant="8" symbolic="YES" id="BSe-YW-yTa"/>
-                                                                <constraint firstAttribute="bottom" secondItem="WuW-3B-toC" secondAttribute="bottom" constant="3" id="ECP-8B-pwB"/>
                                                                 <constraint firstAttribute="trailing" secondItem="VjX-tN-caV" secondAttribute="trailing" constant="3" id="Igr-x3-gdJ"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="centerY" secondItem="WuW-3B-toC" secondAttribute="centerY" id="NXx-c0-3pc"/>
-                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="top" secondItem="AHY-Ts-qj2" secondAttribute="bottom" constant="2" id="X2p-3c-jD5"/>
-                                                                <constraint firstItem="VjX-tN-caV" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="trailing" constant="8" symbolic="YES" id="ZKL-2h-TeG"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="centerY" secondItem="WuW-3B-toC" secondAttribute="centerY" id="LDM-LX-9aH"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="yFZ-qJ-tU0" secondAttribute="leading" id="PaO-OI-b8l"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="Pkl-Lr-qxa" secondAttribute="leading" id="bar-Of-Jkg"/>
                                                                 <constraint firstItem="yFZ-qJ-tU0" firstAttribute="top" secondItem="WuW-3B-toC" secondAttribute="top" id="c3V-V3-eLi"/>
                                                                 <constraint firstItem="WuW-3B-toC" firstAttribute="leading" secondItem="Caz-b2-UzS" secondAttribute="leading" constant="3" id="cAh-mD-d0t"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="Pkl-Lr-qxa" secondAttribute="leading" id="cPK-W1-JhZ"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="bottom" secondItem="VjX-tN-caV" secondAttribute="bottom" id="ers-Mo-dtp"/>
                                                                 <constraint firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" constant="38" id="oq3-CL-Z2D"/>
                                                                 <constraint firstItem="WuW-3B-toC" firstAttribute="centerY" secondItem="Caz-b2-UzS" secondAttribute="centerY" id="rKz-V8-8wj"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="bottom" secondItem="VjX-tN-caV" secondAttribute="bottom" id="y2N-HP-F5J"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="trailing" secondItem="Pkl-Lr-qxa" secondAttribute="trailing" id="xur-kk-Bz5"/>
+                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="top" secondItem="AHY-Ts-qj2" secondAttribute="bottom" constant="2" id="xxa-gX-uiN"/>
+                                                                <constraint firstItem="VjX-tN-caV" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="trailing" constant="8" symbolic="YES" id="zpw-TE-0wk"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="artwork" destination="WuW-3B-toC" id="Lus-7p-rwp"/>
@@ -1179,38 +1151,8 @@
             </objects>
             <point key="canvasLocation" x="408" y="1280"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Ed0-da-yjZ">
-            <objects>
-                <viewController id="4rl-KQ-Nlv" sceneMemberID="viewController">
-                    <view key="view" id="KNV-m6-ibp">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="27"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LHX-oe-VbQ">
-                                <rect key="frame" x="206" y="1" width="39" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="39" id="UpJ-fS-t4k"/>
-                                </constraints>
-                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="PlayIcon" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nEy-GR-a8Y">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="LHX-oe-VbQ" firstAttribute="centerY" secondItem="KNV-m6-ibp" secondAttribute="centerY" id="GMh-Lo-zx8"/>
-                            <constraint firstItem="LHX-oe-VbQ" firstAttribute="centerX" secondItem="KNV-m6-ibp" secondAttribute="centerX" id="zst-O3-UUp"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <customObject id="UHI-Js-apU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="477" y="-178.5"/>
-        </scene>
     </scenes>
     <resources>
         <image name="PlaceholderIcon" width="158" height="157"/>
-        <image name="PlayIcon" width="9" height="12"/>
     </resources>
 </document>

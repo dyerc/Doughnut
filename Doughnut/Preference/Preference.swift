@@ -12,26 +12,34 @@ class Preference {
   static let kLibraryPath = "LibraryPath"
   static let kVolume = "Volume"
   
+  static func testEnv() -> Bool {
+    return ProcessInfo.processInfo.environment["TEST"] != nil
+  }
+  
   static func libraryPath() -> URL? {
-    #if TEST
-      return URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
-    #else
+    if testEnv() {
+      return defaultLibraryPath()
+    } else {
       if let path = UserDefaults.standard.string(forKey: kLibraryPath) {
         return URL(fileURLWithPath: path)
       } else {
         return nil
       }
-    #endif
+    }
   }
   
   static func defaultLibraryPath() -> URL {
-    #if TEST
-      let path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
-    #elseif DEBUG
-      let path = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
-    #else
-      let path = Preference.userMusicPath().appendingPathComponent("Doughnut")
-    #endif
+    var path: URL    
+    if testEnv() {
+      print("Using test library")
+      path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
+    } else {
+      #if DEBUG
+        path = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
+      #else
+        path = Preference.userMusicPath().appendingPathComponent("Doughnut")
+      #endif
+    }
     
     createLibraryIfNotExists(path)
     

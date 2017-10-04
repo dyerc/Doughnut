@@ -1,0 +1,61 @@
+
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+  <channel>
+    <title>Test Feed</title>
+    <link>https://cdyer.co.uk</link>
+    <description>Lorem ipsum sit amet dolor</description>
+    <itunes:author>CD1212</itunes:author>
+    <copyright>© 2017 Chris Dyer</copyright>
+    
+    <language>en-us</language>
+    <pubDate>Mon, 25 Sep 2017 23:30:07 GMT</pubDate>
+    <lastBuildDate>Mon, 25 Sep 2017 23:30:07 GMT</lastBuildDate>
+    <itunes:category text="News"/>
+    <itunes:category text="Comedy"/>
+    <itunes:explicit>No</itunes:explicit>
+    <itunes:image href="image.jpg"/>
+    
+    <itunes:subtitle>Lorem ipsum sit</itunes:subtitle>
+    <itunes:summary>Lorem ipsum sit amet dolor</itunes:summary>
+    <itunes:owner>
+      <itunes:name>CD1212</itunes:name>
+    </itunes:owner>
+    <item>
+      <itunes:author>CD1212</itunes:author>
+      <itunes:keywords/>
+      <itunes:duration>2:25</itunes:duration>
+      <title>Test Podcast Episode #3</title>
+      <guid isPermaLink="true">https://github.com/CD1212/Doughnut#3</guid>
+      <description>Lorem ipsum sit amet dolor</description>
+      
+      <category>Comedy</category>
+      <pubDate>Mon, 25 Sep 2017 23:40:07 GMT</pubDate>
+      <enclosure length="1037273" url="enclosure.mp3" type="audio/mpeg"/>
+    </item>
+    <item>
+      <itunes:author>CD1212</itunes:author>
+      <itunes:keywords/>
+      <itunes:duration>1:05</itunes:duration>
+      <title>Test Podcast Episode #2 Edited</title>
+      <guid isPermaLink="true">https://github.com/CD1212/Doughnut#2</guid>
+      <description>Lorem ipsum sit amet dolor</description>
+      
+      <category>Comedy</category>
+      <pubDate>Mon, 25 Sep 2017 23:30:07 GMT</pubDate>
+      <enclosure length="1037273" url="enclosure.mp3" type="audio/mpeg"/>
+    </item>
+    <item>
+      <itunes:author>CD1212</itunes:author>
+      <itunes:keywords/>
+      
+      <itunes:duration>1:05</itunes:duration>
+      <title>Test Podcast Episode #1</title>
+      <guid isPermaLink="true">https://github.com/CD1212/Doughnut#1</guid>
+      <description>Lorem ipsum sit amet dolor</description>
+      <category>News</category>
+      <pubDate>Sun, 24 Sep 2017 23:30:07 GMT</pubDate>
+      
+      <enclosure length="1039363" url="enclosure.mp3" type="audio/mpeg"/>
+    </item>
+  </channel>
+</rss>
