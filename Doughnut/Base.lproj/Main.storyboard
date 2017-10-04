@@ -682,32 +682,6 @@
             </objects>
             <point key="canvasLocation" x="-50" y="-383"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="EBj-CY-kdg">
-            <objects>
-                <viewController id="rBp-AI-2pt" sceneMemberID="viewController">
-                    <view key="view" id="Sf8-6h-z7X">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="8Xf-Oh-Vwf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1618" y="-215"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ffU-5Q-bfq">
-            <objects>
-                <viewController id="n0y-gl-jUb" sceneMemberID="viewController">
-                    <view key="view" id="zMJ-tT-ByS">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="ez9-QG-xEh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1618" y="157"/>
-        </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
@@ -1151,38 +1125,8 @@
             </objects>
             <point key="canvasLocation" x="408" y="1280"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Ed0-da-yjZ">
-            <objects>
-                <viewController id="4rl-KQ-Nlv" sceneMemberID="viewController">
-                    <view key="view" id="KNV-m6-ibp">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="27"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LHX-oe-VbQ">
-                                <rect key="frame" x="206" y="1" width="39" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="39" id="UpJ-fS-t4k"/>
-                                </constraints>
-                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="PlayIcon" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nEy-GR-a8Y">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="LHX-oe-VbQ" firstAttribute="centerY" secondItem="KNV-m6-ibp" secondAttribute="centerY" id="GMh-Lo-zx8"/>
-                            <constraint firstItem="LHX-oe-VbQ" firstAttribute="centerX" secondItem="KNV-m6-ibp" secondAttribute="centerX" id="zst-O3-UUp"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <customObject id="UHI-Js-apU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="477" y="-178.5"/>
-        </scene>
     </scenes>
     <resources>
         <image name="PlaceholderIcon" width="158" height="157"/>
-        <image name="PlayIcon" width="9" height="12"/>
     </resources>
 </document>
