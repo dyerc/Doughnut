@@ -689,7 +689,7 @@
                     <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="29" y="240" width="667" height="460"/>
+                        <rect key="contentRect" x="-68" y="240" width="764" height="460"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="680" height="300"/>
                         <toolbar key="toolbar" implicitIdentifier="5EA9AEAC-FA45-4A90-AB14-9E623C1C2711" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="2lC-Jl-fGD">
@@ -760,7 +760,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-133.5" y="58"/>
+            <point key="canvasLocation" x="-182" y="58"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tQb-WI-UYn">
@@ -772,7 +772,7 @@
                         <splitViewItem id="tHE-Qa-Nnj"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="ucZ-EJ-Szj">
-                        <rect key="frame" x="-295" y="0.0" width="745" height="440"/>
+                        <rect key="frame" x="-401" y="0.0" width="851" height="440"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="zrU-nU-rD6" id="tAG-ju-79h"/>
@@ -787,7 +787,7 @@
                 </splitViewController>
                 <customObject id="aEf-6q-K2I" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-49.5" y="707"/>
+            <point key="canvasLocation" x="-102.5" y="707"/>
         </scene>
         <!--Podcast View Controller-->
         <scene sceneID="Kgc-HG-4zh">

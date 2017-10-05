@@ -178,19 +178,20 @@ class Podcast: Record {
     var newEpisodes = [Episode]()
     
     for item in feed.items ?? [] {
-      if let episode = Episode.parse(response: item) {
-        episode.podcastId = self.id
+      guard let title = item.title else { continue }
+      guard let guid = item.guid?.value else { continue }
+      
+      if let exists = self.episodes.first(where: { (e) -> Bool in
+        return e.guid == guid || e.title == title
+      }) {
+        // Episode already exists as `exists`
+        exists.parse(feedItem: item)
+      } else {
+        let episode = Episode(title: title, guid: guid)
+        episode.parse(feedItem: item)
         
-        let exists = self.episodes.contains(where: { (e) -> Bool in
-          e.guid == episode.guid || e.title == episode.title
-        })
-        
-        if exists {
-          
-        } else {
-          self.episodes.append(episode)
-          newEpisodes.append(episode)
-        }
+        self.episodes.append(episode)
+        newEpisodes.append(episode)
       }
     }
     

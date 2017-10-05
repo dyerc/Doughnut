@@ -76,6 +76,13 @@ class LibraryTests: BaseTestCase {
     
     Library.global.reload(podcast: sub!)
     XCTAssertEqual(sub!.episodes.count, 3)
-    XCTAssertEqual(sub!.episodes[1].title, "Test Podcast Episode #2 Edited")
+    
+    var containsEdited = false
+    for e in sub!.episodes {
+      if e.title == "Test Podcast Episode #2 Edited" {
+        containsEdited = true
+      }
+    }
+    XCTAssert(containsEdited)
   }
 }

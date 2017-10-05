@@ -108,20 +108,20 @@ class Episode: Record {
     return true
   }
   
-  static func parse(response: RSSFeedItem) -> Episode? {
-    guard let title = response.title else { return nil }
-    guard let guid = response.guid?.value else { return nil }
+  func parse(feedItem: RSSFeedItem) {
+    guard let title = feedItem.title else { return }
+    guard let guid = feedItem.guid?.value else { return }
     
-    let episode = Episode(title: title, guid: guid)
-    episode.description = response.description
-    episode.pubDate = response.pubDate
-    episode.link = response.link
+    print("Set title to \(title)")
+    self.title = title
+    self.guid = guid
+    description = feedItem.description
+    pubDate = feedItem.pubDate
+    link = feedItem.link
     
-    if let enclosure = response.enclosure?.attributes {
-      episode.enclosureUrl = enclosure.url
-      episode.enclosureSize = enclosure.length
+    if let enclosure = feedItem.enclosure?.attributes {
+      enclosureUrl = enclosure.url
+      enclosureSize = enclosure.length
     }
-    
-    return episode
   }
 }
