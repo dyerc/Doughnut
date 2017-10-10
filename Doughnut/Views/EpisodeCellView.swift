@@ -18,6 +18,11 @@ class EpisodeCellView: NSTableCellView {
       title.stringValue = episode?.title ?? ""
       summary.stringValue = episode?.description ?? ""
       
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateStyle = .short
+      dateFormatter.timeStyle = .none
+      date.stringValue = dateFormatter.string(from: episode?.pubDate ?? Date())
+      
       // Needed in order for favourite, played marks etc to be updated
       needsDisplay = true
     }

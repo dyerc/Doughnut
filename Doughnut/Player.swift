@@ -9,6 +9,11 @@
 import Cocoa
 import AVFoundation
 
+protocol PlayerDelegate: class {
+  func updateForEpisode(episode: Episode)
+  func updatePlayback()
+}
+
 enum PlayerLoadStatus {
   case playing
   case none
@@ -18,14 +23,7 @@ enum PlayerLoadStatus {
 class Player: NSObject {
   static var global = Player()
   
-  enum Events:String {
-    case StatusChange = "StatusChange"
-    case TimeChange = "TimeChange"
-    
-    var notification: Notification.Name {
-      return Notification.Name(rawValue: self.rawValue)
-    }
-  }
+  weak var delegate: PlayerDelegate?
   
   var loadStatus: PlayerLoadStatus = .none
   var avPlayer: AVPlayer?
@@ -34,7 +32,6 @@ class Player: NSObject {
     didSet {
       avPlayer?.volume = volume
       UserDefaults.standard.set(volume, forKey: Preference.kVolume)
-      NotificationCenter.default.post(name: Events.StatusChange.notification, object: nil)
     }
   }
   
@@ -63,7 +60,7 @@ class Player: NSObject {
           self.buffered = CMTimeRangeGetEnd(bufferedRange.timeRangeValue).seconds
         }
         
-        NotificationCenter.default.post(name: Events.TimeChange.notification, object: nil)
+        self.delegate?.updatePlayback()
       })
       
       avPlayer.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions(rawValue: 0), context: nil)
@@ -71,9 +68,10 @@ class Player: NSObject {
       self.duration = 0
       self.buffered = 0
       self.position = 0
-      NotificationCenter.default.post(name: Events.TimeChange.notification, object: nil)
+      delegate?.updatePlayback()
       
       avPlayer.volume = volume
+      delegate?.updateForEpisode(episode: episode)
       avPlayer.play()
     }
   }
@@ -90,7 +88,7 @@ class Player: NSObject {
           loadStatus = .none
         }
         
-        NotificationCenter.default.post(name: Events.StatusChange.notification, object: nil)
+        delegate?.updatePlayback()
       }
     }
   }

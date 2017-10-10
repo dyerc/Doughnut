@@ -189,6 +189,7 @@ class Podcast: Record {
       } else {
         let episode = Episode(title: title, guid: guid)
         episode.parse(feedItem: item)
+        episode.podcastId = self.id
         
         self.episodes.append(episode)
         newEpisodes.append(episode)

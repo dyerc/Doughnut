@@ -18,6 +18,22 @@ class WindowController: NSWindowController, NSWindowDelegate {
     window?.titleVisibility = .hidden
   }
   
+  @IBAction func subscribeToPodcast(_ sender: Any) {
+    let subscribeAlert = NSAlert()
+    subscribeAlert.messageText = "Podcast feed URL"
+    subscribeAlert.addButton(withTitle: "Ok")
+    subscribeAlert.addButton(withTitle: "Cancel")
+    
+    let input = NSTextField(frame: NSRect(x: 0, y: 0, width: 300, height: 24))
+    input.stringValue = ""
+    
+    subscribeAlert.accessoryView = input
+    let button = subscribeAlert.runModal()
+    if button == .alertFirstButtonReturn {
+      Library.global.subscribe(url: input.stringValue)
+    }
+  }
+  
   @IBAction func toggleAllEpisodes(_ sender: Any) {
     allToggle.state = .on
     newToggle.state = .off

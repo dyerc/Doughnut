@@ -31,6 +31,8 @@ class Library: NSObject {
   
   var podcasts = [Podcast]()
   
+  var downloads = [Download]()
+  
   override init() {
     // Look for libaryPath stoed as in prefs
     if let prefPath = Preference.libraryPath() {
@@ -134,9 +136,9 @@ class Library: NSObject {
       let existing = try dbQueue.inDatabase({ db -> Podcast? in
         return try Podcast.filter(Column("feed") == feedUrl.absoluteString).fetchOne(db)
       })
-        
+      
       if existing != nil {
-        return existing
+        return nil
       }
     } catch {
       Library.handleDatabaseError(error)
@@ -145,9 +147,9 @@ class Library: NSObject {
     
     if let podcast = Podcast.subscribe(feedUrl: feedUrl) {
       if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
-        podcasts.append(podcast)
+        self.podcasts.append(podcast)
         NotificationCenter.default.post(name: Events.Subscribed.notification, object: nil)
-        detectedNewEpisodes(podcast: podcast, episodes: podcast.episodes)
+        self.detectedNewEpisodes(podcast: podcast, episodes: podcast.episodes)
         
         return podcast
       }
@@ -171,9 +173,12 @@ class Library: NSObject {
     
     let newEpisodes = podcast.fetch()
     if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
-      NotificationCenter.default.post(name: Events.Reloaded.notification, object: nil)
-      detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
+      DispatchQueue.main.async {
+        NotificationCenter.default.post(name: Events.Reloaded.notification, object: nil, userInfo: ["podcastId": podcast.id ?? 0])
+        self.detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
+      }
     }
+    
   }
   
   func save(episode: Episode) {
@@ -198,5 +203,9 @@ class Library: NSObject {
     } catch let error as DatabaseError {
       Library.handleDatabaseError(error)
     } catch {}
+  }
+  
+  func download(episode: Episode) {
+    print("Downloading: \(String(describing: episode.enclosureUrl))")
   }
 }

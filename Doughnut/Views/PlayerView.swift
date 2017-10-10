@@ -19,7 +19,7 @@ extension String {
   }
 }
 
-class PlayerView: NSView {
+class PlayerView: NSView, PlayerDelegate {
   let width = 425
   let baseline: CGFloat = 6
   
@@ -112,10 +112,7 @@ class PlayerView: NSView {
     playedRemainingLbl.font = NSFont.systemFont(ofSize: 10)
     playedRemainingLbl.isEditable = false
     addSubview(playedRemainingLbl)
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(updateState), name: Player.Events.StatusChange.notification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(updateTimeState), name: Player.Events.TimeChange.notification, object: nil)
-  }
+ }
   
   override func draw(_ dirtyRect: NSRect) {
     if self.window?.isMainWindow ?? false {
@@ -151,7 +148,7 @@ class PlayerView: NSView {
     return String(hrs) + ":" + String(mins).leftPadding(toLength: 2, withPad: "0") + ":" + String(secs).leftPadding(toLength: 2, withPad: "0")
   }
   
-  @objc func updateState(_ notification: NSNotification) {
+  func updateForEpisode(episode: Episode) {
     let loadStatus = Player.global.loadStatus
     
     if loadStatus == .loading {
@@ -166,7 +163,7 @@ class PlayerView: NSView {
     
   }
   
-  @objc func updateTimeState(_ notification: NSNotification) {
+  func updatePlayback() {
     let duration = Player.global.duration
     let position = Player.global.position
     

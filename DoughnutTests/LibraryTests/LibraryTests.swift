@@ -8,6 +8,7 @@
 
 import XCTest
 import Doughnut
+import GRDB
 
 class LibraryTests: BaseTestCase {
   var library: Library?
@@ -33,7 +34,8 @@ class LibraryTests: BaseTestCase {
   }
   
   func testSubscribe() {
-    let sub = Library.global.subscribe(url: fixtureURL("ValidFeed", type: "xml").absoluteString)
+    Library.global.subscribe(url: fixtureURL("ValidFeed", type: "xml").absoluteString)
+    let sub = Library.global.podcasts.first
     
     XCTAssertEqual(sub!.title, "Test Feed")
     XCTAssertEqual(sub!.author, "CD1212")
@@ -49,7 +51,8 @@ class LibraryTests: BaseTestCase {
   }
   
   func testReloadWhenNoNewEpisodesExist() {
-    let sub = Library.global.subscribe(url: fixtureURL("ValidFeed", type: "xml").absoluteString)
+    Library.global.subscribe(url: fixtureURL("ValidFeed", type: "xml").absoluteString)
+    let sub = Library.global.podcasts.first
     XCTAssertEqual(sub!.episodes.count, 2)
     
     Library.global.reload(podcast: sub!)
@@ -57,7 +60,8 @@ class LibraryTests: BaseTestCase {
   }
   
   func testReloadWhenNewEpisodesExist() {
-    let sub = Library.global.subscribe(url: fixtureURL("ValidFeed", type: "xml").absoluteString)
+    Library.global.subscribe(url: fixtureURL("ValidFeed", type: "xml").absoluteString)
+    let sub = Library.global.podcasts.first
     XCTAssertEqual(sub!.episodes.count, 2)
     
     sub!.feed = fixtureURL("ValidFeedx3", type: "xml").absoluteString
@@ -65,10 +69,19 @@ class LibraryTests: BaseTestCase {
     
     Library.global.reload(podcast: sub!)
     XCTAssertEqual(sub!.episodes.count, 3)
+    
+    do {
+      try Library.global.dbQueue?.inDatabase({ db in
+        try XCTAssertEqual(Episode.filter(Column("podcast_id") == sub!.id).fetchCount(db), 3)
+      })
+    } catch {
+      XCTFail()
+    }
   }
   
   func testReloadUpdatesExistingEpisodes() {
-    let sub = Library.global.subscribe(url: fixtureURL("ValidFeed", type: "xml").absoluteString)
+    Library.global.subscribe(url: fixtureURL("ValidFeed", type: "xml").absoluteString)
+    let sub = Library.global.podcasts.first
     XCTAssertEqual(sub!.episodes.count, 2)
     
     sub!.feed = fixtureURL("ValidFeedx3", type: "xml").absoluteString

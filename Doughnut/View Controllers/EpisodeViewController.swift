@@ -95,6 +95,8 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       return !episode.favourite
     case "Unmark Favourite":
       return episode.favourite
+    case "Download":
+      return episode.enclosureUrl != nil
     default:
       return false
     }
@@ -129,5 +131,9 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     Library.global.save(episode: episode)
   }
   
+  @IBAction func download(_ sender: Any) {
+    let episode = episodes[tableView.clickedRow]
+    Library.global.download(episode: episode)
+  }
   
 }
