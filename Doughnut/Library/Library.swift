@@ -10,6 +10,13 @@ import Foundation
 import FeedKit
 import GRDB
 
+protocol LibraryDelegate {
+  func didSubscribeToPodcast(subscribed: Podcast)
+  func didUnsubscribeFromPodcast(unsubscribed: Podcast)
+  func didUpdatePodcast(podcast: Podcast)
+  func didLoadPodcasts()
+}
+
 class Library: NSObject {
   static var global = Library()
   static let databaseFilename = "Doughnut Library.dnl"
@@ -20,6 +27,7 @@ class Library: NSObject {
     case Loaded = "Loaded"
     case Reloaded = "Reloaded"
     case PodcastUpdated = "PodcastUpdated"
+    case Downloading = "Downloading"
     
     var notification: Notification.Name {
       return Notification.Name(rawValue: self.rawValue)
@@ -28,9 +36,9 @@ class Library: NSObject {
   
   let path: URL
   var dbQueue: DatabaseQueue?
+  var delegate: LibraryDelegate?
   
   var podcasts = [Podcast]()
-  
   var downloads = [Download]()
   
   override init() {
@@ -71,7 +79,7 @@ class Library: NSObject {
             #endif
           }
           
-          NotificationCenter.default.post(name: Events.Loaded.notification, object: nil)
+          delegate?.didLoadPodcasts()
         })
         
         return true
@@ -174,7 +182,7 @@ class Library: NSObject {
     let newEpisodes = podcast.fetch()
     if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
       DispatchQueue.main.async {
-        NotificationCenter.default.post(name: Events.Reloaded.notification, object: nil, userInfo: ["podcastId": podcast.id ?? 0])
+        self.delegate?.didUpdatePodcast(podcast: podcast)
         self.detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
       }
     }
@@ -207,5 +215,7 @@ class Library: NSObject {
   
   func download(episode: Episode) {
     print("Downloading: \(String(describing: episode.enclosureUrl))")
+    downloads.append(Download(episode: episode))
+    NotificationCenter.default.post(name: Events.Downloading.notification, object: nil)
   }
 }

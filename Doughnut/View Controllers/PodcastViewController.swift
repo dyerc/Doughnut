@@ -13,20 +13,19 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   
   @IBOutlet var tableView: NSTableView!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    podcasts = Library.global.podcasts
-    NotificationCenter.default.addObserver(self, selector: #selector(updatePodcasts), name: Library.Events.Loaded.notification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(updatePodcasts), name: Library.Events.Subscribed.notification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(updatePodcasts), name: Library.Events.Reloaded.notification, object: nil)
-    
-    // Do any additional setup after loading the view.
+  var viewController: ViewController {
+    get {
+      return parent as! ViewController
+    }
   }
   
-  @objc func updatePodcasts() {
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    reloadPodcasts()
+  }
+  
+  func reloadPodcasts() {
     podcasts = Library.global.podcasts
-    
     tableView.reloadData()
   }
   
@@ -47,7 +46,8 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-    NotificationCenter.default.post(name: ViewController.Events.PodcastSelected.notification, object: nil, userInfo: ["podcast": podcasts[row]])
+    //NotificationCenter.default.post(name: ViewController.Events.PodcastSelected.notification, object: nil, userInfo: ["podcast": podcasts[row]])
+    viewController.selectPodcast(podcast: podcasts[row])
     return true
   }
   

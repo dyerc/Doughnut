@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSSplitViewController {
+class ViewController: NSSplitViewController, LibraryDelegate {
   enum Events:String {
     case PodcastSelected = "PodcastSelected"
     
@@ -17,19 +17,57 @@ class ViewController: NSSplitViewController {
     }
   }
   
+  var podcastViewController: PodcastViewController {
+    get {
+      return splitViewItems[0].viewController as! PodcastViewController
+    }
+  }
   
+  var episodeViewController: EpisodeViewController {
+    get {
+      return splitViewItems[1].viewController as! EpisodeViewController
+    }
+  }
+  
+  var detailViewController: ViewController {
+    get {
+      return splitViewItems[2].viewController as! ViewController
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    
-  }
-
-  @IBAction func play(_ sender: NSSegmentedControl) {
-    let alert = NSAlert()
-    alert.messageText = "Hello World"
-    alert.runModal()
+    Library.global.delegate = self
   }
   
+  func selectPodcast(podcast: Podcast?) {
+    episodeViewController.selectPodcast(podcast)
+  }
+  
+  // MARK: Library Delegate
+  func didLoadPodcasts() {
+    podcastViewController.reloadPodcasts()
+  }
+  
+  func didSubscribeToPodcast(subscribed: Podcast) {
+    podcastViewController.reloadPodcasts()
+  }
+  
+  func didUnsubscribeFromPodcast(unsubscribed: Podcast) {
+    podcastViewController.reloadPodcasts()
+    
+    if episodeViewController.podcast?.id == unsubscribed.id {
+      selectPodcast(podcast: nil)
+    }
+  }
+  
+  func didUpdatePodcast(podcast: Podcast) {
+    podcastViewController.reloadPodcasts()
+    
+    if episodeViewController.podcast?.id == podcast.id {
+      episodeViewController.reloadEpisodes()
+    }
+  }
 }
 

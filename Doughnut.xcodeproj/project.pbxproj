@@ -27,6 +27,8 @@
 		83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF31F76D22600F1ABC0 /* DetailViewController.swift */; };
 		837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837068121F7BBD63007FE973 /* EpisodeCellView.swift */; };
 		8379899B1F81616C00234577 /* SeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379899A1F81616C00234577 /* SeekSlider.swift */; };
+		837D52BE1F8E622200C17514 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* DownloadsViewController.swift */; };
+		837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BF1F8E683200C17514 /* DownloadCellView.swift */; };
 		838257CE1F759F6F00DB4FD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */; };
 		838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CF1F759F6F00DB4FD1 /* ViewController.swift */; };
 		838257D21F759F6F00DB4FD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 838257D11F759F6F00DB4FD1 /* Assets.xcassets */; };
@@ -84,6 +86,8 @@
 		83667DF31F76D22600F1ABC0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		837068121F7BBD63007FE973 /* EpisodeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCellView.swift; sourceTree = "<group>"; };
 		8379899A1F81616C00234577 /* SeekSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekSlider.swift; sourceTree = "<group>"; };
+		837D52BD1F8E622200C17514 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		837D52BF1F8E683200C17514 /* DownloadCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCellView.swift; sourceTree = "<group>"; };
 		838257CA1F759F6F00DB4FD1 /* Doughnut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doughnut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		838257CF1F759F6F00DB4FD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				8341B83E1F7BF20500B50A5D /* ToolbarPlayer.xib */,
 				83D9710B1F812E910091822A /* PlayerView.swift */,
 				8379899A1F81616C00234577 /* SeekSlider.swift */,
+				837D52BF1F8E683200C17514 /* DownloadCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 				83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */,
 				83667DF31F76D22600F1ABC0 /* DetailViewController.swift */,
 				834342691F802C1400913C0B /* EpisodeFilterViewController.swift */,
+				837D52BD1F8E622200C17514 /* DownloadsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -600,10 +606,12 @@
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				83D9710C1F812E910091822A /* PlayerView.swift in Sources */,
 				83D9710A1F812B270091822A /* Player.swift in Sources */,
+				837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
 				830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */,
 				838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */,
 				83659AB81F7D8A0300E09833 /* Podcast.swift in Sources */,
+				837D52BE1F8E622200C17514 /* DownloadsViewController.swift in Sources */,
 				8379899B1F81616C00234577 /* SeekSlider.swift in Sources */,
 				837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */,
 				832FF90B1F8D60430065E593 /* Download.swift in Sources */,

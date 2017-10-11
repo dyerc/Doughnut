@@ -29,12 +29,9 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(podcastSelected), name: ViewController.Events.PodcastSelected.notification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(podcastUpdated), name: Library.Events.PodcastUpdated.notification, object: nil)
   }
   
-  func reload() {
+  func reloadEpisodes() {
     if let podcast = podcast {
       episodes = podcast.episodes
       episodes.sort(by: { (a, b) -> Bool in
@@ -57,16 +54,14 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     tableView.reloadData()
   }
   
-  @objc func podcastSelected(_ notification: NSNotification) {
-    if let selectedPodcast = notification.userInfo?["podcast"] as? Podcast {
-      podcast = selectedPodcast
-      reload()
-    }
+  func selectPodcast(_ selectedPodcast: Podcast?) {
+    podcast = selectedPodcast
+    reloadEpisodes()
   }
   
   @objc func podcastUpdated(_ notification: NSNotification) {
     if podcast?.id == notification.userInfo?["podcastId"] as? Int64 {
-      reload()
+      reloadEpisodes()
     }
   }
   

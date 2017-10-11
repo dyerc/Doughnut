@@ -34,6 +34,15 @@ class WindowController: NSWindowController, NSWindowDelegate {
     }
   }
   
+  @IBAction func showDownloads(_ button: NSButton) {
+    let vc = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DownloadsPopover")) as! DownloadsViewController
+    
+    let popover = NSPopover()
+    popover.behavior = .transient
+    popover.contentViewController = vc
+    popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)
+  }
+  
   @IBAction func toggleAllEpisodes(_ sender: Any) {
     allToggle.state = .on
     newToggle.state = .off

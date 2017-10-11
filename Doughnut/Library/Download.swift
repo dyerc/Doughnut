@@ -8,21 +8,38 @@
 
 import Foundation
 
+protocol DownloadProgressDelegate {
+  func downloadProgressed()
+}
+
 class Download: NSObject, URLSessionDownloadDelegate {
-  let session = URLSession(configuration: URLSessionConfiguration.default)
+  let episode: Episode
   var task: URLSessionDownloadTask?
+  var delegate: DownloadProgressDelegate?
   
   init(episode: Episode) {
-    session.download
+    self.episode = episode
+    super.init()
+    
+    let sessionConfiguration = URLSessionConfiguration.default
+    let session = URLSession(configuration: sessionConfiguration, delegate: self, delegateQueue: nil)
     
     if let enclosureUrl = episode.enclosureUrl {
       if let url = URL(string: enclosureUrl) {
         task = session.downloadTask(with: url)
       }
     }
-    
-    super.init()
   }
   
+  func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+    
+  }
+    
+  func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+    
+  }
   
+  func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+    
+  }
 }
