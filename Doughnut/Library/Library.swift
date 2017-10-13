@@ -11,10 +11,11 @@ import FeedKit
 import GRDB
 
 protocol LibraryDelegate {
-  func didSubscribeToPodcast(subscribed: Podcast)
-  func didUnsubscribeFromPodcast(unsubscribed: Podcast)
-  func didUpdatePodcast(podcast: Podcast)
-  func didLoadPodcasts()
+  func librarySubscribedToPodcast(subscribed: Podcast)
+  func libraryUnsubscribedFromPodcast(unsubscribed: Podcast)
+  func libraryUpdatedPodcast(podcast: Podcast)
+  func libraryUpdatedEpisode(episode: Episode)
+  func libraryReloaded()
 }
 
 class Library: NSObject {
@@ -37,6 +38,7 @@ class Library: NSObject {
   let path: URL
   var dbQueue: DatabaseQueue?
   var delegate: LibraryDelegate?
+  let taskQueue = DispatchQueue(label: "library")
   
   var podcasts = [Podcast]()
   var downloads = [Download]()
@@ -79,7 +81,7 @@ class Library: NSObject {
             #endif
           }
           
-          delegate?.didLoadPodcasts()
+          delegate?.libraryReloaded()
         })
         
         return true
@@ -135,35 +137,36 @@ class Library: NSObject {
     
   }
   
-  func subscribe(url: String) -> Podcast? {
-    guard let dbQueue = self.dbQueue else { return nil }
-    guard let feedUrl = URL(string: url) else { return nil }
+  func subscribe(url: String) {
+    guard let dbQueue = self.dbQueue else { return }
+    guard let feedUrl = URL(string: url) else { return }
     
-    // Check if the podcast is already subscribed to
-    do {
-      let existing = try dbQueue.inDatabase({ db -> Podcast? in
-        return try Podcast.filter(Column("feed") == feedUrl.absoluteString).fetchOne(db)
-      })
-      
-      if existing != nil {
-        return nil
-      }
-    } catch {
-      Library.handleDatabaseError(error)
-      return nil
-    }
-    
-    if let podcast = Podcast.subscribe(feedUrl: feedUrl) {
-      if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
-        self.podcasts.append(podcast)
-        NotificationCenter.default.post(name: Events.Subscribed.notification, object: nil)
-        self.detectedNewEpisodes(podcast: podcast, episodes: podcast.episodes)
+    taskQueue.async {
+      do {
+        // Check if the podcast is already subscribed to
+        let existing = try dbQueue.inDatabase({ db -> Podcast? in
+          return try Podcast.filter(Column("feed") == feedUrl.absoluteString).fetchOne(db)
+        })
         
-        return podcast
+        if existing != nil {
+          return
+        }
+      } catch {
+        Library.handleDatabaseError(error)
+        return
+      }
+      
+      if let podcast = Podcast.subscribe(feedUrl: feedUrl) {
+        if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
+          self.detectedNewEpisodes(podcast: podcast, episodes: podcast.episodes)
+          
+          DispatchQueue.main.async {
+            self.podcasts.append(podcast)
+            self.delegate?.librarySubscribedToPodcast(subscribed: podcast)
+          }
+        }
       }
     }
-    
-    return nil
   }
   
   func unsubscribe(podcast: Podcast) {
@@ -179,14 +182,15 @@ class Library: NSObject {
   func reload(podcast: Podcast) {
     guard let dbQueue = self.dbQueue else { return }
     
-    let newEpisodes = podcast.fetch()
-    if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
-      DispatchQueue.main.async {
-        self.delegate?.didUpdatePodcast(podcast: podcast)
-        self.detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
+    taskQueue.async {
+      let newEpisodes = podcast.fetch()
+      if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
+        DispatchQueue.main.async {
+          self.delegate?.libraryUpdatedPodcast(podcast: podcast)
+          self.detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
+        }
       }
     }
-    
   }
   
   func save(episode: Episode) {

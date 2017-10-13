@@ -46,15 +46,15 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   }
   
   // MARK: Library Delegate
-  func didLoadPodcasts() {
+  func libraryReloaded() {
     podcastViewController.reloadPodcasts()
   }
   
-  func didSubscribeToPodcast(subscribed: Podcast) {
+  func librarySubscribedToPodcast(subscribed: Podcast) {
     podcastViewController.reloadPodcasts()
   }
   
-  func didUnsubscribeFromPodcast(unsubscribed: Podcast) {
+  func libraryUnsubscribedFromPodcast(unsubscribed: Podcast) {
     podcastViewController.reloadPodcasts()
     
     if episodeViewController.podcast?.id == unsubscribed.id {
@@ -62,12 +62,16 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     }
   }
   
-  func didUpdatePodcast(podcast: Podcast) {
+  func libraryUpdatedPodcast(podcast: Podcast) {
     podcastViewController.reloadPodcasts()
     
     if episodeViewController.podcast?.id == podcast.id {
       episodeViewController.reloadEpisodes()
     }
+  }
+  
+  func libraryUpdatedEpisode(episode: Episode) {
+    
   }
 }
 
