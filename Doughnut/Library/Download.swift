@@ -14,11 +14,16 @@ protocol DownloadProgressDelegate {
 
 class Download: NSObject, URLSessionDownloadDelegate {
   let episode: Episode
+  let podcast: Podcast
   var task: URLSessionDownloadTask?
   var delegate: DownloadProgressDelegate?
   
-  init(episode: Episode) {
+  var progressedBytes: Double = 0
+  var totalBytes: Double = 0
+  
+  init(episode: Episode, podcast: Podcast) {
     self.episode = episode
+    self.podcast = podcast
     super.init()
     
     let sessionConfiguration = URLSessionConfiguration.default
@@ -27,12 +32,19 @@ class Download: NSObject, URLSessionDownloadDelegate {
     if let enclosureUrl = episode.enclosureUrl {
       if let url = URL(string: enclosureUrl) {
         task = session.downloadTask(with: url)
+        task?.resume()
       }
     }
   }
   
   func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-    
+    if let outputPath = podcast.storagePath(forEpisode: episode) {
+      do {
+        try FileManager.default.copyItem(at: location, to: outputPath)
+      } catch {
+        print("Failed to move downloaded file into position from \(location.path) to \(outputPath.path)")
+      }
+    }
   }
     
   func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
@@ -40,6 +52,11 @@ class Download: NSObject, URLSessionDownloadDelegate {
   }
   
   func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+    progressedBytes = Double(totalBytesWritten)
+    totalBytes = Double(totalBytesExpectedToWrite)
     
+    DispatchQueue.main.async {
+      self.delegate?.downloadProgressed()
+    }
   }
 }

@@ -50,7 +50,7 @@ class DetailViewController: NSViewController {
   var podcast: Podcast? {
     didSet {
       if podcast != nil {
-        if podcast?.id != podcast?.id {
+        if podcast?.id != oldValue?.id {
           detailType = .PodcastDetail
         }
       } else {

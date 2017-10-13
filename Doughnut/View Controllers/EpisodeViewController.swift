@@ -109,8 +109,9 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   @IBAction func playNow(_ sender: Any) {
+    guard let podcast = podcast else { return }
     let episode = episodes[tableView.clickedRow]
-    Player.global.play(episode: episode)
+    Player.global.play(episode: episode, podcast: podcast)
   }
   
   @IBAction func markAsPlayed(_ sender: Any) {
@@ -138,8 +139,9 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   @IBAction func download(_ sender: Any) {
+    guard let podcast = podcast else { return }
     let episode = episodes[tableView.clickedRow]
-    Library.global.download(episode: episode)
+    Library.global.download(episode: episode, podcast: podcast)
   }
   
 }

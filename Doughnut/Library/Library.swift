@@ -130,6 +130,11 @@ class Library: NSObject {
     
   }
   
+  static func sanitizePath(_ path: String) -> String {
+    let illegal = CharacterSet(charactersIn: "/\\%:|\"<>")
+    return path.components(separatedBy: illegal).joined(separator: "")
+  }
+  
   //
   // General library methods
   
@@ -224,9 +229,9 @@ class Library: NSObject {
     } catch {}
   }
   
-  func download(episode: Episode) {
+  func download(episode: Episode, podcast: Podcast) {
     print("Downloading: \(String(describing: episode.enclosureUrl))")
-    downloads.append(Download(episode: episode))
+    downloads.append(Download(episode: episode, podcast: podcast))
     NotificationCenter.default.post(name: Events.Downloading.notification, object: nil)
   }
 }

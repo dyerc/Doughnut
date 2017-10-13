@@ -41,9 +41,10 @@ class Player: NSObject {
   
   var skipDuration: Double = 10.0
   
-  func play(episode: Episode) {
-    if episode.downloaded && episode.fileExists() {
-      avPlayer = AVPlayer(url: episode.file()!)
+  func play(episode: Episode, podcast: Podcast) {
+    if episode.downloaded {
+      guard let episodeUrl = podcast.storagePath(forEpisode: episode) else { return }
+      avPlayer = AVPlayer(url: episodeUrl)
     } else {
       guard let enclosureUrl = episode.enclosureUrl else { return }
       guard let url = URL(string: enclosureUrl) else { return }

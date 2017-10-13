@@ -443,7 +443,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="OOQ-4i-fxt">
-                                                                    <rect key="frame" x="9" y="15" width="269" height="20"/>
+                                                                    <rect key="frame" x="9" y="15" width="273" height="20"/>
                                                                 </progressIndicator>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nEu-f4-cVf">
                                                                     <rect key="frame" x="7" y="32" width="283" height="17"/>
@@ -461,19 +461,33 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RXi-ja-bQg">
+                                                                    <rect key="frame" x="291" y="17" width="14" height="15"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="14" id="bNT-Sd-A2b"/>
+                                                                        <constraint firstAttribute="height" constant="14" id="x7d-9w-CcG"/>
+                                                                    </constraints>
+                                                                    <buttonCell key="cell" type="inline" bezelStyle="inline" image="CloseIcon" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" id="ezB-UV-Tr4">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="smallSystemBold"/>
+                                                                    </buttonCell>
+                                                                </button>
                                                             </subviews>
                                                             <constraints>
+                                                                <constraint firstItem="RXi-ja-bQg" firstAttribute="top" secondItem="wXb-Xk-TFM" secondAttribute="top" constant="24" id="2FZ-xI-uio"/>
+                                                                <constraint firstItem="hDK-IL-qry" firstAttribute="top" secondItem="OOQ-4i-fxt" secondAttribute="bottom" constant="2" id="320-Cu-dGP"/>
+                                                                <constraint firstItem="OOQ-4i-fxt" firstAttribute="top" secondItem="wXb-Xk-TFM" secondAttribute="top" constant="22" id="57s-Bv-5xG"/>
+                                                                <constraint firstItem="OOQ-4i-fxt" firstAttribute="centerX" secondItem="hDK-IL-qry" secondAttribute="centerX" id="5It-sO-i2F"/>
                                                                 <constraint firstAttribute="trailing" secondItem="nEu-f4-cVf" secondAttribute="trailing" constant="26" id="8H0-Mx-UtG"/>
                                                                 <constraint firstItem="nEu-f4-cVf" firstAttribute="leading" secondItem="wXb-Xk-TFM" secondAttribute="leading" constant="9" id="8iZ-q3-jdS"/>
-                                                                <constraint firstAttribute="trailing" secondItem="OOQ-4i-fxt" secondAttribute="trailing" constant="36" id="Df7-Nr-zBW"/>
                                                                 <constraint firstItem="hDK-IL-qry" firstAttribute="top" secondItem="nEu-f4-cVf" secondAttribute="bottom" constant="18" id="DnX-Hl-Q6u"/>
-                                                                <constraint firstItem="OOQ-4i-fxt" firstAttribute="top" secondItem="wXb-Xk-TFM" secondAttribute="top" constant="22" id="KeY-l8-9U5"/>
-                                                                <constraint firstItem="hDK-IL-qry" firstAttribute="top" secondItem="OOQ-4i-fxt" secondAttribute="bottom" constant="2" id="OKk-5e-esJ"/>
-                                                                <constraint firstItem="OOQ-4i-fxt" firstAttribute="leading" secondItem="hDK-IL-qry" secondAttribute="leading" id="Qfa-wY-7dU"/>
                                                                 <constraint firstAttribute="bottom" secondItem="hDK-IL-qry" secondAttribute="bottom" constant="3" id="Rba-PA-69s"/>
-                                                                <constraint firstItem="nEu-f4-cVf" firstAttribute="leading" secondItem="OOQ-4i-fxt" secondAttribute="leading" id="XKz-UO-W4c"/>
+                                                                <constraint firstItem="OOQ-4i-fxt" firstAttribute="leading" secondItem="hDK-IL-qry" secondAttribute="leading" id="SGZ-Yq-LNH"/>
                                                                 <constraint firstAttribute="trailing" secondItem="hDK-IL-qry" secondAttribute="trailing" constant="33" id="YQI-ik-VS5"/>
+                                                                <constraint firstAttribute="trailing" secondItem="RXi-ja-bQg" secondAttribute="trailing" constant="9" id="ZfG-YR-vrI"/>
                                                                 <constraint firstItem="nEu-f4-cVf" firstAttribute="top" secondItem="wXb-Xk-TFM" secondAttribute="top" constant="7" id="d3U-x9-wTC"/>
+                                                                <constraint firstItem="RXi-ja-bQg" firstAttribute="leading" secondItem="OOQ-4i-fxt" secondAttribute="trailing" constant="9" id="hGv-B3-gpl"/>
+                                                                <constraint firstItem="OOQ-4i-fxt" firstAttribute="leading" secondItem="nEu-f4-cVf" secondAttribute="leading" id="rFE-ab-hvO"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="episodeTitle" destination="nEu-f4-cVf" id="tb5-KZ-bIY"/>
@@ -857,7 +871,7 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="16" id="1wb-Gf-ZOo"/>
                                                                     </constraints>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Episode Title Will Go Here" id="5fO-XY-YLP">
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Episode Title Will Go Here" id="5fO-XY-YLP">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1024,7 +1038,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dNt-cn-mfd">
                                 <rect key="frame" x="18" y="411" width="334" height="14"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="Label" id="W3b-zq-LTM">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1074,6 +1088,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CloseIcon" width="8" height="8"/>
         <image name="DownloadsIcon" width="17" height="17"/>
         <image name="PlaceholderIcon" width="158" height="157"/>
     </resources>

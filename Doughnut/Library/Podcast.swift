@@ -36,7 +36,7 @@ class Podcast: Record {
   
   init(title: String) {
     self.title = title
-    self.path = Podcast.sanitizePodcastPath(title)
+    self.path = Library.sanitizePath(title)
     self.subscribedAt = Date()
     
     super.init()
@@ -92,7 +92,25 @@ class Podcast: Record {
   }
   
   func storagePath() -> URL? {
-    return URL(fileURLWithPath: self.path, relativeTo: Library.global.path)
+    let pathUrl = URL(fileURLWithPath: self.path, relativeTo: Library.global.path)
+    var isDir = ObjCBool(true)
+    if FileManager.default.fileExists(atPath: pathUrl.path, isDirectory: &isDir) == false {
+      do {
+        try FileManager.default.createDirectory(at: pathUrl, withIntermediateDirectories: true, attributes: nil)
+      } catch {
+        print("Failed to create directory \(error)")
+      }
+    }
+    
+    return pathUrl
+  }
+  
+  func storagePath(forEpisode episode: Episode) -> URL? {
+    if let podcastPath = storagePath() {
+      return podcastPath.appendingPathComponent(episode.file())
+    } else {
+      return nil
+    }
   }
   
   func fetchEpisodes(db: Database) {
@@ -234,11 +252,6 @@ class Podcast: Record {
       
       return podcast
     }
-  }
-  
-  static func sanitizePodcastPath(_ path: String) -> String {
-    let illegal = CharacterSet(charactersIn: "/\\%|\"<>")
-    return path.components(separatedBy: illegal).joined(separator: "")
   }
   
   static func resizeArtwork(image: NSImage, w: Int, h: Int) -> NSImage {

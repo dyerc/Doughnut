@@ -22,6 +22,21 @@ class DownloadCellView: NSTableCellView, DownloadProgressDelegate {
   }
   
   func downloadProgressed() {
+    guard let download = download else { return }
     
+    if download.totalBytes > 0 {
+      print("Progress \(download.progressedBytes)")
+      progressBar.stopAnimation(self)
+      progressBar.minValue = 0
+      progressBar.maxValue = 1
+      progressBar.isIndeterminate = false
+      progressBar.doubleValue = download.progressedBytes / download.totalBytes
+    } else {
+      progressBar.startAnimation(self)
+      progressBar.isIndeterminate = true
+      progressBar.doubleValue = 0
+      progressBar.minValue = 0
+      progressBar.maxValue = 0
+    }
   }
 }
