@@ -183,9 +183,16 @@ class Library: NSObject {
     guard let dbQueue = self.dbQueue else { return }
     
     taskQueue.async {
+      // Mark as loading
+      podcast.loading = true
+      DispatchQueue.main.async {
+        self.delegate?.libraryUpdatedPodcast(podcast: podcast)
+      }
+      
       let newEpisodes = podcast.fetch()
       if podcast.invokeSave(dbQueue: dbQueue) && podcast.saveEpisodes(dbQueue: dbQueue) {
         DispatchQueue.main.async {
+          podcast.loading = false
           self.delegate?.libraryUpdatedPodcast(podcast: podcast)
           self.detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
         }

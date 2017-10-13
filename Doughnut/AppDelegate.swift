@@ -14,9 +14,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    do {
+    /*do {
       try Player.audioOutputDevices()
-    } catch {}
+    } catch {}*/
     
     let connected = Library.global.connect()
     

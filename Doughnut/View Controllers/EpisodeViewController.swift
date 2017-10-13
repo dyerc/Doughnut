@@ -27,6 +27,12 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   
   @IBOutlet var tableView: NSTableView!
   
+  var viewController: ViewController {
+    get {
+      return parent as! ViewController
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
@@ -74,6 +80,11 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     result.episode = episodes[row]
     
     return result
+  }
+  
+  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    viewController.selectEpisode(episode: episodes[row])
+    return true
   }
   
   override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {

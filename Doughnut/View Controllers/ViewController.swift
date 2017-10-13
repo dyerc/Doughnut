@@ -29,9 +29,9 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     }
   }
   
-  var detailViewController: ViewController {
+  var detailViewController: DetailViewController {
     get {
-      return splitViewItems[2].viewController as! ViewController
+      return splitViewItems[2].viewController as! DetailViewController
     }
   }
 
@@ -43,6 +43,11 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   
   func selectPodcast(podcast: Podcast?) {
     episodeViewController.selectPodcast(podcast)
+    detailViewController.podcast = podcast
+  }
+  
+  func selectEpisode(episode: Episode?) {
+    detailViewController.episode = episode
   }
   
   // MARK: Library Delegate

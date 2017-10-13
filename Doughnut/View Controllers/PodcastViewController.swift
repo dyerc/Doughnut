@@ -42,6 +42,16 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     result.imageView?.image = podcast.image
     result.episodeCount.stringValue = "\(podcast.episodes.count) episodes"
     
+    if podcast.loading {
+      result.progressIndicator.startAnimation(self)
+      result.progressIndicator.isHidden = false
+      result.episodeCount.isHidden = true
+    } else {
+      result.progressIndicator.stopAnimation(self)
+      result.progressIndicator.isHidden = true
+      result.episodeCount.isHidden = false
+    }
+    
     return result
   }
   

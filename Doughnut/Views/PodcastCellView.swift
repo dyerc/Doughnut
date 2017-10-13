@@ -13,6 +13,7 @@ class PodcastCellView: NSTableCellView {
   @IBOutlet weak var title: NSTextField!
   @IBOutlet weak var author: NSTextField!
   @IBOutlet weak var episodeCount: NSTextField!
+  @IBOutlet weak var progressIndicator: NSProgressIndicator!
   
   override var backgroundStyle: NSView.BackgroundStyle {
     willSet {

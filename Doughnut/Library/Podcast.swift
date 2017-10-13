@@ -28,6 +28,8 @@ class Podcast: Record {
   
   var episodes = [Episode]()
   
+  var loading = false
+  
   override class var databaseTableName: String {
     return "podcasts"
   }

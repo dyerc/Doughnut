@@ -87,7 +87,7 @@ class PlayerView: NSView, PlayerDelegate {
     forwardBtn.target = self
     addSubview(forwardBtn)
     
-    playedDurationLbl.stringValue = "0:00:00"
+    playedDurationLbl.stringValue = "-:--:--"
     playedDurationLbl.isBezeled = false
     playedDurationLbl.drawsBackground = false
     playedDurationLbl.isSelectable = false
@@ -105,7 +105,7 @@ class PlayerView: NSView, PlayerDelegate {
     seekSlider.action = #selector(seek)
     addSubview(seekSlider)
     
-    playedRemainingLbl.stringValue = "0:00:00"
+    playedRemainingLbl.stringValue = "-:--:--"
     playedRemainingLbl.isBezeled = false
     playedRemainingLbl.drawsBackground = false
     playedRemainingLbl.isSelectable = false
