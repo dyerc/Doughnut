@@ -13,17 +13,15 @@ class DownloadCellView: NSTableCellView, DownloadProgressDelegate {
   @IBOutlet weak var progressBar: NSProgressIndicator!
   @IBOutlet weak var progressText: NSTextField!
   
-  var download: Download? {
+  var download: DownloadTask? {
     didSet {
-      download?.delegate = self
+      download?.progressDelegate = self
       
       episodeTitle.stringValue = download?.episode.title ?? ""
     }
   }
   
-  func downloadProgressed() {
-    guard let download = download else { return }
-    
+  func download(progressed download: DownloadTask) {
     if download.totalBytes > 0 {
       print("Progress \(download.progressedBytes)")
       progressBar.stopAnimation(self)

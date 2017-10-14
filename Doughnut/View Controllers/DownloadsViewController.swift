@@ -8,13 +8,15 @@
 
 import Cocoa
 
-class DownloadsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+class DownloadsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, DownloadManagerDelegate {
   @IBOutlet weak var tableView: NSTableView!
+  
+  var downloadManager: DownloadManager?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    NotificationCenter.default.addObserver(self, selector: #selector(reloadView), name: Library.Events.Downloading.notification, object: nil)
+    downloadManager = Library.global.downloadManager
   }
   
   @objc func reloadView() {
@@ -22,13 +24,27 @@ class DownloadsViewController: NSViewController, NSTableViewDelegate, NSTableVie
   }
   
   func numberOfRows(in tableView: NSTableView) -> Int {
-    return Library.global.downloads.count
+    guard let manager = downloadManager else {
+      return 0
+    }
+    
+    return manager.queueCount
   }
   
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    guard let manager = downloadManager else { return nil }
+    
     let result = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "defaultRow"), owner: self) as! DownloadCellView
-    result.download = Library.global.downloads[row]
+    result.download = manager.downloads[row]
     
     return result
+  }
+  
+  func downloadStarted() {
+    tableView.reloadData()
+  }
+  
+  func downloadFinished() {
+    tableView.reloadData()
   }
 }

@@ -37,21 +37,23 @@ class PlayerView: NSView, PlayerDelegate {
   
   override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
+    Player.global.delegate = self
   }
   
   required init?(coder decoder: NSCoder) {
     loadingIdc = NSProgressIndicator(frame: NSRect(x: 25, y: baseline + 5, width: 16, height: 16))
     artworkImg = NSImageView(frame: NSRect(x: 25, y: baseline + 3, width: 20, height: 20))
     
-    reverseBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(artworkImg) + 6, y: baseline, width: 28, height: 25))
-    playBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(reverseBtn) + 1, y: baseline, width: 28, height: 25))
-    forwardBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(playBtn) + 1, y: baseline, width: 28, height: 25))
+    reverseBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(artworkImg) + 6, y: baseline, width: 26, height: 25))
+    playBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(reverseBtn) + 1, y: baseline, width: 28, height: 26))
+    forwardBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(playBtn) + 1, y: baseline, width: 28, height: 26))
     
     playedDurationLbl = NSTextField(frame: NSRect(x: PlayerView.controlX(forwardBtn) + 2, y: baseline + 6, width: 50, height: 14))
     seekSlider = SeekSlider(frame: NSRect(x: PlayerView.controlX(playedDurationLbl) + 4, y: baseline + 4, width: 200, height: 18))
     playedRemainingLbl = NSTextField(frame: NSRect(x: PlayerView.controlX(seekSlider) + 4, y: baseline + 6, width: 50, height: 14))
     
     super.init(coder: decoder)
+    Player.global.delegate = self
     
     loadingIdc.isHidden = true
     loadingIdc.minValue = 0
@@ -75,9 +77,12 @@ class PlayerView: NSView, PlayerDelegate {
     
     playBtn.stringValue = ""
     playBtn.bezelStyle = .texturedRounded
+    playBtn.setButtonType(.toggle)
     playBtn.image = playIcon
+    playBtn.alternateImage = pauseIcon
     playBtn.action = #selector(playPause)
     playBtn.target = self
+    playBtn.imagePosition = .imageOnly
     addSubview(playBtn)
     
     forwardBtn.stringValue = ""
@@ -148,7 +153,7 @@ class PlayerView: NSView, PlayerDelegate {
     return String(hrs) + ":" + String(mins).leftPadding(toLength: 2, withPad: "0") + ":" + String(secs).leftPadding(toLength: 2, withPad: "0")
   }
   
-  func updateForEpisode(episode: Episode) {
+  func update(forEpisode episode: Episode) {
     let loadStatus = Player.global.loadStatus
     
     if loadStatus == .loading {
@@ -161,11 +166,26 @@ class PlayerView: NSView, PlayerDelegate {
       artworkImg.isHidden = false
     }
     
+    artworkImg.image = episode.podcast?.image
+    
+    if let image = episode.artwork {
+      if image.isValid {
+        artworkImg.image = image
+      }
+    }
   }
   
   func updatePlayback() {
-    let duration = Player.global.duration
-    let position = Player.global.position
+    let player = Player.global
+    
+    if player.isPlaying {
+      playBtn.state = .on
+    } else {
+      playBtn.state = .off
+    }
+    
+    let duration = player.duration
+    let position = player.position
     
     playedDurationLbl.stringValue = formatTime(total: Int(position))
     playedRemainingLbl.stringValue = formatTime(total: Int(duration - position))
@@ -173,7 +193,7 @@ class PlayerView: NSView, PlayerDelegate {
     seekSlider.minValue = 0
     seekSlider.maxValue = duration
     seekSlider.doubleValue = position
-    seekSlider.streamedValue = Player.global.buffered
+    seekSlider.streamedValue = player.buffered
   }
   
   @objc func seek(_ sender: Any) {
@@ -182,24 +202,34 @@ class PlayerView: NSView, PlayerDelegate {
     if event?.type == .leftMouseDragged {
       Player.global.seek(seconds: seekSlider.doubleValue)
     }
+    
+    if event?.type == .leftMouseUp {
+      // Handle a single click
+    }
   }
   
   @objc func playPause(_ sender: Any) {
-    if Player.global.isPlaying() {
-      Player.global.pause()
-      playBtn.image = playIcon
-    } else if (Player.global.canPlay()) {
-      Player.global.play()
-      playBtn.image = pauseIcon
+    let player = Player.global
+    
+    if playBtn.state == .on {
+      if player.canPlay {
+        Player.global.play()
+      } else {
+        playBtn.state = .off
+      }
+    } else {
+      player.pause()
     }
   }
   
   @objc func skipAhead(_ sender: Any) {
-    
+    let player = Player.global
+    player.skipAhead()
   }
   
   @objc func skipBack(_ sender: Any) {
-    
+    let player = Player.global
+    player.skipBack()
   }
   
   static private func controlX(_ view: NSView) -> CGFloat {

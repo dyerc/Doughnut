@@ -40,4 +40,8 @@ class LibraryTestsWithoutSubscription: LibraryTestCase {
       XCTAssertEqual(pod!.title, sub.title)
     }
   }
+  
+  func testSanitizeFilePath() {
+    
+  }
 }

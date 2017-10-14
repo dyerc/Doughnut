@@ -41,7 +41,7 @@ class Library: NSObject {
   let taskQueue = DispatchQueue(label: "library")
   
   var podcasts = [Podcast]()
-  var downloads = [Download]()
+  let downloadManager = DownloadManager()
   
   override init() {
     // Look for libaryPath stoed as in prefs
@@ -126,6 +126,7 @@ class Library: NSObject {
   }
   
   static func handleDatabaseError(_ error: Error) {
+    print("Library error \(error)")
     let alert = NSAlert()
     
   }
@@ -206,32 +207,34 @@ class Library: NSObject {
   }
   
   func save(episode: Episode) {
-    do {
-      try dbQueue?.inDatabase { db in
-        try episode.save(db)
-      }
-      
-      NotificationCenter.default.post(name: Events.PodcastUpdated.notification, object: nil, userInfo: ["podcastId": episode.podcastId ?? 0])
-    } catch let error as DatabaseError {
-      Library.handleDatabaseError(error)
-    } catch {}
+    taskQueue.async {
+      do {
+        try self.dbQueue?.inDatabase { db in
+          try episode.save(db)
+        }
+        
+        DispatchQueue.main.async {
+          self.delegate?.libraryUpdatedEpisode(episode: episode)
+        }
+      } catch let error as DatabaseError {
+        Library.handleDatabaseError(error)
+      } catch {}
+    }
   }
   
   func save(podcast: Podcast) {
-    do {
-      try dbQueue?.inDatabase { db in
-        try podcast.save(db)
-      }
-      
-      NotificationCenter.default.post(name: Events.PodcastUpdated.notification, object: nil, userInfo: ["podcastId": podcast.id ?? 0])
-    } catch let error as DatabaseError {
-      Library.handleDatabaseError(error)
-    } catch {}
-  }
-  
-  func download(episode: Episode, podcast: Podcast) {
-    print("Downloading: \(String(describing: episode.enclosureUrl))")
-    downloads.append(Download(episode: episode, podcast: podcast))
-    NotificationCenter.default.post(name: Events.Downloading.notification, object: nil)
+    taskQueue.async {
+      do {
+        try self.dbQueue?.inDatabase { db in
+          try podcast.save(db)
+        }
+        
+        DispatchQueue.main.async {
+          self.delegate?.libraryUpdatedPodcast(podcast: podcast)
+        }
+      } catch let error as DatabaseError {
+        Library.handleDatabaseError(error)
+      } catch {}
+    }
   }
 }

@@ -27,6 +27,10 @@ class Episode: Record {
   var playPosition: Int = 0
   var duration: Int = 0
   
+  var podcast: Podcast?
+  
+  var artwork: NSImage?
+  
   override class var databaseTableName: String {
     return "episodes"
   }
@@ -61,7 +65,13 @@ class Episode: Record {
   
   override func encode(to container: inout PersistenceContainer) {
     container["id"] = id
-    container["podcast_id"] = podcastId
+    
+    if let podcast = podcast {
+      container["podcast_id"] = podcast.id
+    } else {
+      container["podcast_id"] = podcastId
+    }
+    
     container["title"] = title
     container["description"] = description
     container["guid"] = guid

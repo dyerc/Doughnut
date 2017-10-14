@@ -10,7 +10,7 @@ import Cocoa
 import AVFoundation
 
 protocol PlayerDelegate: class {
-  func updateForEpisode(episode: Episode)
+  func update(forEpisode episode: Episode)
   func updatePlayback()
 }
 
@@ -35,15 +35,34 @@ class Player: NSObject {
     }
   }
   
+  var isPlaying: Bool {
+    get {
+      guard let av = avPlayer else { return false }
+      return av.rate != 0 && av.error == nil
+    }
+  }
+  
+  var canPlay: Bool {
+    get {
+      guard let av = avPlayer else { return false }
+      return av.error == nil
+    }
+  }
+  
   var position: Double = 0
   var buffered: Double = 0
   var duration: Double = 0
   
   var skipDuration: Double = 10.0
   
-  func play(episode: Episode, podcast: Podcast) {
+  func play(episode: Episode) {
+    guard let podcast = episode.podcast else { return }
+    
     if episode.downloaded {
-      guard let episodeUrl = podcast.storagePath(forEpisode: episode) else { return }
+      guard let fileName = episode.fileName else { return }
+      guard let podcastPath = podcast.storagePath() else { return }
+      
+      let episodeUrl = podcastPath.appendingPathComponent(fileName)
       avPlayer = AVPlayer(url: episodeUrl)
     } else {
       guard let enclosureUrl = episode.enclosureUrl else { return }
@@ -53,6 +72,7 @@ class Player: NSObject {
     }
     
     if let avPlayer = avPlayer {
+      // Register to receive timing events
       avPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: .main, using: { time in
         self.position = time.seconds
         self.duration = avPlayer.currentItem?.asset.duration.seconds ?? 0
@@ -64,15 +84,29 @@ class Player: NSObject {
         self.delegate?.updatePlayback()
       })
       
+      // Register to receive status events
       avPlayer.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions(rawValue: 0), context: nil)
       
+      // Extract any useful metadata from the audio file
+      let metadata = avPlayer.currentItem?.asset.metadata ?? []
+      for item in metadata {
+        if item.commonKey == nil { continue }
+        
+        if let key = item.commonKey, let value = item.value {
+          if key.rawValue == "artwork" {
+            episode.artwork = NSImage(data: value as! Data)
+          }
+        }
+      }
+      
+      // Reset state
       self.duration = 0
       self.buffered = 0
       self.position = 0
       delegate?.updatePlayback()
       
       avPlayer.volume = volume
-      delegate?.updateForEpisode(episode: episode)
+      delegate?.update(forEpisode: episode)
       avPlayer.play()
     }
   }
@@ -89,6 +123,7 @@ class Player: NSObject {
           loadStatus = .none
         }
         
+        print("Playing")
         delegate?.updatePlayback()
       }
     }
@@ -102,16 +137,6 @@ class Player: NSObject {
   func pause() {
     guard let av = avPlayer else { return }
     av.pause()
-  }
-  
-  func isPlaying() -> Bool {
-    guard let av = avPlayer else { return false }
-    return (av.rate != 0) && (av.error == nil)
-  }
-  
-  func canPlay() -> Bool {
-    guard let av = avPlayer else { return false }
-    return av.error != nil
   }
   
   func skipAhead() {

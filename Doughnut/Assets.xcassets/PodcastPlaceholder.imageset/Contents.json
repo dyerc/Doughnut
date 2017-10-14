@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "play_icon_1x.png",
+      "filename" : "podcast_placeholder_1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "play_icon_2x.png",
+      "filename" : "podcast_placeholder_2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "play_icon_3x.png",
+      "filename" : "podcast_placeholder_3x.png",
       "scale" : "3x"
     }
   ],

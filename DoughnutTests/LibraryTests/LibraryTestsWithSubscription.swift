@@ -84,17 +84,12 @@ class LibraryTestsWithSubscription: LibraryTestCase {
   
   func testReloadUpdatesExistingEpisodes() {
     XCTAssertEqual(sub!.episodes.count, 2)
+    sub!.feed = fixtureURL("ValidFeedx3", type: "xml").absoluteString
+    Library.global.save(podcast: sub!)
+    
     let spy = LibrarySpyDelegate()
     Library.global.delegate = spy
     spy.updatedPodcastExpectation = self.expectation(description: "Library updated podcast")
-    
-    // Silently change podcast feed
-    sub!.feed = fixtureURL("ValidFeedx3", type: "xml").absoluteString
-    do {
-      try Library.global.dbQueue?.inDatabase { db in
-        try sub!.save(db)
-      }
-    } catch {}
     
     Library.global.reload(podcast: sub!)
     
@@ -113,6 +108,14 @@ class LibraryTestsWithSubscription: LibraryTestCase {
       
       XCTAssert(episodeTitleUpdated)
     }
+  }
+  
+  func testSavePodcast() {
+    
+  }
+  
+  func testSaveEpisode() {
+    
   }
 }
 

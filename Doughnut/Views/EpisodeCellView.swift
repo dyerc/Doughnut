@@ -36,6 +36,37 @@ class EpisodeCellView: NSTableCellView {
       __NSRectFill(NSRect(x: 0, y: -0, width: 3, height: self.bounds.height))
     }
     
+    if episode?.downloaded ?? false {
+      // Draw download corner triangle
+      NSColor(calibratedRed: 0.090, green: 0.433, blue: 0.937, alpha: 1.0).setFill()
+      let downloadCorner = NSBezierPath()
+      let downloadCornerSize: CGFloat = 25.0
+      downloadCorner.move(to: NSPoint(x: self.bounds.width, y: self.bounds.height))
+      downloadCorner.line(to: NSPoint(x: self.bounds.width, y: self.bounds.height - downloadCornerSize))
+      downloadCorner.line(to: NSPoint(x: self.bounds.width - downloadCornerSize, y: self.bounds.height))
+      downloadCorner.close()
+      downloadCorner.fill()
+      
+      // Draw download arrow
+      NSColor.white.setFill()
+      let downloadTriangle = NSBezierPath()
+      let arrowY: CGFloat = bounds.height - 3.0
+      let arrowX: CGFloat = bounds.width - 6.0
+      let arrowTrailLength: CGFloat = 4.0
+      let arrowHeadHeight: CGFloat = 5.0
+      let arrowHeadOffset: CGFloat = 3.0
+      let arrowWidth: CGFloat = 3.0
+      downloadTriangle.move(to: NSPoint(x: arrowX, y: arrowY))
+      downloadTriangle.line(to: NSPoint(x: arrowX, y: arrowY - arrowTrailLength))
+      downloadTriangle.line(to: NSPoint(x: arrowX + arrowHeadOffset, y: arrowY - arrowTrailLength))
+      downloadTriangle.line(to: NSPoint(x: arrowX - arrowWidth / 2, y: arrowY - arrowTrailLength - arrowHeadHeight))
+      downloadTriangle.line(to: NSPoint(x: arrowX - arrowWidth - arrowHeadOffset, y: arrowY - arrowTrailLength))
+      downloadTriangle.line(to: NSPoint(x: arrowX - arrowWidth, y: arrowY - arrowTrailLength))
+      downloadTriangle.line(to: NSPoint(x: arrowX - arrowWidth, y: arrowY))
+      downloadTriangle.close()
+      downloadTriangle.fill()
+    }
+    
     drawBottomBorder()
   }
   

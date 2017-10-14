@@ -87,6 +87,7 @@ class Podcast: Record {
     id = rowID
     
     for episode in episodes {
+      episode.podcast = self
       episode.podcastId = self.id
     }
   }
@@ -105,17 +106,15 @@ class Podcast: Record {
     return pathUrl
   }
   
-  func storagePath(forEpisode episode: Episode) -> URL? {
-    if let podcastPath = storagePath() {
-      return podcastPath.appendingPathComponent(episode.file())
-    } else {
-      return nil
-    }
-  }
-  
   func fetchEpisodes(db: Database) {
     do {
       episodes = try Episode.filter(Column("podcast_id") == self.id).fetchAll(db)
+      
+      for e in episodes {
+        if e.podcastId == self.id {
+          e.podcast = self
+        }
+      }
     } catch let error as DatabaseError {
       Library.handleDatabaseError(error)
     } catch {}
@@ -209,6 +208,7 @@ class Podcast: Record {
       } else {
         let episode = Episode(title: title, guid: guid)
         episode.parse(feedItem: item)
+        episode.podcast = self
         episode.podcastId = self.id
         
         self.episodes.append(episode)

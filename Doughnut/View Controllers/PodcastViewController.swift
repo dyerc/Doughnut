@@ -39,7 +39,13 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     
     result.title.stringValue = podcast.title
     result.author.stringValue = podcast.author ?? ""
-    result.imageView?.image = podcast.image
+    
+    if podcast.image != nil && podcast.image!.isValid {
+      result.imageView?.image = podcast.image
+    } else {
+      result.imageView?.image = NSImage(named: NSImage.Name(rawValue: "PodcastPlaceholder"))
+    }
+    
     result.episodeCount.stringValue = "\(podcast.episodes.count) episodes"
     
     if podcast.loading {

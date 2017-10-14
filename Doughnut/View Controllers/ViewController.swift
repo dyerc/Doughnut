@@ -37,6 +37,8 @@ class ViewController: NSSplitViewController, LibraryDelegate {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    splitView.autosaveName = NSSplitView.AutosaveName(rawValue: "Main")
 
     Library.global.delegate = self
   }
@@ -76,7 +78,9 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   }
   
   func libraryUpdatedEpisode(episode: Episode) {
-    
+    if episodeViewController.podcast?.id == episode.podcastId {
+      episodeViewController.reloadEpisodes()
+    }
   }
 }
 
