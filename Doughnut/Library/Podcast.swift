@@ -106,7 +106,7 @@ class Podcast: Record {
     return pathUrl
   }
   
-  func fetchEpisodes(db: Database) {
+  func loadEpisodes(db: Database) {
     do {
       episodes = try Episode.filter(Column("podcast_id") == self.id).fetchAll(db)
       
@@ -118,39 +118,6 @@ class Podcast: Record {
     } catch let error as DatabaseError {
       Library.handleDatabaseError(error)
     } catch {}
-  }
-  
-  func invokeSave(dbQueue: DatabaseQueue) -> Bool {
-    do {
-      try dbQueue.inDatabase { db in
-        try self.save(db)
-      }
-    } catch let error as DatabaseError {
-      Library.handleDatabaseError(error)
-      return false
-    } catch {
-      return false
-    }
-    
-    return true
-  }
-  
-  func saveEpisodes(dbQueue: DatabaseQueue) -> Bool {
-    do {
-      for episode in episodes {
-        try dbQueue.inDatabase { db in
-          print("Saving episode for podcast \(episode.podcastId)")
-          try episode.save(db)
-        }
-      }
-    } catch let error as DatabaseError {
-      Library.handleDatabaseError(error)
-      return false
-    } catch {
-      return false
-    }
-    
-    return true
   }
   
   private func storeImage(_ url: URL) {

@@ -45,4 +45,8 @@ class LibrarySpyDelegate: LibraryDelegate {
   func libraryUnsubscribedFromPodcast(unsubscribed: Podcast) {
     
   }
+  
+  func libraryUpdatingPodcast(podcast: Podcast) {
+    
+  }
 }

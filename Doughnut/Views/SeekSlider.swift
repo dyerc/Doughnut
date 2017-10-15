@@ -11,7 +11,7 @@ import Cocoa
 class SeekSlider: NSSlider {
   override var knobThickness: CGFloat {
     get {
-      return 3
+      return 3.0
     }
   }
   
@@ -31,9 +31,9 @@ class SeekSliderCell: NSSliderCell {
     return knobWidth
   }
   
-  let knobWidth: CGFloat = 4
-  let knobHeight: CGFloat = 17
-  let knobRadius: CGFloat = 2
+  let knobWidth: CGFloat = 4.0
+  let knobHeight: CGFloat = 17.0
+  let knobRadius: CGFloat = 2.0
   
   override init() {
     super.init()
@@ -41,6 +41,26 @@ class SeekSliderCell: NSSliderCell {
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
+  }
+  
+  var percentage: CGFloat {
+    get {
+      if (self.maxValue - self.minValue) > 0 {
+        return CGFloat((self.doubleValue - self.minValue) / (self.maxValue - self.minValue))
+      } else {
+        return 0
+      }
+    }
+  }
+  
+  var streamedPercentage: CGFloat {
+    get {
+      if (self.maxValue - self.minValue) > 0 {
+        return CGFloat((self.streamed - self.minValue) / (self.maxValue - self.minValue))
+      } else {
+        return 0
+      }
+    }
   }
   
   override func drawBar(inside aRect: NSRect, flipped: Bool) {
@@ -53,14 +73,11 @@ class SeekSliderCell: NSSliderCell {
     rect.size.height = CGFloat(4)
     let barRadius = CGFloat(1)
     
-    let value = CGFloat((self.doubleValue - self.minValue) / (self.maxValue - self.minValue))
-    let streamedValue = CGFloat((self.streamed - self.minValue) / (self.maxValue - self.minValue))
-    
     var progressRect = rect
-    progressRect.size.width = CGFloat(value * (self.controlView!.frame.size.width - 8))
+    progressRect.size.width = CGFloat(percentage * (self.controlView!.frame.size.width - 8))
     
     var streamedRect = rect
-    streamedRect.size.width = CGFloat(streamedValue * (self.controlView!.frame.size.width - 8))
+    streamedRect.size.width = CGFloat(streamedPercentage * (self.controlView!.frame.size.width - 8))
     
     let bg = NSBezierPath(roundedRect: rect, xRadius: barRadius, yRadius: barRadius)
     baseColor.setStroke()
@@ -90,10 +107,8 @@ class SeekSliderCell: NSSliderCell {
   }
   
   override func knobRect(flipped: Bool) -> NSRect {
-    let slider = self.controlView as! NSSlider
     let bounds = super.barRect(flipped: flipped)
-    let percentage = slider.doubleValue / (slider.maxValue - slider.minValue)
-    let pos = min(CGFloat(percentage) * bounds.width, bounds.width - 1);
+    let pos = min(percentage * bounds.width, bounds.width - 1);
     let rect = super.knobRect(flipped: flipped)
     let flippedMultiplier = flipped ? CGFloat(-1) : CGFloat(1)
     return NSMakeRect(pos - flippedMultiplier * 0.5 * knobWidth, rect.origin.y, knobWidth, rect.height)

@@ -53,7 +53,7 @@ class Player: NSObject {
   var buffered: Double = 0
   var duration: Double = 0
   
-  var skipDuration: Double = 10.0
+  var skipDuration: Double = 30.0
   
   func play(episode: Episode) {
     guard let podcast = episode.podcast else { return }

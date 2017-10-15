@@ -69,6 +69,10 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     }
   }
   
+  func libraryUpdatingPodcast(podcast: Podcast) {
+    podcastViewController.reloadPodcasts()
+  }
+  
   func libraryUpdatedPodcast(podcast: Podcast) {
     podcastViewController.reloadPodcasts()
     

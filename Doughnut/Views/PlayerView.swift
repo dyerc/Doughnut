@@ -61,6 +61,7 @@ class PlayerView: NSView, PlayerDelegate {
     loadingIdc.usesThreadedAnimation = true
     loadingIdc.isIndeterminate = true
     loadingIdc.style = .spinning
+    loadingIdc.controlSize = .small
     addSubview(loadingIdc)
     
     artworkImg.isHidden = false

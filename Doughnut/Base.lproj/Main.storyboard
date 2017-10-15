@@ -355,6 +355,40 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Control" id="WLk-DP-BZ5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Control" id="222-rP-pvk">
+                                    <items>
+                                        <menuItem title="Backward 30 seconds" keyEquivalent="" id="Bdi-lX-YGo">
+                                            <connections>
+                                                <action selector="playerBackward:" target="Ady-hI-5gd" id="hTx-1L-HGE"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Play" id="BLT-Qs-aQt">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="playerPlay:" target="Ady-hI-5gd" id="Nvp-ru-1xS"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Forward 30 seconds" keyEquivalent="" id="Jxl-SS-SIr">
+                                            <connections>
+                                                <action selector="playerForward:" target="Ady-hI-5gd" id="AXf-Y2-6k2"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="ir9-XQ-Nwc"/>
+                                        <menuItem title="Increase Volume" keyEquivalent="" id="DFF-RD-r67">
+                                            <connections>
+                                                <action selector="volumeUp:" target="Ady-hI-5gd" id="Qln-aq-N4Z"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Decrease Volume" keyEquivalent="" id="yFw-DO-DFl">
+                                            <connections>
+                                                <action selector="volumeDown:" target="Ady-hI-5gd" id="PJm-Rn-vaV"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Window" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
@@ -403,6 +437,116 @@
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-50" y="-383"/>
+        </scene>
+        <!--Subscribe View Controller-->
+        <scene sceneID="td7-gk-0bY">
+            <objects>
+                <viewController storyboardIdentifier="SubscribeViewController" id="Srl-3y-WkX" customClass="SubscribeViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="9SD-Af-RVp">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="203"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3EA-03-cM2">
+                                <rect key="frame" x="18" y="166" width="232" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="RSS Feed URL or iTunes Podcast URL" id="p1S-Vn-Mha">
+                                    <font key="font" metaFont="smallSystemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11m-DT-422">
+                                <rect key="frame" x="20" y="133" width="476" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="http://" drawsBackground="YES" id="VTE-Nn-zhC">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="Srl-3y-WkX" id="zNA-8l-Jyb"/>
+                                </connections>
+                            </textField>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5P5-IP-PRE">
+                                <rect key="frame" x="504" y="138" width="16" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BCq-vi-nGb">
+                                <rect key="frame" x="138" y="103" width="384" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="VLG-0Q-enQ">
+                                    <font key="font" metaFont="system" size="15"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lfg-4R-rVx">
+                                <rect key="frame" x="138" y="57" width="384" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" truncatesLastVisibleLine="YES" sendsActionOnEndEditing="YES" title="Multiline Label" id="UlA-Xw-Qr9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gOk-TU-II5">
+                                <rect key="frame" x="420" y="13" width="106" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Subscribe" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eQh-9S-sr0">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="subscribe:" target="Srl-3y-WkX" id="PR7-dh-DWu"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vj-N6-LA4">
+                                <rect key="frame" x="20" y="25" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PlaceholderIcon" id="9nh-Jv-cHS"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7J-TU-amL">
+                                <rect key="frame" x="421" y="97" width="81" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Load" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="K5K-bw-LgP">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="loadFeed:" target="Srl-3y-WkX" id="k9G-1s-087"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eAe-es-7aY">
+                                <rect key="frame" x="340" y="97" width="81" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c95-NZ-JQC">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="dismissController:" target="Srl-3y-WkX" id="G6E-wB-nQO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="cancelBtn" destination="eAe-es-7aY" id="5RQ-Ek-LYm"/>
+                        <outlet property="feedDescriptionTxt" destination="Lfg-4R-rVx" id="gr9-s5-huX"/>
+                        <outlet property="feedTitleTxt" destination="BCq-vi-nGb" id="ixR-mi-Ifc"/>
+                        <outlet property="imageView" destination="1vj-N6-LA4" id="Lzq-a7-AQ6"/>
+                        <outlet property="loadBtn" destination="W7J-TU-amL" id="vbe-ic-Tr4"/>
+                        <outlet property="loadingIndicator" destination="5P5-IP-PRE" id="DBB-d3-WID"/>
+                        <outlet property="subscribe" destination="gOk-TU-II5" id="Vpc-vI-B8N"/>
+                        <outlet property="subscribeBtn" destination="gOk-TU-II5" id="yNV-Gc-wh6"/>
+                        <outlet property="urlTxt" destination="11m-DT-422" id="TEZ-e6-odP"/>
+                    </connections>
+                </viewController>
+                <customObject id="9th-X0-DEo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="533" y="-222.5"/>
         </scene>
         <!--Downloads View Controller-->
         <scene sceneID="hTu-GC-p7l">
@@ -540,7 +684,7 @@
                 </viewController>
                 <customObject id="cBH-5i-bbv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="418" y="-120"/>
+            <point key="canvasLocation" x="421" y="68"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -737,6 +881,10 @@
                                                                 </textField>
                                                                 <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="t9j-Ek-s8D">
                                                                     <rect key="frame" x="208" y="21" width="16" height="16"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="16" id="10e-fv-Jwh"/>
+                                                                        <constraint firstAttribute="height" constant="16" id="uzi-ot-oob"/>
+                                                                    </constraints>
                                                                 </progressIndicator>
                                                             </subviews>
                                                             <constraints>
