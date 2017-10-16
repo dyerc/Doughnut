@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 protocol DownloadManagerDelegate {
   func downloadStarted()
@@ -73,6 +74,9 @@ class DownloadTask: NSObject, URLSessionDownloadDelegate {
     do {
       try FileManager.default.copyItem(at: location, to: outputPath)
       
+      let avAsset = AVAsset(url: outputPath)
+      
+      episode.duration = Int(exactly: avAsset.duration.seconds) ?? 0
       episode.downloaded = true
       episode.fileName = fileName
       delegate?.download(didComplete: self)

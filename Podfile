@@ -19,4 +19,5 @@ target 'Doughnut' do
 
   pod 'GRDB.swift'
   pod 'FeedKit', '~> 6.0'
+  pod 'MASPreferences'
 end

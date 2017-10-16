@@ -12,16 +12,32 @@ class EpisodeCellView: NSTableCellView {
   @IBOutlet weak var title: NSTextField!
   @IBOutlet weak var summary: NSTextField!
   @IBOutlet weak var date: NSTextField!
+  @IBOutlet weak var dateOriginConstraint: NSLayoutConstraint!
+  @IBOutlet weak var duration: NSTextField!
+  
+  let playedIndicatorSize: CGFloat = 10
   
   var episode: Episode? {
     didSet {
       title.stringValue = episode?.title ?? ""
-      summary.stringValue = episode?.description ?? ""
+      summary.stringValue = episode?.plainDescription ?? ""
       
       let dateFormatter = DateFormatter()
       dateFormatter.dateStyle = .short
       dateFormatter.timeStyle = .none
       date.stringValue = dateFormatter.string(from: episode?.pubDate ?? Date())
+      
+      if (episode?.played ?? true) == false {
+        dateOriginConstraint.constant = (12 + playedIndicatorSize + 6)
+      } else {
+        dateOriginConstraint.constant = 12
+      }
+      
+      if (episode?.duration ?? 0) > 0 {
+        duration.stringValue = Utils.formatDuration((episode?.duration ?? 0) - (episode?.playPosition ?? 0))
+      } else {
+        duration.stringValue = ""
+      }
       
       // Needed in order for favourite, played marks etc to be updated
       needsDisplay = true
@@ -31,14 +47,22 @@ class EpisodeCellView: NSTableCellView {
   override func draw(_ dirtyRect: NSRect) {
     super.draw(dirtyRect)
     
-    if episode?.favourite ?? false {
+    guard let episode = episode else { return }
+    
+    let selectedBlue = NSColor(calibratedRed: 0.090, green: 0.433, blue: 0.937, alpha: 1.0)
+    var selectedColor = selectedBlue
+    if backgroundStyle == .dark {
+      selectedColor = NSColor.white
+    }
+    
+    if episode.favourite {
       NSColor.init(red: 1.0, green: 0.824, blue: 0.180, alpha: 1.0).setFill()
       __NSRectFill(NSRect(x: 0, y: -0, width: 3, height: self.bounds.height))
     }
     
-    if episode?.downloaded ?? false {
+    if episode.downloaded {
       // Draw download corner triangle
-      NSColor(calibratedRed: 0.090, green: 0.433, blue: 0.937, alpha: 1.0).setFill()
+      selectedColor.setFill()
       let downloadCorner = NSBezierPath()
       let downloadCornerSize: CGFloat = 25.0
       downloadCorner.move(to: NSPoint(x: self.bounds.width, y: self.bounds.height))
@@ -67,6 +91,35 @@ class EpisodeCellView: NSTableCellView {
       downloadTriangle.fill()
     }
     
+    if !episode.played {
+      let playedIndicatorRect = NSRect(x: 12, y: 7, width: playedIndicatorSize, height: playedIndicatorSize)
+      
+      let playedBg = NSBezierPath(ovalIn: playedIndicatorRect)
+      selectedColor.setStroke()
+      playedBg.stroke()
+      
+      if episode.playPosition > 0 && episode.duration > 0 {
+        let playedSlice = NSBezierPath()
+        let center = CGPoint(x: playedIndicatorRect.midX, y: playedIndicatorRect.midY)
+        let playedPercent = Double(episode.playPosition) / Double(episode.duration)
+        let endAngle = CGFloat(360 * playedPercent)
+        playedSlice.move(to: center)
+        playedSlice.line(to: CGPoint(x: center.x, y: playedIndicatorRect.maxY))
+        playedSlice.appendArc(withCenter: center, radius: playedIndicatorRect.size.width / 2, startAngle: 90, endAngle: 90 - endAngle)
+        playedSlice.close()
+        
+        if backgroundStyle == .dark {
+          selectedColor.setFill()
+        } else {
+          selectedBlue.setFill()
+        }
+        playedSlice.fill()
+      } else {
+        selectedColor.setFill()
+        playedBg.fill()
+      }
+    }
+    
     drawBottomBorder()
   }
   
@@ -76,11 +129,15 @@ class EpisodeCellView: NSTableCellView {
         self.title.textColor = NSColor.white
         summary.textColor = NSColor.init(white: 0.9, alpha: 1.0)
         date.textColor = NSColor.init(white: 0.9, alpha: 1.0)
+        duration.textColor = NSColor.init(white: 0.9, alpha: 1.0)
       } else {
         self.title.textColor = NSColor.labelColor
         summary.textColor = NSColor.secondaryLabelColor
         date.textColor = NSColor.secondaryLabelColor
+        duration.textColor = NSColor.secondaryLabelColor
       }
+      
+      needsDisplay = true
     }
   }
   

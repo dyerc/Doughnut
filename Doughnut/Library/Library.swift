@@ -178,6 +178,37 @@ class Library: NSObject {
     }
   }
   
+  func subscribe(podcast: Podcast) {
+    guard let dbQueue = self.dbQueue else { return }
+    
+    taskQueue.async {
+      do {
+        // Check if the podcast is already subscribed to
+        let existing = try dbQueue.inDatabase({ db -> Podcast? in
+          return try Podcast.filter(Column("feed") == podcast.feed).fetchOne(db)
+        })
+        
+        if existing != nil {
+          return
+        }
+      } catch {
+        Library.handleDatabaseError(error)
+        return
+      }
+      
+      self.save(podcast: podcast, completion: { (podcast, error) in
+        guard error == nil else { return }
+        
+        self.detectedNewEpisodes(podcast: podcast, episodes: podcast.episodes)
+        
+        DispatchQueue.main.async {
+          self.podcasts.append(podcast)
+          self.delegate?.librarySubscribedToPodcast(subscribed: podcast)
+        }
+      })
+    }
+  }
+  
   func unsubscribe(podcast: Podcast) {
     
   }

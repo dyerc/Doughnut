@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import WebKit
 
 enum DetailViewType {
   case BlankDetail
@@ -14,11 +15,13 @@ enum DetailViewType {
   case EpisodeDetail
 }
 
-class DetailViewController: NSViewController {
+class DetailViewController: NSViewController, WKNavigationDelegate {
   @IBOutlet weak var detailTitle: NSTextField!
   @IBOutlet weak var secondaryTitle: NSTextField!
   @IBOutlet weak var miniTitle: NSTextField!
   @IBOutlet weak var coverImage: NSImageView!
+  
+  @IBOutlet weak var webView: WKWebView!
   
   var detailType: DetailViewType = .BlankDetail {
     didSet {
@@ -64,6 +67,8 @@ class DetailViewController: NSViewController {
     
     view.wantsLayer = true
     view.layer?.backgroundColor = CGColor.white
+    
+    webView.navigationDelegate = self
   }
   
   func showBlank() {
@@ -82,6 +87,8 @@ class DetailViewController: NSViewController {
     secondaryTitle.stringValue = podcast.author ?? ""
     miniTitle.stringValue = podcast.link ?? ""
     coverImage.image = podcast.image
+    
+    webView.loadHTMLString(MarkupGenerator.markup(forPodcast: podcast), baseURL: nil)
   }
   
   func showEpisode() {
@@ -94,5 +101,19 @@ class DetailViewController: NSViewController {
     secondaryTitle.stringValue = podcast?.title ?? ""
     miniTitle.stringValue = episode.link ?? ""
     coverImage.image = podcast?.image
+    
+    webView.loadHTMLString(MarkupGenerator.markup(forEpisode: episode), baseURL: nil)
+  }
+  
+  func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    if navigationAction.navigationType == .linkActivated {
+      if let url = navigationAction.request.url {
+        NSWorkspace.shared.open(url)
+      }
+      
+      decisionHandler(.cancel)
+    } else {
+      decisionHandler(.allow)
+    }
   }
 }

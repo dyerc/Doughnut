@@ -221,6 +221,37 @@ class Podcast: Record {
     }
   }
   
+  // Detect either an iTunes podcast or RSS feed and call completion with resulting podcast
+  static func detect(url: String, completion: @escaping (_ result: Podcast?) -> Void) {
+    DispatchQueue.global(qos: .background).async {
+      if url.contains("itunes.apple.com") {
+        Utils.iTunesFeedUrl(iTunesUrl: url, completion: { (feedUrl) in
+          guard let feedUrl = URL(string: feedUrl ?? "") else {
+            DispatchQueue.main.async {
+              completion(nil)
+            }
+            return
+          }
+          
+          DispatchQueue.main.async {
+            completion(Podcast.subscribe(feedUrl: feedUrl))
+          }
+        })
+      } else {
+        guard let url = URL(string: url) else {
+          DispatchQueue.main.async {
+            completion(nil)
+          }
+          return
+        }
+        
+        DispatchQueue.main.async {
+          completion(Podcast.subscribe(feedUrl: url))
+        }
+      }
+    }
+  }
+  
   static func resizeArtwork(image: NSImage, w: Int, h: Int) -> NSImage {
     let destSize = NSMakeSize(CGFloat(w), CGFloat(h))
     let newImage = NSImage(size: destSize)

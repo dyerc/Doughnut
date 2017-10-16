@@ -83,7 +83,7 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   
   func libraryUpdatedEpisode(episode: Episode) {
     if episodeViewController.podcast?.id == episode.podcastId {
-      episodeViewController.reloadEpisodes()
+      episodeViewController.reloadEpisode(episode)
     }
   }
 }

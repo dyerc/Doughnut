@@ -31,6 +31,13 @@ class Episode: Record {
   
   var artwork: NSImage?
   
+  var plainDescription: String? {
+    get {
+      guard let description = description else { return nil }
+      return description.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil).trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+  }
+  
   override class var databaseTableName: String {
     return "episodes"
   }

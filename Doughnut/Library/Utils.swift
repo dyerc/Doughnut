@@ -9,6 +9,16 @@
 import Foundation
 
 class Utils {
+  static func formatDuration(_ seconds: Int) -> String {
+    guard seconds > 0 else { return "" }
+    
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.hour, .minute]
+    formatter.unitsStyle = .short
+    
+    return formatter.string(from: TimeInterval(seconds)) ?? ""
+  }
+  
   static func iTunesFeedUrl(iTunesUrl: String, completion: @escaping (_ result: String?) -> Void) {
     guard let iTunesId = Utils.iTunesPodcastId(iTunesUrl: iTunesUrl) else {
       completion(nil)

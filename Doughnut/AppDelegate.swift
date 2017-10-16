@@ -7,11 +7,16 @@
 //
 
 import Cocoa
+import MASPreferences
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+  lazy var preferencesWindowController: NSWindowController = {
+    return MASPreferencesWindowController(viewControllers: [
+      PrefLibraryViewController.instantiate()
+      ], title: "Doughnut Preferences")
+  }()
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     /*do {
@@ -34,6 +39,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Insert code here to tear down your application
   }
 
-
+  @IBAction func showPreferences(_ sender: AnyObject) {
+    preferencesWindowController.showWindow(self)
+  }
 }
 

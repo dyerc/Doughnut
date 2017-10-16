@@ -60,6 +60,14 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     tableView.reloadData()
   }
   
+  func reloadEpisode(_ episode: Episode) {
+    if let index = episodes.index(where: { e -> Bool in
+      e.id == episode.id
+    }) {
+      tableView.reloadData(forRowIndexes: IndexSet.init(integer: index), columnIndexes: IndexSet.init(integer: 0))
+    }
+  }
+  
   func selectPodcast(_ selectedPodcast: Podcast?) {
     podcast = selectedPodcast
     reloadEpisodes()

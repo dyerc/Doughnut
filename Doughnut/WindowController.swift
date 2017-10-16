@@ -13,13 +13,17 @@ class WindowController: NSWindowController, NSWindowDelegate {
   @IBOutlet var newToggle: NSButton!
   @IBOutlet var playerView: NSToolbarItem!
   
-  lazy var downloadsViewController: DownloadsViewController = {
-    return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DownloadsPopover")) as! DownloadsViewController
-  }()
+  var downloadsViewController: DownloadsViewController {
+    get {
+      return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DownloadsPopover")) as! DownloadsViewController
+    }
+  }
   
-  lazy var subscribeViewController: SubscribeViewController = {
-    return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SubscribeViewController")) as! SubscribeViewController
-  }()
+  var subscribeViewController: SubscribeViewController {
+    get {
+      return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SubscribeViewController")) as! SubscribeViewController
+    }
+  }
   
   override func windowDidLoad() {
     super.windowDidLoad()

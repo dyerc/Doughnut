@@ -23,6 +23,8 @@ class SubscribeViewController: NSViewController, NSTextFieldDelegate {
   @IBOutlet weak var cancelBtn: NSButton!
   @IBOutlet weak var subscribeBtn: NSButton!
   
+  var detectedPodcast: Podcast?
+  
   override func viewDidLoad() {
     initialHeight = view.frame.height
     
@@ -48,14 +50,28 @@ class SubscribeViewController: NSViewController, NSTextFieldDelegate {
     loadBtn.isEnabled = false
     loadingIndicator.startAnimation(self)
     
-    
+    Podcast.detect(url: urlTxt.stringValue) { podcast in
+      if let podcast = podcast {
+        self.loadBtn.isEnabled = true
+        self.loadingIndicator.stopAnimation(self)
+        self.subscribeBtn.isEnabled = true
+        
+        self.imageView.image = podcast.image
+        self.feedTitleTxt.stringValue = podcast.title
+        self.feedDescriptionTxt.stringValue = podcast.description ?? ""
+        
+        self.detectedPodcast = podcast
+        self.expand()
+      }
+    }
   }
   
   @IBAction func subscribe(_ sender: Any) {
+    guard let detectedPodcast = detectedPodcast else { return }
+    Library.global.subscribe(podcast: detectedPodcast)
   }
   
   func expand() {
-    loadBtn.isHidden = true
     cancelBtn.isHidden = true
     
     imageView.isHidden = false

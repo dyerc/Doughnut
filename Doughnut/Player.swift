@@ -53,7 +53,8 @@ class Player: NSObject {
   var buffered: Double = 0
   var duration: Double = 0
   
-  var skipDuration: Double = 30.0
+  let skipDuration: Double = 30.0
+  let playedThreshold: Double = 0.9
   
   func play(episode: Episode) {
     guard let podcast = episode.podcast else { return }
@@ -71,7 +72,7 @@ class Player: NSObject {
       avPlayer = AVPlayer(url: url)
     }
     
-    if let avPlayer = avPlayer {
+    if let avPlayer = avPlayer, let episodeId = episode.id {
       // Register to receive timing events
       avPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: .main, using: { time in
         self.position = time.seconds
@@ -82,6 +83,20 @@ class Player: NSObject {
         }
         
         self.delegate?.updatePlayback()
+      })
+      
+      // Update episode with playback state
+      avPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 5, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: .main, using: { time in
+        if let episode = Library.global.episode(id: episodeId) {
+          episode.playPosition = Int(time.seconds)
+          episode.duration = Int(avPlayer.currentItem?.asset.duration.seconds ?? 0)
+          
+          if episode.duration > 0 && (Double(episode.playPosition) / Double(episode.duration)) > self.playedThreshold {
+            episode.played = true
+          }
+          
+          Library.global.save(episode: episode)
+        }
       })
       
       // Register to receive status events
@@ -104,6 +119,11 @@ class Player: NSObject {
       self.buffered = 0
       self.position = 0
       delegate?.updatePlayback()
+      
+      // Seek to existing position
+      if episode.playPosition > 0 {
+        avPlayer.seek(to: CMTime(seconds: Double(episode.playPosition), preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+      }
       
       avPlayer.volume = volume
       delegate?.update(forEpisode: episode)
