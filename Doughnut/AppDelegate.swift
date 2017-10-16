@@ -19,6 +19,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }()
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
+    UserDefaults.standard.register(defaults: Preference.defaultPreference)
+    
+    print("Check for updates every \(Preference.string(for: Preference.Key.reloadFrequency))")
+    
     /*do {
       try Player.audioOutputDevices()
     } catch {}*/
