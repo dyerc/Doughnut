@@ -23,6 +23,7 @@ class Preference {
     init?(rawValue: RawValue) { self.rawValue = rawValue }
     
     // Library
+    static let libraryPath = Key("libraryPath")
     static let reloadFrequency = Key("reloadFrequency")
     
     // Playback
@@ -34,6 +35,7 @@ class Preference {
   static let kVolume = "Volume"
   
   static let defaultPreference:[String: Any] = [
+    Key.libraryPath.rawValue: Preference.userMusicPath().appendingPathComponent("Doughnut"),
     Key.reloadFrequency.rawValue: 60,
     
     Key.skipBackDuration.rawValue: 30,
@@ -90,38 +92,61 @@ class Preference {
     return ud.value(forKey: key.rawValue)
   }
   
+  static func set(_ value: Bool, for key: Key) {
+    ud.set(value, forKey: key.rawValue)
+  }
+  
+  static func set(_ value: Int, for key: Key) {
+    ud.set(value, forKey: key.rawValue)
+  }
+  
+  static func set(_ value: String, for key: Key) {
+    ud.set(value, forKey: key.rawValue)
+  }
+  
+  static func set(_ value: Float, for key: Key) {
+    ud.set(value, forKey: key.rawValue)
+  }
+  
+  static func set(_ value: Double, for key: Key) {
+    ud.set(value, forKey: key.rawValue)
+  }
+  
+  static func set(_ value: Any, for key: Key) {
+    ud.set(value, forKey: key.rawValue)
+  }
+  
+  static func set(_ value: URL, for key: Key) {
+    ud.set(value, forKey: key.rawValue)
+  }
+  
   static func testEnv() -> Bool {
     return ProcessInfo.processInfo.environment["TEST"] != nil
   }
   
   static func libraryPath() -> URL? {
     if testEnv() {
-      return defaultLibraryPath()
-    } else {
-      if let path = UserDefaults.standard.string(forKey: kLibraryPath) {
-        return URL(fileURLWithPath: path)
-      } else {
-        return nil
-      }
-    }
-  }
-  
-  static func defaultLibraryPath() -> URL {
-    var path: URL    
-    if testEnv() {
-      print("Using test library")
-      path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
+      let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
+      createLibraryIfNotExists(url)
+      return url
     } else {
       #if DEBUG
-        path = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
+        let url = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
+        createLibraryIfNotExists(url)
+        return url
       #else
-        path = Preference.userMusicPath().appendingPathComponent("Doughnut")
+        if let url = Preference.url(for: Key.libraryPath) {
+          if let defaultUrl = defaultPreference[Key.libraryPath.rawValue] as? URL {
+            if url == defaultUrl {
+              createLibraryIfNotExists(url)
+            }
+          }
+          return url
+        } else {
+          return nil
+        }
       #endif
     }
-    
-    createLibraryIfNotExists(path)
-    
-    return path
   }
   
   static func createLibraryIfNotExists(_ url: URL) {

@@ -59,7 +59,11 @@ class Library: NSObject {
         }
       }
     } else {
-      self.path = Preference.defaultLibraryPath()
+      if let path = Library.locate() {
+        self.path = path
+      } else {
+        fatalError("No library located!")
+      }
     }
   }
   
@@ -120,7 +124,9 @@ class Library: NSObject {
       panel.runModal()
       return panel.url
     } else if result == .alertSecondButtonReturn {
-      return Preference.defaultLibraryPath()
+      // Reset library preference to default
+      Preference.set(Preference.defaultPreference[Preference.Key.libraryPath.rawValue], for: Preference.Key.libraryPath)
+      return Preference.url(for: Preference.Key.libraryPath)
     } else {
       return nil
     }
