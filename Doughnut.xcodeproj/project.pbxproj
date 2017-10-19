@@ -41,6 +41,7 @@
 		838257E11F759F6F00DB4FD1 /* DoughnutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257E01F759F6F00DB4FD1 /* DoughnutTests.swift */; };
 		838257EC1F759F6F00DB4FD1 /* DoughnutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257EB1F759F6F00DB4FD1 /* DoughnutUITests.swift */; };
 		8397B9D11F8FC64D00C92AE6 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FF90A1F8D60430065E593 /* DownloadManager.swift */; };
+		83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA22E21F994EA6006BF58A /* DoughnutApp.swift */; };
 		83D4CA561F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4CA551F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift */; };
 		83D4CA5A1F7C3779002EDC36 /* ValidFeed.xml in Resources */ = {isa = PBXBuildFile; fileRef = 83D4CA591F7C3779002EDC36 /* ValidFeed.xml */; };
 		83D4CA5D1F7C3902002EDC36 /* LibraryTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4CA5C1F7C3902002EDC36 /* LibraryTestCase.swift */; };
@@ -55,6 +56,8 @@
 		83DB16DE1F93F1CE0062B266 /* LibraryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16DD1F93F1CE0062B266 /* LibraryUtils.swift */; };
 		83DB16DF1F93F1E40062B266 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16DB1F93E34B0062B266 /* Utils.swift */; };
 		83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16E01F93FB460062B266 /* SubscribeViewController.swift */; };
+		83EFC6041F9954A500E1DE1F /* SPMediaKeyTap.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */; };
+		83EFC6051F9954AD00E1DE1F /* NSObject+SPInvocationGrabbing.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */; };
 		83FB4EB81F7BD9A1001CD842 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +85,10 @@
 		558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.debug.xcconfig"; sourceTree = "<group>"; };
 		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
+		831EEADE1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SPInvocationGrabbing.h"; sourceTree = "<group>"; };
+		831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPInvocationGrabbing.m"; sourceTree = "<group>"; };
+		831EEAE01F994F6C00DCC872 /* SPMediaKeyTap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPMediaKeyTap.h; sourceTree = "<group>"; };
+		831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPMediaKeyTap.m; sourceTree = "<group>"; };
 		832A04331F76EBDC00C92D25 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefLibraryViewController.swift; sourceTree = "<group>"; };
 		832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Doughnut-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -116,6 +123,7 @@
 		838257E71F759F6F00DB4FD1 /* DoughnutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoughnutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		838257EB1F759F6F00DB4FD1 /* DoughnutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutUITests.swift; sourceTree = "<group>"; };
 		838257ED1F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83BA22E21F994EA6006BF58A /* DoughnutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutApp.swift; sourceTree = "<group>"; };
 		83D4CA551F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTestsWithoutSubscriptions.swift; sourceTree = "<group>"; };
 		83D4CA581F7C3763002EDC36 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		83D4CA591F7C3779002EDC36 /* ValidFeed.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ValidFeed.xml; sourceTree = "<group>"; };
@@ -195,6 +203,33 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		831EEADB1F994F6C00DCC872 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				831EEADC1F994F6C00DCC872 /* SPMediaKeyTap */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		831EEADC1F994F6C00DCC872 /* SPMediaKeyTap */ = {
+			isa = PBXGroup;
+			children = (
+				831EEADD1F994F6C00DCC872 /* SPInvocationGrabbing */,
+				831EEAE01F994F6C00DCC872 /* SPMediaKeyTap.h */,
+				831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */,
+			);
+			path = SPMediaKeyTap;
+			sourceTree = "<group>";
+		};
+		831EEADD1F994F6C00DCC872 /* SPInvocationGrabbing */ = {
+			isa = PBXGroup;
+			children = (
+				831EEADE1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.h */,
+				831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */,
+			);
+			path = SPInvocationGrabbing;
+			sourceTree = "<group>";
+		};
 		834342661F801DD600913C0B /* Preference */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,14 +283,16 @@
 				830B15991F7B97250086C121 /* Views */,
 				83667DEE1F76D1F300F1ABC0 /* View Controllers */,
 				838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */,
+				83BA22E21F994EA6006BF58A /* DoughnutApp.swift */,
+				83D971091F812B270091822A /* Player.swift */,
+				832A04331F76EBDC00C92D25 /* WindowController.swift */,
+				832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */,
 				838257D11F759F6F00DB4FD1 /* Assets.xcassets */,
 				838257D31F759F6F00DB4FD1 /* Main.storyboard */,
 				838257D61F759F6F00DB4FD1 /* Info.plist */,
 				838257D71F759F6F00DB4FD1 /* Doughnut.entitlements */,
-				83D971091F812B270091822A /* Player.swift */,
-				832A04331F76EBDC00C92D25 /* WindowController.swift */,
 				834342661F801DD600913C0B /* Preference */,
-				832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */,
+				831EEADB1F994F6C00DCC872 /* Vendor */,
 			);
 			path = Doughnut;
 			sourceTree = "<group>";
@@ -635,13 +672,16 @@
 			files = (
 				8343426A1F802C1400913C0B /* EpisodeFilterViewController.swift in Sources */,
 				8341B8391F7BE4F100B50A5D /* Preference.swift in Sources */,
+				83EFC6051F9954AD00E1DE1F /* NSObject+SPInvocationGrabbing.m in Sources */,
 				8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */,
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				83D9710C1F812E910091822A /* PlayerView.swift in Sources */,
 				832BB74E1F95155000988AE8 /* PrefLibraryViewController.swift in Sources */,
 				83D9710A1F812B270091822A /* Player.swift in Sources */,
+				83EFC6041F9954A500E1DE1F /* SPMediaKeyTap.m in Sources */,
 				837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */,
 				83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */,
+				83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
 				830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */,
 				838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */,
@@ -795,6 +835,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.Doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Test;
@@ -967,6 +1008,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.Doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -985,6 +1027,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.Doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

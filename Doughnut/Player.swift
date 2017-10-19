@@ -151,6 +151,14 @@ class Player: NSObject {
     }
   }
   
+  func togglePlay() {
+    if isPlaying {
+      pause()
+    } else {
+      play()
+    }
+  }
+  
   func play() {
     guard let av = avPlayer else { return }
     av.play()

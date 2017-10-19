@@ -26,5 +26,7 @@ class DoughnutApp: NSApplication {
         delegate.mediaKeyTap(nil, receivedMediaKeyEvent: event)
       }
     }
+    
+    super.sendEvent(event)
   }
 }

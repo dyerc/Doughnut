@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     if (keyIsPressed) {
       switch keyCode {
       case Int(NX_KEYTYPE_PLAY):
-        Player.global.play()
+        Player.global.togglePlay()
         
       case Int(NX_KEYTYPE_FAST):
         Player.global.skipAhead()
