@@ -32,6 +32,6 @@
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
+	<string>DoughnutApp</string>
 </dict>
 </plist>

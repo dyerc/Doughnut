@@ -610,7 +610,7 @@ Gw
                                                                 </progressIndicator>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nEu-f4-cVf">
                                                                     <rect key="frame" x="7" y="32" width="283" height="17"/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="History on Fire - 24 The Pirate Queen" id="crP-Rr-cQ2">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Episode TItle" id="crP-Rr-cQ2">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -618,7 +618,7 @@ Gw
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hDK-IL-qry">
                                                                     <rect key="frame" x="7" y="3" width="276" height="11"/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="2.6 MB of 63.8 MB" id="79J-eG-bt6">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Unknown" id="79J-eG-bt6">
                                                                         <font key="font" metaFont="miniSystem"/>
                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1172,10 +1172,34 @@ Gw
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="UqD-Im-R8k"/>
-                        <menuItem title="Download" id="Ttf-1g-CF8">
-                            <modifierMask key="keyEquivalentModifierMask"/>
+                        <menuItem title="Download" keyEquivalent="l" id="Ttf-1g-CF8">
                             <connections>
                                 <action selector="download:" target="GEj-8A-BQz" id="Mkl-S2-B8g"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Move to Trash" id="Kvk-D3-5SU">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="moveToTrash:" target="GEj-8A-BQz" id="EvE-2B-f3w"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Show in Finder" id="dXQ-Wk-1C3">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="showInFinder:" target="GEj-8A-BQz" id="WVj-Gy-Scq"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="1mV-Ih-jzm"/>
+                        <menuItem title="Mark all as Played" id="61a-bx-s1p">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="markAllAsPlayed:" target="GEj-8A-BQz" id="Wtx-zk-mZx"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Mark all as Unplayed" id="uy7-bc-1gb">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="markAllAsUnplayed:" target="GEj-8A-BQz" id="bRu-jv-cH4"/>
                             </connections>
                         </menuItem>
                     </items>
@@ -1262,7 +1286,7 @@ Gw
                 </viewController>
                 <customObject id="Jkj-YK-feH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="386.5" y="1318.5"/>
+            <point key="canvasLocation" x="304" y="1341"/>
         </scene>
     </scenes>
     <resources>

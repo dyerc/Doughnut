@@ -110,7 +110,15 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     case "Unmark Favourite":
       return episode.favourite
     case "Download":
-      return episode.enclosureUrl != nil
+      return episode.enclosureUrl != nil && !episode.downloaded
+    case "Move to Trash":
+      return episode.downloaded
+    case "Show in Finder":
+      return episode.downloaded
+    case "Mark all as Played":
+      return true
+    case "Mark all as Unplayed":
+      return true
     default:
       return false
     }
@@ -155,4 +163,35 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     Library.global.downloadManager.queueDownload(episode: episode)
   }
   
+  @IBAction func moveToTrash(_ sender: Any) {
+    
+  }
+  
+  @IBAction func showInFinder(_ sender: Any) {
+    let episode = episodes[tableView.clickedRow]
+    guard let fileName = episode.fileName else { return }
+    guard let podcast = episode.podcast else { return }
+
+    NSWorkspace.shared.selectFile("\(podcast.path)/\(fileName)", inFileViewerRootedAtPath: podcast.path)
+  }
+  
+  @IBAction func markAllAsPlayed(_ sender: Any) {
+    guard let podcast = episodes[tableView.clickedRow].podcast else { return }
+    
+    for episode in episodes {
+      episode.played = true
+    }
+    
+    Library.global.save(podcast: podcast)
+  }
+  
+  @IBAction func markAllAsUnplayed(_ sender: Any) {
+    guard let podcast = episodes[tableView.clickedRow].podcast else { return }
+    
+    for episode in episodes {
+      episode.played = false
+    }
+    
+    Library.global.save(podcast: podcast)
+  }
 }

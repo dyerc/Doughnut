@@ -10,5 +10,6 @@
 #define Doughnut_Bridging_Header_h
 
 #import <MASPreferences/MASPreferencesViewController.h>
+#import "Vendor/SPMediaKeyTap/SPMediaKeyTap.h"
 
 #endif /* Doughnut_Bridging_Header_h */
