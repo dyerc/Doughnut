@@ -406,6 +406,11 @@
 					838257C91F759F6F00DB4FD1 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					838257DB1F759F6F00DB4FD1 = {
 						CreatedOnToolsVersion = 9.0;
@@ -774,7 +779,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F42DD5B957A39D2CA878BEA8 /* Pods-Doughnut.test.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -953,7 +957,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -972,7 +975,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

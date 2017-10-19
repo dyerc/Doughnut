@@ -45,31 +45,20 @@ class Library: NSObject {
   let downloadManager = DownloadManager()
   
   override init() {
-    // Look for libaryPath stoed as in prefs
-    if let prefPath = Preference.libraryPath() {
-      var isDir = ObjCBool(true)
-      if FileManager.default.fileExists(atPath: prefPath.path, isDirectory: &isDir) {
-        self.path = prefPath
-      } else {
-        // A previous library was created that we can't access, prompt the user
-        if let path = Library.locate() {
-          self.path = path
-        } else {
-          fatalError("No library located!")
-        }
-      }
+    let libraryPath = Preference.libraryPath()
+    
+    var isDir = ObjCBool(true)
+    if FileManager.default.fileExists(atPath: libraryPath.path, isDirectory: &isDir) {
+      self.path = libraryPath
     } else {
-      if let path = Library.locate() {
-        self.path = path
-      } else {
-        fatalError("No library located!")
-      }
+      self.path = Library.locate()
     }
   }
   
   func connect() -> Bool {
     do {
-      dbQueue = try DatabaseQueue(path: databaseFile().path)
+      //dbQueue = try DatabaseQueue(path: databaseFile().path)
+      dbQueue = try DatabaseQueue(path: "/Volumes/Podcasts/Doughnut/Doughnut Library.dnl")
       
       if let dbQueue = dbQueue {
         try LibraryMigrations.migrate(db: dbQueue)
@@ -93,8 +82,11 @@ class Library: NSObject {
       } else {
         return false
       }
-    } catch {
-      print("Failed to connect to \(databaseFile().path)")
+    } catch let error {
+      let alert = NSAlert()
+      alert.messageText = "Failed to connect to library"
+      alert.informativeText = "\(databaseFile().path)\n\nError: \(error)"
+      alert.runModal()
       return false
     }
   }
@@ -107,13 +99,13 @@ class Library: NSObject {
     return inPath.appendingPathComponent(Library.databaseFilename)
   }
   
-  static private func locate() -> URL? {
+  static private func locate() -> URL {
     let alert = NSAlert()
     alert.addButton(withTitle: "Locate Library")
-    alert.addButton(withTitle: "New Library")
+    alert.addButton(withTitle: "Default Library")
     alert.addButton(withTitle: "Quit")
     alert.messageText = "Doughnut Library Not Found"
-    alert.informativeText = "Your Doughnut library could not be found. If you have an existing library, choose to locate it or create a blank new podcast library."
+    alert.informativeText = "Your Doughnut library could not be found. If you have an existing library, choose to locate it or create a blank new podcast library in the default location."
     
     let result = alert.runModal()
     if result == .alertFirstButtonReturn {
@@ -122,13 +114,19 @@ class Library: NSObject {
       panel.canChooseDirectories = true
       
       panel.runModal()
-      return panel.url
+      if let url = panel.url {
+        Preference.set(url, for: Preference.Key.libraryPath)
+        return url
+      } else {
+        return Library.locate()
+      }
     } else if result == .alertSecondButtonReturn {
       // Reset library preference to default
-      Preference.set(Preference.defaultPreference[Preference.Key.libraryPath.rawValue], for: Preference.Key.libraryPath)
-      return Preference.url(for: Preference.Key.libraryPath)
+      Preference.set(Preference.defaultLibraryPath, for: Preference.Key.libraryPath)
+      return Preference.defaultLibraryPath
     } else {
-      return nil
+      exit(0)
+      return Preference.defaultLibraryPath
     }
   }
   

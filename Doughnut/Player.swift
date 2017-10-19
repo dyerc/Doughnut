@@ -114,6 +114,8 @@ class Player: NSObject {
         }
       }
       
+      avPlayer.currentItem?.preferredForwardBufferDuration = CMTimeGetSeconds(CMTime(seconds: 120, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+      
       // Reset state
       self.duration = 0
       self.buffered = 0

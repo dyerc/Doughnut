@@ -34,8 +34,14 @@ class Preference {
   static let kLibraryPath = "LibraryPath"
   static let kVolume = "Volume"
   
+  static var defaultLibraryPath: URL {
+    get {
+      return Preference.userMusicPath().appendingPathComponent("Doughnut")
+    }
+  }
+  
   static let defaultPreference:[String: Any] = [
-    Key.libraryPath.rawValue: Preference.userMusicPath().appendingPathComponent("Doughnut"),
+    Key.libraryPath.rawValue: defaultLibraryPath,
     Key.reloadFrequency.rawValue: 60,
     
     Key.skipBackDuration.rawValue: 30,
@@ -124,26 +130,24 @@ class Preference {
     return ProcessInfo.processInfo.environment["TEST"] != nil
   }
   
-  static func libraryPath() -> URL? {
+  static func libraryPath() -> URL {
     if testEnv() {
       let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
       createLibraryIfNotExists(url)
       return url
     } else {
-      #if DEBUG
+      #if FALSE
         let url = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
         createLibraryIfNotExists(url)
         return url
       #else
         if let url = Preference.url(for: Key.libraryPath) {
-          if let defaultUrl = defaultPreference[Key.libraryPath.rawValue] as? URL {
-            if url == defaultUrl {
-              createLibraryIfNotExists(url)
-            }
+          if url == defaultLibraryPath {
+            createLibraryIfNotExists(url)
           }
           return url
         } else {
-          return nil
+          return defaultLibraryPath
         }
       #endif
     }
