@@ -32,6 +32,6 @@
 		<true/>
 	</dict>
 	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
+	<string>DoughnutApp</string>
 </dict>
 </plist>

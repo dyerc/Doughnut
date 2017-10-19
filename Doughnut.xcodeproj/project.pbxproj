@@ -11,6 +11,9 @@
 		2AB07BF789841271ED80EA26 /* Pods_DoughnutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25D4796441E8F7922FCDAF9A /* Pods_DoughnutUITests.framework */; };
 		4125A143137AD05319B3DEFC /* Pods_Doughnut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */; };
 		830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B159A1F7B97910086C121 /* PodcastCellView.swift */; };
+		8319F95D1F9949F000E516CB /* SPMediaKeyTap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319F95C1F9949F000E516CB /* SPMediaKeyTap.m */; };
+		8319F9621F994A7000E516CB /* NSObject+SPInvocationGrabbing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319F9611F994A7000E516CB /* NSObject+SPInvocationGrabbing.m */; };
+		8319F9641F994BF600E516CB /* DoughnutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8319F9631F994BF600E516CB /* DoughnutApp.swift */; };
 		832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
 		832BB74E1F95155000988AE8 /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */; };
 		832BB7531F951A5600988AE8 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 832BB7521F951A5600988AE8 /* Preferences.storyboard */; };
@@ -82,6 +85,11 @@
 		558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.debug.xcconfig"; sourceTree = "<group>"; };
 		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
+		8319F95C1F9949F000E516CB /* SPMediaKeyTap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPMediaKeyTap.m; sourceTree = "<group>"; };
+		8319F95E1F994A1600E516CB /* SPMediaKeyTap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPMediaKeyTap.h; sourceTree = "<group>"; };
+		8319F9601F994A4600E516CB /* NSObject+SPInvocationGrabbing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SPInvocationGrabbing.h"; sourceTree = "<group>"; };
+		8319F9611F994A7000E516CB /* NSObject+SPInvocationGrabbing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPInvocationGrabbing.m"; sourceTree = "<group>"; };
+		8319F9631F994BF600E516CB /* DoughnutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutApp.swift; sourceTree = "<group>"; };
 		832A04331F76EBDC00C92D25 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefLibraryViewController.swift; sourceTree = "<group>"; };
 		832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Doughnut-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -195,6 +203,33 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8319F9571F99380D00E516CB /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				8319F95A1F9949CD00E516CB /* SPMediaKeyTap */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		8319F95A1F9949CD00E516CB /* SPMediaKeyTap */ = {
+			isa = PBXGroup;
+			children = (
+				8319F95F1F994A3500E516CB /* SPInvocationGrabbing */,
+				8319F95C1F9949F000E516CB /* SPMediaKeyTap.m */,
+				8319F95E1F994A1600E516CB /* SPMediaKeyTap.h */,
+			);
+			path = SPMediaKeyTap;
+			sourceTree = "<group>";
+		};
+		8319F95F1F994A3500E516CB /* SPInvocationGrabbing */ = {
+			isa = PBXGroup;
+			children = (
+				8319F9601F994A4600E516CB /* NSObject+SPInvocationGrabbing.h */,
+				8319F9611F994A7000E516CB /* NSObject+SPInvocationGrabbing.m */,
+			);
+			path = SPInvocationGrabbing;
+			sourceTree = "<group>";
+		};
 		834342661F801DD600913C0B /* Preference */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +283,7 @@
 				830B15991F7B97250086C121 /* Views */,
 				83667DEE1F76D1F300F1ABC0 /* View Controllers */,
 				838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */,
+				8319F9631F994BF600E516CB /* DoughnutApp.swift */,
 				838257D11F759F6F00DB4FD1 /* Assets.xcassets */,
 				838257D31F759F6F00DB4FD1 /* Main.storyboard */,
 				838257D61F759F6F00DB4FD1 /* Info.plist */,
@@ -256,6 +292,7 @@
 				832A04331F76EBDC00C92D25 /* WindowController.swift */,
 				834342661F801DD600913C0B /* Preference */,
 				832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */,
+				8319F9571F99380D00E516CB /* Vendor */,
 			);
 			path = Doughnut;
 			sourceTree = "<group>";
@@ -405,6 +442,7 @@
 				TargetAttributes = {
 					838257C91F759F6F00DB4FD1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					838257DB1F759F6F00DB4FD1 = {
@@ -630,17 +668,20 @@
 			files = (
 				8343426A1F802C1400913C0B /* EpisodeFilterViewController.swift in Sources */,
 				8341B8391F7BE4F100B50A5D /* Preference.swift in Sources */,
+				8319F9621F994A7000E516CB /* NSObject+SPInvocationGrabbing.m in Sources */,
 				8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */,
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				83D9710C1F812E910091822A /* PlayerView.swift in Sources */,
 				832BB74E1F95155000988AE8 /* PrefLibraryViewController.swift in Sources */,
 				83D9710A1F812B270091822A /* Player.swift in Sources */,
+				8319F95D1F9949F000E516CB /* SPMediaKeyTap.m in Sources */,
 				837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */,
 				83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
 				830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */,
 				838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */,
 				83659AB81F7D8A0300E09833 /* Podcast.swift in Sources */,
+				8319F9641F994BF600E516CB /* DoughnutApp.swift in Sources */,
 				837D52BE1F8E622200C17514 /* DownloadsViewController.swift in Sources */,
 				8379899B1F81616C00234577 /* SeekSlider.swift in Sources */,
 				837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */,
@@ -774,6 +815,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F42DD5B957A39D2CA878BEA8 /* Pods-Doughnut.test.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -791,6 +833,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.Doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Test;
@@ -953,6 +997,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -964,6 +1009,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.Doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -972,6 +1019,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -983,6 +1031,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.Doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

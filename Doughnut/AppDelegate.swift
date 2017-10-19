@@ -11,17 +11,28 @@ import MASPreferences
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+  var mediaKeyTap: SPMediaKeyTap?
 
   lazy var preferencesWindowController: NSWindowController = {
     return MASPreferencesWindowController(viewControllers: [
       PrefLibraryViewController.instantiate()
       ], title: "Doughnut Preferences")
   }()
+  
+  override init() {
+    UserDefaults.standard.register(
+      defaults: [kMediaKeyUsingBundleIdentifiersDefaultsKey : SPMediaKeyTap.defaultMediaKeyUserBundleIdentifiers()])
+  }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
     
     print("Check for updates every \(Preference.string(for: Preference.Key.reloadFrequency))")
+    
+    mediaKeyTap = SPMediaKeyTap(delegate: self)
+    if SPMediaKeyTap.usesGlobalMediaKeyTap() {
+      mediaKeyTap?.startWatchingMediaKeys()
+    }
     
     /*do {
       try Player.audioOutputDevices()
@@ -41,6 +52,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   func applicationWillTerminate(_ aNotification: Notification) {
     // Insert code here to tear down your application
+  }
+  
+  override func mediaKeyTap(_ keyTap: SPMediaKeyTap!, receivedMediaKeyEvent event: NSEvent!) {
+    let keyCode = Int((event.data1 & 0xFFFF0000) >> 16);
+    let keyFlags = (event.data1 & 0x0000FFFF);
+    let keyIsPressed = (((keyFlags & 0xFF00) >> 8)) == 0xA;
+    
+    if (keyIsPressed) {
+      switch keyCode {
+      case Int(NX_KEYTYPE_PLAY):
+        Player.global.play()
+        
+      case Int(NX_KEYTYPE_FAST):
+        Player.global.skipAhead()
+        
+      case Int(NX_KEYTYPE_REWIND):
+        Player.global.skipBack()
+        
+      default:
+        break
+      }
+    }
   }
 
   @IBAction func showPreferences(_ sender: AnyObject) {

@@ -13,9 +13,14 @@ class DownloadCellView: NSTableCellView, DownloadProgressDelegate {
   @IBOutlet weak var progressBar: NSProgressIndicator!
   @IBOutlet weak var progressText: NSTextField!
   
+  let byteFormatter = ByteCountFormatter()
+  
   var download: DownloadTask? {
     didSet {
       download?.progressDelegate = self
+      
+      byteFormatter.allowedUnits = .useMB
+      byteFormatter.countStyle = .file
       
       episodeTitle.stringValue = download?.episode.title ?? ""
     }
@@ -29,12 +34,16 @@ class DownloadCellView: NSTableCellView, DownloadProgressDelegate {
       progressBar.maxValue = 1
       progressBar.isIndeterminate = false
       progressBar.doubleValue = download.progressedBytes / download.totalBytes
+
+      progressText.stringValue = "\(byteFormatter.string(fromByteCount: Int64(download.progressedBytes))) of \(byteFormatter.string(fromByteCount: Int64(download.totalBytes)))"
     } else {
       progressBar.startAnimation(self)
       progressBar.isIndeterminate = true
       progressBar.doubleValue = 0
       progressBar.minValue = 0
       progressBar.maxValue = 0
+      
+      progressText.stringValue = "Unknown"
     }
   }
 }

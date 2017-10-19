@@ -127,6 +127,8 @@ class DownloadManager: NSObject, DownloadTaskDelegate {
     if (downloads.count == 1) {
       dl.resume()
     }
+    
+    delegate?.downloadStarted()
   }
   
   func download(didComplete download: DownloadTask) {
@@ -136,6 +138,8 @@ class DownloadManager: NSObject, DownloadTaskDelegate {
     if let index = downloads.index(of: download) {
       downloads.remove(at: index)
     }
+    
+    delegate?.downloadFinished()
   }
   
   func download(didError download: DownloadTask) {
@@ -145,5 +149,6 @@ class DownloadManager: NSObject, DownloadTaskDelegate {
       downloads.remove(at: index)
     }
     
+    delegate?.downloadFinished()
   }
 }
