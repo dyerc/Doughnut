@@ -27,6 +27,7 @@ class Player: NSObject {
   
   var loadStatus: PlayerLoadStatus = .none
   var avPlayer: AVPlayer?
+  var currentEpisode: Episode?
   
   var volume: Float = 0.6 { //UserDefaults.standard.float(forKey: Preference.kVolume) {
     didSet {
@@ -58,6 +59,14 @@ class Player: NSObject {
   
   func play(episode: Episode) {
     guard let podcast = episode.podcast else { return }
+    
+    // Destroy any existing player
+    if let avPlayer = avPlayer, let current = currentEpisode {
+      if current.id != episode.id {
+        avPlayer.pause()
+        self.avPlayer = nil
+      }
+    }
     
     if episode.downloaded {
       guard let fileName = episode.fileName else { return }

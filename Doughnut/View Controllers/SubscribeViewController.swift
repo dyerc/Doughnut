@@ -47,28 +47,36 @@ class SubscribeViewController: NSViewController, NSTextFieldDelegate {
   }
   
   @IBAction func loadFeed(_ sender: Any) {
-    loadBtn.isEnabled = false
-    loadingIndicator.startAnimation(self)
-    
-    Podcast.detect(url: urlTxt.stringValue) { podcast in
+    let loading = Podcast.detect(url: urlTxt.stringValue) { podcast in
+      self.loadBtn.isEnabled = true
+      self.loadingIndicator.stopAnimation(self)
+      
       if let podcast = podcast {
-        self.loadBtn.isEnabled = true
-        self.loadingIndicator.stopAnimation(self)
         self.subscribeBtn.isEnabled = true
-        
         self.imageView.image = podcast.image
         self.feedTitleTxt.stringValue = podcast.title
         self.feedDescriptionTxt.stringValue = podcast.description ?? ""
         
         self.detectedPodcast = podcast
         self.expand()
+      } else {
+        let alert = NSAlert()
+        alert.messageText = "Unable to Detect Feed URL"
+        alert.runModal()
       }
+    }
+    
+    if loading {
+      loadBtn.isEnabled = false
+      loadingIndicator.startAnimation(self)
     }
   }
   
   @IBAction func subscribe(_ sender: Any) {
     guard let detectedPodcast = detectedPodcast else { return }
     Library.global.subscribe(podcast: detectedPodcast)
+    
+    dismiss(self)
   }
   
   func expand() {

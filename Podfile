@@ -18,6 +18,6 @@ target 'Doughnut' do
   end
 
   pod 'GRDB.swift'
-  pod 'FeedKit', '~> 6.0'
+  pod 'FeedKit', :git => 'https://github.com/CD1212/FeedKit.git'
   pod 'MASPreferences'
 end

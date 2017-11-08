@@ -57,8 +57,7 @@ class Library: NSObject {
   
   func connect() -> Bool {
     do {
-      //dbQueue = try DatabaseQueue(path: databaseFile().path)
-      dbQueue = try DatabaseQueue(path: "/Volumes/Podcasts/Doughnut/Doughnut Library.dnl")
+      dbQueue = try DatabaseQueue(path: databaseFile().path)
       
       if let dbQueue = dbQueue {
         try LibraryMigrations.migrate(db: dbQueue)

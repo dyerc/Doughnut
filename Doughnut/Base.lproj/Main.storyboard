@@ -991,6 +991,9 @@ Gw
                         <menuItem isSeparatorItem="YES" id="kJo-hr-MrU"/>
                         <menuItem title="Refresh All" id="Got-xW-SqM">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="refreshAll:" target="hBf-lZ-L6q" id="mOp-xw-CYk"/>
+                            </connections>
                         </menuItem>
                     </items>
                 </menu>
@@ -1227,7 +1230,7 @@ Gw
                             </wkWebView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jKU-pr-cPD">
                                 <rect key="frame" x="18" y="450" width="333" height="21"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" title="Label" id="taL-3O-s2s">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" id="taL-3O-s2s">
                                     <font key="font" metaFont="system" size="17"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1235,7 +1238,7 @@ Gw
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ecQ-ID-8dU">
                                 <rect key="frame" x="18" y="428" width="333" height="19"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" title="Label" id="g3S-AT-eFY">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" id="g3S-AT-eFY">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1251,7 +1254,7 @@ Gw
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dNt-cn-mfd">
                                 <rect key="frame" x="18" y="409" width="333" height="14"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" title="Label" id="W3b-zq-LTM">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" id="W3b-zq-LTM">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

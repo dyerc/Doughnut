@@ -203,7 +203,10 @@ class Podcast: Record {
   }
   
   static func subscribe(feedUrl: URL) -> Podcast? {
-    guard let parser = FeedParser(URL: feedUrl) else { return nil }
+    guard let parser = FeedParser(URL: feedUrl) else {
+      print("Unable to parse feed \(feedUrl)")
+      return nil
+    }
       
     let result = parser.parse()
     if result.isFailure && result.error != nil {
@@ -222,33 +225,27 @@ class Podcast: Record {
   }
   
   // Detect either an iTunes podcast or RSS feed and call completion with resulting podcast
-  static func detect(url: String, completion: @escaping (_ result: Podcast?) -> Void) {
-    DispatchQueue.global(qos: .background).async {
-      if url.contains("itunes.apple.com") {
-        Utils.iTunesFeedUrl(iTunesUrl: url, completion: { (feedUrl) in
-          guard let feedUrl = URL(string: feedUrl ?? "") else {
-            DispatchQueue.main.async {
-              completion(nil)
-            }
-            return
-          }
-          
-          DispatchQueue.main.async {
-            completion(Podcast.subscribe(feedUrl: feedUrl))
-          }
-        })
-      } else {
-        guard let url = URL(string: url) else {
-          DispatchQueue.main.async {
-            completion(nil)
-          }
+  static func detect(url: String, completion: @escaping (_ result: Podcast?) -> Void) -> Bool {
+    if url.contains("itunes.apple.com") {
+      return Utils.iTunesFeedUrl(iTunesUrl: url, completion: { (feedUrl) in
+        guard let feedUrl = URL(string: feedUrl ?? "") else {
           return
         }
-        
+          
         DispatchQueue.main.async {
-          completion(Podcast.subscribe(feedUrl: url))
+          completion(Podcast.subscribe(feedUrl: feedUrl))
         }
+      })
+    } else {
+      guard let url = URL(string: url) else {
+        return false
       }
+        
+      DispatchQueue.global(qos: .background).async {
+        completion(Podcast.subscribe(feedUrl: url))
+      }
+      
+      return true
     }
   }
   

@@ -136,7 +136,7 @@ class Preference {
       createLibraryIfNotExists(url)
       return url
     } else {
-      #if FALSE
+      #if DEBUG
         let url = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
         createLibraryIfNotExists(url)
         return url

@@ -80,4 +80,8 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   
   @IBAction func unsubscribe(_ sender: Any) {
   }
+  
+  @IBAction func refreshAll(_ sender: Any) {
+  }
+  
 }

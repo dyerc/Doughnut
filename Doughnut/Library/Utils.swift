@@ -19,15 +19,13 @@ class Utils {
     return formatter.string(from: TimeInterval(seconds)) ?? ""
   }
   
-  static func iTunesFeedUrl(iTunesUrl: String, completion: @escaping (_ result: String?) -> Void) {
+  static func iTunesFeedUrl(iTunesUrl: String, completion: @escaping (_ result: String?) -> Void) -> Bool {
     guard let iTunesId = Utils.iTunesPodcastId(iTunesUrl: iTunesUrl) else {
-      completion(nil)
-      return
+      return false
     }
     
     guard let iTunesDataUrl = URL(string: "https://itunes.apple.com/lookup?id=\(iTunesId)&entity=podcast") else {
-      completion(nil)
-      return
+      return false
     }
     
     let request = URLSession.shared.dataTask(with: iTunesDataUrl) { (data, response, error) in
@@ -42,18 +40,20 @@ class Utils {
         for r in results {
           for result in r {
             if result.key == "feedUrl" {
-              completion(result.value as? String)
+              completion((result.value as! String))
               return
             }
           }
         }
-      } catch {
+      } catch let error {
+        print(error)
       }
       
       completion(nil)
     }
     
     request.resume()
+    return true
   }
   
   static func iTunesPodcastId(iTunesUrl: String) -> String? {
@@ -67,6 +67,16 @@ class Utils {
       return substring
     }
       
+    return nil
+  }
+  
+  static func dataToUtf8(_ data: Data) -> Data? {
+    var convertedString: NSString?
+    let encoding = NSString.stringEncoding(for: data, encodingOptions: nil, convertedString: &convertedString, usedLossyConversion: nil)
+    if let str = NSString(data: data, encoding: encoding) as String? {
+      return str.data(using: .utf8)
+    }
+    
     return nil
   }
 }
