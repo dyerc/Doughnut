@@ -164,7 +164,10 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   @IBAction func moveToTrash(_ sender: Any) {
-    
+    let episode = episodes[tableView.clickedRow]
+    episode.downloaded = false
+    episode.fileName = nil
+    Library.global.save(episode: episode)
   }
   
   @IBAction func showInFinder(_ sender: Any) {

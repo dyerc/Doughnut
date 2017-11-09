@@ -102,7 +102,9 @@ class Episode: Record {
     if let fileName = fileName {
       return fileName
     } else {
-      let enclosureType = NSString(string: enclosureUrl ?? "unknown.mp3").pathExtension
+      guard let url = URL(string: enclosureUrl ?? "unknown.mp3") else { return "unknown.mp3" }
+      let fileUrl = Utils.removeQueryString(url: url).absoluteString
+      let enclosureType = NSString(string: fileUrl).pathExtension
       return Library.sanitizePath(title) + "." + enclosureType
     }
   }

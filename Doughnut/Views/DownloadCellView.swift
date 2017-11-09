@@ -28,7 +28,6 @@ class DownloadCellView: NSTableCellView, DownloadProgressDelegate {
   
   func download(progressed download: DownloadTask) {
     if download.totalBytes > 0 {
-      print("Progress \(download.progressedBytes)")
       progressBar.stopAnimation(self)
       progressBar.minValue = 0
       progressBar.maxValue = 1

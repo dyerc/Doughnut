@@ -79,4 +79,11 @@ class Utils {
     
     return nil
   }
+  
+  static func removeQueryString(url: URL) -> URL {
+    let components = NSURLComponents(url: url, resolvingAgainstBaseURL: false)
+    components?.query = nil
+    components?.fragment = nil
+    return components?.url ?? url
+  }
 }
