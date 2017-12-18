@@ -19,6 +19,7 @@
 		8335D48D1F8571150060D8D8 /* enclosure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 83D4CA5B1F7C3848002EDC36 /* enclosure.mp3 */; };
 		8335F3AF1F90B5F700722DBC /* LibrarySpyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8335F3AE1F90B5F700722DBC /* LibrarySpyDelegate.swift */; };
 		8335F3B11F90B63F00722DBC /* LibraryTestsWithSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8335F3B01F90B63F00722DBC /* LibraryTestsWithSubscription.swift */; };
+		8339E9001FD098DE003E9A20 /* EditPodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339E8FF1FD098DE003E9A20 /* EditPodcastViewController.swift */; };
 		8341B8391F7BE4F100B50A5D /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
 		8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
 		8343426A1F802C1400913C0B /* EpisodeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834342691F802C1400913C0B /* EpisodeFilterViewController.swift */; };
@@ -97,6 +98,7 @@
 		8335D48B1F856E120060D8D8 /* ValidFeedx3.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ValidFeedx3.xml; sourceTree = "<group>"; };
 		8335F3AE1F90B5F700722DBC /* LibrarySpyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySpyDelegate.swift; sourceTree = "<group>"; };
 		8335F3B01F90B63F00722DBC /* LibraryTestsWithSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTestsWithSubscription.swift; sourceTree = "<group>"; };
+		8339E8FF1FD098DE003E9A20 /* EditPodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPodcastViewController.swift; sourceTree = "<group>"; };
 		8341B8381F7BE4F100B50A5D /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		8341B83A1F7BEB0500B50A5D /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
 		834342691F802C1400913C0B /* EpisodeFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeFilterViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				834342691F802C1400913C0B /* EpisodeFilterViewController.swift */,
 				837D52BD1F8E622200C17514 /* DownloadsViewController.swift */,
 				83DB16E01F93FB460062B266 /* SubscribeViewController.swift */,
+				8339E8FF1FD098DE003E9A20 /* EditPodcastViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */,
 				83D59CF71F7ED15C00F25A66 /* Episode.swift in Sources */,
 				834CC1B31F950ABA00A98DE9 /* DetailWebView.swift in Sources */,
+				8339E9001FD098DE003E9A20 /* EditPodcastViewController.swift in Sources */,
 				83DB16DC1F93E34B0062B266 /* Utils.swift in Sources */,
 				83667DF21F76D21900F1ABC0 /* EpisodeViewController.swift in Sources */,
 				834CC1B01F95076F00A98DE9 /* MarkupGenerator.swift in Sources */,

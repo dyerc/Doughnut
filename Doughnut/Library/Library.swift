@@ -280,6 +280,24 @@ class Library: NSObject {
     }
   }
   
+  func delete(episode: Episode) {
+    guard let podcast = episode.podcast else { return }
+    
+    taskQueue.async {
+      do {
+        try self.dbQueue?.inDatabase { db in
+          try episode.delete(db)
+        }
+        
+        DispatchQueue.main.async {
+          self.delegate?.libraryUpdatedPodcast(podcast: podcast)
+        }
+      } catch let error as DatabaseError {
+        Library.handleDatabaseError(error)
+      } catch {}
+    }
+  }
+  
   // Synchronous podcast save
   func save(podcast: Podcast, completion: (_ result: Podcast, _ error: Error?) -> Void) {
     do {

@@ -120,6 +120,22 @@ class Podcast: Record {
     } catch {}
   }
   
+  func deleteEpisode(episode: Episode) {
+    guard episode.podcastId == self.id else { return }
+    
+    if let idx = episodes.index(where: { e -> Bool in return e.id == episode.id}) {
+      episodes.remove(at: idx)
+    }
+    
+    Library.global.delete(episode: episode)
+  }
+  
+  func deleteEpisodeAndTrash(episode: Episode) {
+    episode.moveToTrash { (url) in
+      self.deleteEpisode(episode: episode)
+    }
+  }
+  
   private func storeImage(_ url: URL) {
     imageUrl = url.absoluteString
     

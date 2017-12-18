@@ -69,10 +69,8 @@ class Player: NSObject {
     }
     
     if episode.downloaded {
-      guard let fileName = episode.fileName else { return }
-      guard let podcastPath = podcast.storagePath() else { return }
+      guard let episodeUrl = episode.url() else { return }
       
-      let episodeUrl = podcastPath.appendingPathComponent(fileName)
       avPlayer = AVPlayer(url: episodeUrl)
     } else {
       guard let enclosureUrl = episode.enclosureUrl else { return }

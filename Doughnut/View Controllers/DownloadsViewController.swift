@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DownloadsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, DownloadManagerDelegate {
+class DownloadsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
   @IBOutlet weak var tableView: NSTableView!
   
   var downloadManager: DownloadManager?

@@ -49,9 +49,10 @@ class EpisodeCellView: NSTableCellView {
     
     guard let episode = episode else { return }
     
+    let selected = backgroundStyle == .dark
     let selectedBlue = NSColor(calibratedRed: 0.090, green: 0.433, blue: 0.937, alpha: 1.0)
     var selectedColor = selectedBlue
-    if backgroundStyle == .dark {
+    if selected {
       selectedColor = NSColor.white
     }
     
@@ -72,7 +73,11 @@ class EpisodeCellView: NSTableCellView {
       downloadCorner.fill()
       
       // Draw download arrow
-      NSColor.white.setFill()
+      if selected {
+        selectedBlue.setFill()
+      } else {
+        NSColor.white.setFill()
+      }
       let downloadTriangle = NSBezierPath()
       let arrowY: CGFloat = bounds.height - 3.0
       let arrowX: CGFloat = bounds.width - 6.0

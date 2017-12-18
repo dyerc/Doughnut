@@ -8,16 +8,13 @@
 
 import Cocoa
 
-class WindowController: NSWindowController, NSWindowDelegate {
+class WindowController: NSWindowController, NSWindowDelegate, DownloadManagerDelegate {
   @IBOutlet var allToggle: NSButton!
   @IBOutlet var newToggle: NSButton!
   @IBOutlet var playerView: NSToolbarItem!
+  @IBOutlet weak var downloadsButton: NSToolbarItem!
   
-  var downloadsViewController: DownloadsViewController {
-    get {
-      return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DownloadsPopover")) as! DownloadsViewController
-    }
-  }
+  var downloadsViewController: DownloadsViewController?
   
   var subscribeViewController: SubscribeViewController {
     get {
@@ -25,9 +22,20 @@ class WindowController: NSWindowController, NSWindowDelegate {
     }
   }
   
+  var editPodcastViewController: EditPodcastViewController {
+    get {
+      return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EditPodcastViewController")) as! EditPodcastViewController
+    }
+  }
+  
   override func windowDidLoad() {
     super.windowDidLoad()
     window?.titleVisibility = .hidden
+    
+    self.downloadsViewController = (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DownloadsPopover")) as! DownloadsViewController)
+    
+    downloadsButton.view?.isHidden = true
+    Library.global.downloadManager.delegate = self
   }
   
   @IBAction func subscribeToPodcast(_ sender: Any) {
@@ -48,7 +56,15 @@ class WindowController: NSWindowController, NSWindowDelegate {
     contentViewController?.presentViewControllerAsSheet(subscribeViewController)
   }
   
+  @IBAction func newPodcast(_ sender: Any) {
+    let vc = editPodcastViewController
+    vc.podcast = nil
+    contentViewController?.presentViewControllerAsSheet(vc)
+  }
+  
   @IBAction func showDownloads(_ button: NSButton) {
+    guard let downloadsViewController = self.downloadsViewController else { return }
+    
     let popover = NSPopover()
     popover.behavior = .transient
     popover.contentViewController = downloadsViewController
@@ -63,6 +79,19 @@ class WindowController: NSWindowController, NSWindowDelegate {
   @IBAction func toggleNewEpisodes(_ sender: Any) {
     allToggle.state = .off
     newToggle.state = .on
+  }
+  
+  func downloadStarted() {
+    downloadsButton.view?.isHidden = false
+    self.downloadsViewController?.downloadStarted()
+  }
+  
+  func downloadFinished() {
+    if Library.global.downloadManager.queueCount < 1 {
+      downloadsButton.view?.isHidden = true
+    }
+    
+    self.downloadsViewController?.downloadFinished()
   }
   
   func windowDidResignKey(_ notification: Notification) {

@@ -100,7 +100,12 @@ class DetailViewController: NSViewController, WKNavigationDelegate {
     detailTitle.stringValue = episode.title
     secondaryTitle.stringValue = podcast?.title ?? ""
     miniTitle.stringValue = episode.link ?? ""
-    coverImage.image = podcast?.image
+    
+    if let artwork = episode.artwork {
+      coverImage.image = artwork
+    } else {
+      coverImage.image = podcast?.image
+    }
     
     webView.loadHTMLString(MarkupGenerator.markup(forEpisode: episode), baseURL: nil)
   }

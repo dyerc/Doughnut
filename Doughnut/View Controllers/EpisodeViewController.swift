@@ -35,6 +35,8 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    tableView.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
   }
   
   func reloadEpisodes() {
@@ -95,6 +97,46 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     return true
   }
   
+  func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
+    return NSDragOperation.every
+  }
+  
+  func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
+    guard let podcast = podcast else { return false }
+    
+    let pasteboard = info.draggingPasteboard()
+    guard let items = pasteboard.pasteboardItems else { return true }
+    
+    var moveToLibrary = true
+    let alert = NSAlert()
+    alert.addButton(withTitle: "Copy to Library")
+    alert.addButton(withTitle: "Link to Library")
+    alert.addButton(withTitle: "Cancel")
+    alert.messageText = "Copy these files into your Doughnut library?"
+    
+    let result = alert.runModal()
+    if result == .alertFirstButtonReturn {
+      moveToLibrary = true
+    } else if result == .alertSecondButtonReturn {
+      moveToLibrary = false
+    } else {
+      return false
+    }
+    
+    for item in items {
+      guard let stringURL = item.string(forType: NSPasteboard.PasteboardType(kUTTypeFileURL as String)) else { continue }
+      guard let sourceURL = URL(string: stringURL) else { continue }
+      
+      if let episode = Episode.fromFile(podcast: podcast, url: sourceURL, copyToLibrary: moveToLibrary) {
+        podcast.episodes.append(episode)
+      }
+    }
+    
+    Library.global.save(podcast: podcast)
+    
+    return true
+  }
+  
   override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
     let episode = episodes[tableView.clickedRow]
     
@@ -109,6 +151,8 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       return !episode.favourite
     case "Unmark Favourite":
       return episode.favourite
+    case "Delete Episode":
+      return true
     case "Download":
       return episode.enclosureUrl != nil && !episode.downloaded
     case "Move to Trash":
@@ -170,12 +214,38 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     Library.global.save(episode: episode)
   }
   
+  @IBAction func deleteEpisode(_ sender: Any) {
+    let episode = episodes[tableView.clickedRow]
+    guard let podcast = episode.podcast else { return }
+    
+    var moveToTrash = false
+    if episode.downloaded {
+      let alert = NSAlert()
+      alert.addButton(withTitle: "Leave File(s)")
+      alert.addButton(withTitle: "Move to Trash")
+      alert.messageText = "Move File(s) to Trash"
+      alert.informativeText = "Would you like to move this episode's downloaded file to the trash"
+      
+      let result = alert.runModal()
+      if result == .alertFirstButtonReturn {
+        moveToTrash = false
+      } else {
+        moveToTrash = true
+      }
+    }
+    
+    if moveToTrash {
+      podcast.deleteEpisodeAndTrash(episode: episode)
+    } else {
+      podcast.deleteEpisode(episode: episode)
+    }
+  }
+  
   @IBAction func showInFinder(_ sender: Any) {
     let episode = episodes[tableView.clickedRow]
-    guard let fileName = episode.fileName else { return }
     guard let podcast = episode.podcast else { return }
 
-    NSWorkspace.shared.selectFile("\(podcast.path)/\(fileName)", inFileViewerRootedAtPath: podcast.path)
+    NSWorkspace.shared.selectFile(episode.url()?.path, inFileViewerRootedAtPath: podcast.path)
   }
   
   @IBAction func markAllAsPlayed(_ sender: Any) {
