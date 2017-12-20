@@ -43,6 +43,13 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
   }
   
+  var windowController: WindowController? {
+    get {
+      guard let window = NSApplication.shared.windows.first else { return nil }
+      return window.windowController as? WindowController
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -167,6 +174,8 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       return episode.enclosureUrl != nil && !episode.downloaded
     case "Move to Trash":
       return episode.downloaded
+    case "Show Episode":
+      return true
     case "Show in Finder":
       return episode.downloaded
     case "Mark all as Played":
@@ -248,6 +257,15 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       podcast.deleteEpisodeAndTrash(episode: episode)
     } else {
       podcast.deleteEpisode(episode: episode)
+    }
+  }
+  
+  @IBAction func showEpisode(_ sender: Any) {
+    if let wc = windowController {
+      let editWindow = wc.episodeWindowController
+      let editController = editWindow.contentViewController as? EditEpisodeViewController
+      editController?.episode = episodes[tableView.clickedRow]
+      editWindow.showWindow(self)
     }
   }
   
