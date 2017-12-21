@@ -9,6 +9,7 @@
 
 <p align="center">
   <a href="https://github.com/CD1212/Doughnut/releases"><img src="https://img.shields.io/github/release/cd1212/doughnut.svg" alt="github release"></a>
+  [![Build Status](https://travis-ci.org/CD1212/Doughnut.svg?branch=swift)](https://travis-ci.org/CD1212/Doughnut)
 </p>
 
 <p align="center">
