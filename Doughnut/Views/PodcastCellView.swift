@@ -18,12 +18,68 @@
 
 import Cocoa
 
+class PodcastUnplayedCountView: NSView {
+  var value = 0 {
+    didSet {
+      if value < 1 {
+        self.isHidden = true
+      } else {
+        self.isHidden = false
+      }
+      
+      let paragraphStyle = NSMutableParagraphStyle()
+      paragraphStyle.paragraphSpacing = 0
+      paragraphStyle.lineSpacing = 0
+    
+      attrString = NSMutableAttributedString(string: String(value), attributes: [
+        NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: 11),
+        NSAttributedStringKey.foregroundColor: NSColor.white,
+        NSAttributedStringKey.paragraphStyle: paragraphStyle
+      ])
+    }
+  }
+  
+  // Render in blue on white bg
+  var highlightColor = false
+  
+  var attrString = NSMutableAttributedString(string: "")
+  
+  override func draw(_ dirtyRect: NSRect) {
+    
+    let bb = attrString.boundingRect(with: CGSize(width: 50, height: 18), options: [])
+    
+    let X_PAD: CGFloat = 7.0
+    let Y_PAD: CGFloat = 2.0
+    
+    let bgWidth = bb.width + (X_PAD * CGFloat(2))
+    let bgHeight = bb.height + (Y_PAD * CGFloat(2))
+    let bgMidPoint: CGFloat = bgHeight * 0.5
+    let bgRect = NSRect(x: bounds.width - bgWidth, y: bounds.midY - bgMidPoint, width: bgWidth, height: bgHeight)
+    
+    print(bounds.midY, bounds.height, bgHeight, bgMidPoint, bgRect.minY)
+    
+    let bg = NSBezierPath(roundedRect: bgRect, xRadius: 5, yRadius: 5)
+    
+    if highlightColor {
+      let selectedBlue = NSColor(calibratedRed: 0.090, green: 0.433, blue: 0.937, alpha: 1.0)
+      selectedBlue.setFill()
+    } else {
+      NSColor.gray.setFill()
+    }
+    
+    bg.fill()
+    
+    attrString.draw(with: NSRect(x: bgRect.minX + X_PAD, y: bgRect.minY + 3 + Y_PAD, width: bb.width, height: bb.height), options: [])
+  }
+}
+
 class PodcastCellView: NSTableCellView {
   @IBOutlet weak var artwork: NSImageView!
   @IBOutlet weak var title: NSTextField!
   @IBOutlet weak var author: NSTextField!
   @IBOutlet weak var episodeCount: NSTextField!
   @IBOutlet weak var progressIndicator: NSProgressIndicator!
+  @IBOutlet weak var podcastUnplayedCount: PodcastUnplayedCountView!
   
   override var backgroundStyle: NSView.BackgroundStyle {
     willSet {

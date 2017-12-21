@@ -78,6 +78,12 @@
                                                 <action selector="newPodcast:" target="Ady-hI-5gd" id="KXx-5u-PuP"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="YCs-FF-LlJ"/>
+                                        <menuItem title="Reload All" keyEquivalent="r" id="cPz-Rd-hBn">
+                                            <connections>
+                                                <action selector="reloadAll:" target="Ady-hI-5gd" id="yl9-te-ukw"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -1158,7 +1164,7 @@ Gw
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yFZ-qJ-tU0">
-                                                                    <rect key="frame" x="59" y="36" width="144" height="17"/>
+                                                                    <rect key="frame" x="59" y="36" width="129" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Podcast Name" id="zzu-C6-FLg">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1168,13 +1174,12 @@ Gw
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WuW-3B-toC">
                                                                     <rect key="frame" x="3" y="3" width="50" height="50"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="50" id="hec-cg-7uM"/>
-                                                                        <constraint firstAttribute="width" constant="50" id="oQB-Sh-Z8s"/>
+                                                                        <constraint firstAttribute="width" constant="50" id="lrX-ne-0AI"/>
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PlaceholderIcon" id="ayK-fp-XA4"/>
                                                                 </imageView>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pkl-Lr-qxa">
-                                                                    <rect key="frame" x="59" y="5" width="144" height="14"/>
+                                                                    <rect key="frame" x="59" y="5" width="129" height="14"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0 Episodes" id="fVY-pM-lBf">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -1182,8 +1187,8 @@ Gw
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AHY-Ts-qj2">
-                                                                    <rect key="frame" x="59" y="21" width="144" height="14"/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Author" id="6x3-rW-yIi">
+                                                                    <rect key="frame" x="59" y="21" width="129" height="14"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Author" id="6x3-rW-yIi">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1191,32 +1196,42 @@ Gw
                                                                 </textField>
                                                                 <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="t9j-Ek-s8D">
                                                                     <rect key="frame" x="208" y="21" width="16" height="16"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="16" id="10e-fv-Jwh"/>
-                                                                        <constraint firstAttribute="height" constant="16" id="uzi-ot-oob"/>
-                                                                    </constraints>
                                                                 </progressIndicator>
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="qSa-lt-Xvr" customClass="PodcastUnplayedCountView" customModule="Doughnut" customModuleProvider="target">
+                                                                    <rect key="frame" x="191" y="16" width="40" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="40" id="704-ct-LOW"/>
+                                                                    </constraints>
+                                                                </customView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="trailing" secondItem="AHY-Ts-qj2" secondAttribute="trailing" id="5jh-5g-bYs"/>
-                                                                <constraint firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" constant="30" id="ESF-dz-qio"/>
-                                                                <constraint firstAttribute="trailing" secondItem="t9j-Ek-s8D" secondAttribute="trailing" constant="7" id="KPY-uv-T7c"/>
-                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="leading" id="TRi-X8-LhV"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="yFZ-qJ-tU0" secondAttribute="leading" id="WmE-sv-e0V"/>
-                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="top" secondItem="WuW-3B-toC" secondAttribute="top" id="WzN-X8-g7S"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" id="aAU-Si-SU0"/>
-                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="leading" secondItem="Caz-b2-UzS" secondAttribute="leading" constant="3" id="cAh-mD-d0t"/>
-                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="top" secondItem="AHY-Ts-qj2" secondAttribute="bottom" constant="2" id="qYg-7R-C5o"/>
-                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="centerY" secondItem="Caz-b2-UzS" secondAttribute="centerY" id="rKz-V8-8wj"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="centerY" secondItem="WuW-3B-toC" secondAttribute="centerY" id="xXW-Sb-hag"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="bottom" secondItem="t9j-Ek-s8D" secondAttribute="bottom" id="z1Z-VU-s0p"/>
-                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="WuW-3B-toC" secondAttribute="trailing" constant="8" symbolic="YES" id="zjv-Xd-Ms7"/>
+                                                                <constraint firstAttribute="bottom" secondItem="WuW-3B-toC" secondAttribute="bottom" constant="3" id="3bb-G8-dgh"/>
+                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" id="5Sq-4R-km1"/>
+                                                                <constraint firstItem="qSa-lt-Xvr" firstAttribute="top" secondItem="Caz-b2-UzS" secondAttribute="top" constant="17" id="7nz-h3-qMw"/>
+                                                                <constraint firstAttribute="trailing" secondItem="t9j-Ek-s8D" secondAttribute="trailing" constant="7" id="9dM-DU-sca"/>
+                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="top" secondItem="WuW-3B-toC" secondAttribute="top" id="9ln-bw-d2L"/>
+                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="centerY" secondItem="Caz-b2-UzS" secondAttribute="centerY" id="D6S-yh-uAV"/>
+                                                                <constraint firstAttribute="trailing" secondItem="qSa-lt-Xvr" secondAttribute="trailing" id="DIn-lo-V7i"/>
+                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="WuW-3B-toC" secondAttribute="trailing" constant="8" symbolic="YES" id="Di0-P6-DnA"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="centerY" secondItem="WuW-3B-toC" secondAttribute="centerY" id="HXX-Rz-PcI"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="trailing" secondItem="Pkl-Lr-qxa" secondAttribute="trailing" id="IcN-hu-DeP"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="bottom" secondItem="t9j-Ek-s8D" secondAttribute="bottom" id="KnY-P4-KSs"/>
+                                                                <constraint firstAttribute="trailing" secondItem="qSa-lt-Xvr" secondAttribute="trailing" id="QCv-D6-281"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="top" secondItem="yFZ-qJ-tU0" secondAttribute="bottom" constant="1" id="TL4-qV-RQc"/>
+                                                                <constraint firstItem="t9j-Ek-s8D" firstAttribute="top" secondItem="Caz-b2-UzS" secondAttribute="top" constant="18" id="Wdt-WD-9yb"/>
+                                                                <constraint firstItem="qSa-lt-Xvr" firstAttribute="centerY" secondItem="Caz-b2-UzS" secondAttribute="centerY" id="XNg-Fa-Nvt"/>
+                                                                <constraint firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" constant="45" id="YR5-qj-OGl"/>
+                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="leading" secondItem="Caz-b2-UzS" secondAttribute="leading" constant="3" id="ejS-UM-f01"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="Pkl-Lr-qxa" secondAttribute="leading" id="jNO-IH-IMK"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="yFZ-qJ-tU0" secondAttribute="leading" id="xDY-6E-q6f"/>
+                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="top" secondItem="AHY-Ts-qj2" secondAttribute="bottom" constant="2" id="xVn-eK-nQV"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="artwork" destination="WuW-3B-toC" id="Lus-7p-rwp"/>
                                                                 <outlet property="author" destination="AHY-Ts-qj2" id="YF2-bT-zJ3"/>
                                                                 <outlet property="episodeCount" destination="Pkl-Lr-qxa" id="A5q-iE-0c5"/>
                                                                 <outlet property="imageView" destination="WuW-3B-toC" id="qce-6g-Mlb"/>
+                                                                <outlet property="podcastUnplayedCount" destination="qSa-lt-Xvr" id="eZs-zW-Ttc"/>
                                                                 <outlet property="progressIndicator" destination="t9j-Ek-s8D" id="Hn2-Nf-2gz"/>
                                                                 <outlet property="title" destination="yFZ-qJ-tU0" id="WAu-w6-NGc"/>
                                                             </connections>

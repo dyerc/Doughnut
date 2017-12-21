@@ -38,6 +38,14 @@ class Podcast: Record {
   
   var episodes = [Episode]()
   
+  var unplayedCount: Int {
+    get {
+      return episodes.reduce(0) {
+        $0 + ($1.played == false ? 1 : 0)
+      }
+    }
+  }
+  
   var loading = false
   
   override class var databaseTableName: String {

@@ -50,9 +50,12 @@ class Library: NSObject {
   var dbQueue: DatabaseQueue?
   var delegate: LibraryDelegate?
   let taskQueue = DispatchQueue(label: "library")
+  let backgroundQueue = DispatchQueue(label: "background", qos: .utility)
   
   var podcasts = [Podcast]()
   let downloadManager = DownloadManager()
+  
+  var minutesSinceLastScheduledReload = -1
   
   override init() {
     let libraryPath = Preference.libraryPath()
@@ -85,6 +88,13 @@ class Library: NSObject {
           }
           
           delegate?.libraryReloaded()
+        })
+        
+        Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: { timer in
+          let library = Library.global
+          
+          library.scheduledReload()
+          library.minutesSinceLastScheduledReload += 1
         })
         
         return true
@@ -244,8 +254,27 @@ class Library: NSObject {
     return nil
   }
   
-  func reload(podcast: Podcast) {
-    taskQueue.async {
+  func scheduledReload() {
+    let reloadFrequency = Preference.integer(for: Preference.Key.reloadFrequency)
+    
+    // Handle the initial reload after opening, when minu...edReload will == -1
+    if (minutesSinceLastScheduledReload < 0 || minutesSinceLastScheduledReload >= reloadFrequency) {
+      for podcast in podcasts {
+        reload(podcast: podcast, onQueue: backgroundQueue)
+      }
+    }
+  }
+  
+  func reloadAll() {
+    for podcast in podcasts {
+      reload(podcast: podcast)
+    }
+  }
+  
+  func reload(podcast: Podcast, onQueue: DispatchQueue? = nil) {
+    let workerQueue = onQueue ?? taskQueue
+    
+    workerQueue.async {
       // Mark as loading
       podcast.loading = true
       DispatchQueue.main.async {

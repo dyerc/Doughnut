@@ -72,6 +72,10 @@ class WindowController: NSWindowController, NSWindowDelegate, DownloadManagerDel
     contentViewController?.presentViewControllerAsSheet(subscribeViewController)
   }
   
+  @IBAction func reloadAll(_ sender: Any) {
+    Library.global.reloadAll()
+  }
+  
   @IBAction func newPodcast(_ sender: Any) {
     let vc = editPodcastViewController
     vc.podcast = nil
