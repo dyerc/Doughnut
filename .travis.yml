@@ -3,4 +3,8 @@ osx_image: xcode9.2
 xcode_workspace: Doughnut.xcworkspace
 xcode_scheme: DoughnutTests
 
-script: xctool -workspace Doughnut.xcworkspace -scheme Doughnut run-tests
+
+
+script:
+	- xcodebuild -workspace Doughnut.xcworkspace -scheme Doughnut build-for-testing
+	- xctool -workspace Doughnut.xcworkspace -scheme Doughnut run-tests

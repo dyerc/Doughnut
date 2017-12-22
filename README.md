@@ -8,8 +8,8 @@
 <h4 align="center">Podcast app. For Mac.</h4>
 
 <p align="center">
+  <a href="https://travis-ci.org/CD1212/Doughnut"><img src="https://img.shields.io/travis/CD1212/Doughnut/master.svg" alt="Travis CI Status" /></a>
   <a href="https://github.com/CD1212/Doughnut/releases"><img src="https://img.shields.io/github/release/cd1212/doughnut.svg" alt="github release"></a>
-  [![Build Status](https://travis-ci.org/CD1212/Doughnut.svg?branch=swift)](https://travis-ci.org/CD1212/Doughnut)
 </p>
 
 <p align="center">
