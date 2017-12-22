@@ -6,5 +6,5 @@ xcode_scheme: DoughnutTests
 
 
 script:
-	- xcodebuild -workspace Doughnut.xcworkspace -scheme Doughnut build-for-testing
-	- xctool -workspace Doughnut.xcworkspace -scheme Doughnut run-tests
+- xcodebuild -workspace Doughnut.xcworkspace -scheme Doughnut build-for-testing
+- xctool -workspace Doughnut.xcworkspace -scheme Doughnut run-tests
