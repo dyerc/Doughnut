@@ -51,10 +51,10 @@ class DownloadsViewController: NSViewController, NSTableViewDelegate, NSTableVie
   }
   
   func downloadStarted() {
-    tableView.reloadData()
+    //tableView.reloadData()
   }
   
   func downloadFinished() {
-    tableView.reloadData()
+    //tableView.reloadData()
   }
 }
