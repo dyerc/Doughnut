@@ -56,8 +56,6 @@ class PodcastUnplayedCountView: NSView {
     let bgMidPoint: CGFloat = bgHeight * 0.5
     let bgRect = NSRect(x: bounds.width - bgWidth, y: bounds.midY - bgMidPoint, width: bgWidth, height: bgHeight)
     
-    print(bounds.midY, bounds.height, bgHeight, bgMidPoint, bgRect.minY)
-    
     let bg = NSBezierPath(roundedRect: bgRect, xRadius: 5, yRadius: 5)
     
     if highlightColor {

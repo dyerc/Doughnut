@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVFoundation
 
 class ShowPodcastWindowController: NSWindowController {
   override func windowDidLoad() {
@@ -48,9 +49,11 @@ class ShowPodcastViewController: NSViewController {
   }
   
   // Artwork Tab
+  var modifiedImage = false
   @IBOutlet weak var artworkLargeView: NSImageView!
   
   // Description Tab
+  var modifiedDescription = false
   @IBOutlet weak var descriptionInputView: NSTextField!
   
   // Options Tab
@@ -63,13 +66,17 @@ class ShowPodcastViewController: NSViewController {
     
     artworkView.wantsLayer = true
     artworkView.layer?.borderWidth = 1.0
+    artworkView.layer?.borderColor = NSColor.lightGray.cgColor
     artworkView.layer?.cornerRadius = 3.0
     artworkView.layer?.masksToBounds = true
   }
   
   var podcast: Podcast? {
     didSet {
-      artworkView.image = podcast?.image
+      if let artwork = podcast?.image {
+        artworkView.image = artwork
+      }
+      
       titleLabelView.stringValue = podcast?.title ?? ""
       authorLabelView.stringValue = podcast?.author ?? ""
       
@@ -99,11 +106,51 @@ class ShowPodcastViewController: NSViewController {
   }
   
   @IBAction func savePodcast(_ sender: Any) {
+    guard let podcast = podcast else { return }
+    
+    
+    
+    if modifiedImage {
+      podcast.image = artworkLargeView.image
+    }
+    
+    if modifiedDescription {
+      podcast.description = descriptionInputView.stringValue
+    }
+    
+    Library.global.save(podcast: podcast)
     
     self.view.window?.close()
   }
   
   @IBAction func addArtwork(_ sender: Any) {
+    guard let podcast = podcast else { return }
+    
+    let panel = NSOpenPanel()
+    panel.canChooseFiles = true
+    panel.canChooseDirectories = false
+    panel.allowsMultipleSelection = false
+    
+    panel.runModal()
+    
+    if let url = panel.url {
+      if url.pathExtension == "jpg" || url.pathExtension == "png" {
+        artworkLargeView.image = NSImage(contentsOfFile: url.path)
+      } else {
+        let asset = AVAsset(url: url)
+        
+        for item in asset.commonMetadata {
+          if let key = item.commonKey, let value = item.value {
+            if key.rawValue == "artwork" {
+              artworkLargeView.image = NSImage(data: value as! Data)
+            }
+          }
+        }
+      }
+      
+      artworkView.image = artworkLargeView.image
+      modifiedImage = true
+    }
   }
   
 }

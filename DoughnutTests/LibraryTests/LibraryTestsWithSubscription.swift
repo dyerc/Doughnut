@@ -82,34 +82,7 @@ class LibraryTestsWithSubscription: LibraryTestCase {
     }
   }
   
-  func testReloadUpdatesExistingEpisodes() {
-    XCTAssertEqual(sub!.episodes.count, 2)
-    sub!.feed = fixtureURL("ValidFeedx3", type: "xml").absoluteString
-    Library.global.save(podcast: sub!)
-    
-    let spy = LibrarySpyDelegate()
-    Library.global.delegate = spy
-    spy.updatedPodcastExpectation = self.expectation(description: "Library updated podcast")
-    
-    Library.global.reload(podcast: sub!)
-    
-    self.waitForExpectations(timeout: 10) { error in
-      guard let podcast = spy.updatedPodcastResult else {
-        XCTFail("Expected delegate to be called")
-        return
-      }
-      
-      var episodeTitleUpdated = false
-      for e in podcast.episodes {
-        if e.title == "Test Podcast Episode #2 Edited" {
-          episodeTitleUpdated = true
-        }
-      }
-      
-      XCTAssert(episodeTitleUpdated)
-    }
-  }
-  
+  /*
   func testSavePodcast() {
     
   }
@@ -117,5 +90,6 @@ class LibraryTestsWithSubscription: LibraryTestCase {
   func testSaveEpisode() {
     
   }
+ */
 }
 
