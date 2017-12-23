@@ -29,6 +29,13 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
   }
   
+  var windowController: WindowController? {
+    get {
+      guard let window = NSApplication.shared.windows.first else { return nil }
+      return window.windowController as? WindowController
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     reloadPodcasts()
@@ -80,6 +87,15 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   
   @IBAction func reloadPodcast(_ sender: Any) {
     Library.global.reload(podcast: podcasts[tableView.clickedRow])
+  }
+  
+  @IBAction func podcastInfo(_ sender: Any) {
+    if let wc = windowController {
+      let infoWindow = wc.podcastWindowController
+      let infoController = infoWindow.contentViewController as? ShowPodcastViewController
+      infoController?.podcast = podcasts[tableView.clickedRow]
+      infoWindow.showWindow(self)
+    }
   }
   
   @IBAction func copyPodcastURL(_ sender: Any) {

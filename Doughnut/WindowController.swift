@@ -44,6 +44,12 @@ class WindowController: NSWindowController, NSWindowDelegate, DownloadManagerDel
     }
   }
   
+  var podcastWindowController: NSWindowController {
+    get {
+      return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PodcastWindowController")) as! NSWindowController
+    }
+  }
+  
   override func windowDidLoad() {
     super.windowDidLoad()
     window?.titleVisibility = .hidden

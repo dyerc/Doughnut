@@ -42,6 +42,8 @@
 		838257E11F759F6F00DB4FD1 /* DoughnutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257E01F759F6F00DB4FD1 /* DoughnutTests.swift */; };
 		838257EC1F759F6F00DB4FD1 /* DoughnutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257EB1F759F6F00DB4FD1 /* DoughnutUITests.swift */; };
 		8397B9D11F8FC64D00C92AE6 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FF90A1F8D60430065E593 /* DownloadManager.swift */; };
+		839DBDA41FEEE658007610EF /* ShowPodcastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */; };
+		839DBDA71FEEEA81007610EF /* WhiteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */; };
 		83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA22E21F994EA6006BF58A /* DoughnutApp.swift */; };
 		83D4CA561F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4CA551F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift */; };
 		83D4CA5A1F7C3779002EDC36 /* ValidFeed.xml in Resources */ = {isa = PBXBuildFile; fileRef = 83D4CA591F7C3779002EDC36 /* ValidFeed.xml */; };
@@ -126,6 +128,8 @@
 		838257E71F759F6F00DB4FD1 /* DoughnutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoughnutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		838257EB1F759F6F00DB4FD1 /* DoughnutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutUITests.swift; sourceTree = "<group>"; };
 		838257ED1F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPodcastWindow.swift; sourceTree = "<group>"; };
+		839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBackgroundView.swift; sourceTree = "<group>"; };
 		83BA22E21F994EA6006BF58A /* DoughnutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutApp.swift; sourceTree = "<group>"; };
 		83D4CA551F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTestsWithoutSubscriptions.swift; sourceTree = "<group>"; };
 		83D4CA581F7C3763002EDC36 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				8379899A1F81616C00234577 /* SeekSlider.swift */,
 				837D52BF1F8E683200C17514 /* DownloadCellView.swift */,
 				834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */,
+				839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				83FB4EB61F7BD996001CD842 /* Library */,
 				830B15991F7B97250086C121 /* Views */,
 				83667DEE1F76D1F300F1ABC0 /* View Controllers */,
+				839DBDA51FEEE872007610EF /* Windows */,
 				838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */,
 				83BA22E21F994EA6006BF58A /* DoughnutApp.swift */,
 				83D971091F812B270091822A /* Player.swift */,
@@ -322,6 +328,14 @@
 				838257ED1F759F6F00DB4FD1 /* Info.plist */,
 			);
 			path = DoughnutUITests;
+			sourceTree = "<group>";
+		};
+		839DBDA51FEEE872007610EF /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */,
+			);
+			path = Windows;
 			sourceTree = "<group>";
 		};
 		83D4CA541F7C36CC002EDC36 /* LibraryTests */ = {
@@ -684,6 +698,7 @@
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				83D9710C1F812E910091822A /* PlayerView.swift in Sources */,
 				832BB74E1F95155000988AE8 /* PrefLibraryViewController.swift in Sources */,
+				839DBDA41FEEE658007610EF /* ShowPodcastWindow.swift in Sources */,
 				83D9710A1F812B270091822A /* Player.swift in Sources */,
 				83EFC6041F9954A500E1DE1F /* SPMediaKeyTap.m in Sources */,
 				837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */,
@@ -691,6 +706,7 @@
 				83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
 				830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */,
+				839DBDA71FEEEA81007610EF /* WhiteBackgroundView.swift in Sources */,
 				838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */,
 				83659AB81F7D8A0300E09833 /* Podcast.swift in Sources */,
 				837D52BE1F8E622200C17514 /* DownloadsViewController.swift in Sources */,
