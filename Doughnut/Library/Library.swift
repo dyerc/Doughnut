@@ -74,7 +74,10 @@ class Library: NSObject {
       
       if let dbQueue = dbQueue {
         try LibraryMigrations.migrate(db: dbQueue)
-        print("Connected to Doughnut library at \(path.path)")
+        
+        if !Preference.testEnv() {
+          print("Connected to Doughnut library at \(path.path)")
+        }
         
         try dbQueue.inDatabase({ db in
           podcasts = try Podcast.fetchAll(db)

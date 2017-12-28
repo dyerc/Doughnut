@@ -23,7 +23,7 @@ class LibraryTestCase: XCTestCase {
     }
     
     XCTAssertEqual(Library.global.connect(), true)
-    print("Using library at \(Library.global.path)")
+    // print("Using library at \(Library.global.path)")
   }
   
   override func tearDown() {

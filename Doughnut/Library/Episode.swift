@@ -157,7 +157,6 @@ class Episode: Record {
     guard let title = feedItem.title else { return }
     guard let guid = feedItem.guid?.value else { return }
     
-    print("Set title to \(title)")
     self.title = title
     self.guid = guid
     description = feedItem.description

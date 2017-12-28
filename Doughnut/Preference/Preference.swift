@@ -137,6 +137,10 @@ class Preference {
   }
   
   static func testEnv() -> Bool {
+    if ProcessInfo.processInfo.arguments.contains("UI-TEST") {
+      return true
+    }
+    
     return ProcessInfo.processInfo.environment["TEST"] != nil
   }
   
