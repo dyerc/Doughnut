@@ -65,16 +65,7 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     
     result.episodeCount.stringValue = "\(podcast.episodes.count) episodes"
     result.podcastUnplayedCount.value = podcast.unplayedCount
-    
-    if podcast.loading {
-      result.progressIndicator.startAnimation(self)
-      result.progressIndicator.isHidden = false
-      result.episodeCount.isHidden = true
-    } else {
-      result.progressIndicator.stopAnimation(self)
-      result.progressIndicator.isHidden = true
-      result.episodeCount.isHidden = false
-    }
+    result.loading = podcast.loading
     
     return result
   }

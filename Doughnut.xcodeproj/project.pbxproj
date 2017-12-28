@@ -10,6 +10,64 @@
 		1D7B5D7B127AE8F635350D7F /* Pods_DoughnutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */; };
 		2AB07BF789841271ED80EA26 /* Pods_DoughnutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25D4796441E8F7922FCDAF9A /* Pods_DoughnutUITests.framework */; };
 		4125A143137AD05319B3DEFC /* Pods_Doughnut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */; };
+		830A33C81FF042C900C13B1D /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
+		830A33C91FF042C900C13B1D /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
+		830A33CA1FF042C900C13B1D /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83659AB71F7D8A0300E09833 /* Podcast.swift */; };
+		830A33CB1FF042C900C13B1D /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D59CF61F7ED15C00F25A66 /* Episode.swift */; };
+		830A33CC1FF042C900C13B1D /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FF90A1F8D60430065E593 /* DownloadManager.swift */; };
+		830A33CD1FF042C900C13B1D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16DB1F93E34B0062B266 /* Utils.swift */; };
+		830A33CE1FF042C900C13B1D /* MarkupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */; };
+		830A33CF1FF042CE00C13B1D /* PodcastCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B159A1F7B97910086C121 /* PodcastCellView.swift */; };
+		830A33D01FF042CE00C13B1D /* EpisodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837068121F7BBD63007FE973 /* EpisodeCellView.swift */; };
+		830A33D11FF042CE00C13B1D /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9710B1F812E910091822A /* PlayerView.swift */; };
+		830A33D21FF042CE00C13B1D /* SeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379899A1F81616C00234577 /* SeekSlider.swift */; };
+		830A33D31FF042CE00C13B1D /* DownloadCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BF1F8E683200C17514 /* DownloadCellView.swift */; };
+		830A33D41FF042CE00C13B1D /* DetailWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */; };
+		830A33D51FF042CE00C13B1D /* WhiteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */; };
+		830A33D61FF042CE00C13B1D /* PodcastCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B159A1F7B97910086C121 /* PodcastCellView.swift */; };
+		830A33D71FF042CE00C13B1D /* EpisodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837068121F7BBD63007FE973 /* EpisodeCellView.swift */; };
+		830A33D81FF042CE00C13B1D /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9710B1F812E910091822A /* PlayerView.swift */; };
+		830A33D91FF042CE00C13B1D /* SeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379899A1F81616C00234577 /* SeekSlider.swift */; };
+		830A33DA1FF042CE00C13B1D /* DownloadCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BF1F8E683200C17514 /* DownloadCellView.swift */; };
+		830A33DB1FF042CE00C13B1D /* DetailWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */; };
+		830A33DC1FF042CE00C13B1D /* WhiteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */; };
+		830A33DD1FF042D100C13B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CF1F759F6F00DB4FD1 /* ViewController.swift */; };
+		830A33DE1FF042D100C13B1D /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */; };
+		830A33DF1FF042D100C13B1D /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */; };
+		830A33E01FF042D100C13B1D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF31F76D22600F1ABC0 /* DetailViewController.swift */; };
+		830A33E11FF042D100C13B1D /* EpisodeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834342691F802C1400913C0B /* EpisodeFilterViewController.swift */; };
+		830A33E21FF042D100C13B1D /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* DownloadsViewController.swift */; };
+		830A33E31FF042D100C13B1D /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16E01F93FB460062B266 /* SubscribeViewController.swift */; };
+		830A33E41FF042D100C13B1D /* EditPodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339E8FF1FD098DE003E9A20 /* EditPodcastViewController.swift */; };
+		830A33E51FF042D100C13B1D /* EditEpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB10EC1FEB00E700A49875 /* EditEpisodeViewController.swift */; };
+		830A33E61FF042D100C13B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CF1F759F6F00DB4FD1 /* ViewController.swift */; };
+		830A33E71FF042D100C13B1D /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */; };
+		830A33E81FF042D100C13B1D /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */; };
+		830A33E91FF042D100C13B1D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF31F76D22600F1ABC0 /* DetailViewController.swift */; };
+		830A33EA1FF042D100C13B1D /* EpisodeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834342691F802C1400913C0B /* EpisodeFilterViewController.swift */; };
+		830A33EB1FF042D100C13B1D /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* DownloadsViewController.swift */; };
+		830A33EC1FF042D100C13B1D /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16E01F93FB460062B266 /* SubscribeViewController.swift */; };
+		830A33ED1FF042D100C13B1D /* EditPodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339E8FF1FD098DE003E9A20 /* EditPodcastViewController.swift */; };
+		830A33EE1FF042D100C13B1D /* EditEpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB10EC1FEB00E700A49875 /* EditEpisodeViewController.swift */; };
+		830A33EF1FF042D400C13B1D /* ShowPodcastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */; };
+		830A33F01FF042D500C13B1D /* ShowPodcastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */; };
+		830A33F11FF042D900C13B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */; };
+		830A33F21FF042D900C13B1D /* DoughnutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA22E21F994EA6006BF58A /* DoughnutApp.swift */; };
+		830A33F31FF042D900C13B1D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D971091F812B270091822A /* Player.swift */; };
+		830A33F41FF042D900C13B1D /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
+		830A33F51FF042D900C13B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */; };
+		830A33F61FF042D900C13B1D /* DoughnutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA22E21F994EA6006BF58A /* DoughnutApp.swift */; };
+		830A33F71FF042D900C13B1D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D971091F812B270091822A /* Player.swift */; };
+		830A33F81FF042D900C13B1D /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
+		830A33F91FF042E600C13B1D /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
+		830A33FA1FF042E600C13B1D /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */; };
+		830A33FC1FF042E800C13B1D /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
+		830A33FD1FF042E800C13B1D /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */; };
+		830A33FE1FF043BB00C13B1D /* SPMediaKeyTap.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */; };
+		830A33FF1FF043BB00C13B1D /* SPMediaKeyTap.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */; };
+		830A34001FF043BF00C13B1D /* NSObject+SPInvocationGrabbing.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */; };
+		830A34011FF043BF00C13B1D /* NSObject+SPInvocationGrabbing.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */; };
+		830A34031FF0447D00C13B1D /* PodcastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A34021FF0447D00C13B1D /* PodcastUITests.swift */; };
 		830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B159A1F7B97910086C121 /* PodcastCellView.swift */; };
 		832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
 		832BB74E1F95155000988AE8 /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */; };
@@ -23,6 +81,9 @@
 		8341B8391F7BE4F100B50A5D /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
 		8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
 		8343426A1F802C1400913C0B /* EpisodeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834342691F802C1400913C0B /* EpisodeFilterViewController.swift */; };
+		834998B61FF3E3F00035EF87 /* TaskManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834998B51FF3E3F00035EF87 /* TaskManagerView.swift */; };
+		834998B71FF3E3F00035EF87 /* TaskManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834998B51FF3E3F00035EF87 /* TaskManagerView.swift */; };
+		834998B81FF3E3F00035EF87 /* TaskManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834998B51FF3E3F00035EF87 /* TaskManagerView.swift */; };
 		834CC1B01F95076F00A98DE9 /* MarkupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */; };
 		834CC1B11F95077500A98DE9 /* MarkupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */; };
 		834CC1B31F950ABA00A98DE9 /* DetailWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */; };
@@ -49,7 +110,6 @@
 		83D4CA5A1F7C3779002EDC36 /* ValidFeed.xml in Resources */ = {isa = PBXBuildFile; fileRef = 83D4CA591F7C3779002EDC36 /* ValidFeed.xml */; };
 		83D4CA5D1F7C3902002EDC36 /* LibraryTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4CA5C1F7C3902002EDC36 /* LibraryTestCase.swift */; };
 		83D4CA5E1F7C3988002EDC36 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
-		83D4CA5F1F7C39A4002EDC36 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
 		83D4CA611F7C39AD002EDC36 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
 		83D59CF71F7ED15C00F25A66 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D59CF61F7ED15C00F25A66 /* Episode.swift */; };
 		83D59CF81F7ED15F00F25A66 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D59CF61F7ED15C00F25A66 /* Episode.swift */; };
@@ -88,6 +148,7 @@
 		368B5540FC7D1B6258BCF776 /* Pods-DoughnutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.debug.xcconfig"; sourceTree = "<group>"; };
+		830A34021FF0447D00C13B1D /* PodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastUITests.swift; sourceTree = "<group>"; };
 		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
 		831EEADE1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SPInvocationGrabbing.h"; sourceTree = "<group>"; };
 		831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPInvocationGrabbing.m"; sourceTree = "<group>"; };
@@ -105,6 +166,7 @@
 		8341B8381F7BE4F100B50A5D /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		8341B83A1F7BEB0500B50A5D /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
 		834342691F802C1400913C0B /* EpisodeFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeFilterViewController.swift; sourceTree = "<group>"; };
+		834998B51FF3E3F00035EF87 /* TaskManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerView.swift; sourceTree = "<group>"; };
 		834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkupGenerator.swift; sourceTree = "<group>"; };
 		834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWebView.swift; sourceTree = "<group>"; };
 		83659AB71F7D8A0300E09833 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
@@ -208,6 +270,7 @@
 				837D52BF1F8E683200C17514 /* DownloadCellView.swift */,
 				834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */,
 				839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */,
+				834998B51FF3E3F00035EF87 /* TaskManagerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -326,6 +389,7 @@
 			children = (
 				838257EB1F759F6F00DB4FD1 /* DoughnutUITests.swift */,
 				838257ED1F759F6F00DB4FD1 /* Info.plist */,
+				830A34021FF0447D00C13B1D /* PodcastUITests.swift */,
 			);
 			path = DoughnutUITests;
 			sourceTree = "<group>";
@@ -575,9 +639,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -715,6 +782,7 @@
 				832FF90B1F8D60430065E593 /* DownloadManager.swift in Sources */,
 				83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */,
 				83D59CF71F7ED15C00F25A66 /* Episode.swift in Sources */,
+				834998B61FF3E3F00035EF87 /* TaskManagerView.swift in Sources */,
 				834CC1B31F950ABA00A98DE9 /* DetailWebView.swift in Sources */,
 				8339E9001FD098DE003E9A20 /* EditPodcastViewController.swift in Sources */,
 				83DB16DC1F93E34B0062B266 /* Utils.swift in Sources */,
@@ -729,20 +797,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				830A33FC1FF042E800C13B1D /* Preference.swift in Sources */,
 				8397B9D11F8FC64D00C92AE6 /* DownloadManager.swift in Sources */,
 				83DB16DE1F93F1CE0062B266 /* LibraryUtils.swift in Sources */,
-				83D4CA5F1F7C39A4002EDC36 /* Preference.swift in Sources */,
+				830A33E51FF042D100C13B1D /* EditEpisodeViewController.swift in Sources */,
+				830A33E01FF042D100C13B1D /* DetailViewController.swift in Sources */,
+				830A33D51FF042CE00C13B1D /* WhiteBackgroundView.swift in Sources */,
+				830A34001FF043BF00C13B1D /* NSObject+SPInvocationGrabbing.m in Sources */,
+				830A33DD1FF042D100C13B1D /* ViewController.swift in Sources */,
 				83D59CF81F7ED15F00F25A66 /* Episode.swift in Sources */,
+				830A33F11FF042D900C13B1D /* AppDelegate.swift in Sources */,
+				830A33D11FF042CE00C13B1D /* PlayerView.swift in Sources */,
+				830A33D01FF042CE00C13B1D /* EpisodeCellView.swift in Sources */,
 				83659AB91F7DA17500E09833 /* Podcast.swift in Sources */,
+				830A33F21FF042D900C13B1D /* DoughnutApp.swift in Sources */,
 				83DB16DF1F93F1E40062B266 /* Utils.swift in Sources */,
 				838257E11F759F6F00DB4FD1 /* DoughnutTests.swift in Sources */,
+				830A33EF1FF042D400C13B1D /* ShowPodcastWindow.swift in Sources */,
+				830A33DE1FF042D100C13B1D /* PodcastViewController.swift in Sources */,
 				8335F3B11F90B63F00722DBC /* LibraryTestsWithSubscription.swift in Sources */,
+				830A33D41FF042CE00C13B1D /* DetailWebView.swift in Sources */,
+				830A33D21FF042CE00C13B1D /* SeekSlider.swift in Sources */,
+				830A33E11FF042D100C13B1D /* EpisodeFilterViewController.swift in Sources */,
+				830A33E31FF042D100C13B1D /* SubscribeViewController.swift in Sources */,
+				830A33CF1FF042CE00C13B1D /* PodcastCellView.swift in Sources */,
 				83D4CA611F7C39AD002EDC36 /* Migrations.swift in Sources */,
+				830A33FE1FF043BB00C13B1D /* SPMediaKeyTap.m in Sources */,
 				83D4CA5E1F7C3988002EDC36 /* Library.swift in Sources */,
 				8335F3AF1F90B5F700722DBC /* LibrarySpyDelegate.swift in Sources */,
 				83D4CA5D1F7C3902002EDC36 /* LibraryTestCase.swift in Sources */,
+				830A33E41FF042D100C13B1D /* EditPodcastViewController.swift in Sources */,
 				83D4CA561F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift in Sources */,
+				830A33E21FF042D100C13B1D /* DownloadsViewController.swift in Sources */,
+				830A33D31FF042CE00C13B1D /* DownloadCellView.swift in Sources */,
+				830A33F41FF042D900C13B1D /* WindowController.swift in Sources */,
+				830A33DF1FF042D100C13B1D /* EpisodeViewController.swift in Sources */,
+				830A33F31FF042D900C13B1D /* Player.swift in Sources */,
 				834CC1B11F95077500A98DE9 /* MarkupGenerator.swift in Sources */,
+				834998B71FF3E3F00035EF87 /* TaskManagerView.swift in Sources */,
+				830A33FD1FF042E800C13B1D /* PrefLibraryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +844,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				838257EC1F759F6F00DB4FD1 /* DoughnutUITests.swift in Sources */,
+				830A33DA1FF042CE00C13B1D /* DownloadCellView.swift in Sources */,
+				830A33EB1FF042D100C13B1D /* DownloadsViewController.swift in Sources */,
+				830A33CC1FF042C900C13B1D /* DownloadManager.swift in Sources */,
+				830A33F71FF042D900C13B1D /* Player.swift in Sources */,
+				830A33ED1FF042D100C13B1D /* EditPodcastViewController.swift in Sources */,
+				830A33FA1FF042E600C13B1D /* PrefLibraryViewController.swift in Sources */,
+				830A33F81FF042D900C13B1D /* WindowController.swift in Sources */,
+				830A33E71FF042D100C13B1D /* PodcastViewController.swift in Sources */,
+				830A34011FF043BF00C13B1D /* NSObject+SPInvocationGrabbing.m in Sources */,
+				830A33C81FF042C900C13B1D /* Library.swift in Sources */,
+				830A33DB1FF042CE00C13B1D /* DetailWebView.swift in Sources */,
+				830A33F91FF042E600C13B1D /* Preference.swift in Sources */,
+				830A33F51FF042D900C13B1D /* AppDelegate.swift in Sources */,
+				830A33F61FF042D900C13B1D /* DoughnutApp.swift in Sources */,
+				830A33EE1FF042D100C13B1D /* EditEpisodeViewController.swift in Sources */,
+				830A33EC1FF042D100C13B1D /* SubscribeViewController.swift in Sources */,
+				830A33D81FF042CE00C13B1D /* PlayerView.swift in Sources */,
+				830A33CD1FF042C900C13B1D /* Utils.swift in Sources */,
+				830A33CA1FF042C900C13B1D /* Podcast.swift in Sources */,
+				834998B81FF3E3F00035EF87 /* TaskManagerView.swift in Sources */,
+				830A34031FF0447D00C13B1D /* PodcastUITests.swift in Sources */,
+				830A33D61FF042CE00C13B1D /* PodcastCellView.swift in Sources */,
+				830A33EA1FF042D100C13B1D /* EpisodeFilterViewController.swift in Sources */,
+				830A33E91FF042D100C13B1D /* DetailViewController.swift in Sources */,
+				830A33E81FF042D100C13B1D /* EpisodeViewController.swift in Sources */,
+				830A33CB1FF042C900C13B1D /* Episode.swift in Sources */,
+				830A33C91FF042C900C13B1D /* Migrations.swift in Sources */,
+				830A33D71FF042CE00C13B1D /* EpisodeCellView.swift in Sources */,
+				830A33DC1FF042CE00C13B1D /* WhiteBackgroundView.swift in Sources */,
+				830A33FF1FF043BB00C13B1D /* SPMediaKeyTap.m in Sources */,
+				830A33F01FF042D500C13B1D /* ShowPodcastWindow.swift in Sources */,
+				830A33D91FF042CE00C13B1D /* SeekSlider.swift in Sources */,
+				830A33E61FF042D100C13B1D /* ViewController.swift in Sources */,
+				830A33CE1FF042C900C13B1D /* MarkupGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +1010,7 @@
 				OTHER_SWIFT_FLAGS = "-DTEST";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Doughnut.app/Contents/MacOS/Doughnut";
 			};
@@ -905,6 +1033,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Doughnut;
 			};
@@ -1073,6 +1202,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Doughnut.app/Contents/MacOS/Doughnut";
 			};
@@ -1091,6 +1221,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Doughnut.app/Contents/MacOS/Doughnut";
 			};
@@ -1112,6 +1243,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Doughnut;
 			};
@@ -1129,6 +1261,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Doughnut;
 			};

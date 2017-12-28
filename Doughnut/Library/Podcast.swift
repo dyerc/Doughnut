@@ -154,6 +154,14 @@ class Podcast: Record {
     }
   }
   
+  func invalid() -> String? {
+    if (title.characters.count < 1) {
+      return "Podcast must have a title"
+    }
+    
+    return nil
+  }
+  
   private func storeImage(_ url: URL) {
     imageUrl = url.absoluteString
     

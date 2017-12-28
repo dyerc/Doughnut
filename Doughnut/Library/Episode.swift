@@ -184,61 +184,65 @@ class Episode: Record {
     }
   }
   
-  static func fromFile(podcast: Podcast, url: URL, copyToLibrary: Bool = false) -> Episode? {
-    let asset = AVAsset(url: url)
-    var title = url.deletingPathExtension().lastPathComponent
-    
-    for item in asset.commonMetadata {
-      if item.commonKey?.rawValue == "title", let value = item.value {
-        title = value as! String
-      }
-    }
-    
-    let episode = Episode(title: title, guid: NSUUID().uuidString)
-    episode.podcast = podcast
-    episode.podcastId = podcast.id
-    episode.downloaded = true
-    episode.enclosureUrl = url.absoluteString
-    
-    if copyToLibrary {
-      // Perform the copy
-      guard let storagePath = podcast.storagePath() else {
-        print("Could not determine podcast storage location")
-        return nil
-      }
+  static func fromFile(podcast: Podcast, url: URL, copyToLibrary: Bool, completion: @escaping (_ episode: Episode) -> Void) {
+    DispatchQueue.global(qos: .background).async {
+      let asset = AVAsset(url: url)
+      var title = url.deletingPathExtension().lastPathComponent
       
-      var fileName = episode.file()
-      var outputPath = storagePath.appendingPathComponent(fileName)
-      
-      if FileManager.default.fileExists(atPath: outputPath.path) {
-        fileName = episode.uniqueFile()
-        outputPath = storagePath.appendingPathComponent(fileName)
-      }
-      
-      do {
-        try FileManager.default.copyItem(at: url, to: outputPath)
-        
-        episode.fileName = fileName
-      } catch {
-        print("Failed to copy \(url.path) to library. Output destination \(outputPath)")
-        return nil
-      }
-    } else {
-      episode.fileName = url.path
-    }
-    
-    for item in asset.commonMetadata {
-      if let key = item.commonKey, let value = item.value {
-        if key.rawValue == "artwork" {
-          episode.artwork = NSImage(data: value as! Data)
-        }
-        
-        if key.rawValue == "description" {
-          episode.description = value as? String
+      for item in asset.commonMetadata {
+        if item.commonKey?.rawValue == "title", let value = item.value {
+          title = value as! String
         }
       }
+      
+      let episode = Episode(title: title, guid: NSUUID().uuidString)
+      episode.podcast = podcast
+      episode.podcastId = podcast.id
+      episode.downloaded = true
+      episode.enclosureUrl = url.absoluteString
+      
+      if copyToLibrary {
+        // Perform the copy
+        guard let storagePath = podcast.storagePath() else {
+          print("Could not determine podcast storage location")
+          return
+        }
+        
+        var fileName = episode.file()
+        var outputPath = storagePath.appendingPathComponent(fileName)
+        
+        if FileManager.default.fileExists(atPath: outputPath.path) {
+          fileName = episode.uniqueFile()
+          outputPath = storagePath.appendingPathComponent(fileName)
+        }
+        
+        do {
+          try FileManager.default.copyItem(at: url, to: outputPath)
+          
+          episode.fileName = fileName
+        } catch {
+          print("Failed to copy \(url.path) to library. Output destination \(outputPath)")
+          return
+        }
+      } else {
+        episode.fileName = url.path
+      }
+      
+      for item in asset.commonMetadata {
+        if let key = item.commonKey, let value = item.value {
+          if key.rawValue == "artwork" {
+            episode.artwork = NSImage(data: value as! Data)
+          }
+          
+          if key.rawValue == "description" {
+            episode.description = value as? String
+          }
+        }
+      }
+      
+      DispatchQueue.main.async {
+        completion(episode)
+      }
     }
-    
-    return episode
   }
 }

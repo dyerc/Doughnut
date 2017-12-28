@@ -13,6 +13,7 @@ target 'Doughnut' do
   end
 
   target 'DoughnutUITests' do
+    use_frameworks!
     inherit! :search_paths
     # Pods for testing
   end

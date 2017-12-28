@@ -144,12 +144,11 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       guard let stringURL = item.string(forType: NSPasteboard.PasteboardType(kUTTypeFileURL as String)) else { continue }
       guard let sourceURL = URL(string: stringURL) else { continue }
       
-      if let episode = Episode.fromFile(podcast: podcast, url: sourceURL, copyToLibrary: moveToLibrary) {
+      Episode.fromFile(podcast: podcast, url: sourceURL, copyToLibrary: moveToLibrary, completion: { episode in
         podcast.episodes.append(episode)
-      }
+        Library.global.save(podcast: podcast)
+      })
     }
-    
-    Library.global.save(podcast: podcast)
     
     return true
   }

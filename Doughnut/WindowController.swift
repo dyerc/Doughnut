@@ -32,12 +32,6 @@ class WindowController: NSWindowController, NSWindowDelegate, DownloadManagerDel
     }
   }
   
-  var editPodcastViewController: EditPodcastViewController {
-    get {
-      return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EditPodcastViewController")) as! EditPodcastViewController
-    }
-  }
-  
   var episodeWindowController: NSWindowController {
     get {
       return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EpisodeWindowController")) as! NSWindowController
@@ -83,9 +77,9 @@ class WindowController: NSWindowController, NSWindowDelegate, DownloadManagerDel
   }
   
   @IBAction func newPodcast(_ sender: Any) {
-    let vc = editPodcastViewController
-    vc.podcast = nil
-    contentViewController?.presentViewControllerAsSheet(vc)
+    let infoController = podcastWindowController.contentViewController as? ShowPodcastViewController
+    infoController?.podcast = nil
+    podcastWindowController.showWindow(self)
   }
   
   @IBAction func showDownloads(_ button: NSButton) {

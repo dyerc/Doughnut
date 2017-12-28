@@ -40,34 +40,65 @@ class PodcastUnplayedCountView: NSView {
   }
   
   // Render in blue on white bg
-  var highlightColor = false
+  var highlightColor = false {
+    didSet {
+      self.needsDisplay = true
+    }
+  }
+  
+  var loadingIndicator: NSProgressIndicator?
+  
+  var loading: Bool = false {
+    didSet {
+      if let loader = loadingIndicator {
+        loader.isHidden = !loading
+        
+        if loading {
+          loader.startAnimation(self)
+        } else {
+          loader.stopAnimation(self)
+        }
+      }
+    }
+  }
+  
+  override func viewDidMoveToWindow() {
+    let loader = NSProgressIndicator(frame: NSRect(x: (frame.width - 16) / 2, y: (frame.height - 16) / 2, width: 16.0, height: 16.0))
+    loader.isHidden = true
+    loader.style = .spinning
+    loader.isIndeterminate = true
+    
+    addSubview(loader)
+    loadingIndicator = loader
+  }
   
   var attrString = NSMutableAttributedString(string: "")
   
   override func draw(_ dirtyRect: NSRect) {
-    
-    let bb = attrString.boundingRect(with: CGSize(width: 50, height: 18), options: [])
-    
-    let X_PAD: CGFloat = 7.0
-    let Y_PAD: CGFloat = 2.0
-    
-    let bgWidth = bb.width + (X_PAD * CGFloat(2))
-    let bgHeight = bb.height + (Y_PAD * CGFloat(2))
-    let bgMidPoint: CGFloat = bgHeight * 0.5
-    let bgRect = NSRect(x: bounds.width - bgWidth, y: bounds.midY - bgMidPoint, width: bgWidth, height: bgHeight)
-    
-    let bg = NSBezierPath(roundedRect: bgRect, xRadius: 5, yRadius: 5)
-    
-    if highlightColor {
-      let selectedBlue = NSColor(calibratedRed: 0.090, green: 0.433, blue: 0.937, alpha: 1.0)
-      selectedBlue.setFill()
-    } else {
-      NSColor.gray.setFill()
+    if !loading {
+      let bb = attrString.boundingRect(with: CGSize(width: 50, height: 18), options: [])
+      
+      let X_PAD: CGFloat = 7.0
+      let Y_PAD: CGFloat = 2.0
+      
+      let bgWidth = bb.width + (X_PAD * CGFloat(2))
+      let bgHeight = bb.height + (Y_PAD * CGFloat(2))
+      let bgMidPoint: CGFloat = bgHeight * 0.5
+      let bgRect = NSRect(x: bounds.width - bgWidth, y: bounds.midY - bgMidPoint, width: bgWidth, height: bgHeight)
+      
+      let bg = NSBezierPath(roundedRect: bgRect, xRadius: 5, yRadius: 5)
+      
+      if highlightColor {
+        let selectedBlue = NSColor(calibratedRed: 0.090, green: 0.433, blue: 0.937, alpha: 1.0)
+        selectedBlue.setFill()
+      } else {
+        NSColor.gray.setFill()
+      }
+      
+      bg.fill()
+      
+      attrString.draw(with: NSRect(x: bgRect.minX + X_PAD, y: bgRect.minY + 3 + Y_PAD, width: bb.width, height: bb.height), options: [])
     }
-    
-    bg.fill()
-    
-    attrString.draw(with: NSRect(x: bgRect.minX + X_PAD, y: bgRect.minY + 3 + Y_PAD, width: bb.width, height: bb.height), options: [])
   }
 }
 
@@ -76,8 +107,14 @@ class PodcastCellView: NSTableCellView {
   @IBOutlet weak var title: NSTextField!
   @IBOutlet weak var author: NSTextField!
   @IBOutlet weak var episodeCount: NSTextField!
-  @IBOutlet weak var progressIndicator: NSProgressIndicator!
   @IBOutlet weak var podcastUnplayedCount: PodcastUnplayedCountView!
+  
+  var loading: Bool = false {
+    didSet {
+      needsDisplay = true
+      podcastUnplayedCount.loading = loading
+    }
+  }
   
   override var backgroundStyle: NSView.BackgroundStyle {
     willSet {
@@ -85,10 +122,12 @@ class PodcastCellView: NSTableCellView {
         title.textColor = NSColor.white
         author.textColor = NSColor.init(white: 0.9, alpha: 1.0)
         episodeCount.textColor = NSColor.init(white: 0.9, alpha: 1.0)
+        podcastUnplayedCount.highlightColor = true
       } else {
         title.textColor = NSColor.labelColor
         author.textColor = NSColor.secondaryLabelColor
         episodeCount.textColor = NSColor.secondaryLabelColor
+        podcastUnplayedCount.highlightColor = false
       }
     }
   }

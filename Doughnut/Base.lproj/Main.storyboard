@@ -561,7 +561,7 @@ Gw
                     <window key="window" title="Episode" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="qHt-nN-tZV">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="contentRect" x="425" y="461" width="480" height="334"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
                         <connections>
                             <outlet property="delegate" destination="fF7-27-IWb" id="I9R-Ax-CDq"/>
@@ -573,7 +573,7 @@ Gw
                 </windowController>
                 <customObject id="Ojc-wu-qr7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="147" y="-1648"/>
+            <point key="canvasLocation" x="-1621" y="164"/>
         </scene>
         <!--Podcast Window-->
         <scene sceneID="hsO-gJ-asF">
@@ -595,7 +595,7 @@ Gw
                 </windowController>
                 <customObject id="ixx-Ap-Bgg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="-1208"/>
+            <point key="canvasLocation" x="-1621" y="-318"/>
         </scene>
         <!--Show Podcast View Controller-->
         <scene sceneID="782-28-FAX">
@@ -654,6 +654,9 @@ Gw
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <action selector="authorInputEvent:" target="aYf-me-pjE" id="TEA-IN-rWl"/>
+                                                            </connections>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gFU-h3-acG">
                                                             <rect key="frame" x="-17" y="107" width="108" height="17"/>
@@ -686,6 +689,9 @@ Gw
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <action selector="copyrightInputEvent:" target="aYf-me-pjE" id="rlb-GB-i6k"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
@@ -891,7 +897,7 @@ Gw
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lLd-rU-99B">
                                 <rect key="frame" x="118" y="313" width="356" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="46- Sic Semper" id="J8N-Rz-IOm">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="J8N-Rz-IOm">
                                     <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -899,7 +905,7 @@ Gw
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4bp-Fg-c5d">
                                 <rect key="frame" x="118" y="292" width="356" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Podcast Name" id="Ar8-br-7kz">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="Ar8-br-7kz">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -907,7 +913,7 @@ Gw
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r6Y-mc-8fQ">
                                 <rect key="frame" x="118" y="271" width="356" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Podcast Name" id="40D-9Q-Vuf">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="40D-9Q-Vuf">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -982,6 +988,7 @@ Gw
                         <outlet property="authorInputView" destination="GHQ-17-4YH" id="Xzy-wy-U3d"/>
                         <outlet property="authorLabelView" destination="4bp-Fg-c5d" id="pp9-Qo-2NF"/>
                         <outlet property="copyrightInputView" destination="Ihq-fv-Zdu" id="Kry-U8-3HM"/>
+                        <outlet property="copyrightLabelView" destination="r6Y-mc-8fQ" id="MYv-3w-PMX"/>
                         <outlet property="descriptionInputView" destination="LPd-Bs-9OT" id="OQc-qc-Km3"/>
                         <outlet property="linkInputView" destination="rhB-wx-pUe" id="RBC-Lb-f0Z"/>
                         <outlet property="tabBarView" destination="8Aj-Qd-gWC" id="9uI-tc-JYi"/>
@@ -992,7 +999,7 @@ Gw
                 </viewController>
                 <customObject id="cfc-sW-F9t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740.5" y="-1038.5"/>
+            <point key="canvasLocation" x="-1034" y="-309"/>
         </scene>
         <!--Edit Episode View Controller-->
         <scene sceneID="FSY-g5-ePW">
@@ -1156,7 +1163,7 @@ Gw
                 </viewController>
                 <customObject id="CxZ-4n-MrU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740.5" y="-1544"/>
+            <point key="canvasLocation" x="-1035" y="157"/>
         </scene>
         <!--Subscribe View Controller-->
         <scene sceneID="td7-gk-0bY">
@@ -1427,9 +1434,9 @@ Gw
                     <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="-68" y="240" width="764" height="460"/>
+                        <rect key="contentRect" x="-68" y="240" width="860" height="460"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="680" height="300"/>
+                        <value key="minSize" type="size" width="860" height="400"/>
                         <toolbar key="toolbar" implicitIdentifier="5EA9AEAC-FA45-4A90-AB14-9E623C1C2711" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="2lC-Jl-fGD">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="24m-vf-dRH"/>
@@ -1491,14 +1498,39 @@ Gw
                                         </connections>
                                     </button>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="824C3448-3C44-4816-BEC9-E61A2DE9BD00" label="Search" paletteLabel="Search" id="9qL-Cl-fVy">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="124" height="22"/>
+                                    <size key="maxSize" width="124" height="22"/>
+                                    <textField key="view" verticalHuggingPriority="750" id="Q3N-wA-1B1">
+                                        <rect key="frame" x="0.0" y="14" width="124" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="Search..." drawsBackground="YES" id="ngp-Ov-F6y">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="0446AA35-D828-4B36-B4C9-23B4D2BF0006" label="Task Manager" paletteLabel="Task Manager" tag="-1" id="zd4-bJ-Dkk">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="42" height="38"/>
+                                    <size key="maxSize" width="42" height="38"/>
+                                    <customView key="view" wantsLayer="YES" id="fmH-qD-Oui" customClass="TaskManagerView" customModule="Doughnut" customModuleProvider="target">
+                                        <rect key="frame" x="19" y="14" width="42" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </customView>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="kDe-15-3rO"/>
                                 <toolbarItem reference="6L2-aH-OKv"/>
                                 <toolbarItem reference="cKK-pR-jXd"/>
+                                <toolbarItem reference="cKK-pR-jXd"/>
                                 <toolbarItem reference="Psv-5X-LNl"/>
                                 <toolbarItem reference="cKK-pR-jXd"/>
-                                <toolbarItem reference="3ZS-BL-qK1"/>
+                                <toolbarItem reference="zd4-bJ-Dkk"/>
+                                <toolbarItem reference="9qL-Cl-fVy"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -1515,7 +1547,7 @@ Gw
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-182" y="58"/>
+            <point key="canvasLocation" x="-251" y="61"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tQb-WI-UYn">
@@ -1593,7 +1625,8 @@ Gw
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WuW-3B-toC">
                                                                     <rect key="frame" x="3" y="3" width="50" height="50"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="50" id="lrX-ne-0AI"/>
+                                                                        <constraint firstAttribute="width" constant="50" id="Es8-zV-VCt"/>
+                                                                        <constraint firstAttribute="height" constant="50" id="t2R-hd-ppT"/>
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PlaceholderIcon" id="ayK-fp-XA4"/>
                                                                 </imageView>
@@ -1613,37 +1646,29 @@ Gw
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="t9j-Ek-s8D">
-                                                                    <rect key="frame" x="208" y="21" width="16" height="16"/>
-                                                                </progressIndicator>
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="qSa-lt-Xvr" customClass="PodcastUnplayedCountView" customModule="Doughnut" customModuleProvider="target">
                                                                     <rect key="frame" x="191" y="16" width="40" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="704-ct-LOW"/>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Y2B-ex-ELk"/>
+                                                                        <constraint firstAttribute="height" constant="22" id="aka-cm-RKP"/>
                                                                     </constraints>
                                                                 </customView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="WuW-3B-toC" secondAttribute="bottom" constant="3" id="3bb-G8-dgh"/>
-                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" id="5Sq-4R-km1"/>
-                                                                <constraint firstItem="qSa-lt-Xvr" firstAttribute="top" secondItem="Caz-b2-UzS" secondAttribute="top" constant="17" id="7nz-h3-qMw"/>
-                                                                <constraint firstAttribute="trailing" secondItem="t9j-Ek-s8D" secondAttribute="trailing" constant="7" id="9dM-DU-sca"/>
-                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="top" secondItem="WuW-3B-toC" secondAttribute="top" id="9ln-bw-d2L"/>
-                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="centerY" secondItem="Caz-b2-UzS" secondAttribute="centerY" id="D6S-yh-uAV"/>
-                                                                <constraint firstAttribute="trailing" secondItem="qSa-lt-Xvr" secondAttribute="trailing" id="DIn-lo-V7i"/>
-                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="WuW-3B-toC" secondAttribute="trailing" constant="8" symbolic="YES" id="Di0-P6-DnA"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="centerY" secondItem="WuW-3B-toC" secondAttribute="centerY" id="HXX-Rz-PcI"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="trailing" secondItem="Pkl-Lr-qxa" secondAttribute="trailing" id="IcN-hu-DeP"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="bottom" secondItem="t9j-Ek-s8D" secondAttribute="bottom" id="KnY-P4-KSs"/>
-                                                                <constraint firstAttribute="trailing" secondItem="qSa-lt-Xvr" secondAttribute="trailing" id="QCv-D6-281"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="top" secondItem="yFZ-qJ-tU0" secondAttribute="bottom" constant="1" id="TL4-qV-RQc"/>
-                                                                <constraint firstItem="t9j-Ek-s8D" firstAttribute="top" secondItem="Caz-b2-UzS" secondAttribute="top" constant="18" id="Wdt-WD-9yb"/>
-                                                                <constraint firstItem="qSa-lt-Xvr" firstAttribute="centerY" secondItem="Caz-b2-UzS" secondAttribute="centerY" id="XNg-Fa-Nvt"/>
-                                                                <constraint firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" constant="45" id="YR5-qj-OGl"/>
-                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="leading" secondItem="Caz-b2-UzS" secondAttribute="leading" constant="3" id="ejS-UM-f01"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="Pkl-Lr-qxa" secondAttribute="leading" id="jNO-IH-IMK"/>
-                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="leading" secondItem="yFZ-qJ-tU0" secondAttribute="leading" id="xDY-6E-q6f"/>
-                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="top" secondItem="AHY-Ts-qj2" secondAttribute="bottom" constant="2" id="xVn-eK-nQV"/>
+                                                                <constraint firstAttribute="trailing" secondItem="qSa-lt-Xvr" secondAttribute="trailing" id="1o0-ea-oPQ"/>
+                                                                <constraint firstItem="qSa-lt-Xvr" firstAttribute="top" secondItem="Caz-b2-UzS" secondAttribute="top" constant="17" id="1xS-lf-F4s"/>
+                                                                <constraint firstItem="WuW-3B-toC" firstAttribute="leading" secondItem="Caz-b2-UzS" secondAttribute="leading" constant="3" id="4BI-bv-poa"/>
+                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" id="6mm-2s-Mb7"/>
+                                                                <constraint firstItem="AHY-Ts-qj2" firstAttribute="centerY" secondItem="WuW-3B-toC" secondAttribute="centerY" id="7cN-QU-Joa"/>
+                                                                <constraint firstAttribute="trailing" secondItem="yFZ-qJ-tU0" secondAttribute="trailing" constant="45" id="F4g-7J-hFA"/>
+                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="top" secondItem="WuW-3B-toC" secondAttribute="top" id="FkM-5b-0uF"/>
+                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="top" secondItem="AHY-Ts-qj2" secondAttribute="bottom" constant="2" id="IvX-zi-0of"/>
+                                                                <constraint firstItem="yFZ-qJ-tU0" firstAttribute="leading" secondItem="WuW-3B-toC" secondAttribute="trailing" constant="8" symbolic="YES" id="Kni-FD-zKl"/>
+                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="trailing" secondItem="AHY-Ts-qj2" secondAttribute="trailing" id="PcM-j7-u9W"/>
+                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="leading" secondItem="AHY-Ts-qj2" secondAttribute="leading" id="Sv1-Xf-5Gw"/>
+                                                                <constraint firstAttribute="bottom" secondItem="WuW-3B-toC" secondAttribute="bottom" constant="3" id="f1y-YT-7dW"/>
+                                                                <constraint firstItem="Pkl-Lr-qxa" firstAttribute="leading" secondItem="yFZ-qJ-tU0" secondAttribute="leading" id="ouF-a0-Vht"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="artwork" destination="WuW-3B-toC" id="Lus-7p-rwp"/>
@@ -1651,7 +1676,6 @@ Gw
                                                                 <outlet property="episodeCount" destination="Pkl-Lr-qxa" id="A5q-iE-0c5"/>
                                                                 <outlet property="imageView" destination="WuW-3B-toC" id="qce-6g-Mlb"/>
                                                                 <outlet property="podcastUnplayedCount" destination="qSa-lt-Xvr" id="eZs-zW-Ttc"/>
-                                                                <outlet property="progressIndicator" destination="t9j-Ek-s8D" id="Hn2-Nf-2gz"/>
                                                                 <outlet property="title" destination="yFZ-qJ-tU0" id="WAu-w6-NGc"/>
                                                             </connections>
                                                         </tableCellView>

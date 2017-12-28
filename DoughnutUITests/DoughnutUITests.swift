@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Doughnut
 
 class DoughnutUITests: XCTestCase {
         

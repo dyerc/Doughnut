@@ -31,9 +31,12 @@ class ShowPodcastWindow: NSWindow {
 }
 
 class ShowPodcastViewController: NSViewController {
+  let defaultPodcastArtwork = NSImage(named: NSImage.Name(rawValue: "PodcastPlaceholder"))
+  
   @IBOutlet weak var artworkView: NSImageView!
   @IBOutlet weak var titleLabelView: NSTextField!
   @IBOutlet weak var authorLabelView: NSTextField!
+  @IBOutlet weak var copyrightLabelView: NSTextField!
   
   @IBOutlet weak var tabBarView: NSSegmentedControl!
   @IBOutlet weak var tabView: NSTabView!
@@ -46,6 +49,14 @@ class ShowPodcastViewController: NSViewController {
   
   @IBAction func titleInputEvent(_ sender: NSTextField) {
     titleLabelView.stringValue = sender.stringValue
+  }
+  
+  @IBAction func authorInputEvent(_ sender: NSTextField) {
+    authorLabelView.stringValue = sender.stringValue
+  }
+  
+  @IBAction func copyrightInputEvent(_ sender: NSTextField) {
+    copyrightLabelView.stringValue = sender.stringValue
   }
   
   // Artwork Tab
@@ -66,7 +77,7 @@ class ShowPodcastViewController: NSViewController {
     
     artworkView.wantsLayer = true
     artworkView.layer?.borderWidth = 1.0
-    artworkView.layer?.borderColor = NSColor.lightGray.cgColor
+    artworkView.layer?.borderColor = NSColor(calibratedWhite: 0.8, alpha: 1.0).cgColor
     artworkView.layer?.cornerRadius = 3.0
     artworkView.layer?.masksToBounds = true
   }
@@ -75,10 +86,13 @@ class ShowPodcastViewController: NSViewController {
     didSet {
       if let artwork = podcast?.image {
         artworkView.image = artwork
+      } else {
+        artworkView.image = defaultPodcastArtwork
       }
       
       titleLabelView.stringValue = podcast?.title ?? ""
       authorLabelView.stringValue = podcast?.author ?? ""
+      copyrightLabelView.stringValue = podcast?.copyright ?? ""
       
       // Details View
       titleInputView.stringValue = podcast?.title ?? ""
@@ -89,6 +103,8 @@ class ShowPodcastViewController: NSViewController {
       // Artwork View
       if let artwork = podcast?.image {
         artworkLargeView.image = artwork
+      } else {
+        artworkLargeView.image = defaultPodcastArtwork
       }
       
       // Description View
@@ -105,10 +121,12 @@ class ShowPodcastViewController: NSViewController {
     self.view.window?.close()
   }
   
-  @IBAction func savePodcast(_ sender: Any) {
-    guard let podcast = podcast else { return }
-    
-    
+  // Permeate UI input changes to podcat object
+  func commitChanges(_ podcast: Podcast) {
+    podcast.title = titleInputView.stringValue
+    podcast.author = authorInputView.stringValue
+    podcast.link = linkInputView.stringValue
+    podcast.copyright = copyrightInputView.stringValue
     
     if modifiedImage {
       podcast.image = artworkLargeView.image
@@ -117,15 +135,29 @@ class ShowPodcastViewController: NSViewController {
     if modifiedDescription {
       podcast.description = descriptionInputView.stringValue
     }
-    
-    Library.global.save(podcast: podcast)
-    
-    self.view.window?.close()
+  }
+  
+  @IBAction func savePodcast(_ sender: Any) {
+    if let podcast = podcast {
+      commitChanges(podcast)
+      
+      if validate() {
+        Library.global.save(podcast: podcast)
+        self.view.window?.close()
+      }
+    } else {
+      // Create new podcast
+      let podcast = Podcast(title: titleInputView.stringValue)
+      commitChanges(podcast)
+      
+      if validate() {
+        Library.global.subscribe(podcast: podcast)
+        self.view.window?.close()
+      }
+    }
   }
   
   @IBAction func addArtwork(_ sender: Any) {
-    guard let podcast = podcast else { return }
-    
     let panel = NSOpenPanel()
     panel.canChooseFiles = true
     panel.canChooseDirectories = false
@@ -153,4 +185,17 @@ class ShowPodcastViewController: NSViewController {
     }
   }
   
+  func validate() -> Bool {
+    guard let podcast = podcast else { return false }
+    
+    if let invalid = podcast.invalid() {
+      let alert = NSAlert()
+      alert.messageText = invalid
+      alert.runModal()
+      
+      return false
+    } else {
+      return true
+    }
+  }
 }
