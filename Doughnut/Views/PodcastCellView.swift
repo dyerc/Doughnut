@@ -46,30 +46,32 @@ class PodcastUnplayedCountView: NSView {
     }
   }
   
-  var loadingIndicator: NSProgressIndicator?
+  let loadingIndicator = NSProgressIndicator()
   
   var loading: Bool = false {
     didSet {
-      if let loader = loadingIndicator {
-        loader.isHidden = !loading
-        
-        if loading {
-          loader.startAnimation(self)
-        } else {
-          loader.stopAnimation(self)
-        }
+      loadingIndicator.isHidden = !loading
+      
+      if loading {
+        loadingIndicator.startAnimation(self)
+      } else {
+        loadingIndicator.stopAnimation(self)
       }
     }
   }
   
-  override func viewDidMoveToWindow() {
-    let loader = NSProgressIndicator(frame: NSRect(x: (frame.width - 16) / 2, y: (frame.height - 16) / 2, width: 16.0, height: 16.0))
-    loader.isHidden = true
-    loader.style = .spinning
-    loader.isIndeterminate = true
+  required init?(coder decoder: NSCoder) {
+    super.init(coder: decoder)
     
-    addSubview(loader)
-    loadingIndicator = loader
+    loadingIndicator.isHidden = true
+    loadingIndicator.style = .spinning
+    loadingIndicator.isIndeterminate = true
+    
+    addSubview(loadingIndicator)
+  }
+  
+  override func viewDidMoveToWindow() {
+    loadingIndicator.frame = NSRect(x: (frame.width - 16) / 2, y: (frame.height - 16) / 2, width: 16.0, height: 16.0)
   }
   
   var attrString = NSMutableAttributedString(string: "")
