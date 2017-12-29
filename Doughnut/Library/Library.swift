@@ -104,8 +104,8 @@ class Library: NSObject {
         Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: { timer in
           let library = Library.global
           
-          library.scheduledReload()
           library.minutesSinceLastScheduledReload += 1
+          library.scheduledReload()
         })
         
         return true

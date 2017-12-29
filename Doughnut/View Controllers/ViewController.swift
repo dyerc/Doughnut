@@ -125,7 +125,13 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   // MARK: Actions
   func updateDockIcon() {
     if Preference.bool(for: Preference.Key.showDockBadge) {
-      NSApplication.shared.dockTile.badgeLabel = String(Library.global.unplayedCount)
+      let unplayedCount = Library.global.unplayedCount
+      
+      if unplayedCount > 0 {
+        NSApplication.shared.dockTile.badgeLabel = String(unplayedCount)
+      } else {
+        NSApplication.shared.dockTile.badgeLabel = nil
+      }
     } else {
       NSApplication.shared.dockTile.badgeLabel = nil
     }
