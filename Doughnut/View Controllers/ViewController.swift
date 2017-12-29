@@ -48,9 +48,25 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.showDockBadge.rawValue, options: [], context: nil)
+    updateDockIcon()
+    
     splitView.autosaveName = NSSplitView.AutosaveName(rawValue: "Main")
 
     Library.global.delegate = self
+  }
+  
+  deinit {
+    UserDefaults.standard.removeObserver(self, forKeyPath: Preference.Key.showDockBadge.rawValue)
+  }
+  
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    switch keyPath {
+    case Preference.Key.showDockBadge.rawValue?:
+      updateDockIcon()
+    default:
+      return
+    }
   }
   
   func selectPodcast(podcast: Podcast?) {
@@ -65,10 +81,12 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   // MARK: Library Delegate
   func libraryReloaded() {
     podcastViewController.reloadPodcasts()
+    updateDockIcon()
   }
   
   func librarySubscribedToPodcast(subscribed: Podcast) {
     podcastViewController.reloadPodcasts()
+    updateDockIcon()
   }
   
   func libraryUnsubscribedFromPodcast(unsubscribed: Podcast) {
@@ -77,10 +95,13 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     if episodeViewController.podcast?.id == unsubscribed.id {
       selectPodcast(podcast: nil)
     }
+    
+    updateDockIcon()
   }
   
   func libraryUpdatingPodcast(podcast: Podcast) {
     podcastViewController.reloadPodcasts()
+    updateDockIcon()
   }
   
   func libraryUpdatedPodcast(podcast: Podcast) {
@@ -89,11 +110,24 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     if episodeViewController.podcast?.id == podcast.id {
       episodeViewController.reloadEpisodes()
     }
+    
+    updateDockIcon()
   }
   
   func libraryUpdatedEpisode(episode: Episode) {
     if episodeViewController.podcast?.id == episode.podcastId {
       episodeViewController.reloadEpisode(episode)
+    }
+    
+    updateDockIcon()
+  }
+  
+  // MARK: Actions
+  func updateDockIcon() {
+    if Preference.bool(for: Preference.Key.showDockBadge) {
+      NSApplication.shared.dockTile.badgeLabel = String(Library.global.unplayedCount)
+    } else {
+      NSApplication.shared.dockTile.badgeLabel = nil
     }
   }
 }

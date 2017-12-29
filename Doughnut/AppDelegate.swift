@@ -34,9 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       defaults: [kMediaKeyUsingBundleIdentifiersDefaultsKey : SPMediaKeyTap.defaultMediaKeyUserBundleIdentifiers()])
   }
 
-  func applicationDidFinishLaunching(_ aNotification: Notification) {
-    print(ProcessInfo.processInfo.arguments)
-    
+  func applicationDidFinishLaunching(_ aNotification: Notification) {    
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
     
     print("Check for updates every \(Preference.string(for: Preference.Key.reloadFrequency))")
