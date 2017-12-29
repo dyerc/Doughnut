@@ -34,6 +34,7 @@ class Preference {
     
     // General
     static let showDockBadge = Key("showDockBadge")
+    static let enableMediaKeys = Key("enableMediaKeys")
     
     // Library
     static let libraryPath = Key("libraryPath")
@@ -42,6 +43,7 @@ class Preference {
     // Playback
     static let skipForwardDuration = Key("skipForwardDuration")
     static let skipBackDuration = Key("skipBackDuration")
+    static let replayAfterPause = Key("replayAfterPause")
   }
   
   static let kLibraryPath = "LibraryPath"

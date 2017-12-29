@@ -116,6 +116,12 @@
 		83D4CA611F7C39AD002EDC36 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
 		83D59CF71F7ED15C00F25A66 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D59CF61F7ED15C00F25A66 /* Episode.swift */; };
 		83D59CF81F7ED15F00F25A66 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D59CF61F7ED15C00F25A66 /* Episode.swift */; };
+		83D7F33E1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F33D1FF6967900E4B886 /* PrefGeneralViewController.swift */; };
+		83D7F33F1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F33D1FF6967900E4B886 /* PrefGeneralViewController.swift */; };
+		83D7F3401FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F33D1FF6967900E4B886 /* PrefGeneralViewController.swift */; };
+		83D7F3421FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F3411FF69F7100E4B886 /* PrefPlaybackViewController.swift */; };
+		83D7F3431FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F3411FF69F7100E4B886 /* PrefPlaybackViewController.swift */; };
+		83D7F3441FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F3411FF69F7100E4B886 /* PrefPlaybackViewController.swift */; };
 		83D9710A1F812B270091822A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D971091F812B270091822A /* Player.swift */; };
 		83D9710C1F812E910091822A /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9710B1F812E910091822A /* PlayerView.swift */; };
 		83DB16DC1F93E34B0062B266 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16DB1F93E34B0062B266 /* Utils.swift */; };
@@ -203,6 +209,8 @@
 		83D4CA5B1F7C3848002EDC36 /* enclosure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enclosure.mp3; sourceTree = "<group>"; };
 		83D4CA5C1F7C3902002EDC36 /* LibraryTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTestCase.swift; sourceTree = "<group>"; };
 		83D59CF61F7ED15C00F25A66 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		83D7F33D1FF6967900E4B886 /* PrefGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefGeneralViewController.swift; sourceTree = "<group>"; };
+		83D7F3411FF69F7100E4B886 /* PrefPlaybackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefPlaybackViewController.swift; sourceTree = "<group>"; };
 		83D971091F812B270091822A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		83D9710B1F812E910091822A /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		83DB16DB1F93E34B0062B266 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -312,6 +320,8 @@
 			children = (
 				8341B8381F7BE4F100B50A5D /* Preference.swift */,
 				832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */,
+				83D7F33D1FF6967900E4B886 /* PrefGeneralViewController.swift */,
+				83D7F3411FF69F7100E4B886 /* PrefPlaybackViewController.swift */,
 				832BB7521F951A5600988AE8 /* Preferences.storyboard */,
 			);
 			path = Preference;
@@ -766,6 +776,7 @@
 				8341B8391F7BE4F100B50A5D /* Preference.swift in Sources */,
 				83FB10ED1FEB00E700A49875 /* EditEpisodeViewController.swift in Sources */,
 				83EFC6051F9954AD00E1DE1F /* NSObject+SPInvocationGrabbing.m in Sources */,
+				83D7F3421FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
 				8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */,
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				83D9710C1F812E910091822A /* PlayerView.swift in Sources */,
@@ -777,6 +788,7 @@
 				83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */,
 				83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
+				83D7F33E1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */,
 				830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */,
 				830E99BD1FF50DD000B728BE /* ActivityIndicator.swift in Sources */,
 				839DBDA71FEEEA81007610EF /* WhiteBackgroundView.swift in Sources */,
@@ -835,6 +847,7 @@
 				830A33E41FF042D100C13B1D /* EditPodcastViewController.swift in Sources */,
 				83D4CA561F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift in Sources */,
 				830A33E21FF042D100C13B1D /* DownloadsViewController.swift in Sources */,
+				83D7F33F1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */,
 				830A33D31FF042CE00C13B1D /* DownloadCellView.swift in Sources */,
 				830A33F41FF042D900C13B1D /* WindowController.swift in Sources */,
 				830A33DF1FF042D100C13B1D /* EpisodeViewController.swift in Sources */,
@@ -842,6 +855,7 @@
 				830E99BE1FF50DD000B728BE /* ActivityIndicator.swift in Sources */,
 				834CC1B11F95077500A98DE9 /* MarkupGenerator.swift in Sources */,
 				834998B71FF3E3F00035EF87 /* TaskManagerView.swift in Sources */,
+				83D7F3431FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
 				830A33FD1FF042E800C13B1D /* PrefLibraryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -856,6 +870,7 @@
 				830A33CC1FF042C900C13B1D /* DownloadManager.swift in Sources */,
 				830A33F71FF042D900C13B1D /* Player.swift in Sources */,
 				830A33ED1FF042D100C13B1D /* EditPodcastViewController.swift in Sources */,
+				83D7F3441FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
 				830A33FA1FF042E600C13B1D /* PrefLibraryViewController.swift in Sources */,
 				830A33F81FF042D900C13B1D /* WindowController.swift in Sources */,
 				830A33E71FF042D100C13B1D /* PodcastViewController.swift in Sources */,
@@ -884,6 +899,7 @@
 				830A33FF1FF043BB00C13B1D /* SPMediaKeyTap.m in Sources */,
 				830A33F01FF042D500C13B1D /* ShowPodcastWindow.swift in Sources */,
 				830A33D91FF042CE00C13B1D /* SeekSlider.swift in Sources */,
+				83D7F3401FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */,
 				830A33E61FF042D100C13B1D /* ViewController.swift in Sources */,
 				830A33CE1FF042C900C13B1D /* MarkupGenerator.swift in Sources */,
 			);

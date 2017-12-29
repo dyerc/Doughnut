@@ -273,6 +273,8 @@ class Library: NSObject {
       for podcast in podcasts {
         reload(podcast: podcast, onQueue: backgroundQueue)
       }
+      
+      minutesSinceLastScheduledReload = 0
     }
   }
   

@@ -6,10 +6,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#if !defined(NSUserInterfaceItemIdentifier)
-typedef NSString * NSUserInterfaceItemIdentifier NS_EXTENSIBLE_STRING_ENUM;
-#endif
-
 /*!
  * Requirements for the Preferences panel
  */
@@ -18,12 +14,7 @@ typedef NSString * NSUserInterfaceItemIdentifier NS_EXTENSIBLE_STRING_ENUM;
 /*!
  * Unique identifier of the Panel represented by the view controller.
  */
-@property (nonatomic, readonly, nullable) NSUserInterfaceItemIdentifier identifier;
-
-/*!
- * Toolbar icon for the Panel represented by the view controller.
- */
-@property (nonatomic, readonly, nullable) NSImage *toolbarItemImage;
+@property (nonatomic, readonly) NSString* viewIdentifier;
 
 /*!
  * Toolbar item label for the Panel represented by the view controller.
@@ -33,6 +24,13 @@ typedef NSString * NSUserInterfaceItemIdentifier NS_EXTENSIBLE_STRING_ENUM;
 @property (nonatomic, readonly, nullable) NSString *toolbarItemLabel;
 
 @optional
+
+/*!
+ * Toolbar icon for the Panel represented by the view controller.
+ *
+ * If you do not implement this then the toolbar will only use labels
+ */
+@property (nonatomic, readonly, nullable) NSImage *toolbarItemImage;
 
 /*!
  * Called when selection goes to the Panel represented by the view controller.

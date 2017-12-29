@@ -20,28 +20,24 @@ import Cocoa
 import MASPreferences
 
 @objcMembers
-class PrefLibraryViewController: NSViewController, MASPreferencesViewController {
+class PrefLibraryViewController: NSViewController {
   static func instantiate() -> PrefLibraryViewController {
     let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Preferences"), bundle: nil)
     return storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("PrefLibraryViewController")) as! PrefLibraryViewController
   }
   
-  var viewIdentifier: String {
-    get {
-      return "library"
-    }
-  }
+  var viewIdentifier: String = "PrefLibraryViewController"
   
-  var toolbarItemImage: NSImage? {
+  var toolbarItemImage: NSImage {
     get {
-      return NSImage(named: .preferencesGeneral)!
+      return NSImage(named: NSImage.Name(rawValue: "PrefLibrary"))!
     }
   }
   
   var toolbarItemLabel: String? {
     get {
       view.layoutSubtreeIfNeeded()
-      return NSLocalizedString("Library", comment: "Library Preferences")
+      return "  Library  "
     }
   }
   

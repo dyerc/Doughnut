@@ -9,7 +9,7 @@
         <!--Pref Library View Controller-->
         <scene sceneID="fmP-bt-sV4">
             <objects>
-                <viewController storyboardIdentifier="PrefLibraryViewController" id="h7b-gC-WtZ" customClass="PrefLibraryViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrefLibraryViewController" showSeguePresentationStyle="single" id="h7b-gC-WtZ" customClass="PrefLibraryViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="9vL-gV-zkj">
                         <rect key="frame" x="0.0" y="0.0" width="620" height="222"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -75,8 +75,38 @@
                                     <action selector="changeLibraryLocation:" target="h7b-gC-WtZ" id="GEQ-8I-mLQ"/>
                                 </connections>
                             </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uTN-mt-3fr">
+                                <rect key="frame" x="222" y="87" width="388" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="After updating your library path, Doughnut will restart using the new location" id="aRv-G1-uiN">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="librarySizeTxt" destination="kXf-6Q-RNP" id="Xcp-3I-lLl"/>
+                        <outlet property="view" destination="9vL-gV-zkj" id="2Ou-6M-STZ"/>
+                    </connections>
+                </viewController>
+                <customObject id="TOW-lD-yXY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="huq-9C-5pr"/>
+                <userDefaultsController representsSharedInstance="YES" id="xLd-dS-eMW"/>
+            </objects>
+            <point key="canvasLocation" x="-475" y="-351"/>
+        </scene>
+        <!--Pref General View Controller-->
+        <scene sceneID="Vq8-Zr-iTE">
+            <objects>
+                <viewController storyboardIdentifier="PrefGeneralViewController" showSeguePresentationStyle="single" id="eoZ-8V-Te0" customClass="PrefGeneralViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="PcR-69-Pzw">
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="240"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bgc-a3-JKi">
-                                <rect key="frame" x="18" y="52" width="187" height="17"/>
+                                <rect key="frame" x="18" y="203" width="187" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Check for New Episodes:" id="9W0-lG-slR">
                                     <font key="font" metaFont="system"/>
@@ -85,7 +115,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OrJ-V8-xVo">
-                                <rect key="frame" x="220" y="45" width="261" height="26"/>
+                                <rect key="frame" x="220" y="196" width="261" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Every 15 minutes" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="15" imageScaling="proportionallyDown" inset="2" selectedItem="qpW-wK-UaC" id="iWW-SZ-Fua">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -111,81 +141,155 @@
                                     </menu>
                                 </popUpButtonCell>
                                 <connections>
-                                    <binding destination="xLd-dS-eMW" name="selectedTag" keyPath="values.reloadFrequency" id="Kk3-Wh-Lsi"/>
+                                    <binding destination="S6J-dJ-Xz8" name="selectedTag" keyPath="values.reloadFrequency" id="P5E-ox-JIt"/>
                                 </connections>
                             </popUpButton>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uTN-mt-3fr">
-                                <rect key="frame" x="222" y="87" width="388" height="34"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cUa-0X-uyd">
+                                <rect key="frame" x="18" y="168" width="187" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="After updating your library path, Doughnut will restart using the new location" id="aRv-G1-uiN">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="librarySizeTxt" destination="kXf-6Q-RNP" id="Xcp-3I-lLl"/>
-                    </connections>
-                </viewController>
-                <customObject id="TOW-lD-yXY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="huq-9C-5pr"/>
-                <userDefaultsController representsSharedInstance="YES" id="xLd-dS-eMW"/>
-            </objects>
-            <point key="canvasLocation" x="-475" y="-351"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Vq8-Zr-iTE">
-            <objects>
-                <viewController id="eoZ-8V-Te0" sceneMemberID="viewController">
-                    <view key="view" id="PcR-69-Pzw">
-                        <rect key="frame" x="0.0" y="0.0" width="620" height="240"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzf-Bv-TYu">
-                                <rect key="frame" x="18" y="119" width="179" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Library Path:" id="MWS-Rp-vgV">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Miscellaneous:" id="RED-YY-nxd">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TLh-C7-e24">
-                                <rect key="frame" x="212" y="119" width="390" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="Unknown" id="2gk-qH-fuG">
-                                    <font key="font" metaFont="systemBold"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="xLd-dS-eMW" name="value" keyPath="values.libraryPath" id="AFX-eM-GOR"/>
-                                </connections>
-                            </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZk-Bh-u55">
-                                <rect key="frame" x="212" y="204" width="262" height="18"/>
+                                <rect key="frame" x="220" y="167" width="262" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Display unplayed episode count in dock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YEa-38-XiC">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <binding destination="S6J-dJ-Xz8" name="value" keyPath="values.showDockBadge" id="NYu-uQ-gMe"/>
+                                </connections>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KqF-l0-JhQ">
-                                <rect key="frame" x="212" y="176" width="135" height="18"/>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="view" destination="PcR-69-Pzw" id="CsQ-lf-pAS"/>
+                    </connections>
+                </viewController>
+                <customObject id="hcm-qb-2SJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="S6J-dJ-Xz8"/>
+            </objects>
+            <point key="canvasLocation" x="-475" y="-4"/>
+        </scene>
+        <!--Pref Playback View Controller-->
+        <scene sceneID="XaY-V2-mys">
+            <objects>
+                <viewController storyboardIdentifier="PrefPlaybackViewController" id="Fq1-jU-rl7" customClass="PrefPlaybackViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="xec-XO-2PT">
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="232"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cfx-Y9-KLY">
+                                <rect key="frame" x="18" y="195" width="187" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Enable media keys" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2lW-D5-buD">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Skipping Back:" id="2zt-dd-ER4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-sH-TcM">
+                                <rect key="frame" x="215" y="189" width="261" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="5 seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="5" imageScaling="proportionallyDown" inset="2" selectedItem="MFI-bB-deB" id="PJk-QI-9AZ">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="847-mm-p60">
+                                        <items>
+                                            <menuItem title="5 seconds" state="on" tag="5" id="MFI-bB-deB"/>
+                                            <menuItem title="10 seconds" tag="10" id="ct8-SH-mFx"/>
+                                            <menuItem title="15 seconds" tag="15" id="wND-a4-dJf"/>
+                                            <menuItem title="30 seconds" tag="30" id="YCI-p9-dD6">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="1 minute" tag="60" id="9CB-tI-lAj">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="2 minutes" tag="120" id="8tZ-3u-PXm">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="5 minutes" tag="300" id="khs-LL-TQL">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <binding destination="THH-sN-3K5" name="selectedTag" keyPath="values.skipBackDuration" id="saz-4W-oFE"/>
+                                </connections>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-9o-kBm">
+                                <rect key="frame" x="18" y="159" width="187" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Skipping Forward:" id="VFU-LC-tba">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNE-Uq-c2K">
+                                <rect key="frame" x="215" y="153" width="261" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="5 seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="5" imageScaling="proportionallyDown" inset="2" selectedItem="cEg-Mp-Dyu" id="Yr7-db-C5M">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="vTG-N9-Ubg">
+                                        <items>
+                                            <menuItem title="5 seconds" state="on" tag="5" id="cEg-Mp-Dyu"/>
+                                            <menuItem title="10 seconds" tag="10" id="hqJ-Du-8i4"/>
+                                            <menuItem title="15 seconds" tag="15" id="vnE-gR-8N0"/>
+                                            <menuItem title="30 seconds" tag="30" id="4cA-23-m3s">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="1 minute" tag="60" id="0Dk-7O-AF6">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="2 minutes" tag="120" id="GK6-Rv-ljM">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="5 minutes" tag="300" id="opr-Bh-xrZ">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <binding destination="THH-sN-3K5" name="selectedTag" keyPath="values.skipForwardDuration" id="7ve-9C-IXm"/>
+                                </connections>
+                            </popUpButton>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIb-gL-zwy">
+                                <rect key="frame" x="215" y="122" width="135" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Replay after pause" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="TWS-bO-89n">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <binding destination="THH-sN-3K5" name="value" keyPath="values.replayAfterPause" id="iPK-15-gBm"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KqF-l0-JhQ">
+                                <rect key="frame" x="215" y="92" width="174" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Enable Apple Media Keys" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2lW-D5-buD">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="THH-sN-3K5" name="value" keyPath="values.enableMediaKeys" id="Mmi-t7-b32"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                 </viewController>
-                <customObject id="hcm-qb-2SJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="DTs-nT-24u" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="THH-sN-3K5"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="13"/>
+            <point key="canvasLocation" x="-475" y="315"/>
         </scene>
     </scenes>
 </document>
