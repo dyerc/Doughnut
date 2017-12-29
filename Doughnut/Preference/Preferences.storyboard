@@ -11,22 +11,22 @@
             <objects>
                 <viewController storyboardIdentifier="PrefLibraryViewController" id="h7b-gC-WtZ" customClass="PrefLibraryViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="9vL-gV-zkj">
-                        <rect key="frame" x="0.0" y="0.0" width="628" height="222"/>
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="222"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sAG-oy-wQW">
-                                <rect key="frame" x="124" y="185" width="81" height="17"/>
+                                <rect key="frame" x="18" y="185" width="187" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Library Path:" id="FwU-dY-BmG">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Library Path:" id="FwU-dY-BmG">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oXY-10-qEP">
-                                <rect key="frame" x="126" y="158" width="79" height="17"/>
+                                <rect key="frame" x="18" y="158" width="187" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Library Size:" id="ugZ-b6-29m">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Library Size:" id="ugZ-b6-29m">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -76,9 +76,9 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bgc-a3-JKi">
-                                <rect key="frame" x="49" y="52" width="156" height="17"/>
+                                <rect key="frame" x="18" y="52" width="187" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Check for New Episodes:" id="9W0-lG-slR">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Check for New Episodes:" id="9W0-lG-slR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -133,7 +133,59 @@
                 <userDefaultsController id="huq-9C-5pr"/>
                 <userDefaultsController representsSharedInstance="YES" id="xLd-dS-eMW"/>
             </objects>
-            <point key="canvasLocation" x="-237" y="-139"/>
+            <point key="canvasLocation" x="-475" y="-351"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Vq8-Zr-iTE">
+            <objects>
+                <viewController id="eoZ-8V-Te0" sceneMemberID="viewController">
+                    <view key="view" id="PcR-69-Pzw">
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="240"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzf-Bv-TYu">
+                                <rect key="frame" x="18" y="119" width="179" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Library Path:" id="MWS-Rp-vgV">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TLh-C7-e24">
+                                <rect key="frame" x="212" y="119" width="390" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="Unknown" id="2gk-qH-fuG">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="xLd-dS-eMW" name="value" keyPath="values.libraryPath" id="AFX-eM-GOR"/>
+                                </connections>
+                            </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZk-Bh-u55">
+                                <rect key="frame" x="212" y="204" width="262" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Display unplayed episode count in dock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YEa-38-XiC">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KqF-l0-JhQ">
+                                <rect key="frame" x="212" y="176" width="135" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Enable media keys" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2lW-D5-buD">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="hcm-qb-2SJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-475" y="13"/>
         </scene>
     </scenes>
 </document>

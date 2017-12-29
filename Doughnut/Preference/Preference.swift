@@ -32,6 +32,9 @@ class Preference {
     init(_ string: String) { self.rawValue = string }
     init?(rawValue: RawValue) { self.rawValue = rawValue }
     
+    // General
+    static let showDockBadge = Key("showDockBadge")
+    
     // Library
     static let libraryPath = Key("libraryPath")
     static let reloadFrequency = Key("reloadFrequency")
@@ -55,7 +58,9 @@ class Preference {
     Key.reloadFrequency.rawValue: 60,
     
     Key.skipBackDuration.rawValue: 30,
-    Key.skipForwardDuration.rawValue: 30
+    Key.skipForwardDuration.rawValue: 30,
+    
+    Key.showDockBadge.rawValue: true
   ]
   
   static private let ud = UserDefaults.standard

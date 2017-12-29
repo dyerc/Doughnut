@@ -55,6 +55,14 @@ class Library: NSObject {
   var podcasts = [Podcast]()
   let downloadManager = DownloadManager()
   
+  var unplayedCount: Int {
+    get {
+      return podcasts.reduce(0) {
+        $0 + $1.unplayedCount
+      }
+    }
+  }
+  
   var minutesSinceLastScheduledReload = -1
   
   override init() {
