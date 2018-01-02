@@ -574,7 +574,7 @@ Gw
                 </windowController>
                 <customObject id="Ojc-wu-qr7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1621" y="164"/>
+            <point key="canvasLocation" x="-1733" y="996"/>
         </scene>
         <!--Podcast Window-->
         <scene sceneID="hsO-gJ-asF">
@@ -596,7 +596,7 @@ Gw
                 </windowController>
                 <customObject id="ixx-Ap-Bgg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1621" y="-318"/>
+            <point key="canvasLocation" x="-1733" y="553"/>
         </scene>
         <!--Show Podcast View Controller-->
         <scene sceneID="782-28-FAX">
@@ -1033,7 +1033,7 @@ Gw
                 </viewController>
                 <customObject id="cfc-sW-F9t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1034.5" y="-309.5"/>
+            <point key="canvasLocation" x="-1114" y="563"/>
         </scene>
         <!--Show Episode View Controller-->
         <scene sceneID="FSY-g5-ePW">
@@ -1248,7 +1248,7 @@ Gw
                 </viewController>
                 <customObject id="CxZ-4n-MrU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1035.5" y="149.5"/>
+            <point key="canvasLocation" x="-1113" y="1011"/>
         </scene>
         <!--Subscribe View Controller-->
         <scene sceneID="td7-gk-0bY">

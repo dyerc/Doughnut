@@ -104,6 +104,8 @@
 		839A32811FF9831B002D2023 /* ShowEpisodeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */; };
 		839DBDA41FEEE658007610EF /* ShowPodcastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */; };
 		839DBDA71FEEEA81007610EF /* WhiteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */; };
+		83A0D4801FFC28A900A376FD /* ShowEpisodeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */; };
+		83A0D4811FFC28A900A376FD /* ShowEpisodeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */; };
 		83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA22E21F994EA6006BF58A /* DoughnutApp.swift */; };
 		83D4CA561F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4CA551F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift */; };
 		83D4CA5A1F7C3779002EDC36 /* ValidFeed.xml in Resources */ = {isa = PBXBuildFile; fileRef = 83D4CA591F7C3779002EDC36 /* ValidFeed.xml */; };
@@ -845,6 +847,7 @@
 				830A33E21FF042D100C13B1D /* DownloadsViewController.swift in Sources */,
 				83D7F33F1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */,
 				830A33D31FF042CE00C13B1D /* DownloadCellView.swift in Sources */,
+				83A0D4801FFC28A900A376FD /* ShowEpisodeWindow.swift in Sources */,
 				830A33F41FF042D900C13B1D /* WindowController.swift in Sources */,
 				83E95A5F1FFBCA3C00C6AABF /* Storage.swift in Sources */,
 				830A33DF1FF042D100C13B1D /* EpisodeViewController.swift in Sources */,
@@ -869,6 +872,7 @@
 				83D7F3441FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
 				830A33FA1FF042E600C13B1D /* PrefLibraryViewController.swift in Sources */,
 				83E95A601FFBCA3C00C6AABF /* Storage.swift in Sources */,
+				83A0D4811FFC28A900A376FD /* ShowEpisodeWindow.swift in Sources */,
 				830A33F81FF042D900C13B1D /* WindowController.swift in Sources */,
 				830A33E71FF042D100C13B1D /* PodcastViewController.swift in Sources */,
 				830A34011FF043BF00C13B1D /* NSObject+SPInvocationGrabbing.m in Sources */,
