@@ -20,6 +20,12 @@ import Foundation
 import FeedKit
 import GRDB
 
+#if DEBUG
+  let INITIAL_RELOAD_WAIT: TimeInterval = 60.0
+#else
+  let INITIAL_RELOAD_WAIT: TimeInterval = 10.0
+#endif
+
 protocol LibraryDelegate {
   func librarySubscribedToPodcast(subscribed: Podcast)
   func libraryUnsubscribedFromPodcast(unsubscribed: Podcast)
@@ -49,8 +55,8 @@ class Library: NSObject {
   let path: URL
   var dbQueue: DatabaseQueue?
   var delegate: LibraryDelegate?
-  let taskQueue = DispatchQueue(label: "library")
-  let backgroundQueue = DispatchQueue(label: "background", qos: .utility)
+  let taskQueue = DispatchQueue(label: "com.doughnut.Library")
+  let backgroundQueue = DispatchQueue(label: "com.doughnut.Background")
   
   var podcasts = [Podcast]()
   let downloadManager = DownloadManager()
@@ -63,7 +69,7 @@ class Library: NSObject {
     }
   }
   
-  var minutesSinceLastScheduledReload = -1
+  var minutesSinceLastScheduledReload = 0
   
   override init() {
     let libraryPath = Preference.libraryPath()
@@ -101,11 +107,16 @@ class Library: NSObject {
           delegate?.libraryReloaded()
         })
         
-        Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: { timer in
-          let library = Library.global
+        // After an initial delay, schedule auto-reload
+        Timer.scheduledTimer(withTimeInterval: INITIAL_RELOAD_WAIT, repeats: false, block: { _ in
+          // Perform an initial reload
+          Library.global.reloadAll()
           
-          library.minutesSinceLastScheduledReload += 1
-          library.scheduledReload()
+          // Schedule following reloads
+          Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: { timer in
+            Library.global.minutesSinceLastScheduledReload += 1
+            Library.global.scheduledReload()
+          })
         })
         
         return true
@@ -174,7 +185,24 @@ class Library: NSObject {
   // General library methods
   
   func detectedNewEpisodes(podcast: Podcast, episodes: [Episode]) {
+    guard let firstEpisode = episodes.first else { return }
     
+    let notification = NSUserNotification()
+    notification.soundName = NSUserNotificationDefaultSoundName
+    
+    if let artwork = podcast.image {
+      notification.contentImage = artwork
+    }
+    
+    if episodes.count > 1 {
+      notification.title = "New Episodes of \(podcast.title)"
+      notification.informativeText = "\(firstEpisode.title) + \(episodes.count - 1) more"
+    } else {
+      notification.title = "New Episode of \(podcast.title)"
+      notification.informativeText = firstEpisode.title
+    }
+    
+    NSUserNotificationCenter.default.deliver(notification)
   }
   
   func subscribe(url: String) {
@@ -200,7 +228,8 @@ class Library: NSObject {
         self.save(podcast: podcast, completion: { (podcast, error) in
           guard error == nil else { return }
           
-          self.detectedNewEpisodes(podcast: podcast, episodes: podcast.episodes)
+          // Don't notify newly detected episodes for a new subscription, maybe change in future?
+          // self.detectedNewEpisodes(podcast: podcast, episodes: podcast.episodes)
           
           DispatchQueue.main.async {
             self.podcasts.append(podcast)
@@ -231,8 +260,6 @@ class Library: NSObject {
       
       self.save(podcast: podcast, completion: { (podcast, error) in
         guard error == nil else { return }
-        
-        self.detectedNewEpisodes(podcast: podcast, episodes: podcast.episodes)
         
         DispatchQueue.main.async {
           self.podcasts.append(podcast)
@@ -267,8 +294,7 @@ class Library: NSObject {
   func scheduledReload() {
     let reloadFrequency = Preference.integer(for: Preference.Key.reloadFrequency)
     
-    // Handle the initial reload after opening, when minu...edReload will == -1
-    if (minutesSinceLastScheduledReload < 0 || minutesSinceLastScheduledReload >= reloadFrequency) {
+    if (minutesSinceLastScheduledReload >= reloadFrequency) {
       for podcast in podcasts {
         reload(podcast: podcast, onQueue: backgroundQueue)
       }
@@ -294,10 +320,14 @@ class Library: NSObject {
       }
       
       let newEpisodes = podcast.fetch()
+      podcast.loading = false
+      
       self.save(podcast: podcast)
       
       DispatchQueue.main.async {
-        self.detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
+        if newEpisodes.count > 0 {
+          self.detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
+        }
       }
     }
   }
