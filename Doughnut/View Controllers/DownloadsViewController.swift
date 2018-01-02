@@ -19,7 +19,7 @@
 import Cocoa
 
 class DownloadsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
-  @IBOutlet weak var tableView: NSTableView!
+  @IBOutlet weak var stackView: NSStackView!
   
   var downloadManager: DownloadManager?
   
@@ -27,10 +27,23 @@ class DownloadsViewController: NSViewController, NSTableViewDelegate, NSTableVie
     super.viewDidLoad()
     
     downloadManager = Library.global.downloadManager
+    
+    let view1 = TaskView(frame: NSRect(x: 0, y: 0, width: stackView.bounds.width, height: 44))
+    //view.heightAnchor.constraint(equalToConstant: 44).isActive = true
+    
+    let view2 = TaskView(frame: NSRect(x: 0, y: 0, width: stackView.bounds.width, height: 44))
+    //view2.heightAnchor.constraint(equalToConstant: 44).isActive = true
+    
+    let view3 = TaskView(frame: NSRect(x: 0, y: 0, width: stackView.bounds.width, height: 44))
+    
+    stackView.addArrangedSubview(view1)
+    stackView.addArrangedSubview(view2)
+    stackView.addArrangedSubview(view3)
+    stackView.translatesAutoresizingMaskIntoConstraints = false
   }
   
   @objc func reloadView() {
-    tableView.reloadData()
+    // tableView.reloadData()
   }
   
   func numberOfRows(in tableView: NSTableView) -> Int {
@@ -38,14 +51,15 @@ class DownloadsViewController: NSViewController, NSTableViewDelegate, NSTableVie
       return 0
     }
     
-    return manager.queueCount
+    // return manager.queueCount
+    return 2
   }
   
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
     guard let manager = downloadManager else { return nil }
     
     let result = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "defaultRow"), owner: self) as! DownloadCellView
-    result.download = manager.downloads[row]
+    // result.download = manager.downloads[row]
     
     return result
   }

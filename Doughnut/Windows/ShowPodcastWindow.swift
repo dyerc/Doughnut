@@ -229,7 +229,8 @@ class ShowPodcastViewController: NSViewController {
     
     if let invalid = podcast.invalid() {
       let alert = NSAlert()
-      alert.messageText = invalid
+      alert.messageText = "Unable to Save Podcast"
+      alert.informativeText = invalid
       alert.runModal()
       
       return false

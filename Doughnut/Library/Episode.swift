@@ -109,6 +109,14 @@ class Episode: Record {
     id = rowID
   }
   
+  func invalid() -> String? {
+    if (title.characters.count < 1) {
+      return "Episode must have a title"
+    }
+    
+    return nil
+  }
+  
   func file() -> String {
     if let fileName = fileName {
       return fileName

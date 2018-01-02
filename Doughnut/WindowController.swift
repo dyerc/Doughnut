@@ -29,8 +29,6 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
     return window?.contentViewController as? ViewController
   }
   
-  var downloadsViewController: DownloadsViewController?
-  
   var subscribeViewController: SubscribeViewController {
     get {
       return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SubscribeViewController")) as! SubscribeViewController
@@ -54,8 +52,6 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
     window?.titleVisibility = .hidden
     
     searchInputView.delegate = self
-    
-    self.downloadsViewController = (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DownloadsPopover")) as! DownloadsViewController)
     
     downloadsButton.view?.isHidden = true
     Library.global.downloadManager.delegate = self
@@ -99,12 +95,12 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
   }
   
   @IBAction func showDownloads(_ button: NSButton) {
-    guard let downloadsViewController = self.downloadsViewController else { return }
+    /*guard let downloadsViewController = self.downloadsViewController else { return }
     
     let popover = NSPopover()
     popover.behavior = .transient
     popover.contentViewController = downloadsViewController
-    popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)
+    popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)*/
   }
   
   @IBAction func toggleAllEpisodes(_ sender: Any) {
@@ -127,7 +123,7 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
   
   func downloadStarted() {
     downloadsButton.view?.isHidden = false
-    self.downloadsViewController?.downloadStarted()
+    //self.downloadsViewController?.downloadStarted()
   }
   
   func downloadFinished() {
@@ -135,7 +131,7 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
       downloadsButton.view?.isHidden = true
     }
     
-    self.downloadsViewController?.downloadFinished()
+    //self.downloadsViewController?.downloadFinished()
   }
   
   func windowDidResignKey(_ notification: Notification) {

@@ -19,8 +19,8 @@
 import Cocoa
 
 class ActivityIndicator: NSView {
-  let dotSize: CGFloat = 7.0
-  let dotSpacing: CGFloat = 5.0
+  let dotSize: CGFloat = 6.0
+  let dotSpacing: CGFloat = 3.0
   let dotCount = 3
   
   override func viewDidMoveToWindow() {

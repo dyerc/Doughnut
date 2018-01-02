@@ -96,11 +96,35 @@ class ShowEpisodeViewController: NSViewController {
   }
   
   // Permeate UI input changes to podcat object
-  func commitChanges(_ podcast: Podcast) {
-    
+  func commitChanges(_ episode: Episode) {
+    episode.title = titleInputView.stringValue
+    episode.pubDate = publishedDateInputView.dateValue
+    episode.description = descriptionInputView.stringValue
   }
   
   @IBAction func saveEpisode(_ sender: Any) {
+    if let episode = episode {
+      commitChanges(episode)
+      
+      if validate() {
+        Library.global.save(episode: episode)
+        self.view.window?.close()
+      }
+    }
+  }
+  
+  func validate() -> Bool {
+    guard let episode = episode else { return false }
     
+    if let invalid = episode.invalid() {
+      let alert = NSAlert()
+      alert.messageText = "Unable to Save Episode"
+      alert.informativeText = invalid
+      alert.runModal()
+      
+      return false
+    } else {
+      return true
+    }
   }
 }
