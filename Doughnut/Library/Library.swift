@@ -110,7 +110,11 @@ class Library: NSObject {
         // After an initial delay, schedule auto-reload
         Timer.scheduledTimer(withTimeInterval: INITIAL_RELOAD_WAIT, repeats: false, block: { _ in
           // Perform an initial reload
-          Library.global.reloadAll()
+          for podcast in Library.global.podcasts {
+            if !podcast.manualReload {
+              self.reload(podcast: podcast)
+            }
+          }
           
           // Schedule following reloads
           Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: { timer in
@@ -294,9 +298,21 @@ class Library: NSObject {
   func scheduledReload() {
     let reloadFrequency = Preference.integer(for: Preference.Key.reloadFrequency)
     
+    // Reload podcasts on custom schedules
+    for podcast in podcasts {
+      if !podcast.manualReload && !podcast.defaultReload {
+        if (minutesSinceLastScheduledReload >= podcast.reloadFrequency) && (podcast.reloadFrequency % minutesSinceLastScheduledReload == 0) {
+          reload(podcast: podcast, onQueue: backgroundQueue)
+        }
+      }
+    }
+    
+    // Reload podcasts on the default schedule
     if (minutesSinceLastScheduledReload >= reloadFrequency) {
       for podcast in podcasts {
-        reload(podcast: podcast, onQueue: backgroundQueue)
+        if podcast.defaultReload {
+          reload(podcast: podcast, onQueue: backgroundQueue)
+        }
       }
       
       minutesSinceLastScheduledReload = 0

@@ -18,11 +18,12 @@
 
 import Cocoa
 
-class WindowController: NSWindowController, NSWindowDelegate, DownloadManagerDelegate {
+class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegate, DownloadManagerDelegate {
   @IBOutlet var allToggle: NSButton!
   @IBOutlet var newToggle: NSButton!
   @IBOutlet var playerView: NSToolbarItem!
   @IBOutlet weak var downloadsButton: NSToolbarItem!
+  @IBOutlet weak var searchInputView: NSTextField!
   
   var viewController: ViewController? {
     return window?.contentViewController as? ViewController
@@ -52,10 +53,21 @@ class WindowController: NSWindowController, NSWindowDelegate, DownloadManagerDel
     super.windowDidLoad()
     window?.titleVisibility = .hidden
     
+    searchInputView.delegate = self
+    
     self.downloadsViewController = (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DownloadsPopover")) as! DownloadsViewController)
     
     downloadsButton.view?.isHidden = true
     Library.global.downloadManager.delegate = self
+  }
+  
+  // Subscribed to Search input changes
+  override func controlTextDidChange(_ obj: Notification) {
+    if searchInputView.stringValue.characters.count > 0 {
+      viewController?.search(searchInputView.stringValue.lowercased())
+    } else {
+      viewController?.search(nil)
+    }
   }
   
   @IBAction func subscribeToPodcast(_ sender: Any) {

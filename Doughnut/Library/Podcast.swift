@@ -36,6 +36,19 @@ class Podcast: Record {
   var lastParsed: Date?
   var subscribedAt: Date
   
+  var reloadFrequency: Int = 0 // 0 is only manually reloaded
+  var manualReload: Bool {
+    get {
+      return reloadFrequency == -1
+    }
+  }
+  
+  var defaultReload: Bool {
+    get {
+      return reloadFrequency == 0
+    }
+  }
+  
   var episodes = [Episode]()
   
   var unplayedCount: Int {
@@ -80,6 +93,7 @@ class Podcast: Record {
     imageUrl = row["image_url"]
     lastParsed = row["last_parsed"]
     subscribedAt = row["subscribed_at"]
+    reloadFrequency = row["reload_frequency"]
     
     super.init(row: row)
   }
@@ -99,6 +113,7 @@ class Podcast: Record {
     container["image_url"] = imageUrl
     container["last_parsed"] = lastParsed
     container["subscribed_at"] = subscribedAt
+    container["reload_frequency"] = reloadFrequency
   }
   
   override func didInsert(with rowID: Int64, for column: String?) {

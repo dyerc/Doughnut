@@ -41,6 +41,12 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
   }
   
+  var searchQuery: String? {
+    didSet {
+      reloadEpisodes()
+    }
+  }
+  
   @IBOutlet var tableView: NSTableView!
   
   var viewController: ViewController {
@@ -66,6 +72,7 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     if let podcast = podcast {
       episodes = podcast.episodes
       
+      // Global All | New filter
       episodes = episodes.filter({ episode -> Bool in
         if filter == .New {
           return !episode.played
@@ -73,6 +80,14 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
           return true
         }
       })
+      
+      // Filter based on possible search query
+      if let query = searchQuery {
+        episodes = episodes.filter({ episode -> Bool in
+          let description = episode.description ?? ""
+          return episode.title.lowercased().contains(query) || description.lowercased().contains(query)
+        })
+      }
       
       episodes.sort(by: { (a, b) -> Bool in
         switch sortParameter {

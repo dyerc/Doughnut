@@ -79,7 +79,10 @@ class ShowPodcastViewController: NSViewController {
   @IBOutlet weak var descriptionInputView: NSTextField!
   
   // Options Tab
-  
+  @IBOutlet weak var reloadInputView: NSPopUpButton!
+  @IBOutlet weak var lastParsedLabelView: NSTextField!
+  @IBOutlet weak var storageLabelView: NSTextField!
+  @IBOutlet weak var capacityLabelView: NSTextField!
   
   
   override func viewDidLoad() {
@@ -120,6 +123,29 @@ class ShowPodcastViewController: NSViewController {
       
       // Description View
       descriptionInputView.stringValue = podcast?.description ?? ""
+      
+      // Options View
+      reloadInputView.selectItem(withTag: podcast?.reloadFrequency ?? 0)
+      
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateStyle = .long
+      dateFormatter.timeStyle = .short
+      
+      if let lastParsed = podcast?.lastParsed {
+        lastParsedLabelView.stringValue = dateFormatter.string(from: lastParsed)
+      } else {
+        lastParsedLabelView.stringValue = "Never"
+      }
+      
+      storageLabelView.stringValue = podcast?.storagePath()?.path ?? "Unknown"
+      
+      if let podcast = podcast {
+        if let capacity = Storage.podcastSize(podcast) {
+          capacityLabelView.stringValue = capacity
+        }
+      } else {
+        capacityLabelView.stringValue = "0 GB"
+      }
     }
   }
   
@@ -146,6 +172,8 @@ class ShowPodcastViewController: NSViewController {
     if modifiedDescription {
       podcast.description = descriptionInputView.stringValue
     }
+    
+    podcast.reloadFrequency = reloadInputView.selectedTag()
   }
   
   @IBAction func savePodcast(_ sender: Any) {

@@ -62,6 +62,12 @@ class LibraryMigrations {
       })
     }
     
+    migrator.registerMigration("v2") { db in
+      try db.alter(table: "podcasts", body: { t in
+        t.add(column: "reload_frequency", .integer).notNull().defaults(to: 0)
+      })
+    }
+    
     try migrator.migrate(db)
   }
 }

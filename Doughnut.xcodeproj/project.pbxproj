@@ -124,6 +124,9 @@
 		83DB16DE1F93F1CE0062B266 /* LibraryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16DD1F93F1CE0062B266 /* LibraryUtils.swift */; };
 		83DB16DF1F93F1E40062B266 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16DB1F93E34B0062B266 /* Utils.swift */; };
 		83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16E01F93FB460062B266 /* SubscribeViewController.swift */; };
+		83E95A5E1FFBCA3C00C6AABF /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E95A5D1FFBCA3C00C6AABF /* Storage.swift */; };
+		83E95A5F1FFBCA3C00C6AABF /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E95A5D1FFBCA3C00C6AABF /* Storage.swift */; };
+		83E95A601FFBCA3C00C6AABF /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E95A5D1FFBCA3C00C6AABF /* Storage.swift */; };
 		83EFC6041F9954A500E1DE1F /* SPMediaKeyTap.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */; };
 		83EFC6051F9954AD00E1DE1F /* NSObject+SPInvocationGrabbing.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */; };
 		83FB4EB81F7BD9A1001CD842 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
@@ -211,6 +214,7 @@
 		83DB16DB1F93E34B0062B266 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		83DB16DD1F93F1CE0062B266 /* LibraryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryUtils.swift; sourceTree = "<group>"; };
 		83DB16E01F93FB460062B266 /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
+		83E95A5D1FFBCA3C00C6AABF /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		83FB4EB71F7BD9A1001CD842 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		83FB4EBA1F7BD9DF001CD842 /* FeedKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FeedKit.framework; path = Carthage/Build/Mac/FeedKit.framework; sourceTree = "<group>"; };
 		BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.release.xcconfig"; sourceTree = "<group>"; };
@@ -442,6 +446,7 @@
 				832FF90A1F8D60430065E593 /* DownloadManager.swift */,
 				83DB16DB1F93E34B0062B266 /* Utils.swift */,
 				834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */,
+				83E95A5D1FFBCA3C00C6AABF /* Storage.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -770,6 +775,7 @@
 				839A32811FF9831B002D2023 /* ShowEpisodeWindow.swift in Sources */,
 				83EFC6051F9954AD00E1DE1F /* NSObject+SPInvocationGrabbing.m in Sources */,
 				83D7F3421FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
+				83E95A5E1FFBCA3C00C6AABF /* Storage.swift in Sources */,
 				8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */,
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				83D9710C1F812E910091822A /* PlayerView.swift in Sources */,
@@ -840,6 +846,7 @@
 				83D7F33F1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */,
 				830A33D31FF042CE00C13B1D /* DownloadCellView.swift in Sources */,
 				830A33F41FF042D900C13B1D /* WindowController.swift in Sources */,
+				83E95A5F1FFBCA3C00C6AABF /* Storage.swift in Sources */,
 				830A33DF1FF042D100C13B1D /* EpisodeViewController.swift in Sources */,
 				830A33F31FF042D900C13B1D /* Player.swift in Sources */,
 				830E99BE1FF50DD000B728BE /* ActivityIndicator.swift in Sources */,
@@ -861,6 +868,7 @@
 				830A33F71FF042D900C13B1D /* Player.swift in Sources */,
 				83D7F3441FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
 				830A33FA1FF042E600C13B1D /* PrefLibraryViewController.swift in Sources */,
+				83E95A601FFBCA3C00C6AABF /* Storage.swift in Sources */,
 				830A33F81FF042D900C13B1D /* WindowController.swift in Sources */,
 				830A33E71FF042D100C13B1D /* PodcastViewController.swift in Sources */,
 				830A34011FF043BF00C13B1D /* NSObject+SPInvocationGrabbing.m in Sources */,

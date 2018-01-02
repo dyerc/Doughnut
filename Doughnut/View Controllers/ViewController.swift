@@ -150,5 +150,9 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     podcastViewController.filter = globalFilter
     episodeViewController.filter = globalFilter
   }
+  
+  func search(_ query: String?) {
+    episodeViewController.searchQuery = query
+  }
 }
 

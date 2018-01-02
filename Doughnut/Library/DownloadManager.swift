@@ -138,7 +138,9 @@ class DownloadManager: NSObject, DownloadTaskDelegate {
       dl.resume()
     }
     
-    delegate?.downloadStarted()
+    DispatchQueue.main.async {
+      self.delegate?.downloadStarted()
+    }
   }
   
   func download(didComplete download: DownloadTask) {
@@ -149,7 +151,9 @@ class DownloadManager: NSObject, DownloadTaskDelegate {
       downloads.remove(at: index)
     }
     
-    delegate?.downloadFinished()
+    DispatchQueue.main.async {
+      self.delegate?.downloadFinished()
+    }
   }
   
   func download(didError download: DownloadTask) {
@@ -159,6 +163,8 @@ class DownloadManager: NSObject, DownloadTaskDelegate {
       downloads.remove(at: index)
     }
     
-    delegate?.downloadFinished()
+    DispatchQueue.main.async {
+      self.delegate?.downloadFinished()
+    }
   }
 }

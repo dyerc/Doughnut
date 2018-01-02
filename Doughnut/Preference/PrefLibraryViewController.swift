@@ -53,20 +53,8 @@ class PrefLibraryViewController: NSViewController {
   @IBOutlet weak var librarySizeTxt: NSTextField!
   
   func calculateLibrarySize() {
-    if let libraryUrl = Preference.url(for: Preference.Key.libraryPath) {
-      var bool: ObjCBool = false
-      if FileManager.default.fileExists(atPath: libraryUrl.path, isDirectory: &bool) {
-        var folderSize = 0
-        FileManager.default.enumerator(at: libraryUrl, includingPropertiesForKeys: [.fileSizeKey])?.forEach({
-          folderSize += (try? ($0 as? URL)?.resourceValues(forKeys: [.fileSizeKey]))??.fileSize ?? 0
-        })
-        
-        let byteFormatter = ByteCountFormatter()
-        byteFormatter.allowedUnits = .useGB
-        byteFormatter.countStyle = .file
-        
-        librarySizeTxt.stringValue = byteFormatter.string(fromByteCount: Int64(folderSize))
-      }
+    if let librarySize = Storage.librarySize() {
+      librarySizeTxt.stringValue = librarySize
     }
   }
   
