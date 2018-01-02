@@ -18,6 +18,11 @@
 
 import Cocoa
 
+enum GlobalFilter {
+  case All
+  case New
+}
+
 class ViewController: NSSplitViewController, LibraryDelegate {
   enum Events:String {
     case PodcastSelected = "PodcastSelected"
@@ -26,6 +31,8 @@ class ViewController: NSSplitViewController, LibraryDelegate {
       return Notification.Name(rawValue: self.rawValue)
     }
   }
+  
+  var globalFilter: GlobalFilter = .All
   
   var podcastViewController: PodcastViewController {
     get {
@@ -135,6 +142,13 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     } else {
       NSApplication.shared.dockTile.badgeLabel = nil
     }
+  }
+  
+  func filter(_ filter: GlobalFilter) {
+    globalFilter = filter
+    
+    podcastViewController.filter = globalFilter
+    episodeViewController.filter = globalFilter
   }
 }
 

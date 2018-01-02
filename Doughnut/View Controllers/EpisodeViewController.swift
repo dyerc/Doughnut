@@ -35,6 +35,12 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   let sortParameter: EpisodeSortParameter = .EpisodePubDate
   let sortDirection: EpisodeSortDirection = .Desc
   
+  var filter: GlobalFilter = .All {
+    didSet {
+      reloadEpisodes()
+    }
+  }
+  
   @IBOutlet var tableView: NSTableView!
   
   var viewController: ViewController {
@@ -59,6 +65,15 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   func reloadEpisodes() {
     if let podcast = podcast {
       episodes = podcast.episodes
+      
+      episodes = episodes.filter({ episode -> Bool in
+        if filter == .New {
+          return !episode.played
+        } else {
+          return true
+        }
+      })
+      
       episodes.sort(by: { (a, b) -> Bool in
         switch sortParameter {
         case .EpisodePubDate:
@@ -74,6 +89,10 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       if sortDirection == .Desc {
         episodes.reverse()
       }
+    }
+    
+    // Handle an empty table
+    if episodes.isEmpty {
     }
     
     tableView.reloadData()
@@ -262,7 +281,7 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   @IBAction func showEpisode(_ sender: Any) {
     if let wc = windowController {
       let editWindow = wc.episodeWindowController
-      let editController = editWindow.contentViewController as? EditEpisodeViewController
+      let editController = editWindow.contentViewController as? ShowEpisodeViewController
       editController?.episode = episodes[tableView.clickedRow]
       editWindow.showWindow(self)
     }

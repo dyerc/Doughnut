@@ -23,6 +23,12 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   
   @IBOutlet var tableView: NSTableView!
   
+  var filter: GlobalFilter = .All {
+    didSet {
+      reloadPodcasts()
+    }
+  }
+  
   var viewController: ViewController {
     get {
       return parent as! ViewController
@@ -43,6 +49,15 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   
   func reloadPodcasts() {
     podcasts = Library.global.podcasts
+    
+    podcasts = podcasts.filter({ podcast -> Bool in
+      if filter == .New {
+        return podcast.unplayedCount > 0
+      } else {
+        return true
+      }
+    })
+    
     tableView.reloadData()
   }
   

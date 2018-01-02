@@ -156,13 +156,12 @@ class Library: NSObject {
       return Preference.defaultLibraryPath
     } else {
       exit(0)
-      return Preference.defaultLibraryPath
     }
   }
   
   static func handleDatabaseError(_ error: Error) {
     print("Library error \(error)")
-    let alert = NSAlert()
+    // let alert = NSAlert()
     
   }
   
@@ -327,6 +326,10 @@ class Library: NSObject {
         
         DispatchQueue.main.async {
           self.delegate?.libraryUpdatedEpisode(episode: episode)
+          
+          if let parent = episode.podcast {
+            self.delegate?.libraryUpdatedPodcast(podcast: parent)
+          }
         }
       })
     }
@@ -337,7 +340,7 @@ class Library: NSObject {
     
     taskQueue.async {
       do {
-        try self.dbQueue?.inDatabase { db in
+        _ = try self.dbQueue?.inDatabase { db in
           try episode.delete(db)
         }
         

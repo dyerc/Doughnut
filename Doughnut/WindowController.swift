@@ -24,6 +24,10 @@ class WindowController: NSWindowController, NSWindowDelegate, DownloadManagerDel
   @IBOutlet var playerView: NSToolbarItem!
   @IBOutlet weak var downloadsButton: NSToolbarItem!
   
+  var viewController: ViewController? {
+    return window?.contentViewController as? ViewController
+  }
+  
   var downloadsViewController: DownloadsViewController?
   
   var subscribeViewController: SubscribeViewController {
@@ -94,11 +98,19 @@ class WindowController: NSWindowController, NSWindowDelegate, DownloadManagerDel
   @IBAction func toggleAllEpisodes(_ sender: Any) {
     allToggle.state = .on
     newToggle.state = .off
+    
+    if let vc = viewController {
+      vc.filter(.All)
+    }
   }
   
   @IBAction func toggleNewEpisodes(_ sender: Any) {
     allToggle.state = .off
     newToggle.state = .on
+    
+    if let vc = viewController {
+      vc.filter(.New)
+    }
   }
   
   func downloadStarted() {

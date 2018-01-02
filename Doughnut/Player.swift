@@ -64,8 +64,9 @@ class Player: NSObject {
   var buffered: Double = 0
   var duration: Double = 0
   
-  let skipDuration: Double = 30.0
   let playedThreshold: Double = 0.9
+  
+  var pausedAt: TimeInterval? = nil
   
   func play(episode: Episode) {
     guard let podcast = episode.podcast else { return }
@@ -137,6 +138,7 @@ class Player: NSObject {
       self.duration = 0
       self.buffered = 0
       self.position = 0
+      self.pausedAt = nil
       delegate?.updatePlayback()
       
       // Seek to existing position
@@ -178,12 +180,24 @@ class Player: NSObject {
   
   func play() {
     guard let av = avPlayer else { return }
+    
+    if Preference.bool(for: Preference.Key.replayAfterPause) {
+      // Only replay if paused more than 1 minute ago
+      if let pausedAt = pausedAt {
+        if (Date().timeIntervalSince1970 - pausedAt) >= 60 {
+          skipBack()
+        }
+      }
+    }
+    
     av.play()
   }
   
   func pause() {
     guard let av = avPlayer else { return }
     av.pause()
+    
+    pausedAt = Date().timeIntervalSince1970
   }
   
   func skipAhead() {
@@ -191,6 +205,7 @@ class Player: NSObject {
     guard let duration = av.currentItem?.duration else { return }
     
     let currentTime = CMTimeGetSeconds(av.currentTime())
+    let skipDuration = Preference.double(for: Preference.Key.skipForwardDuration)
     let targetTime = currentTime + skipDuration
     
     if targetTime < (CMTimeGetSeconds(duration) - skipDuration) {
@@ -202,7 +217,7 @@ class Player: NSObject {
     guard let av = avPlayer else { return }
     
     let currentTime = CMTimeGetSeconds(av.currentTime())
-    var targetTime = currentTime - skipDuration
+    var targetTime = currentTime - Preference.double(for: Preference.Key.skipBackDuration)
     
     if targetTime < 0 {
       targetTime = 0
