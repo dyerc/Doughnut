@@ -58,6 +58,8 @@ class Library: NSObject {
   let taskQueue = DispatchQueue(label: "com.doughnut.Library")
   let backgroundQueue = DispatchQueue(label: "com.doughnut.Background")
   
+  let tasks = TaskQueue()
+  
   var podcasts = [Podcast]()
   let downloadManager = DownloadManager()
   

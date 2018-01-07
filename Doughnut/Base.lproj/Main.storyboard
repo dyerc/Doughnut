@@ -1374,10 +1374,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="533" y="-222.5"/>
         </scene>
-        <!--Downloads View Controller-->
+        <!--Tasks View Controller-->
         <scene sceneID="hTu-GC-p7l">
             <objects>
-                <viewController storyboardIdentifier="DownloadsPopover" id="j0w-4Y-s9R" customClass="DownloadsViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TasksPopover" id="j0w-4Y-s9R" customClass="TasksViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="DKL-cK-blD">
                         <rect key="frame" x="0.0" y="0.0" width="316" height="83"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1390,7 +1390,7 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" horizontalClippingResistancePriority="250" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a3A-XZ-HX5">
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="1000" horizontalClippingResistancePriority="250" verticalClippingResistancePriority="750" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a3A-XZ-HX5">
                                 <rect key="frame" x="10" y="6" width="296" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="bBJ-Qx-Tqq"/>

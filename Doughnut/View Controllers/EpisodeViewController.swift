@@ -256,7 +256,8 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   
   @IBAction func download(_ sender: Any) {
     let episode = episodes[tableView.clickedRow]
-    Library.global.downloadManager.queueDownload(episode: episode)
+    // Library.global.downloadManager.queueDownload(episode: episode)
+    episode.download()
   }
   
   @IBAction func moveToTrash(_ sender: Any) {

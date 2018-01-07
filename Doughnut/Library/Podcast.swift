@@ -298,7 +298,7 @@ class Podcast: Record {
         return false
       }
         
-      DispatchQueue.global(qos: .background).async {
+      DispatchQueue.main.async {
         completion(Podcast.subscribe(feedUrl: url))
       }
       

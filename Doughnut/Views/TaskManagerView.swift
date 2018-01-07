@@ -18,61 +18,60 @@
 
 import Cocoa
 
-class TaskView: NSView {
-  let titleLabelView: NSTextField
-  let progressView: NSProgressIndicator
-  
-  override init(frame frameRect: NSRect) {
-    titleLabelView = NSTextField(frame: NSRect(x: 0, y: 24, width: frameRect.width, height: 17))
-    titleLabelView.stringValue = "Task Title"
-    titleLabelView.isBezeled = false
-    titleLabelView.drawsBackground = false
-    titleLabelView.isSelectable = false
-    titleLabelView.font = NSFont.systemFont(ofSize: 12)
-    titleLabelView.isEditable = false
-    
-    progressView = NSProgressIndicator(frame: NSRect(x: 0, y: 4, width: frameRect.width, height: 20))
-    progressView.isIndeterminate = true
-    progressView.style = .bar
-    
-    super.init(frame: frameRect)
-    
-    addSubview(titleLabelView)
-    addSubview(progressView)
-    progressView.startAnimation(self)
-  }
-  
-  required convenience init?(coder decoder: NSCoder) {
-    self.init(frame: NSRect())
-  }
-  
-  override var intrinsicContentSize: NSSize {
-    get {
-      return NSSize(width: bounds.size.width, height: 44)
-    }
-  }
-}
-
-class TaskManagerView: NSView {
+class TaskManagerView: NSView, TaskQueueViewDelegate {
   let activitySpinner = ActivityIndicator()
   let popover = NSPopover()
   
-  var downloadsController: DownloadsViewController?
+  var tasksViewController: TasksViewController?
+  
+  var hasActiveTasks: Bool = false {
+    didSet {
+      activitySpinner.isHidden = !hasActiveTasks
+    }
+  }
   
   required init?(coder decoder: NSCoder) {
     super.init(coder: decoder)
     
+    Library.global.tasks.delegate = self
+    
     popover.behavior = .transient
     
     activitySpinner.frame = self.bounds
+    activitySpinner.isHidden = true
     addSubview(activitySpinner)
     
     let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
-    downloadsController = (storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DownloadsPopover")) as! DownloadsViewController)
+    tasksViewController = (storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "TasksPopover")) as! TasksViewController)
+    tasksViewController?.loadView() // Important: force load views so they exist even before popover is viewed
+    popover.contentViewController = tasksViewController
   }
   
   override func mouseDown(with event: NSEvent) {
-    popover.contentViewController = downloadsController
-    popover.show(relativeTo: bounds, of: activitySpinner, preferredEdge: .minY)
+    if hasActiveTasks {
+      popover.show(relativeTo: bounds, of: activitySpinner, preferredEdge: .minY)
+    }
+  }
+  
+  func taskPushed(task: Task) {
+    tasksViewController?.taskPushed(task: task)
+  }
+  
+  func taskFinished(task: Task) {
+    tasksViewController?.taskFinished(task: task)
+    
+    
+  }
+  
+  func tasksRunning(_ running: Bool) {
+    if running {
+      hasActiveTasks = true
+    } else {
+      hasActiveTasks = false
+      
+      if popover.isShown {
+        popover.close()
+      }
+    }
   }
 }

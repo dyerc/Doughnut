@@ -36,14 +36,14 @@
 		830A33DF1FF042D100C13B1D /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */; };
 		830A33E01FF042D100C13B1D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF31F76D22600F1ABC0 /* DetailViewController.swift */; };
 		830A33E11FF042D100C13B1D /* EpisodeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834342691F802C1400913C0B /* EpisodeFilterViewController.swift */; };
-		830A33E21FF042D100C13B1D /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* DownloadsViewController.swift */; };
+		830A33E21FF042D100C13B1D /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* TasksViewController.swift */; };
 		830A33E31FF042D100C13B1D /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16E01F93FB460062B266 /* SubscribeViewController.swift */; };
 		830A33E61FF042D100C13B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CF1F759F6F00DB4FD1 /* ViewController.swift */; };
 		830A33E71FF042D100C13B1D /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */; };
 		830A33E81FF042D100C13B1D /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */; };
 		830A33E91FF042D100C13B1D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF31F76D22600F1ABC0 /* DetailViewController.swift */; };
 		830A33EA1FF042D100C13B1D /* EpisodeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834342691F802C1400913C0B /* EpisodeFilterViewController.swift */; };
-		830A33EB1FF042D100C13B1D /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* DownloadsViewController.swift */; };
+		830A33EB1FF042D100C13B1D /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* TasksViewController.swift */; };
 		830A33EC1FF042D100C13B1D /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16E01F93FB460062B266 /* SubscribeViewController.swift */; };
 		830A33EF1FF042D400C13B1D /* ShowPodcastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */; };
 		830A33F01FF042D500C13B1D /* ShowPodcastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */; };
@@ -85,6 +85,9 @@
 		834CC1B01F95076F00A98DE9 /* MarkupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */; };
 		834CC1B11F95077500A98DE9 /* MarkupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */; };
 		834CC1B31F950ABA00A98DE9 /* DetailWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */; };
+		83504DD61FFC377700375BA0 /* DownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83504DD51FFC377700375BA0 /* DownloadTask.swift */; };
+		83504DD71FFC377700375BA0 /* DownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83504DD51FFC377700375BA0 /* DownloadTask.swift */; };
+		83504DD81FFC377700375BA0 /* DownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83504DD51FFC377700375BA0 /* DownloadTask.swift */; };
 		83659AB81F7D8A0300E09833 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83659AB71F7D8A0300E09833 /* Podcast.swift */; };
 		83659AB91F7DA17500E09833 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83659AB71F7D8A0300E09833 /* Podcast.swift */; };
 		83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */; };
@@ -92,7 +95,7 @@
 		83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF31F76D22600F1ABC0 /* DetailViewController.swift */; };
 		837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837068121F7BBD63007FE973 /* EpisodeCellView.swift */; };
 		8379899B1F81616C00234577 /* SeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379899A1F81616C00234577 /* SeekSlider.swift */; };
-		837D52BE1F8E622200C17514 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* DownloadsViewController.swift */; };
+		837D52BE1F8E622200C17514 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* TasksViewController.swift */; };
 		837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BF1F8E683200C17514 /* DownloadCellView.swift */; };
 		838257CE1F759F6F00DB4FD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */; };
 		838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CF1F759F6F00DB4FD1 /* ViewController.swift */; };
@@ -106,6 +109,9 @@
 		839DBDA71FEEEA81007610EF /* WhiteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */; };
 		83A0D4801FFC28A900A376FD /* ShowEpisodeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */; };
 		83A0D4811FFC28A900A376FD /* ShowEpisodeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */; };
+		83A0D4831FFC2FA400A376FD /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0D4821FFC2FA400A376FD /* TaskQueue.swift */; };
+		83A0D4841FFC2FA400A376FD /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0D4821FFC2FA400A376FD /* TaskQueue.swift */; };
+		83A0D4851FFC2FA400A376FD /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0D4821FFC2FA400A376FD /* TaskQueue.swift */; };
 		83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA22E21F994EA6006BF58A /* DoughnutApp.swift */; };
 		83D4CA561F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4CA551F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift */; };
 		83D4CA5A1F7C3779002EDC36 /* ValidFeed.xml in Resources */ = {isa = PBXBuildFile; fileRef = 83D4CA591F7C3779002EDC36 /* ValidFeed.xml */; };
@@ -178,13 +184,14 @@
 		834998B51FF3E3F00035EF87 /* TaskManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerView.swift; sourceTree = "<group>"; };
 		834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkupGenerator.swift; sourceTree = "<group>"; };
 		834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWebView.swift; sourceTree = "<group>"; };
+		83504DD51FFC377700375BA0 /* DownloadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTask.swift; sourceTree = "<group>"; };
 		83659AB71F7D8A0300E09833 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
 		83667DF31F76D22600F1ABC0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		837068121F7BBD63007FE973 /* EpisodeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCellView.swift; sourceTree = "<group>"; };
 		8379899A1F81616C00234577 /* SeekSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekSlider.swift; sourceTree = "<group>"; };
-		837D52BD1F8E622200C17514 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		837D52BD1F8E622200C17514 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		837D52BF1F8E683200C17514 /* DownloadCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCellView.swift; sourceTree = "<group>"; };
 		838257CA1F759F6F00DB4FD1 /* Doughnut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doughnut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +209,7 @@
 		839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEpisodeWindow.swift; sourceTree = "<group>"; };
 		839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPodcastWindow.swift; sourceTree = "<group>"; };
 		839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBackgroundView.swift; sourceTree = "<group>"; };
+		83A0D4821FFC2FA400A376FD /* TaskQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQueue.swift; sourceTree = "<group>"; };
 		83BA22E21F994EA6006BF58A /* DoughnutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutApp.swift; sourceTree = "<group>"; };
 		83D4CA551F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTestsWithoutSubscriptions.swift; sourceTree = "<group>"; };
 		83D4CA581F7C3763002EDC36 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
@@ -327,6 +335,14 @@
 			path = Preference;
 			sourceTree = "<group>";
 		};
+		83504DD41FFC376800375BA0 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				83504DD51FFC377700375BA0 /* DownloadTask.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
 		83667DEE1F76D1F300F1ABC0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,7 +351,7 @@
 				83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */,
 				83667DF31F76D22600F1ABC0 /* DetailViewController.swift */,
 				834342691F802C1400913C0B /* EpisodeFilterViewController.swift */,
-				837D52BD1F8E622200C17514 /* DownloadsViewController.swift */,
+				837D52BD1F8E622200C17514 /* TasksViewController.swift */,
 				83DB16E01F93FB460062B266 /* SubscribeViewController.swift */,
 			);
 			path = "View Controllers";
@@ -441,6 +457,7 @@
 		83FB4EB61F7BD996001CD842 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				83504DD41FFC376800375BA0 /* Tasks */,
 				83FB4EB71F7BD9A1001CD842 /* Library.swift */,
 				8341B83A1F7BEB0500B50A5D /* Migrations.swift */,
 				83659AB71F7D8A0300E09833 /* Podcast.swift */,
@@ -449,6 +466,7 @@
 				83DB16DB1F93E34B0062B266 /* Utils.swift */,
 				834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */,
 				83E95A5D1FFBCA3C00C6AABF /* Storage.swift */,
+				83A0D4821FFC2FA400A376FD /* TaskQueue.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -779,6 +797,7 @@
 				83D7F3421FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
 				83E95A5E1FFBCA3C00C6AABF /* Storage.swift in Sources */,
 				8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */,
+				83A0D4831FFC2FA400A376FD /* TaskQueue.swift in Sources */,
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				83D9710C1F812E910091822A /* PlayerView.swift in Sources */,
 				832BB74E1F95155000988AE8 /* PrefLibraryViewController.swift in Sources */,
@@ -787,6 +806,7 @@
 				83EFC6041F9954A500E1DE1F /* SPMediaKeyTap.m in Sources */,
 				837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */,
 				83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */,
+				83504DD61FFC377700375BA0 /* DownloadTask.swift in Sources */,
 				83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
 				83D7F33E1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */,
@@ -795,7 +815,7 @@
 				839DBDA71FEEEA81007610EF /* WhiteBackgroundView.swift in Sources */,
 				838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */,
 				83659AB81F7D8A0300E09833 /* Podcast.swift in Sources */,
-				837D52BE1F8E622200C17514 /* DownloadsViewController.swift in Sources */,
+				837D52BE1F8E622200C17514 /* TasksViewController.swift in Sources */,
 				8379899B1F81616C00234577 /* SeekSlider.swift in Sources */,
 				837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */,
 				832FF90B1F8D60430065E593 /* DownloadManager.swift in Sources */,
@@ -844,7 +864,7 @@
 				8335F3AF1F90B5F700722DBC /* LibrarySpyDelegate.swift in Sources */,
 				83D4CA5D1F7C3902002EDC36 /* LibraryTestCase.swift in Sources */,
 				83D4CA561F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift in Sources */,
-				830A33E21FF042D100C13B1D /* DownloadsViewController.swift in Sources */,
+				830A33E21FF042D100C13B1D /* TasksViewController.swift in Sources */,
 				83D7F33F1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */,
 				830A33D31FF042CE00C13B1D /* DownloadCellView.swift in Sources */,
 				83A0D4801FFC28A900A376FD /* ShowEpisodeWindow.swift in Sources */,
@@ -854,6 +874,8 @@
 				830A33F31FF042D900C13B1D /* Player.swift in Sources */,
 				830E99BE1FF50DD000B728BE /* ActivityIndicator.swift in Sources */,
 				834CC1B11F95077500A98DE9 /* MarkupGenerator.swift in Sources */,
+				83A0D4841FFC2FA400A376FD /* TaskQueue.swift in Sources */,
+				83504DD71FFC377700375BA0 /* DownloadTask.swift in Sources */,
 				834998B71FF3E3F00035EF87 /* TaskManagerView.swift in Sources */,
 				83D7F3431FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
 				830A33FD1FF042E800C13B1D /* PrefLibraryViewController.swift in Sources */,
@@ -864,9 +886,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83504DD81FFC377700375BA0 /* DownloadTask.swift in Sources */,
 				838257EC1F759F6F00DB4FD1 /* DoughnutUITests.swift in Sources */,
+				83A0D4851FFC2FA400A376FD /* TaskQueue.swift in Sources */,
 				830A33DA1FF042CE00C13B1D /* DownloadCellView.swift in Sources */,
-				830A33EB1FF042D100C13B1D /* DownloadsViewController.swift in Sources */,
+				830A33EB1FF042D100C13B1D /* TasksViewController.swift in Sources */,
 				830A33CC1FF042C900C13B1D /* DownloadManager.swift in Sources */,
 				830A33F71FF042D900C13B1D /* Player.swift in Sources */,
 				83D7F3441FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,

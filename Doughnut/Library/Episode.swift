@@ -117,6 +117,11 @@ class Episode: Record {
     return nil
   }
   
+  func download() {
+    guard let podcast = podcast else { return }
+    Library.global.tasks.run(_DownloadTask(episode: self, podcast: podcast))
+  }
+  
   func file() -> String {
     if let fileName = fileName {
       return fileName
