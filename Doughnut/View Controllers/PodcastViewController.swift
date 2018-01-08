@@ -58,7 +58,9 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       }
     })
     
+    let selectedRow = tableView.selectedRow
     tableView.reloadData()
+    tableView.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
   }
   
   func numberOfRows(in tableView: NSTableView) -> Int {
