@@ -32,6 +32,12 @@ class Preference {
     init(_ string: String) { self.rawValue = string }
     init?(rawValue: RawValue) { self.rawValue = rawValue }
     
+    // Interface
+    static let podcastSortParam = Key("podcastSortParam")
+    static let podcastSortDirection = Key("podcastSortDirection")
+    static let episodeSortParam = Key("episodeSortParam")
+    static let episodeSortDirection = Key("episodeSortDirection")
+    
     // General
     static let showDockBadge = Key("showDockBadge")
     static let enableMediaKeys = Key("enableMediaKeys")
@@ -56,6 +62,11 @@ class Preference {
   }
   
   static let defaultPreference:[String: Any] = [
+    Key.podcastSortParam.rawValue: "Title",
+    Key.podcastSortDirection.rawValue: "Ascending",
+    Key.episodeSortParam.rawValue: "Most Recent",
+    Key.episodeSortDirection.rawValue: "Descending",
+    
     Key.libraryPath.rawValue: defaultLibraryPath,
     Key.reloadFrequency.rawValue: 60,
     

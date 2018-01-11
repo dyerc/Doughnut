@@ -18,22 +18,26 @@
 
 import Cocoa
 
-enum EpisodeSortParameter {
-  case EpisodeTitle
-  case EpisodePubDate
+enum EpisodeSortParameter: String {
+  case EpisodeMostRecent = "Most Recent"
+  case EpisodeFavourites = "Favourites"
 }
 
-enum EpisodeSortDirection {
-  case Asc
-  case Desc
-}
-
-class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate {
+class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, SortingViewDelegate {
   var podcast: Podcast?
   var episodes = [Episode]()
   
-  let sortParameter: EpisodeSortParameter = .EpisodePubDate
-  let sortDirection: EpisodeSortDirection = .Desc
+  var sortBy: EpisodeSortParameter = .EpisodeMostRecent {
+    didSet {
+      Preference.set(sortBy.rawValue, for: Preference.Key.episodeSortParam)
+    }
+  }
+  
+  var sortDirection: SortDirection = .Desc {
+    didSet {
+      Preference.set(sortDirection.rawValue, for: Preference.Key.episodeSortDirection)
+    }
+  }
   
   var filter: GlobalFilter = .All {
     didSet {
@@ -48,6 +52,7 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   @IBOutlet var tableView: NSTableView!
+  @IBOutlet var sortView: SortingView!
   
   var viewController: ViewController {
     get {
@@ -65,6 +70,25 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    sortView.menuItemTitles = [
+      EpisodeSortParameter.EpisodeFavourites.rawValue,
+      EpisodeSortParameter.EpisodeMostRecent.rawValue
+    ]
+    
+    if let sortPreference = Preference.string(for: Preference.Key.episodeSortParam), let sortParam = EpisodeSortParameter(rawValue: sortPreference) {
+      sortBy = sortParam
+    }
+    
+    if Preference.string(for: Preference.Key.episodeSortDirection) == "Ascending" {
+      sortDirection = .Asc
+    } else {
+      sortDirection = .Desc
+    }
+    
+    sortView.sortParam = sortBy.rawValue
+    sortView.sortDirection = sortDirection
+    sortView.delegate = self
+
     tableView.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
   }
   
@@ -90,14 +114,14 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       }
       
       episodes.sort(by: { (a, b) -> Bool in
-        switch sortParameter {
-        case .EpisodePubDate:
+        switch sortBy {
+        case .EpisodeMostRecent:
           guard let aD = a.pubDate else { return false }
           guard let bD = b.pubDate else { return true }
           
           return aD.compare(bD) == .orderedAscending
-        default:
-          return (a.id ?? 0) < (b.id ?? 0)
+        case .EpisodeFavourites:
+          return (a.favourite ? 1 : 0) < (b.favourite ? 1 : 0)
         }
       })
       
@@ -218,6 +242,16 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     default:
       return false
     }
+  }
+  
+  func sorted(by: String?, direction: SortDirection) {
+    if let sortParam = EpisodeSortParameter(rawValue: by ?? "") {
+      sortBy = sortParam
+    }
+    
+    sortDirection = direction
+    
+    reloadEpisodes()
   }
   
   @IBAction func episodeDoubleClicked(_ sender: Any) {

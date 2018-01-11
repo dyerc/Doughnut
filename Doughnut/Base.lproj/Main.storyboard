@@ -7,6 +7,7 @@
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -1356,6 +1357,14 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tik-o9-CbK">
+                                <rect key="frame" x="189" y="19" width="71" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="inline" title="  Sort by" bezelStyle="inline" imagePosition="right" alignment="left" state="on" borderStyle="border" inset="2" id="qt4-9K-H4I">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemMedium" size="10"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -1583,13 +1592,13 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="59" horizontalPageScroll="10" verticalLineScroll="59" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olf-xm-4xZ">
-                                <rect key="frame" x="0.0" y="0.0" width="231" height="421"/>
+                                <rect key="frame" x="0.0" y="0.0" width="231" height="401"/>
                                 <clipView key="contentView" drawsBackground="NO" id="RU8-8U-i4z">
-                                    <rect key="frame" x="0.0" y="0.0" width="231" height="421"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="231" height="401"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="55" viewBased="YES" id="aVy-1A-ODd">
-                                            <rect key="frame" x="0.0" y="0.0" width="231" height="421"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="231" height="401"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="0.0" height="4"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1701,15 +1710,23 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="uiz-QK-vYc" customClass="SortingView" customModule="Doughnut" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="401" width="231" height="20"/>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Olf-xm-4xZ" secondAttribute="trailing" id="3ph-zn-ewk"/>
-                            <constraint firstItem="Olf-xm-4xZ" firstAttribute="top" secondItem="D1G-wk-4ey" secondAttribute="top" id="ApF-0S-5Yv"/>
+                            <constraint firstItem="uiz-QK-vYc" firstAttribute="leading" secondItem="Olf-xm-4xZ" secondAttribute="leading" id="4Xx-IH-9vm"/>
+                            <constraint firstItem="Olf-xm-4xZ" firstAttribute="top" secondItem="D1G-wk-4ey" secondAttribute="top" constant="20" id="ApF-0S-5Yv"/>
+                            <constraint firstItem="uiz-QK-vYc" firstAttribute="top" secondItem="D1G-wk-4ey" secondAttribute="top" id="C2b-u6-3jb"/>
+                            <constraint firstItem="Olf-xm-4xZ" firstAttribute="top" secondItem="uiz-QK-vYc" secondAttribute="bottom" id="O90-Va-Qik"/>
                             <constraint firstAttribute="bottom" secondItem="Olf-xm-4xZ" secondAttribute="bottom" id="PGc-Iv-hD3"/>
                             <constraint firstItem="Olf-xm-4xZ" firstAttribute="leading" secondItem="D1G-wk-4ey" secondAttribute="leading" id="bIB-df-ua9"/>
+                            <constraint firstItem="uiz-QK-vYc" firstAttribute="trailing" secondItem="Olf-xm-4xZ" secondAttribute="trailing" id="z2l-iK-QWY"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="sortView" destination="uiz-QK-vYc" id="2M8-u2-XLD"/>
                         <outlet property="tableView" destination="aVy-1A-ODd" id="MSD-C6-DW1"/>
                     </connections>
                 </viewController>
@@ -1762,13 +1779,13 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="76" horizontalPageScroll="10" verticalLineScroll="76" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPG-xC-7JH">
-                                <rect key="frame" x="0.0" y="0.0" width="331" height="420"/>
+                                <rect key="frame" x="0.0" y="0.0" width="331" height="400"/>
                                 <clipView key="contentView" id="Ugp-W0-ujw">
-                                    <rect key="frame" x="0.0" y="0.0" width="331" height="420"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="331" height="400"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="76" viewBased="YES" id="Xrx-cp-IWJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="331" height="420"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="331" height="400"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -1881,15 +1898,23 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="z1v-iO-axc" customClass="SortingView" customModule="Doughnut" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="400" width="331" height="20"/>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="aPG-xC-7JH" firstAttribute="top" secondItem="tvM-2C-S0k" secondAttribute="top" id="BOf-XX-ZDk"/>
+                            <constraint firstItem="aPG-xC-7JH" firstAttribute="top" secondItem="z1v-iO-axc" secondAttribute="bottom" id="8Uf-Pp-sWy"/>
+                            <constraint firstItem="aPG-xC-7JH" firstAttribute="top" secondItem="tvM-2C-S0k" secondAttribute="top" constant="20" id="BOf-XX-ZDk"/>
                             <constraint firstItem="aPG-xC-7JH" firstAttribute="leading" secondItem="tvM-2C-S0k" secondAttribute="leading" id="JQ4-Mw-4cj"/>
+                            <constraint firstItem="z1v-iO-axc" firstAttribute="top" secondItem="tvM-2C-S0k" secondAttribute="top" id="MtI-IF-uFJ"/>
                             <constraint firstAttribute="trailing" secondItem="aPG-xC-7JH" secondAttribute="trailing" id="fC9-7r-iSI"/>
                             <constraint firstAttribute="bottom" secondItem="aPG-xC-7JH" secondAttribute="bottom" id="kEV-Ns-r9e"/>
+                            <constraint firstItem="z1v-iO-axc" firstAttribute="leading" secondItem="aPG-xC-7JH" secondAttribute="leading" id="n3u-2w-oae"/>
+                            <constraint firstItem="z1v-iO-axc" firstAttribute="trailing" secondItem="aPG-xC-7JH" secondAttribute="trailing" id="yMl-jS-4fm"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="sortView" destination="z1v-iO-axc" id="qCw-4z-ayn"/>
                         <outlet property="tableView" destination="Xrx-cp-IWJ" id="WVH-k1-4XS"/>
                     </connections>
                 </viewController>
@@ -1976,7 +2001,7 @@ Gw
                     </connections>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="1003" y="1028"/>
+            <point key="canvasLocation" x="1002.5" y="1028"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="IJf-sZ-gIZ">

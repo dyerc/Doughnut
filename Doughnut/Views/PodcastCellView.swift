@@ -21,21 +21,13 @@ import Cocoa
 class PodcastUnplayedCountView: NSView {
   var value = 0 {
     didSet {
-      if value < 1 {
-        self.isHidden = true
-      } else {
-        self.isHidden = false
-      }
-      
-      let paragraphStyle = NSMutableParagraphStyle()
-      paragraphStyle.paragraphSpacing = 0
-      paragraphStyle.lineSpacing = 0
-    
-      attrString = NSMutableAttributedString(string: String(value), attributes: [
-        NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: 11),
-        NSAttributedStringKey.foregroundColor: NSColor.white,
-        NSAttributedStringKey.paragraphStyle: paragraphStyle
-      ])
+      updateState()
+    }
+  }
+  
+  var loading: Bool = false {
+    didSet {
+      updateState()
     }
   }
   
@@ -48,18 +40,6 @@ class PodcastUnplayedCountView: NSView {
   
   let loadingIndicator = NSProgressIndicator()
   
-  var loading: Bool = false {
-    didSet {
-      loadingIndicator.isHidden = !loading
-      
-      if loading {
-        loadingIndicator.startAnimation(self)
-      } else {
-        loadingIndicator.stopAnimation(self)
-      }
-    }
-  }
-  
   required init?(coder decoder: NSCoder) {
     super.init(coder: decoder)
     
@@ -70,8 +50,33 @@ class PodcastUnplayedCountView: NSView {
     addSubview(loadingIndicator)
   }
   
+  func updateState() {
+    if loading {
+      isHidden = false
+      loadingIndicator.isHidden = false
+      loadingIndicator.startAnimation(self)
+    } else if (value >= 1) {
+      isHidden = false
+      loadingIndicator.isHidden = true
+      loadingIndicator.stopAnimation(self)
+      
+      //
+      let paragraphStyle = NSMutableParagraphStyle()
+      paragraphStyle.paragraphSpacing = 0
+      paragraphStyle.lineSpacing = 0
+      
+      attrString = NSMutableAttributedString(string: String(value), attributes: [
+        NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: 11),
+        NSAttributedStringKey.foregroundColor: NSColor.white,
+        NSAttributedStringKey.paragraphStyle: paragraphStyle
+      ])
+    } else {
+      isHidden = true
+    }
+  }
+  
   override func viewDidMoveToWindow() {
-    loadingIndicator.frame = NSRect(x: (frame.width - 16) / 2, y: (frame.height - 16) / 2, width: 16.0, height: 16.0)
+    loadingIndicator.frame = NSRect(x: frame.width - 16 - 3, y: (frame.height - 16) / 2, width: 16.0, height: 16.0)
   }
   
   var attrString = NSMutableAttributedString(string: "")

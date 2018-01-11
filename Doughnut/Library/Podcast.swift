@@ -59,6 +59,25 @@ class Podcast: Record {
     }
   }
   
+  var favouriteCount: Int {
+    get {
+      return episodes.reduce(0) {
+        $0 + ($1.favourite ? 1 : 0)
+      }
+    }
+  }
+  
+  var latestEpisode: Episode? {
+    get {
+      return episodes.sorted(by: { (a, b) -> Bool in
+        guard let aD = a.pubDate else { return false }
+        guard let bD = b.pubDate else { return true }
+        
+        return aD < bD
+      }).last
+    }
+  }
+  
   var loading = false
   
   override class var databaseTableName: String {

@@ -33,6 +33,8 @@ class DetailViewController: NSViewController, WKNavigationDelegate {
   
   @IBOutlet weak var webView: WKWebView!
   
+  let dateFormatter = DateFormatter()
+  
   var detailType: DetailViewType = .BlankDetail {
     didSet {
       switch detailType {
@@ -75,6 +77,8 @@ class DetailViewController: NSViewController, WKNavigationDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    dateFormatter.dateStyle = .long
+    
     view.wantsLayer = true
     view.layer?.backgroundColor = CGColor.white
     
@@ -109,7 +113,10 @@ class DetailViewController: NSViewController, WKNavigationDelegate {
     
     detailTitle.stringValue = episode.title
     secondaryTitle.stringValue = podcast?.title ?? ""
-    miniTitle.stringValue = episode.link ?? ""
+    
+    if let pubDate = episode.pubDate {
+      miniTitle.stringValue = dateFormatter.string(for: pubDate) ?? ""
+    }
     
     if let artwork = episode.artwork {
       coverImage.image = artwork
