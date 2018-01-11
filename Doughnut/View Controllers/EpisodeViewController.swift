@@ -134,7 +134,9 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     if episodes.isEmpty {
     }
     
+    let selectedRow = tableView.selectedRow
     tableView.reloadData()
+    tableView.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
   }
   
   func reloadEpisode(_ episode: Episode) {
