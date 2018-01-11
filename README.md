@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/CD1212/Doughnut/master/screenshot.jpg?v=7" align="center" alt="screenshot" style="max-width:100%;" />
+  <img src="https://raw.githubusercontent.com/CD1212/Doughnut/master/screenshot.png?v=1" align="center" alt="screenshot" style="max-width:100%;" />
 </p>
 
 Doughnut is a podcast client built using Swift. The design and user experience are inspired by Instacast for Mac which was discontinued in 2015. After experimenting with alternate user interface layouts, I kept coming back to the three column layout as most useable and practical.
