@@ -55,10 +55,6 @@
 		830A33F61FF042D900C13B1D /* DoughnutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA22E21F994EA6006BF58A /* DoughnutApp.swift */; };
 		830A33F71FF042D900C13B1D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D971091F812B270091822A /* Player.swift */; };
 		830A33F81FF042D900C13B1D /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
-		830A33F91FF042E600C13B1D /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
-		830A33FA1FF042E600C13B1D /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */; };
-		830A33FC1FF042E800C13B1D /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
-		830A33FD1FF042E800C13B1D /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */; };
 		830A33FE1FF043BB00C13B1D /* SPMediaKeyTap.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */; };
 		830A33FF1FF043BB00C13B1D /* SPMediaKeyTap.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */; };
 		830A34001FF043BF00C13B1D /* NSObject+SPInvocationGrabbing.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */; };
@@ -68,15 +64,25 @@
 		830E99BD1FF50DD000B728BE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E99BC1FF50DD000B728BE /* ActivityIndicator.swift */; };
 		830E99BE1FF50DD000B728BE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E99BC1FF50DD000B728BE /* ActivityIndicator.swift */; };
 		830E99BF1FF50DD000B728BE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E99BC1FF50DD000B728BE /* ActivityIndicator.swift */; };
+		83235BFE2009472900BC356F /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF6200945D900BC356F /* Preference.swift */; };
+		83235BFF2009472900BC356F /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF6200945D900BC356F /* Preference.swift */; };
+		83235C002009472900BC356F /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF6200945D900BC356F /* Preference.swift */; };
+		83235C012009472F00BC356F /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF8200945D900BC356F /* PrefGeneralViewController.swift */; };
+		83235C022009472F00BC356F /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF8200945D900BC356F /* PrefGeneralViewController.swift */; };
+		83235C032009472F00BC356F /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF8200945D900BC356F /* PrefGeneralViewController.swift */; };
+		83235C042009473200BC356F /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF9200945D900BC356F /* PrefLibraryViewController.swift */; };
+		83235C052009473300BC356F /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF9200945D900BC356F /* PrefLibraryViewController.swift */; };
+		83235C062009473300BC356F /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF9200945D900BC356F /* PrefLibraryViewController.swift */; };
+		83235C072009473500BC356F /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BFA200945D900BC356F /* PrefPlaybackViewController.swift */; };
+		83235C082009473600BC356F /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BFA200945D900BC356F /* PrefPlaybackViewController.swift */; };
+		83235C092009473600BC356F /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BFA200945D900BC356F /* PrefPlaybackViewController.swift */; };
+		83235C0C2009481400BC356F /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 83235C0B2009481200BC356F /* dsa_pub.pem */; };
 		832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
-		832BB74E1F95155000988AE8 /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */; };
-		832BB7531F951A5600988AE8 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 832BB7521F951A5600988AE8 /* Preferences.storyboard */; };
 		832FF90B1F8D60430065E593 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FF90A1F8D60430065E593 /* DownloadManager.swift */; };
 		8335D48C1F856E120060D8D8 /* ValidFeedx3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8335D48B1F856E120060D8D8 /* ValidFeedx3.xml */; };
 		8335D48D1F8571150060D8D8 /* enclosure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 83D4CA5B1F7C3848002EDC36 /* enclosure.mp3 */; };
 		8335F3AF1F90B5F700722DBC /* LibrarySpyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8335F3AE1F90B5F700722DBC /* LibrarySpyDelegate.swift */; };
 		8335F3B11F90B63F00722DBC /* LibraryTestsWithSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8335F3B01F90B63F00722DBC /* LibraryTestsWithSubscription.swift */; };
-		8341B8391F7BE4F100B50A5D /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B8381F7BE4F100B50A5D /* Preference.swift */; };
 		8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
 		8343426A1F802C1400913C0B /* EpisodeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834342691F802C1400913C0B /* EpisodeFilterViewController.swift */; };
 		834998B61FF3E3F00035EF87 /* TaskManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834998B51FF3E3F00035EF87 /* TaskManagerView.swift */; };
@@ -123,12 +129,6 @@
 		83D4CA611F7C39AD002EDC36 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
 		83D59CF71F7ED15C00F25A66 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D59CF61F7ED15C00F25A66 /* Episode.swift */; };
 		83D59CF81F7ED15F00F25A66 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D59CF61F7ED15C00F25A66 /* Episode.swift */; };
-		83D7F33E1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F33D1FF6967900E4B886 /* PrefGeneralViewController.swift */; };
-		83D7F33F1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F33D1FF6967900E4B886 /* PrefGeneralViewController.swift */; };
-		83D7F3401FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F33D1FF6967900E4B886 /* PrefGeneralViewController.swift */; };
-		83D7F3421FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F3411FF69F7100E4B886 /* PrefPlaybackViewController.swift */; };
-		83D7F3431FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F3411FF69F7100E4B886 /* PrefPlaybackViewController.swift */; };
-		83D7F3441FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D7F3411FF69F7100E4B886 /* PrefPlaybackViewController.swift */; };
 		83D9710A1F812B270091822A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D971091F812B270091822A /* Player.swift */; };
 		83D9710C1F812E910091822A /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9710B1F812E910091822A /* PlayerView.swift */; };
 		83DB16DC1F93E34B0062B266 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16DB1F93E34B0062B266 /* Utils.swift */; };
@@ -173,15 +173,18 @@
 		831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPInvocationGrabbing.m"; sourceTree = "<group>"; };
 		831EEAE01F994F6C00DCC872 /* SPMediaKeyTap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPMediaKeyTap.h; sourceTree = "<group>"; };
 		831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPMediaKeyTap.m; sourceTree = "<group>"; };
+		83235BF6200945D900BC356F /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		83235BF7200945D900BC356F /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		83235BF8200945D900BC356F /* PrefGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefGeneralViewController.swift; sourceTree = "<group>"; };
+		83235BF9200945D900BC356F /* PrefLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefLibraryViewController.swift; sourceTree = "<group>"; };
+		83235BFA200945D900BC356F /* PrefPlaybackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefPlaybackViewController.swift; sourceTree = "<group>"; };
+		83235C0B2009481200BC356F /* dsa_pub.pem */ = {isa = PBXFileReference; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		832A04331F76EBDC00C92D25 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefLibraryViewController.swift; sourceTree = "<group>"; };
 		832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Doughnut-Bridging-Header.h"; sourceTree = "<group>"; };
-		832BB7521F951A5600988AE8 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		832FF90A1F8D60430065E593 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		8335D48B1F856E120060D8D8 /* ValidFeedx3.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ValidFeedx3.xml; sourceTree = "<group>"; };
 		8335F3AE1F90B5F700722DBC /* LibrarySpyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySpyDelegate.swift; sourceTree = "<group>"; };
 		8335F3B01F90B63F00722DBC /* LibraryTestsWithSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTestsWithSubscription.swift; sourceTree = "<group>"; };
-		8341B8381F7BE4F100B50A5D /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		8341B83A1F7BEB0500B50A5D /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
 		834342691F802C1400913C0B /* EpisodeFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeFilterViewController.swift; sourceTree = "<group>"; };
 		834998B51FF3E3F00035EF87 /* TaskManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerView.swift; sourceTree = "<group>"; };
@@ -221,8 +224,6 @@
 		83D4CA5B1F7C3848002EDC36 /* enclosure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enclosure.mp3; sourceTree = "<group>"; };
 		83D4CA5C1F7C3902002EDC36 /* LibraryTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTestCase.swift; sourceTree = "<group>"; };
 		83D59CF61F7ED15C00F25A66 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
-		83D7F33D1FF6967900E4B886 /* PrefGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefGeneralViewController.swift; sourceTree = "<group>"; };
-		83D7F3411FF69F7100E4B886 /* PrefPlaybackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefPlaybackViewController.swift; sourceTree = "<group>"; };
 		83D971091F812B270091822A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		83D9710B1F812E910091822A /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		83DB16DB1F93E34B0062B266 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -328,16 +329,31 @@
 			path = SPInvocationGrabbing;
 			sourceTree = "<group>";
 		};
-		834342661F801DD600913C0B /* Preference */ = {
+		83235BF5200945D900BC356F /* Preference */ = {
 			isa = PBXGroup;
 			children = (
-				8341B8381F7BE4F100B50A5D /* Preference.swift */,
-				832BB74D1F95155000988AE8 /* PrefLibraryViewController.swift */,
-				83D7F33D1FF6967900E4B886 /* PrefGeneralViewController.swift */,
-				83D7F3411FF69F7100E4B886 /* PrefPlaybackViewController.swift */,
-				832BB7521F951A5600988AE8 /* Preferences.storyboard */,
+				83235BF6200945D900BC356F /* Preference.swift */,
+				83235BF7200945D900BC356F /* Preferences.storyboard */,
+				83235BF8200945D900BC356F /* PrefGeneralViewController.swift */,
+				83235BF9200945D900BC356F /* PrefLibraryViewController.swift */,
+				83235BFA200945D900BC356F /* PrefPlaybackViewController.swift */,
 			);
 			path = Preference;
+			sourceTree = "<group>";
+		};
+		83235BFB2009464900BC356F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		83235C0A200947F200BC356F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83235C0B2009481200BC356F /* dsa_pub.pem */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		83504DD41FFC376800375BA0 /* Tasks */ = {
@@ -366,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				838257CC1F759F6F00DB4FD1 /* Doughnut */,
+				83235BFB2009464900BC356F /* Resources */,
 				838257DF1F759F6F00DB4FD1 /* DoughnutTests */,
 				838257EA1F759F6F00DB4FD1 /* DoughnutUITests */,
 				838257CB1F759F6F00DB4FD1 /* Products */,
@@ -391,6 +408,7 @@
 				830B15991F7B97250086C121 /* Views */,
 				83667DEE1F76D1F300F1ABC0 /* View Controllers */,
 				839DBDA51FEEE872007610EF /* Windows */,
+				83235BF5200945D900BC356F /* Preference */,
 				838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */,
 				83BA22E21F994EA6006BF58A /* DoughnutApp.swift */,
 				83D971091F812B270091822A /* Player.swift */,
@@ -400,7 +418,7 @@
 				838257D31F759F6F00DB4FD1 /* Main.storyboard */,
 				838257D61F759F6F00DB4FD1 /* Info.plist */,
 				838257D71F759F6F00DB4FD1 /* Doughnut.entitlements */,
-				834342661F801DD600913C0B /* Preference */,
+				83235C0A200947F200BC356F /* Resources */,
 				831EEADB1F994F6C00DCC872 /* Vendor */,
 			);
 			path = Doughnut;
@@ -558,6 +576,9 @@
 		838257C21F759F6F00DB4FD1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					Resources,
+				);
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Chris Dyer";
@@ -608,8 +629,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				832BB7531F951A5600988AE8 /* Preferences.storyboard in Resources */,
 				838257D21F759F6F00DB4FD1 /* Assets.xcassets in Resources */,
+				83235C0C2009481400BC356F /* dsa_pub.pem in Resources */,
 				838257D51F759F6F00DB4FD1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -800,17 +821,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8343426A1F802C1400913C0B /* EpisodeFilterViewController.swift in Sources */,
-				8341B8391F7BE4F100B50A5D /* Preference.swift in Sources */,
 				839A32811FF9831B002D2023 /* ShowEpisodeWindow.swift in Sources */,
 				8389709C20069D720094795D /* SortingView.swift in Sources */,
 				83EFC6051F9954AD00E1DE1F /* NSObject+SPInvocationGrabbing.m in Sources */,
-				83D7F3421FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
 				83E95A5E1FFBCA3C00C6AABF /* Storage.swift in Sources */,
 				8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */,
 				83A0D4831FFC2FA400A376FD /* TaskQueue.swift in Sources */,
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				83D9710C1F812E910091822A /* PlayerView.swift in Sources */,
-				832BB74E1F95155000988AE8 /* PrefLibraryViewController.swift in Sources */,
+				83235C042009473200BC356F /* PrefLibraryViewController.swift in Sources */,
 				839DBDA41FEEE658007610EF /* ShowPodcastWindow.swift in Sources */,
 				83D9710A1F812B270091822A /* Player.swift in Sources */,
 				83EFC6041F9954A500E1DE1F /* SPMediaKeyTap.m in Sources */,
@@ -819,8 +838,8 @@
 				83504DD61FFC377700375BA0 /* DownloadTask.swift in Sources */,
 				83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
-				83D7F33E1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */,
 				830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */,
+				83235C072009473500BC356F /* PrefPlaybackViewController.swift in Sources */,
 				830E99BD1FF50DD000B728BE /* ActivityIndicator.swift in Sources */,
 				839DBDA71FEEEA81007610EF /* WhiteBackgroundView.swift in Sources */,
 				838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */,
@@ -837,6 +856,8 @@
 				83667DF21F76D21900F1ABC0 /* EpisodeViewController.swift in Sources */,
 				834CC1B01F95076F00A98DE9 /* MarkupGenerator.swift in Sources */,
 				838257CE1F759F6F00DB4FD1 /* AppDelegate.swift in Sources */,
+				83235C012009472F00BC356F /* PrefGeneralViewController.swift in Sources */,
+				83235BFE2009472900BC356F /* Preference.swift in Sources */,
 				83FB4EB81F7BD9A1001CD842 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -845,13 +866,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				830A33FC1FF042E800C13B1D /* Preference.swift in Sources */,
 				8397B9D11F8FC64D00C92AE6 /* DownloadManager.swift in Sources */,
 				83DB16DE1F93F1CE0062B266 /* LibraryUtils.swift in Sources */,
 				830A33E01FF042D100C13B1D /* DetailViewController.swift in Sources */,
 				830A33D51FF042CE00C13B1D /* WhiteBackgroundView.swift in Sources */,
 				830A34001FF043BF00C13B1D /* NSObject+SPInvocationGrabbing.m in Sources */,
 				830A33DD1FF042D100C13B1D /* ViewController.swift in Sources */,
+				83235C022009472F00BC356F /* PrefGeneralViewController.swift in Sources */,
 				83D59CF81F7ED15F00F25A66 /* Episode.swift in Sources */,
 				830A33F11FF042D900C13B1D /* AppDelegate.swift in Sources */,
 				830A33D11FF042CE00C13B1D /* PlayerView.swift in Sources */,
@@ -872,10 +893,12 @@
 				830A33FE1FF043BB00C13B1D /* SPMediaKeyTap.m in Sources */,
 				83D4CA5E1F7C3988002EDC36 /* Library.swift in Sources */,
 				8335F3AF1F90B5F700722DBC /* LibrarySpyDelegate.swift in Sources */,
+				83235C052009473300BC356F /* PrefLibraryViewController.swift in Sources */,
 				83D4CA5D1F7C3902002EDC36 /* LibraryTestCase.swift in Sources */,
 				83D4CA561F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift in Sources */,
+				83235BFF2009472900BC356F /* Preference.swift in Sources */,
+				83235C082009473600BC356F /* PrefPlaybackViewController.swift in Sources */,
 				830A33E21FF042D100C13B1D /* TasksViewController.swift in Sources */,
-				83D7F33F1FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */,
 				830A33D31FF042CE00C13B1D /* DownloadCellView.swift in Sources */,
 				83A0D4801FFC28A900A376FD /* ShowEpisodeWindow.swift in Sources */,
 				830A33F41FF042D900C13B1D /* WindowController.swift in Sources */,
@@ -888,8 +911,6 @@
 				83504DD71FFC377700375BA0 /* DownloadTask.swift in Sources */,
 				836DBC532008084400AD7EBB /* SortingView.swift in Sources */,
 				834998B71FF3E3F00035EF87 /* TaskManagerView.swift in Sources */,
-				83D7F3431FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
-				830A33FD1FF042E800C13B1D /* PrefLibraryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,16 +925,14 @@
 				830A33EB1FF042D100C13B1D /* TasksViewController.swift in Sources */,
 				830A33CC1FF042C900C13B1D /* DownloadManager.swift in Sources */,
 				830A33F71FF042D900C13B1D /* Player.swift in Sources */,
-				83D7F3441FF69F7100E4B886 /* PrefPlaybackViewController.swift in Sources */,
-				830A33FA1FF042E600C13B1D /* PrefLibraryViewController.swift in Sources */,
 				83E95A601FFBCA3C00C6AABF /* Storage.swift in Sources */,
+				83235C092009473600BC356F /* PrefPlaybackViewController.swift in Sources */,
 				83A0D4811FFC28A900A376FD /* ShowEpisodeWindow.swift in Sources */,
 				830A33F81FF042D900C13B1D /* WindowController.swift in Sources */,
 				830A33E71FF042D100C13B1D /* PodcastViewController.swift in Sources */,
 				830A34011FF043BF00C13B1D /* NSObject+SPInvocationGrabbing.m in Sources */,
 				830A33C81FF042C900C13B1D /* Library.swift in Sources */,
 				830A33DB1FF042CE00C13B1D /* DetailWebView.swift in Sources */,
-				830A33F91FF042E600C13B1D /* Preference.swift in Sources */,
 				830A33F51FF042D900C13B1D /* AppDelegate.swift in Sources */,
 				830A33F61FF042D900C13B1D /* DoughnutApp.swift in Sources */,
 				830E99BF1FF50DD000B728BE /* ActivityIndicator.swift in Sources */,
@@ -926,15 +945,17 @@
 				830A33D61FF042CE00C13B1D /* PodcastCellView.swift in Sources */,
 				830A33EA1FF042D100C13B1D /* EpisodeFilterViewController.swift in Sources */,
 				830A33E91FF042D100C13B1D /* DetailViewController.swift in Sources */,
+				83235C002009472900BC356F /* Preference.swift in Sources */,
 				830A33E81FF042D100C13B1D /* EpisodeViewController.swift in Sources */,
 				830A33CB1FF042C900C13B1D /* Episode.swift in Sources */,
+				83235C032009472F00BC356F /* PrefGeneralViewController.swift in Sources */,
 				830A33C91FF042C900C13B1D /* Migrations.swift in Sources */,
 				830A33D71FF042CE00C13B1D /* EpisodeCellView.swift in Sources */,
 				830A33DC1FF042CE00C13B1D /* WhiteBackgroundView.swift in Sources */,
 				830A33FF1FF043BB00C13B1D /* SPMediaKeyTap.m in Sources */,
 				830A33F01FF042D500C13B1D /* ShowPodcastWindow.swift in Sources */,
+				83235C062009473300BC356F /* PrefLibraryViewController.swift in Sources */,
 				830A33D91FF042CE00C13B1D /* SeekSlider.swift in Sources */,
-				83D7F3401FF6967900E4B886 /* PrefGeneralViewController.swift in Sources */,
 				830A33E61FF042D100C13B1D /* ViewController.swift in Sources */,
 				830A33CE1FF042C900C13B1D /* MarkupGenerator.swift in Sources */,
 				836DBC542008084400AD7EBB /* SortingView.swift in Sources */,

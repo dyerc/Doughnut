@@ -33,6 +33,13 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
+                                        <menuItem title="Check for Updates" id="kQY-Gb-KAj">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="checkForUpdates:" target="rU1-4m-9RA" id="svo-cv-gvH"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="pfr-qm-oo2"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
@@ -454,6 +461,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Doughnut" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="rU1-4m-9RA" customClass="SUUpdater"/>
             </objects>
             <point key="canvasLocation" x="-118" y="-387"/>
         </scene>
