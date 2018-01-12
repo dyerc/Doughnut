@@ -1,10 +1,28 @@
 // MARK: - QueryInterfaceSelectQueryDefinition
 
+struct DatabasePromise<T> {
+    let resolve: (Database) throws -> T
+    
+    init(value: T) {
+        self.resolve = { _ in value }
+    }
+    
+    init(_ resolve: @escaping (Database) throws -> T) {
+        self.resolve = resolve
+    }
+    
+    func map(_ transform: @escaping (Database, T) throws -> T) -> DatabasePromise {
+        return DatabasePromise { db in
+            try transform(db, self.resolve(db))
+        }
+    }
+}
+
 struct QueryInterfaceSelectQueryDefinition {
     var selection: [SQLSelectable]
     var isDistinct: Bool
     var source: SQLSource?
-    var whereExpression: SQLExpression?
+    var wherePromise: DatabasePromise<SQLExpression?>
     var groupByExpressions: [SQLExpression]
     var orderings: [SQLOrderingTerm]
     var isReversed: Bool
@@ -25,7 +43,7 @@ struct QueryInterfaceSelectQueryDefinition {
         self.selection = selection
         self.isDistinct = isDistinct
         self.source = source
-        self.whereExpression = whereExpression
+        self.wherePromise = DatabasePromise(value: whereExpression)
         self.groupByExpressions = groupByExpressions
         self.orderings = orderings
         self.isReversed = isReversed
@@ -33,7 +51,13 @@ struct QueryInterfaceSelectQueryDefinition {
         self.limit = limit
     }
     
-    func sql(_ arguments: inout StatementArguments?) -> String {
+    func mapWhereExpression(_ transform: @escaping (Database, SQLExpression?) throws -> SQLExpression?) -> QueryInterfaceSelectQueryDefinition {
+        var query = self
+        query.wherePromise = query.wherePromise.map(transform)
+        return query
+    }
+    
+    func sql(_ db: Database, _ arguments: inout StatementArguments?) throws -> String {
         var sql = "SELECT"
         
         if isDistinct {
@@ -44,10 +68,10 @@ struct QueryInterfaceSelectQueryDefinition {
         sql += " " + selection.map { $0.resultColumnSQL(&arguments) }.joined(separator: ", ")
         
         if let source = source {
-            sql += " FROM " + source.sourceSQL(&arguments)
+            sql += try " FROM " + source.sourceSQL(db, &arguments)
         }
         
-        if let whereExpression = whereExpression {
+        if let whereExpression = try wherePromise.resolve(db) {
             sql += " WHERE " + whereExpression.expressionSQL(&arguments)
         }
         
@@ -86,10 +110,10 @@ struct QueryInterfaceSelectQueryDefinition {
         var arguments: StatementArguments? = StatementArguments()
         
         if let source = source {
-            sql += " FROM " + source.sourceSQL(&arguments)
+            sql += try " FROM " + source.sourceSQL(db, &arguments)
         }
         
-        if let whereExpression = whereExpression {
+        if let whereExpression = try wherePromise.resolve(db) {
             sql += " WHERE " + whereExpression.expressionSQL(&arguments)
         }
         
@@ -147,7 +171,7 @@ struct QueryInterfaceSelectQueryDefinition {
 extension QueryInterfaceSelectQueryDefinition : Request {
     func prepare(_ db: Database) throws -> (SelectStatement, RowAdapter?) {
         var arguments: StatementArguments? = StatementArguments()
-        let sql = self.sql(&arguments)
+        let sql = try self.sql(db, &arguments)
         let statement = try db.makeSelectStatement(sql)
         try statement.setArgumentsWithValidation(arguments!)
         return (statement, nil)
@@ -206,7 +230,7 @@ indirect enum SQLSource {
     case table(name: String, alias: String?)
     case query(query: QueryInterfaceSelectQueryDefinition, alias: String?)
     
-    func sourceSQL(_ arguments: inout StatementArguments?) -> String {
+    func sourceSQL(_ db: Database, _ arguments: inout StatementArguments?) throws -> String {
         switch self {
         case .table(let table, let alias):
             if let alias = alias {
@@ -216,9 +240,9 @@ indirect enum SQLSource {
             }
         case .query(let query, let alias):
             if let alias = alias {
-                return "(" + query.sql(&arguments) + ") AS " + alias.quotedDatabaseIdentifier
+                return try "(" + query.sql(db, &arguments) + ") AS " + alias.quotedDatabaseIdentifier
             } else {
-                return "(" + query.sql(&arguments) + ")"
+                return try "(" + query.sql(db, &arguments) + ")"
             }
         }
     }

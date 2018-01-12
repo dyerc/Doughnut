@@ -21,4 +21,5 @@ target 'Doughnut' do
   pod 'GRDB.swift'
   pod 'FeedKit', :git => 'https://github.com/CD1212/FeedKit.git'
   pod 'MASPreferences'
+  pod 'Sparkle'
 end
