@@ -39,8 +39,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
     
-    print("Check for updates every \(Preference.string(for: Preference.Key.reloadFrequency))")
-    
     mediaKeyTap = SPMediaKeyTap(delegate: self)
     if SPMediaKeyTap.usesGlobalMediaKeyTap() {
       mediaKeyTap?.startWatchingMediaKeys()
@@ -55,8 +53,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     if !connected {
       abort()
     }
-    
-    //  Library.global.subscribe(url: "http://feeds.feedburner.com/TellEmSteveDave")
   }
   
   func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {

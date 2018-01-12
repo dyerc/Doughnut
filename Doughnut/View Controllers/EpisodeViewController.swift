@@ -149,7 +149,12 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   
   func selectPodcast(_ selectedPodcast: Podcast?) {
     podcast = selectedPodcast
+    
     reloadEpisodes()
+    
+    // Clear selection and reset table state
+    tableView.selectRowIndexes(IndexSet(), byExtendingSelection: false)
+    tableView.scrollRowToVisible(0)
   }
   
   @objc func podcastUpdated(_ notification: NSNotification) {
@@ -237,10 +242,6 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       return true
     case "Show in Finder":
       return episode.downloaded
-    case "Mark all as Played":
-      return true
-    case "Mark all as Unplayed":
-      return true
     default:
       return false
     }
@@ -344,25 +345,5 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     guard let podcast = episode.podcast else { return }
 
     NSWorkspace.shared.selectFile(episode.url()?.path, inFileViewerRootedAtPath: podcast.path)
-  }
-  
-  @IBAction func markAllAsPlayed(_ sender: Any) {
-    guard let podcast = episodes[tableView.clickedRow].podcast else { return }
-    
-    for episode in episodes {
-      episode.played = true
-    }
-    
-    Library.global.save(podcast: podcast)
-  }
-  
-  @IBAction func markAllAsUnplayed(_ sender: Any) {
-    guard let podcast = episodes[tableView.clickedRow].podcast else { return }
-    
-    for episode in episodes {
-      episode.played = false
-    }
-    
-    Library.global.save(podcast: podcast)
   }
 }

@@ -183,6 +183,34 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
   }
   
+  @IBAction func markAllAsPlayed(_ sender: Any) {
+    let podcast = podcasts[tableView.clickedRow]
+    
+    for episode in podcast.episodes {
+      episode.played = true
+    }
+    
+    // Manually trigger a view reload to make update seem instant
+    viewController.libraryUpdatedPodcast(podcast: podcast)
+    
+    // Commit changes to library
+    Library.global.save(podcast: podcast)
+  }
+  
+  @IBAction func markAllAsUnplayed(_ sender: Any) {
+    let podcast = podcasts[tableView.clickedRow]
+    
+    for episode in podcast.episodes {
+      episode.played = false
+    }
+    
+    // Manually trigger a view reload to make update seem instant
+    viewController.libraryUpdatedPodcast(podcast: podcast)
+    
+    // Commit changes to library
+    Library.global.save(podcast: podcast)
+  }
+  
   @IBAction func copyPodcastURL(_ sender: Any) {
     if let feed = podcasts[tableView.clickedRow].feed {
       NSPasteboard.general.declareTypes([.string], owner: nil)

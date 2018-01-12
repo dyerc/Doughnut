@@ -1757,10 +1757,24 @@ Gw
                                 <action selector="reloadPodcast:" target="hBf-lZ-L6q" id="9hD-nz-8bE"/>
                             </connections>
                         </menuItem>
+                        <menuItem isSeparatorItem="YES" id="1LW-hC-uwl"/>
                         <menuItem title="Podcast Info" id="CFk-Oj-REG">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="podcastInfo:" target="hBf-lZ-L6q" id="iHQ-CY-mGc"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="NIm-sA-E4i"/>
+                        <menuItem title="Mark all as Played" id="NOB-qZ-qu3">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="markAllAsPlayed:" target="hBf-lZ-L6q" id="dML-ns-6PJ"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Mark all as Unplayed" id="odr-TI-b44">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="markAllAsUnplayed:" target="hBf-lZ-L6q" id="lWi-VW-cM5"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="Ofk-Zu-gyv"/>
@@ -1945,6 +1959,13 @@ Gw
                                 <action selector="playNow:" target="GEj-8A-BQz" id="Y5y-Dg-kDj"/>
                             </connections>
                         </menuItem>
+                        <menuItem isSeparatorItem="YES" id="T74-oe-D0J"/>
+                        <menuItem title="Show Episode" id="vUJ-4X-Jw1">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="showEpisode:" target="GEj-8A-BQz" id="5Xq-9t-iHc"/>
+                            </connections>
+                        </menuItem>
                         <menuItem isSeparatorItem="YES" id="tAQ-3D-E3U"/>
                         <menuItem title="Mark as Played" id="sAj-NI-EpU">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -1992,25 +2013,6 @@ Gw
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="deleteEpisode:" target="GEj-8A-BQz" id="OXd-uV-kL6"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Show Episode" id="vUJ-4X-Jw1">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="showEpisode:" target="GEj-8A-BQz" id="5Xq-9t-iHc"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem isSeparatorItem="YES" id="1mV-Ih-jzm"/>
-                        <menuItem title="Mark all as Played" id="61a-bx-s1p">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="markAllAsPlayed:" target="GEj-8A-BQz" id="Wtx-zk-mZx"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Mark all as Unplayed" id="uy7-bc-1gb">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="markAllAsUnplayed:" target="GEj-8A-BQz" id="bRu-jv-cH4"/>
                             </connections>
                         </menuItem>
                     </items>
