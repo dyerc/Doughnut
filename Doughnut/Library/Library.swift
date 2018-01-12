@@ -208,6 +208,12 @@ class Library: NSObject {
       notification.informativeText = firstEpisode.title
     }
     
+    if podcast.autoDownload {
+      if let latestEpisode = episodes.first {
+        latestEpisode.download()
+      }
+    }
+    
     NSUserNotificationCenter.default.deliver(notification)
   }
   

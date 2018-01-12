@@ -68,6 +68,12 @@ class LibraryMigrations {
       })
     }
     
+    migrator.registerMigration("v3") { db in
+      try db.alter(table: "podcasts", body: { t in
+        t.add(column: "auto_download", .boolean).notNull().defaults(to: false)
+      })
+    }
+    
     try migrator.migrate(db)
   }
 }

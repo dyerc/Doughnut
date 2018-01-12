@@ -35,6 +35,7 @@ class Podcast: Record {
   var imageUrl: String?
   var lastParsed: Date?
   var subscribedAt: Date
+  var autoDownload: Bool = false
   
   var reloadFrequency: Int = 0 // 0 is only manually reloaded
   var manualReload: Bool {
@@ -113,6 +114,7 @@ class Podcast: Record {
     lastParsed = row["last_parsed"]
     subscribedAt = row["subscribed_at"]
     reloadFrequency = row["reload_frequency"]
+    autoDownload = row["auto_download"]
     
     super.init(row: row)
   }
@@ -133,6 +135,7 @@ class Podcast: Record {
     container["last_parsed"] = lastParsed
     container["subscribed_at"] = subscribedAt
     container["reload_frequency"] = reloadFrequency
+    container["auto_download"] = autoDownload
   }
   
   override func didInsert(with rowID: Int64, for column: String?) {

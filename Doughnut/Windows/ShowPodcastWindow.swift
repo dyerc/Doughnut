@@ -81,6 +81,7 @@ class ShowPodcastViewController: NSViewController {
   // Options Tab
   @IBOutlet weak var reloadInputView: NSPopUpButton!
   @IBOutlet weak var lastParsedLabelView: NSTextField!
+  @IBOutlet weak var autoDownloadCheckView: NSButton!
   @IBOutlet weak var storageLabelView: NSTextField!
   @IBOutlet weak var capacityLabelView: NSTextField!
   
@@ -126,6 +127,7 @@ class ShowPodcastViewController: NSViewController {
       
       // Options View
       reloadInputView.selectItem(withTag: podcast?.reloadFrequency ?? 0)
+      autoDownloadCheckView.state = (podcast?.autoDownload ?? false) ? .on : .off
       
       let dateFormatter = DateFormatter()
       dateFormatter.dateStyle = .long
@@ -174,6 +176,12 @@ class ShowPodcastViewController: NSViewController {
     }
     
     podcast.reloadFrequency = reloadInputView.selectedTag()
+    
+    if autoDownloadCheckView.state == .on {
+      podcast.autoDownload = true
+    } else {
+      podcast.autoDownload = false
+    }
   }
   
   @IBAction func savePodcast(_ sender: Any) {
