@@ -5,6 +5,12 @@
     <link>https://raw.githubusercontent.com/CD1212/Doughnut/master/appcast.xml</link>
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
+
+    <item>
+      <title>Version 1.0.0</title>
+      <pubDate>Sat, 13 January 2018 20:08:00 +0000</pubDate>
+      <enclosure url="https://github.com/CD1212/Doughnut/releases/download/v1.0.0/Doughnut-1.0.0.dmg" sparkle:version="1.0.0" length="6352961" type="application/octet-stream" sparkle:dsaSignature="MEQCIANkX0gJlmEl6Alq1EuORuixogyrL/rD6KC0ZdUj42WuAiBi4JlgqBqFsSShejPdo+LGFpW9XERUFYqnKxiVupFunQ==" />
+    </item>
   </channel>
 </rss>
 
