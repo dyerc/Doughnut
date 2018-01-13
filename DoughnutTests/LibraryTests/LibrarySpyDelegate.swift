@@ -13,11 +13,7 @@ class LibrarySpyDelegate: LibraryDelegate {
   var subscribedToPodcastExpectation: XCTestExpectation?
   var subscribedToPodcastResult: Podcast?
   func librarySubscribedToPodcast(subscribed: Podcast) {
-    guard let expectation = subscribedToPodcastExpectation else {
-      XCTFail("Missing didSubscribeToPodcast XCTExpectation reference")
-      return
-    }
-    
+    guard let expectation = subscribedToPodcastExpectation else { return }
     self.subscribedToPodcastResult = subscribed
     expectation.fulfill()
   }
@@ -29,21 +25,25 @@ class LibrarySpyDelegate: LibraryDelegate {
   var updatedPodcastExpectation: XCTestExpectation?
   var updatedPodcastResult: Podcast?
   func libraryUpdatedPodcast(podcast: Podcast) {
-    guard let expectation = updatedPodcastExpectation else {
-      XCTFail("Missing didUpdatePodcast XCTExpectation reference")
-      return
-    }
-    
+    guard let expectation = updatedPodcastExpectation else { return }
     updatedPodcastResult = podcast
     expectation.fulfill()
   }
   
+  var updatedEpisodeExpectation: XCTestExpectation?
+  var updatedEpisodeResult: Episode?
   func libraryUpdatedEpisode(episode: Episode) {
-    
+    guard let expectation = updatedEpisodeExpectation else { return }
+    updatedEpisodeResult = episode
+    expectation.fulfill()
   }
   
+  var unsubscribedPodcastExpectation: XCTestExpectation?
+  var unsubscribedPodcastResult: Podcast?
   func libraryUnsubscribedFromPodcast(unsubscribed: Podcast) {
-    
+    guard let expectation = unsubscribedPodcastExpectation else { return }
+    unsubscribedPodcastResult = unsubscribed
+    expectation.fulfill()
   }
   
   func libraryUpdatingPodcast(podcast: Podcast) {

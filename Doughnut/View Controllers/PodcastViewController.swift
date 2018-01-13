@@ -219,9 +219,25 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   @IBAction func unsubscribe(_ sender: Any) {
+    let podcast = podcasts[tableView.clickedRow]
+    
+    let alert = NSAlert()
+    alert.addButton(withTitle: "Leave Files")
+    alert.addButton(withTitle: "Move to Trash")
+    alert.addButton(withTitle: "Cancel")
+    alert.messageText = "Move Files to Trash"
+    alert.informativeText = "Would you like to move any downloaded episodes to the trash?"
+    
+    let result = alert.runModal()
+    if result == .alertFirstButtonReturn {
+      Library.global.unsubscribe(podcast: podcast, removeFiles: false)
+    } else if result == .alertSecondButtonReturn {
+      Library.global.unsubscribe(podcast: podcast, removeFiles: true)
+    }
   }
   
   @IBAction func refreshAll(_ sender: Any) {
+    Library.global.reloadAll()
   }
   
 }

@@ -281,8 +281,41 @@ class Library: NSObject {
     }
   }
   
-  func unsubscribe(podcast: Podcast) {
+  func unsubscribe(podcast: Podcast, removeFiles: Bool = false) {
+    guard let storedIndex = podcasts.index(where: { p -> Bool in p.id == podcast.id }) else { return }
     
+    podcasts.remove(at: storedIndex)
+    self.delegate?.libraryReloaded()
+    
+    taskQueue.async {
+      if removeFiles {
+        if let storagePath = podcast.storagePath() {
+          NSWorkspace.shared.recycle([storagePath], completionHandler: { (trashedFiles, error) in
+            if let error = error {
+              print("Failed to move podcast data to trash: \(error.localizedDescription)")
+              
+              let alert = NSAlert()
+              alert.messageText = "Failed to trash data"
+              alert.informativeText = error.localizedDescription
+            } else {
+              print("Moved podcast data stored at \(trashedFiles) to trash")
+            }
+          })
+        }
+      }
+      
+      do {
+        _ = try self.dbQueue?.inDatabase { db in
+          try podcast.delete(db)
+        }
+       
+        DispatchQueue.main.async {
+          self.delegate?.libraryUnsubscribedFromPodcast(unsubscribed: podcast)
+        }
+      } catch let error as DatabaseError {
+        Library.handleDatabaseError(error)
+      } catch {}
+    }
   }
   
   func podcast(id: Int64) -> Podcast? {

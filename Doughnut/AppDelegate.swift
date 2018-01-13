@@ -40,8 +40,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
     
     mediaKeyTap = SPMediaKeyTap(delegate: self)
-    if SPMediaKeyTap.usesGlobalMediaKeyTap() {
-      mediaKeyTap?.startWatchingMediaKeys()
+    
+    UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.enableMediaKeys.rawValue, options: [], context: nil)
+    if Preference.bool(for: Preference.Key.enableMediaKeys) {
+      setupMediaKeyTap()
     }
     
     /*do {
@@ -67,6 +69,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   func applicationWillTerminate(_ aNotification: Notification) {
     // Insert code here to tear down your application
+  }
+  
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    switch keyPath {
+    case Preference.Key.enableMediaKeys.rawValue?:
+      setupMediaKeyTap()
+    default:
+      return
+    }
+  }
+  
+  func setupMediaKeyTap() {
+    guard let mediaKeyTap = mediaKeyTap else { return }
+    
+    if Preference.bool(for: Preference.Key.enableMediaKeys) {
+      if SPMediaKeyTap.usesGlobalMediaKeyTap() {
+        mediaKeyTap.startWatchingMediaKeys()
+      }
+    } else {
+      mediaKeyTap.stopWatchingMediaKeys()
+    }
   }
   
   override func mediaKeyTap(_ keyTap: SPMediaKeyTap!, receivedMediaKeyEvent event: NSEvent!) {

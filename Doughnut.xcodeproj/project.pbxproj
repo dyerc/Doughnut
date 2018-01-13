@@ -77,6 +77,9 @@
 		83235C082009473600BC356F /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BFA200945D900BC356F /* PrefPlaybackViewController.swift */; };
 		83235C092009473600BC356F /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BFA200945D900BC356F /* PrefPlaybackViewController.swift */; };
 		83235C0C2009481400BC356F /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 83235C0B2009481200BC356F /* dsa_pub.pem */; };
+		83235C0D2009502D00BC356F /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83235BF7200945D900BC356F /* Preferences.storyboard */; };
+		83235C0E2009502D00BC356F /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83235BF7200945D900BC356F /* Preferences.storyboard */; };
+		83235C0F2009502D00BC356F /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83235BF7200945D900BC356F /* Preferences.storyboard */; };
 		832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
 		832FF90B1F8D60430065E593 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FF90A1F8D60430065E593 /* DownloadManager.swift */; };
 		8335D48C1F856E120060D8D8 /* ValidFeedx3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8335D48B1F856E120060D8D8 /* ValidFeedx3.xml */; };
@@ -341,13 +344,6 @@
 			path = Preference;
 			sourceTree = "<group>";
 		};
-		83235BFB2009464900BC356F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		83235C0A200947F200BC356F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,7 +378,6 @@
 			isa = PBXGroup;
 			children = (
 				838257CC1F759F6F00DB4FD1 /* Doughnut */,
-				83235BFB2009464900BC356F /* Resources */,
 				838257DF1F759F6F00DB4FD1 /* DoughnutTests */,
 				838257EA1F759F6F00DB4FD1 /* DoughnutUITests */,
 				838257CB1F759F6F00DB4FD1 /* Products */,
@@ -632,6 +627,7 @@
 				838257D21F759F6F00DB4FD1 /* Assets.xcassets in Resources */,
 				83235C0C2009481400BC356F /* dsa_pub.pem in Resources */,
 				838257D51F759F6F00DB4FD1 /* Main.storyboard in Resources */,
+				83235C0D2009502D00BC356F /* Preferences.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +638,7 @@
 				83D4CA5A1F7C3779002EDC36 /* ValidFeed.xml in Resources */,
 				8335D48D1F8571150060D8D8 /* enclosure.mp3 in Resources */,
 				8335D48C1F856E120060D8D8 /* ValidFeedx3.xml in Resources */,
+				83235C0E2009502D00BC356F /* Preferences.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,6 +646,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83235C0F2009502D00BC356F /* Preferences.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

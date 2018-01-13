@@ -82,14 +82,120 @@ class LibraryTestsWithSubscription: LibraryTestCase {
     }
   }
   
-  /*
-  func testSavePodcast() {
+  func testUnsubscribeLeaveDownloads() {
+    guard let podcast = sub else { XCTFail(); return }
+    guard let storagePath = podcast.storagePath() else { XCTFail(); return }
     
+    let spy = LibrarySpyDelegate()
+    Library.global.delegate = spy
+    spy.unsubscribedPodcastExpectation = self.expectation(description: "Library unsubscribed podcast")
+    
+    XCTAssertEqual(Library.global.podcasts.contains(where: { p -> Bool in
+      p.id == podcast.id
+    }), true)
+    
+    var isDir = ObjCBool(true)
+    XCTAssertEqual(FileManager.default.fileExists(atPath: storagePath.path, isDirectory: &isDir), true)
+    
+    Library.global.unsubscribe(podcast: podcast)
+    
+    self.waitForExpectations(timeout: 10) { error in
+      XCTAssertEqual(Library.global.podcasts.count, 0)
+      
+      do {
+        try Library.global.dbQueue?.inDatabase { db in
+          let podcastCount = try Podcast.fetchCount(db)
+          XCTAssertEqual(podcastCount, 0)
+        }
+      } catch {
+        XCTFail()
+      }
+      
+      XCTAssertEqual(FileManager.default.fileExists(atPath: storagePath.path, isDirectory: &isDir), true)
+    }
+  }
+  
+  func testUnsubscribeRemoveDownloads() {
+    guard let podcast = sub else { XCTFail(); return }
+    guard let storagePath = podcast.storagePath() else { XCTFail(); return }
+    
+    let spy = LibrarySpyDelegate()
+    Library.global.delegate = spy
+    spy.unsubscribedPodcastExpectation = self.expectation(description: "Library unsubscribed podcast")
+    
+    XCTAssertEqual(Library.global.podcasts.contains(where: { p -> Bool in
+      p.id == podcast.id
+    }), true)
+    
+    var isDir = ObjCBool(true)
+    XCTAssertEqual(FileManager.default.fileExists(atPath: storagePath.path, isDirectory: &isDir), true)
+    
+    Library.global.unsubscribe(podcast: podcast, removeFiles: true)
+    
+    self.waitForExpectations(timeout: 10) { error in
+      XCTAssertEqual(Library.global.podcasts.count, 0)
+      
+      do {
+        try Library.global.dbQueue?.inDatabase { db in
+          let podcastCount = try Podcast.fetchCount(db)
+          XCTAssertEqual(podcastCount, 0)
+        }
+      } catch {
+        XCTFail()
+      }
+      
+      sleep(1)
+      XCTAssertEqual(FileManager.default.fileExists(atPath: storagePath.path, isDirectory: &isDir), false)
+    }
+  }
+  
+  
+  func testSavePodcast() {
+    guard let podcast = sub else { XCTFail(); return }
+    
+    let spy = LibrarySpyDelegate()
+    Library.global.delegate = spy
+    spy.updatedPodcastExpectation = self.expectation(description: "Library updated podcast")
+    
+    podcast.title = "This is the new title"
+    Library.global.save(podcast: podcast)
+    
+    self.waitForExpectations(timeout: 10) { error in
+      XCTAssertEqual(Library.global.podcasts.first?.title, "This is the new title")
+      
+      do {
+        try Library.global.dbQueue?.inDatabase { db in
+          let updated = try Podcast.fetchOne(db)
+          XCTAssertEqual(updated?.title, "This is the new title")
+        }
+      } catch {
+        XCTFail()
+      }
+    }
   }
   
   func testSaveEpisode() {
+    guard let episode = sub?.episodes.first else { XCTFail(); return }
     
+    let spy = LibrarySpyDelegate()
+    Library.global.delegate = spy
+    spy.updatedPodcastExpectation = self.expectation(description: "Library updated episode")
+    
+    episode.title = "This is the new episode"
+    Library.global.save(episode: episode)
+    
+    self.waitForExpectations(timeout: 10) { error in
+      XCTAssertEqual(Library.global.podcasts.first?.episodes.first?.title, "This is the new episode")
+      
+      do {
+        try Library.global.dbQueue?.inDatabase { db in
+          let updated = try Episode.filter(Column("id") == episode.id).fetchOne(db)
+          XCTAssertEqual(updated?.title, "This is the new episode")
+        }
+      } catch {
+        XCTFail()
+      }
+    }
   }
- */
 }
 
