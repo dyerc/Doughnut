@@ -73,6 +73,7 @@ class _DownloadTask: Task, URLSessionDownloadDelegate {
       
       episode.duration = Int(exactly: avAsset.duration.seconds) ?? 0
       episode.downloaded = true
+      episode.downloading = false
       episode.fileName = fileName
       
       Library.global.save(episode: episode)

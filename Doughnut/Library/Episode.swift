@@ -42,6 +42,9 @@ class Episode: Record {
   
   var artwork: NSImage?
   
+  // Not persisted, set by task queue to prevent duplicate downloads
+  var downloading: Bool = false
+  
   var plainDescription: String? {
     get {
       guard let description = description else { return nil }
@@ -119,7 +122,11 @@ class Episode: Record {
   
   func download() {
     guard let podcast = podcast else { return }
-    Library.global.tasks.run(_DownloadTask(episode: self, podcast: podcast))
+    
+    if !downloading {
+      Library.global.tasks.run(_DownloadTask(episode: self, podcast: podcast))
+      downloading = true
+    }
   }
   
   func file() -> String {

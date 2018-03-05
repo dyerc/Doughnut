@@ -393,7 +393,11 @@ class Library: NSObject {
   func save(episode: Episode, completion: (_ result: Episode, _ error: Error?) -> Void) {
     do {
       try self.dbQueue?.inDatabase { db in
-        try episode.save(db)
+        if episode.id != nil {
+          try episode.updateChanges(db)
+        } else {
+          try episode.save(db)
+        }
       }
       
       completion(episode, nil)
@@ -447,7 +451,11 @@ class Library: NSObject {
         try podcast.save(db)
         
         for episode in podcast.episodes {
-          try episode.save(db)
+          if episode.id != nil {
+            try episode.updateChanges(db)
+          } else {
+            try episode.save(db)
+          }
         }
       }
       
