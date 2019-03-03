@@ -55,8 +55,21 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
     
     downloadsButton.view?.isHidden = true
     Library.global.downloadManager.delegate = self
+
+    NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
+      self.keyDown(with: $0)
+      return $0
+    }
   }
-  
+
+  override func keyDown(with event: NSEvent) {
+    if event.characters == " " {
+      Player.global.togglePlay();
+    } else {
+      super.keyDown(with: event);
+    }
+  }
+
   // Subscribed to Search input changes
   override func controlTextDidChange(_ obj: Notification) {
     if searchInputView.stringValue.characters.count > 0 {
