@@ -57,16 +57,20 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
     Library.global.downloadManager.delegate = self
 
     NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
-      self.keyDown(with: $0)
-      return $0
+      if self.keyDown(with: $0) {
+        return nil
+      } else {
+        return $0
+      }
     }
   }
 
-  override func keyDown(with event: NSEvent) {
+  func keyDown(with event: NSEvent) -> Bool {
     if event.characters == " " {
-      Player.global.togglePlay();
+      Player.global.togglePlay()
+      return true
     } else {
-      super.keyDown(with: event);
+      return false
     }
   }
 
