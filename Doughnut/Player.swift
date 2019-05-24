@@ -72,11 +72,15 @@ class Player: NSObject {
     guard let podcast = episode.podcast else { return }
     
     // Destroy any existing player
-    if let avPlayer = avPlayer, let current = currentEpisode {
-      if current.id != episode.id {
-        avPlayer.pause()
-        self.avPlayer = nil
+    if let avPlayer = avPlayer {
+      if let existing = currentEpisode, existing.id == episode.id {
+        // This episode is already playing so just ignore and abort play()
+        return
       }
+      
+      // Destroy the existing player and let a new one be created
+      avPlayer.pause()
+      self.avPlayer = nil
     }
     
     if episode.downloaded {
@@ -148,6 +152,7 @@ class Player: NSObject {
       
       avPlayer.volume = volume
       delegate?.update(forEpisode: episode)
+      currentEpisode = episode
       avPlayer.play()
     }
   }
