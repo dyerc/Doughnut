@@ -8,14 +8,14 @@
 
     <item>
       <title>Version 1.1.0</title>
-      <description>
+      <description><![CDATA[
         <ul>
           <li>Initial support for dark mode.</li>
           <li>Fix bug where multiple episodes could be played at the same time.</li>
           <li>Toggle player by pressing space.</li>
           <li>Bug fixes.</li>
         </ul>
-      </description>
+      ]]></description>
       <pubDate>Fri, 24 May 2019 21:04:00 +0000</pubDate>
       <enclosure url="https://github.com/CD1212/Doughnut/releases/download/v1.1.0/Doughnut-1.1.0.dmg" sparkle:version="56" sparkle:shortVersionString="1.1.0" length="7451196" type="application/octet-stream" sparkle:dsaSignature="MEQCIBGNUEsYN0ZjWWNE6IDe7gmuLdHlPOHdiqTiKa6hHCS2AiBLqVuePE2sdQjLLywZIiN7CoB7eD3xWQFRRSdVL+JKSg==" />
     </item>
