@@ -21,6 +21,16 @@ import Foundation
 class MarkupGenerator {
   static var styles: String {
     get {
+      var optional = ""
+      
+      if (DoughnutApp.darkMode()) {
+        optional += """
+        body { background-color: #484445; }
+        hr { border-top: #000000; }
+        p { color: #EEEEEE; }
+        """
+      }
+      
       return """
       * { margin: 0; padding: 0; }
       body {
@@ -46,6 +56,8 @@ class MarkupGenerator {
       img {
         max-width: 100%;
       }
+      
+      \(optional)
       """
     }
   }
@@ -61,6 +73,10 @@ class MarkupGenerator {
       </body>
     </html>
     """
+  }
+  
+  static func blankMarkup() -> String {
+    return template("")
   }
   
   static func markup(forPodcast podcast: Podcast) -> String {

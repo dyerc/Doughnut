@@ -65,6 +65,10 @@ class SortMenuButtonView: NSButton {
     var color = NSColor.gray
     let string = " \(textLabel)"
     
+    if DoughnutApp.darkMode() {
+      color = NSColor.white
+    }
+    
     if isBordered {
       color = NSColor.white
     }
@@ -103,7 +107,12 @@ class SortingView: NSView {
     
     // Background
     wantsLayer = true
-    layer?.backgroundColor = NSColor(calibratedRed: 0.961, green: 0.961, blue: 0.961, alpha: 1.0).cgColor
+    
+    if DoughnutApp.darkMode() {
+      layer?.backgroundColor = NSColor(calibratedRed: 0.161, green: 0.153, blue: 0.157, alpha: 1.0).cgColor
+    } else {
+      layer?.backgroundColor = NSColor(calibratedRed: 0.961, green: 0.961, blue: 0.961, alpha: 1.0).cgColor
+    }
     
     // Setup inline button
     menuButtonView.frame = NSRect(x: 2, y: 2, width: 0, height: 16)
@@ -158,7 +167,12 @@ class SortingView: NSView {
     bottomBorder.move(to: NSPoint(x: 0, y: 0))
     bottomBorder.line(to: NSPoint(x: bounds.width, y: 0))
     
-    NSColor.lightGray.setStroke()
+    if DoughnutApp.darkMode() {
+      NSColor.lightGray.setStroke()
+    } else {
+      NSColor.darkGray.setStroke()
+    }
+    
     bottomBorder.stroke()
   }
   
