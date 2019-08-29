@@ -7,6 +7,15 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.1.1</title>
+      <description><![CDATA[
+        <p>Update Github links</p>
+      ]]></description>
+      <pubDate>Thu, 29 Aug 2019 20:32:00 +0000</pubDate>
+      <enclosure url="https://github.com/dyerc/Doughnut/releases/download/v1.1.1/Doughnut-1.1.1.dmg" sparkle:version="58" sparkle:shortVersionString="1.1.1" length="7450846" type="application/octet-stream" sparkle:dsaSignature="MEQCIChORlCW93RoezrznLciaXtX4zCeeUv3YfnIZ+SiTjFRAiAJgayM6ihLldN9G2AI98uifCgoYq8Bnozp144asuvHEg==" />
+    </item>
+
+    <item>
       <title>Version 1.1.0</title>
       <description><![CDATA[
         <ul>
