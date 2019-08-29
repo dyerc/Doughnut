@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://github.com/CD1212/Doughnut/raw/master/Assets/icon.png" alt="Doughnut" width="200">
+  <img src="https://github.com/dyerc/Doughnut/raw/master/Assets/icon.png" alt="Doughnut" width="200">
   <br>
   Doughnut
   <br>
@@ -8,12 +8,12 @@
 <h4 align="center">Podcast app. For Mac.</h4>
 
 <p align="center">
-  <a href="https://travis-ci.org/CD1212/Doughnut"><img src="https://img.shields.io/travis/CD1212/Doughnut/master.svg" alt="Travis CI Status" /></a>
-  <a href="https://github.com/CD1212/Doughnut/releases"><img src="https://img.shields.io/github/release/cd1212/doughnut.svg" alt="github release"></a>
+  <a href="https://travis-ci.org/dyerc/Doughnut"><img src="https://img.shields.io/travis/dyerc/Doughnut/master.svg" alt="Travis CI Status" /></a>
+  <a href="https://github.com/dyerc/Doughnut/releases"><img src="https://img.shields.io/github/release/dyerc/doughnut.svg" alt="github release"></a>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/CD1212/Doughnut/master/screenshot.png?v=2" align="center" alt="screenshot" style="max-width:100%;" />
+  <img src="https://raw.githubusercontent.com/dyerc/Doughnut/master/screenshot.png?v=2" align="center" alt="screenshot" style="max-width:100%;" />
 </p>
 
 Doughnut is a podcast client built using Swift. The design and user experience are inspired by Instacast for Mac which was discontinued in 2015. After experimenting with alternate user interface layouts, I kept coming back to the three column layout as most useable and practical.
@@ -29,7 +29,7 @@ Previously Doughnut was built on top of Electron which worked ok, but using 200+
 
 ### Get the code
 ```
-$ git clone git@github.com:CD1212/Doughnut.git
+$ git clone git@github.com:dyerc/Doughnut.git
 $ cd Doughnut
 $ open Doughnut.xcworkspace
 ```

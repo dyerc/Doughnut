@@ -34,7 +34,7 @@
 	<key>NSPrincipalClass</key>
 	<string>DoughnutApp</string>
 	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/CD1212/Doughnut/master/appcast.xml</string>
+	<string>https://raw.githubusercontent.com/dyerc/Doughnut/master/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 </dict>

@@ -5,19 +5,19 @@ PODS:
   - Sparkle (1.18.1)
 
 DEPENDENCIES:
-  - FeedKit (from `https://github.com/CD1212/FeedKit.git`)
+  - FeedKit (from `https://github.com/dyerc/FeedKit.git`)
   - GRDB.swift
   - MASPreferences
   - Sparkle
 
 EXTERNAL SOURCES:
   FeedKit:
-    :git: https://github.com/CD1212/FeedKit.git
+    :git: https://github.com/dyerc/FeedKit.git
 
 CHECKOUT OPTIONS:
   FeedKit:
     :commit: ebac2773014d88a14ee8cd8a8ff78332ca763592
-    :git: https://github.com/CD1212/FeedKit.git
+    :git: https://github.com/dyerc/FeedKit.git
 
 SPEC CHECKSUMS:
   FeedKit: c62e463a37f51b991b05ad0d74e217c1a59e7a2a

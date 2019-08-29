@@ -32,7 +32,7 @@ class LibraryTestsWithoutSubscription: LibraryTestCase {
       }
       
       XCTAssertEqual(sub.title, "Test Feed")
-      XCTAssertEqual(sub.author, "CD1212")
+      XCTAssertEqual(sub.author, "dyerc")
       XCTAssertGreaterThan(sub.id!, 0)
       XCTAssertEqual(sub.episodes.count, 2)
       

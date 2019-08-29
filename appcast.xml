@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>Doughnut Changelog</title>
-    <link>https://raw.githubusercontent.com/CD1212/Doughnut/master/appcast.xml</link>
+    <link>https://raw.githubusercontent.com/dyerc/Doughnut/master/appcast.xml</link>
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
 
@@ -17,25 +17,25 @@
         </ul>
       ]]></description>
       <pubDate>Fri, 24 May 2019 21:04:00 +0000</pubDate>
-      <enclosure url="https://github.com/CD1212/Doughnut/releases/download/v1.1.0/Doughnut-1.1.0.dmg" sparkle:version="56" sparkle:shortVersionString="1.1.0" length="7451196" type="application/octet-stream" sparkle:dsaSignature="MEQCIBGNUEsYN0ZjWWNE6IDe7gmuLdHlPOHdiqTiKa6hHCS2AiBLqVuePE2sdQjLLywZIiN7CoB7eD3xWQFRRSdVL+JKSg==" />
+      <enclosure url="https://github.com/dyerc/Doughnut/releases/download/v1.1.0/Doughnut-1.1.0.dmg" sparkle:version="56" sparkle:shortVersionString="1.1.0" length="7451196" type="application/octet-stream" sparkle:dsaSignature="MEQCIBGNUEsYN0ZjWWNE6IDe7gmuLdHlPOHdiqTiKa6hHCS2AiBLqVuePE2sdQjLLywZIiN7CoB7eD3xWQFRRSdVL+JKSg==" />
     </item>
 	
     <item>
       <title>Version 1.0.2</title>
       <pubDate>Mon, 5 March 2018 20:15:00 +0000</pubDate>
-      <enclosure url="https://github.com/CD1212/Doughnut/releases/download/v1.0.2/Doughnut-1.0.2.dmg" sparkle:version="8" sparkle:shortVersionString="1.0.2" length="6352427" type="application/octet-stream" sparkle:dsaSignature="MEQCIFugckDMQ52vWQZx3R7zMbsdEk5uizmajc15zBJh8m5WAiBB82GgVCDj+rTO/QsE4zQ5vQa+NnjYOPh7hxDLCPGNSg==" />
+      <enclosure url="https://github.com/dyerc/Doughnut/releases/download/v1.0.2/Doughnut-1.0.2.dmg" sparkle:version="8" sparkle:shortVersionString="1.0.2" length="6352427" type="application/octet-stream" sparkle:dsaSignature="MEQCIFugckDMQ52vWQZx3R7zMbsdEk5uizmajc15zBJh8m5WAiBB82GgVCDj+rTO/QsE4zQ5vQa+NnjYOPh7hxDLCPGNSg==" />
     </item>
 
     <item>
       <title>Version 1.0.1</title>
       <pubDate>Sun, 14 January 2018 21:12:00 +0000</pubDate>
-      <enclosure url="https://github.com/CD1212/Doughnut/releases/download/v1.0.1/Doughnut-1.0.1.dmg" sparkle:version="3" sparkle:shortVersionString="1.0.1" length="6352381" type="application/octet-stream" sparkle:dsaSignature="MEQCIGRPAQudu2q5D/xhQXmX4rUtDOua2BppOtmtFU6ZN4ygAiBoSIGL4xCoEDagfHULzVckM3iHYvqTkFcmfvtnXc+iPw==" />
+      <enclosure url="https://github.com/dyerc/Doughnut/releases/download/v1.0.1/Doughnut-1.0.1.dmg" sparkle:version="3" sparkle:shortVersionString="1.0.1" length="6352381" type="application/octet-stream" sparkle:dsaSignature="MEQCIGRPAQudu2q5D/xhQXmX4rUtDOua2BppOtmtFU6ZN4ygAiBoSIGL4xCoEDagfHULzVckM3iHYvqTkFcmfvtnXc+iPw==" />
     </item>
 
     <item>
       <title>Version 1.0.0</title>
       <pubDate>Sat, 13 January 2018 20:08:00 +0000</pubDate>
-      <enclosure url="https://github.com/CD1212/Doughnut/releases/download/v1.0.0/Doughnut-1.0.0.dmg" sparkle:version="1.0.0" length="6352961" type="application/octet-stream" sparkle:dsaSignature="MEQCIANkX0gJlmEl6Alq1EuORuixogyrL/rD6KC0ZdUj42WuAiBi4JlgqBqFsSShejPdo+LGFpW9XERUFYqnKxiVupFunQ==" />
+      <enclosure url="https://github.com/dyerc/Doughnut/releases/download/v1.0.0/Doughnut-1.0.0.dmg" sparkle:version="1.0.0" length="6352961" type="application/octet-stream" sparkle:dsaSignature="MEQCIANkX0gJlmEl6Alq1EuORuixogyrL/rD6KC0ZdUj42WuAiBi4JlgqBqFsSShejPdo+LGFpW9XERUFYqnKxiVupFunQ==" />
     </item>
   </channel>
 </rss>

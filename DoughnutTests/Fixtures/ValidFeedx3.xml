@@ -4,7 +4,7 @@
     <title>Test Feed</title>
     <link>https://cdyer.co.uk</link>
     <description>Lorem ipsum sit amet dolor</description>
-    <itunes:author>CD1212</itunes:author>
+    <itunes:author>dyerc</itunes:author>
     <copyright>© 2017 Chris Dyer</copyright>
     
     <language>en-us</language>
@@ -18,14 +18,14 @@
     <itunes:subtitle>Lorem ipsum sit</itunes:subtitle>
     <itunes:summary>Lorem ipsum sit amet dolor</itunes:summary>
     <itunes:owner>
-      <itunes:name>CD1212</itunes:name>
+      <itunes:name>dyerc</itunes:name>
     </itunes:owner>
     <item>
-      <itunes:author>CD1212</itunes:author>
+      <itunes:author>dyerc</itunes:author>
       <itunes:keywords/>
       <itunes:duration>2:25</itunes:duration>
       <title>Test Podcast Episode #3</title>
-      <guid isPermaLink="true">https://github.com/CD1212/Doughnut#3</guid>
+      <guid isPermaLink="true">https://github.com/dyerc/Doughnut#3</guid>
       <description>Lorem ipsum sit amet dolor</description>
       
       <category>Comedy</category>
@@ -33,11 +33,11 @@
       <enclosure length="1037273" url="enclosure.mp3" type="audio/mpeg"/>
     </item>
     <item>
-      <itunes:author>CD1212</itunes:author>
+      <itunes:author>dyerc</itunes:author>
       <itunes:keywords/>
       <itunes:duration>1:05</itunes:duration>
       <title>Test Podcast Episode #2 Edited</title>
-      <guid isPermaLink="true">https://github.com/CD1212/Doughnut#2</guid>
+      <guid isPermaLink="true">https://github.com/dyerc/Doughnut#2</guid>
       <description>Lorem ipsum sit amet dolor</description>
       
       <category>Comedy</category>
@@ -45,12 +45,12 @@
       <enclosure length="1037273" url="enclosure.mp3" type="audio/mpeg"/>
     </item>
     <item>
-      <itunes:author>CD1212</itunes:author>
+      <itunes:author>dyerc</itunes:author>
       <itunes:keywords/>
       
       <itunes:duration>1:05</itunes:duration>
       <title>Test Podcast Episode #1</title>
-      <guid isPermaLink="true">https://github.com/CD1212/Doughnut#1</guid>
+      <guid isPermaLink="true">https://github.com/dyerc/Doughnut#1</guid>
       <description>Lorem ipsum sit amet dolor</description>
       <category>News</category>
       <pubDate>Sun, 24 Sep 2017 23:30:07 GMT</pubDate>
