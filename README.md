@@ -23,7 +23,7 @@ Beyond the standard expected podcast app features, my goals for the project are:
 - [x] Ability to favourite episodes
 - [x] Ability to create podcasts without a feed, for miscellaneous releases of discontinued podcasts
 
-Previously Doughnut was built on top of Electron which worked ok, but using 200+ MB for a podcast app, even when it's minimized felt very poor. This version is archived in the `electron` branch. Doughnut is now written as a 100% native MacOS app in Swift.
+Previously Doughnut was built on top of Electron which worked ok, but using 200+ MB for a podcast app, even when it's minimized felt very poor. Doughnut is now written as a 100% native MacOS app in Swift.
 
 ## How to Contribute
 
