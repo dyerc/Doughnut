@@ -51,7 +51,12 @@ class Storage {
     if FileManager.default.fileExists(atPath: url.path, isDirectory: &bool) {
       var folderSize = 0
       FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey])?.forEach({
-        folderSize += (try? ($0 as? URL)?.resourceValues(forKeys: [.fileSizeKey]))??.fileSize ?? 0
+        guard let url = $0 as? URL,
+              let fileSize = try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize
+        else {
+          return
+        }
+        folderSize += fileSize
       })
       
       return Int64(folderSize)

@@ -100,7 +100,7 @@ class SubscribeViewController: NSViewController, NSTextFieldDelegate {
     preferredContentSize = CGSize(width: view.frame.size.width, height: initialHeight)
   }
   
-  override func controlTextDidChange(_ obj: Notification) {
+  func controlTextDidChange(_ obj: Notification) {
     if urlTxt.stringValue.starts(with: "http") && urlTxt.stringValue.contains(".") {
       loadBtn.isEnabled = true
     } else {

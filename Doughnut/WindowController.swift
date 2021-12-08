@@ -31,19 +31,19 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
   
   var subscribeViewController: SubscribeViewController {
     get {
-      return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SubscribeViewController")) as! SubscribeViewController
+      return self.storyboard!.instantiateController(withIdentifier: "SubscribeViewController") as! SubscribeViewController
     }
   }
   
   var episodeWindowController: NSWindowController {
     get {
-      return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EpisodeWindowController")) as! NSWindowController
+      return self.storyboard!.instantiateController(withIdentifier: "EpisodeWindowController") as! NSWindowController
     }
   }
   
   var podcastWindowController: NSWindowController {
     get {
-      return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PodcastWindowController")) as! NSWindowController
+      return self.storyboard!.instantiateController(withIdentifier: "PodcastWindowController") as! NSWindowController
     }
   }
   
@@ -75,8 +75,8 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
   }
 
   // Subscribed to Search input changes
-  override func controlTextDidChange(_ obj: Notification) {
-    if searchInputView.stringValue.characters.count > 0 {
+  func controlTextDidChange(_ obj: Notification) {
+    if !searchInputView.stringValue.isEmpty {
       viewController?.search(searchInputView.stringValue.lowercased())
     } else {
       viewController?.search(nil)
@@ -98,7 +98,7 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
       Library.global.subscribe(url: input.stringValue)
     }*/
     
-    contentViewController?.presentViewControllerAsSheet(subscribeViewController)
+    contentViewController?.presentAsSheet(subscribeViewController)
   }
   
   @IBAction func reloadAll(_ sender: Any) {

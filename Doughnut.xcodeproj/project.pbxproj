@@ -578,11 +578,12 @@
 					Resources,
 				);
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = "Chris Dyer";
 				TargetAttributes = {
 					838257C91F759F6F00DB4FD1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1310;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
@@ -595,11 +596,13 @@
 					};
 					838257DB1F759F6F00DB4FD1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1310;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 838257C91F759F6F00DB4FD1;
 					};
 					838257E61F759F6F00DB4FD1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1310;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 838257C91F759F6F00DB4FD1;
 					};
@@ -1090,7 +1093,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Test;
 		};
@@ -1115,7 +1118,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Doughnut.app/Contents/MacOS/Doughnut";
 			};
 			name = Test;
@@ -1139,7 +1142,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Doughnut;
 			};
 			name = Test;
@@ -1271,7 +1274,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1294,7 +1297,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1317,7 +1320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Doughnut.app/Contents/MacOS/Doughnut";
 			};
 			name = Debug;
@@ -1337,7 +1340,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Doughnut.app/Contents/MacOS/Doughnut";
 			};
 			name = Release;
@@ -1360,7 +1363,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Doughnut;
 			};
 			name = Debug;
@@ -1379,7 +1382,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Doughnut;
 			};
 			name = Release;

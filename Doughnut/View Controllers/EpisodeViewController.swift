@@ -140,7 +140,7 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   func reloadEpisode(_ episode: Episode) {
-    if let index = episodes.index(where: { e -> Bool in
+    if let index = episodes.firstIndex(where: { e -> Bool in
       e.id == episode.id
     }) {
       tableView.reloadData(forRowIndexes: IndexSet.init(integer: index), columnIndexes: IndexSet.init(integer: 0))
@@ -186,7 +186,7 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
     guard let podcast = podcast else { return false }
     
-    let pasteboard = info.draggingPasteboard()
+    let pasteboard = info.draggingPasteboard
     guard let items = pasteboard.pasteboardItems else { return true }
     
     var moveToLibrary = true
@@ -218,7 +218,7 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     return true
   }
   
-  override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+  func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
     let episode = episodes[tableView.clickedRow]
     
     switch menuItem.title {

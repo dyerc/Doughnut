@@ -113,7 +113,7 @@ class Episode: Record {
   }
   
   func invalid() -> String? {
-    if (title.characters.count < 1) {
+    if title.isEmpty {
       return "Episode must have a title"
     }
     
