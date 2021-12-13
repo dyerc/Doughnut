@@ -515,7 +515,7 @@
 				83D454AE200BFDD50078CA3D /* Bump Build Number */,
 				838257C81F759F6F00DB4FD1 /* Resources */,
 				4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */,
-				D4838B1A99983D51CEADAC8F /* [CP] Copy Pods Resources */,
+				433D2BC19A40DB2041D544F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -534,8 +534,6 @@
 				838257D81F759F6F00DB4FD1 /* Sources */,
 				838257D91F759F6F00DB4FD1 /* Frameworks */,
 				838257DA1F759F6F00DB4FD1 /* Resources */,
-				4884278946C85C4A6BB9F0A4 /* [CP] Embed Pods Frameworks */,
-				C83709E703A41DA12E6C8DEC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -555,8 +553,6 @@
 				838257E31F759F6F00DB4FD1 /* Sources */,
 				838257E41F759F6F00DB4FD1 /* Frameworks */,
 				838257E51F759F6F00DB4FD1 /* Resources */,
-				4CA645B81661E94A849CAD6B /* [CP] Embed Pods Frameworks */,
-				B5DA5A39F57B6A18D009684E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -662,63 +658,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		433D2BC19A40DB2041D544F1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-resources.sh",
+				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework/en.lproj/MASPreferencesWindow.nib",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MASPreferencesWindow.nib",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
-				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASPreferences.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4884278946C85C4A6BB9F0A4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4CA645B81661E94A849CAD6B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5D28D79F73E4F029E1F5DBB6 /* [CP] Check Pods Manifest.lock */ = {
@@ -787,51 +760,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B5DA5A39F57B6A18D009684E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C83709E703A41DA12E6C8DEC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D4838B1A99983D51CEADAC8F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
