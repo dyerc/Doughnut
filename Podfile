@@ -20,7 +20,7 @@ target 'Doughnut' do
 
   pod 'GRDB.swift'
   pod 'FeedKit', :git => 'https://github.com/dyerc/FeedKit.git'
-  pod 'MASPreferences'
+  pod 'MASPreferences', :git => 'https://github.com/shpakovski/MASPreferences.git', :commit => '135869c'
   pod 'Sparkle'
 
   post_install do |installer|
