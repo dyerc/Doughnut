@@ -144,7 +144,7 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     if podcast.image != nil && podcast.image!.isValid {
       result.imageView?.image = podcast.image
     } else {
-      result.imageView?.image = NSImage(named: NSImage.Name(rawValue: "PodcastPlaceholder"))
+      result.imageView?.image = NSImage(named: "PodcastPlaceholder")
     }
     
     result.episodeCount.stringValue = "\(podcast.episodes.count) episodes"

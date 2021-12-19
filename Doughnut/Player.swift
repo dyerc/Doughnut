@@ -19,7 +19,7 @@
 import Cocoa
 import AVFoundation
 
-protocol PlayerDelegate: class {
+protocol PlayerDelegate: AnyObject {
   func update(forEpisode episode: Episode)
   func updatePlayback()
 }
@@ -69,7 +69,7 @@ class Player: NSObject {
   var pausedAt: TimeInterval? = nil
   
   func play(episode: Episode) {
-    guard let podcast = episode.podcast else { return }
+    guard episode.podcast != nil else { return }
     
     // Destroy any existing player
     if let avPlayer = avPlayer {

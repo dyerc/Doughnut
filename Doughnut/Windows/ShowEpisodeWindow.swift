@@ -42,7 +42,7 @@ class ShowEpisodeWindow: NSWindow {
 }
 
 class ShowEpisodeViewController: NSViewController {
-  let defaultPodcastArtwork = NSImage(named: NSImage.Name(rawValue: "PodcastPlaceholder"))
+  let defaultPodcastArtwork = NSImage(named: "PodcastPlaceholder")
   
   @IBOutlet weak var artworkView: NSImageView!
   @IBOutlet weak var titleLabelView: NSTextField!

@@ -44,7 +44,7 @@ class ActivityIndicator: NSView {
     animation.keyPath = #keyPath(CALayer.opacity)
     animation.values = [0.0, 1.0, 0.0]
     animation.duration = 1.2
-    animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
     animation.repeatCount = .infinity
     dot.add(animation, forKey: nil)
     

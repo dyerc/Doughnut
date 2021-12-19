@@ -74,8 +74,8 @@ class SortMenuButtonView: NSButton {
     }
     
     let attributedString = NSAttributedString(string: string, attributes: [
-      NSAttributedStringKey.font: textFont,
-      NSAttributedStringKey.foregroundColor: color
+      NSAttributedString.Key.font: textFont,
+      NSAttributedString.Key.foregroundColor: color
     ])
     
     let newFrame = NSRect(x: frame.minX, y: frame.minY, width: attributedString.size().width + 10, height: frame.height)

@@ -41,8 +41,8 @@ class TaskManagerView: NSView, TaskQueueViewDelegate {
     activitySpinner.isHidden = true
     addSubview(activitySpinner)
     
-    let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
-    tasksViewController = (storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "TasksPopover")) as! TasksViewController)
+    let storyboard = NSStoryboard(name: "Main", bundle: nil)
+    tasksViewController = (storyboard.instantiateController(withIdentifier: "TasksPopover") as! TasksViewController)
     tasksViewController?.loadView() // Important: force load views so they exist even before popover is viewed
     popover.contentViewController = tasksViewController
   }

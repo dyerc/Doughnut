@@ -66,9 +66,9 @@ class PodcastUnplayedCountView: NSView {
       paragraphStyle.lineSpacing = 0
       
       attrString = NSMutableAttributedString(string: String(value), attributes: [
-        NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: 11),
-        NSAttributedStringKey.foregroundColor: NSColor.white,
-        NSAttributedStringKey.paragraphStyle: paragraphStyle
+        .font: NSFont.boldSystemFont(ofSize: 11),
+        .foregroundColor: NSColor.white,
+        .paragraphStyle: paragraphStyle
       ])
     } else {
       isHidden = true

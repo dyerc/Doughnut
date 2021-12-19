@@ -22,15 +22,15 @@ import MASPreferences
 @objcMembers
 class PrefLibraryViewController: NSViewController {
   static func instantiate() -> PrefLibraryViewController {
-    let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Preferences"), bundle: nil)
-    return storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("PrefLibraryViewController")) as! PrefLibraryViewController
+    let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
+    return storyboard.instantiateController(withIdentifier: "PrefLibraryViewController") as! PrefLibraryViewController
   }
   
   var viewIdentifier: String = "PrefLibraryViewController"
   
   var toolbarItemImage: NSImage {
     get {
-      return NSImage(named: NSImage.Name(rawValue: "PrefLibrary"))!
+      return NSImage(named: "PrefLibrary")!
     }
   }
   

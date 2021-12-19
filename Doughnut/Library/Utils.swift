@@ -68,7 +68,7 @@ class Utils {
   
   static func iTunesPodcastId(iTunesUrl: String) -> String? {
     let regex = try! NSRegularExpression(pattern: "\\/id(\\d+)")
-    let matches = regex.matches(in: iTunesUrl, options: [], range: NSRange(location: 0, length: iTunesUrl.characters.count))
+    let matches = regex.matches(in: iTunesUrl, options: [], range: NSRange(location: 0, length: iTunesUrl.count))
     
     for match in matches as [NSTextCheckingResult] {
       // range at index 0: full match

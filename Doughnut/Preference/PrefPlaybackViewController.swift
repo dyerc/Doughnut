@@ -22,15 +22,15 @@ import MASPreferences
 @objcMembers
 class PrefPlaybackViewController: NSViewController, MASPreferencesViewController {
   static func instantiate() -> PrefPlaybackViewController {
-    let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Preferences"), bundle: nil)
-    return storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("PrefPlaybackViewController")) as! PrefPlaybackViewController
+    let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
+    return storyboard.instantiateController(withIdentifier: "PrefPlaybackViewController") as! PrefPlaybackViewController
   }
   
   var viewIdentifier: String = "PrefPlaybackViewController"
   
   var toolbarItemImage: NSImage? {
     get {
-      return NSImage(named: NSImage.Name(rawValue: "PrefPlayback"))
+      return NSImage(named: "PrefPlayback")
     }
   }
   
