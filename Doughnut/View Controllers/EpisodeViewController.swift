@@ -218,7 +218,11 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     return true
   }
   
-  func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+  override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    if tableView.clickedRow < 0 {
+        return false
+    }
+    
     let episode = episodes[tableView.clickedRow]
     
     switch menuItem.title {

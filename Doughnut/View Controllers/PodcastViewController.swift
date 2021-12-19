@@ -239,5 +239,11 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   @IBAction func refreshAll(_ sender: Any) {
     Library.global.reloadAll()
   }
-  
+
+  override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    if tableView.clickedRow < 0 && menuItem.title != "Refresh All" {
+      return false
+    }
+    return true
+  }
 }
