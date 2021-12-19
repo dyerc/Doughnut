@@ -169,6 +169,7 @@
 		368B5540FC7D1B6258BCF776 /* Pods-DoughnutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.debug.xcconfig"; sourceTree = "<group>"; };
+		6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Release.entitlements"; sourceTree = "<group>"; };
 		830A34021FF0447D00C13B1D /* PodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastUITests.swift; sourceTree = "<group>"; };
 		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
 		830E99BC1FF50DD000B728BE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -208,7 +209,7 @@
 		838257D11F759F6F00DB4FD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		838257D41F759F6F00DB4FD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		838257D61F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		838257D71F759F6F00DB4FD1 /* Doughnut.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Doughnut.entitlements; sourceTree = "<group>"; };
+		838257D71F759F6F00DB4FD1 /* Doughnut-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Debug.entitlements"; sourceTree = "<group>"; };
 		838257DC1F759F6F00DB4FD1 /* DoughnutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoughnutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		838257E01F759F6F00DB4FD1 /* DoughnutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutTests.swift; sourceTree = "<group>"; };
 		838257E21F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -412,7 +413,8 @@
 				838257D11F759F6F00DB4FD1 /* Assets.xcassets */,
 				838257D31F759F6F00DB4FD1 /* Main.storyboard */,
 				838257D61F759F6F00DB4FD1 /* Info.plist */,
-				838257D71F759F6F00DB4FD1 /* Doughnut.entitlements */,
+				838257D71F759F6F00DB4FD1 /* Doughnut-Debug.entitlements */,
+				6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */,
 				83235C0A200947F200BC356F /* Resources */,
 				831EEADB1F994F6C00DCC872 /* Vendor */,
 			);
@@ -513,7 +515,7 @@
 				83D454AE200BFDD50078CA3D /* Bump Build Number */,
 				838257C81F759F6F00DB4FD1 /* Resources */,
 				4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */,
-				D4838B1A99983D51CEADAC8F /* [CP] Copy Pods Resources */,
+				433D2BC19A40DB2041D544F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -532,8 +534,6 @@
 				838257D81F759F6F00DB4FD1 /* Sources */,
 				838257D91F759F6F00DB4FD1 /* Frameworks */,
 				838257DA1F759F6F00DB4FD1 /* Resources */,
-				4884278946C85C4A6BB9F0A4 /* [CP] Embed Pods Frameworks */,
-				C83709E703A41DA12E6C8DEC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -553,8 +553,6 @@
 				838257E31F759F6F00DB4FD1 /* Sources */,
 				838257E41F759F6F00DB4FD1 /* Frameworks */,
 				838257E51F759F6F00DB4FD1 /* Resources */,
-				4CA645B81661E94A849CAD6B /* [CP] Embed Pods Frameworks */,
-				B5DA5A39F57B6A18D009684E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -576,11 +574,12 @@
 					Resources,
 				);
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = "Chris Dyer";
 				TargetAttributes = {
 					838257C91F759F6F00DB4FD1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1310;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
@@ -593,11 +592,13 @@
 					};
 					838257DB1F759F6F00DB4FD1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1310;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 838257C91F759F6F00DB4FD1;
 					};
 					838257E61F759F6F00DB4FD1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1310;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 838257C91F759F6F00DB4FD1;
 					};
@@ -657,63 +658,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		433D2BC19A40DB2041D544F1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/MASPreferences/MASPreferences.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MASPreferences.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
-				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASPreferences.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4884278946C85C4A6BB9F0A4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4CA645B81661E94A849CAD6B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5D28D79F73E4F029E1F5DBB6 /* [CP] Check Pods Manifest.lock */ = {
@@ -782,51 +760,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B5DA5A39F57B6A18D009684E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C83709E703A41DA12E6C8DEC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D4838B1A99983D51CEADAC8F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1019,6 +952,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1026,8 +960,10 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1067,11 +1003,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F42DD5B957A39D2CA878BEA8 /* Pods-Doughnut.test.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Debug.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1082,12 +1018,13 @@
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DTEST";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Test;
 		};
@@ -1097,9 +1034,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1111,7 +1049,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Doughnut.app/Contents/MacOS/Doughnut";
 			};
 			name = Test;
@@ -1121,9 +1059,10 @@
 			baseConfigurationReference = E8FE469000F310C792708BC9 /* Pods-DoughnutUITests.test.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1134,7 +1073,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Doughnut;
 			};
 			name = Test;
@@ -1153,6 +1092,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1160,8 +1100,10 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1211,6 +1153,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1218,8 +1161,10 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1251,21 +1196,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Debug.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1273,21 +1219,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Doughnut/Doughnut.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Release.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
+				DEVELOPMENT_TEAM = 2Z7DE68A4G;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1297,9 +1244,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1309,7 +1257,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Doughnut.app/Contents/MacOS/Doughnut";
 			};
 			name = Debug;
@@ -1320,6 +1268,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
@@ -1328,7 +1277,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Doughnut.app/Contents/MacOS/Doughnut";
 			};
 			name = Release;
@@ -1338,9 +1287,10 @@
 			baseConfigurationReference = 368B5540FC7D1B6258BCF776 /* Pods-DoughnutUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1350,7 +1300,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Doughnut;
 			};
 			name = Debug;
@@ -1360,6 +1310,7 @@
 			baseConfigurationReference = BEF72BD12131100ABCE132D0 /* Pods-DoughnutUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
@@ -1368,7 +1319,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Doughnut;
 			};
 			name = Release;

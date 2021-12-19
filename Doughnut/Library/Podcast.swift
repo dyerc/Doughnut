@@ -178,7 +178,7 @@ class Podcast: Record {
   func deleteEpisode(episode: Episode) {
     guard episode.podcastId == self.id else { return }
     
-    if let idx = episodes.index(where: { e -> Bool in return e.id == episode.id}) {
+    if let idx = episodes.firstIndex(where: { e -> Bool in return e.id == episode.id}) {
       episodes.remove(at: idx)
     }
     
@@ -192,7 +192,7 @@ class Podcast: Record {
   }
   
   func invalid() -> String? {
-    if (title.characters.count < 1) {
+    if title.isEmpty {
       return "Podcast must have a title"
     }
     

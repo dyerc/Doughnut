@@ -282,7 +282,7 @@ class Library: NSObject {
   }
   
   func unsubscribe(podcast: Podcast, removeFiles: Bool = false) {
-    guard let storedIndex = podcasts.index(where: { p -> Bool in p.id == podcast.id }) else { return }
+    guard let storedIndex = podcasts.firstIndex(where: { p -> Bool in p.id == podcast.id }) else { return }
     
     podcasts.remove(at: storedIndex)
     self.delegate?.libraryReloaded()

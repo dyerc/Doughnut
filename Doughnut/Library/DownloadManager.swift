@@ -147,7 +147,7 @@ class DownloadManager: NSObject, DownloadTaskDelegate {
     let episode = download.episode
     Library.global.save(episode: episode)
     
-    if let index = downloads.index(of: download) {
+    if let index = downloads.firstIndex(of: download) {
       downloads.remove(at: index)
     }
     
@@ -159,7 +159,7 @@ class DownloadManager: NSObject, DownloadTaskDelegate {
   func download(didError download: DownloadTask) {
     print("Download failed")
     
-    if let index = downloads.index(of: download) {
+    if let index = downloads.firstIndex(of: download) {
       downloads.remove(at: index)
     }
     

@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   override init() {
     UserDefaults.standard.register(
-      defaults: [kMediaKeyUsingBundleIdentifiersDefaultsKey : SPMediaKeyTap.defaultMediaKeyUserBundleIdentifiers()])
+      defaults: [kMediaKeyUsingBundleIdentifiersDefaultsKey : SPMediaKeyTap.defaultMediaKeyUserBundleIdentifiers()!])
   }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {

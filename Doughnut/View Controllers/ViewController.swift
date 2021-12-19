@@ -58,7 +58,7 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.showDockBadge.rawValue, options: [], context: nil)
     updateDockIcon()
     
-    splitView.autosaveName = NSSplitView.AutosaveName(rawValue: "Main")
+    splitView.autosaveName = "Main"
 
     Library.global.delegate = self
   }
