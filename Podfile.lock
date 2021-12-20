@@ -2,13 +2,13 @@ PODS:
   - FeedKit (7.0.1)
   - GRDB.swift (2.5.0)
   - MASPreferences (1.3)
-  - Sparkle (1.18.1)
+  - Sparkle (1.27.1)
 
 DEPENDENCIES:
   - FeedKit (from `https://github.com/dyerc/FeedKit.git`)
   - GRDB.swift
   - MASPreferences (from `https://github.com/shpakovski/MASPreferences.git`, commit `135869c`)
-  - Sparkle
+  - Sparkle (= 1.27.1)
 
 SPEC REPOS:
   trunk:
@@ -34,8 +34,8 @@ SPEC CHECKSUMS:
   FeedKit: c62e463a37f51b991b05ad0d74e217c1a59e7a2a
   GRDB.swift: 4331c7b53f299aa1d150fc4e0afb6112df7e92ca
   MASPreferences: f5cf4c3f91714fcb4e1ce21b7002880353fe7c5e
-  Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
+  Sparkle: 23f98b268284c8c03e6228230fc8f1807ef041d5
 
-PODFILE CHECKSUM: a1ca2f1a18e0b215cdb2099de49d6ed90febc689
+PODFILE CHECKSUM: f4088affb7b6cc447fe8d2f61d14d91fcb301550
 
 COCOAPODS: 1.11.2
