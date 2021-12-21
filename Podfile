@@ -22,4 +22,12 @@ target 'Doughnut' do
   pod 'FeedKit', '9.1.2'
   pod 'MASPreferences', :git => 'https://github.com/shpakovski/MASPreferences.git', :commit => '135869c'
   pod 'Sparkle', '1.27.1'
+
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings.delete 'ARCHS'
+      end
+    end
+  end
 end
