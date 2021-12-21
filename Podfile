@@ -18,16 +18,8 @@ target 'Doughnut' do
     # Pods for testing
   end
 
-  pod 'GRDB.swift'
+  pod 'GRDB.swift', '5.17.0'
   pod 'FeedKit', :git => 'https://github.com/dyerc/FeedKit.git'
   pod 'MASPreferences', :git => 'https://github.com/shpakovski/MASPreferences.git', :commit => '135869c'
   pod 'Sparkle', '1.27.1'
-
-  post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = '4.0'
-        end
-    end
-  end
 end
