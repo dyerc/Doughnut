@@ -268,31 +268,29 @@ class Podcast: Record {
   func fetch() -> [Episode] {
     guard let feed = self.feed else { return [] }
     guard let feedUrl = URL(string: feed) else { return [] }
-    guard let parser = FeedParser(URL: feedUrl) else { return [] }
+    
+    let parser = FeedParser(URL: feedUrl)
     
     let result = parser.parse()
-    if result.isFailure && result.error != nil {
-      print("Error reloading \(self.title): \(String(describing: result.error?.debugDescription))")
-      return []
-    } else {
-      guard let rssFeed = result.rssFeed else { return [] }
-      
+    
+    switch result {
+    case .success(let feed):
+      guard let rssFeed = feed.rssFeed else { return [] }
       return self.parse(feed: rssFeed)
+    case .failure(let error):
+      print("Error reloading \(self.title): \(String(describing: error.localizedDescription))")
+      return []
     }
   }
   
   static func subscribe(feedUrl: URL) -> Podcast? {
-    guard let parser = FeedParser(URL: feedUrl) else {
-      print("Unable to parse feed \(feedUrl)")
-      return nil
-    }
-      
+    let parser = FeedParser(URL: feedUrl)
+    
     let result = parser.parse()
-    if result.isFailure && result.error != nil {
-      NSApplication.shared.presentError(result.error!)
-      return nil
-    } else {
-      guard let rssFeed = result.rssFeed else { return nil }
+    
+    switch result {
+    case .success(let feed):
+      guard let rssFeed = feed.rssFeed else { return nil }
       guard let title = rssFeed.title else { return nil }
       
       let podcast = Podcast(title: title)
@@ -300,6 +298,9 @@ class Podcast: Record {
       let _ = podcast.parse(feed: rssFeed)
       
       return podcast
+    case .failure(let error):
+      NSApplication.shared.presentError(error)
+      return nil
     }
   }
   
