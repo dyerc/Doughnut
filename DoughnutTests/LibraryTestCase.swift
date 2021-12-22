@@ -14,21 +14,21 @@ class LibraryTestCase: XCTestCase {
     let filePath = bundle.path(forResource: name, ofType: type)
     return URL(fileURLWithPath: filePath!)
   }
-  
+
   override func setUp() {
     super.setUp()
-    
+
     if !Preference.testEnv() {
       fatalError("Not running in test mode")
     }
-    
+
     XCTAssertEqual(Library.global.connect(), true)
     // print("Using library at \(Library.global.path)")
   }
-  
+
   override func tearDown() {
     super.tearDown()
-    
+
     do {
       try Library.global.dbQueue?.inDatabase({ db in
         try Podcast.deleteAll(db)

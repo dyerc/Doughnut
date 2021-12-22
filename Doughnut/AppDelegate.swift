@@ -17,6 +17,7 @@
  */
 
 import Cocoa
+
 import MASPreferences
 
 @NSApplicationMain
@@ -27,51 +28,51 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     return MASPreferencesWindowController(viewControllers: [
       PrefGeneralViewController.instantiate(),
       PrefPlaybackViewController.instantiate(),
-      PrefLibraryViewController.instantiate()
+      PrefLibraryViewController.instantiate(),
       ], title: NSLocalizedString("preference.title", comment: "Preference"))
   }()
-  
+
   override init() {
     UserDefaults.standard.register(
-      defaults: [kMediaKeyUsingBundleIdentifiersDefaultsKey : SPMediaKeyTap.defaultMediaKeyUserBundleIdentifiers()!])
+      defaults: [kMediaKeyUsingBundleIdentifiersDefaultsKey: SPMediaKeyTap.defaultMediaKeyUserBundleIdentifiers()!])
   }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
-    
+
     mediaKeyTap = SPMediaKeyTap(delegate: self)
-    
+
     UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.enableMediaKeys.rawValue, options: [], context: nil)
     if Preference.bool(for: Preference.Key.enableMediaKeys) {
       setupMediaKeyTap()
     }
-    
+
     /*do {
       try Player.audioOutputDevices()
     } catch {}*/
-    
+
     let connected = Library.global.connect()
-    
+
     if !connected {
       abort()
     }
   }
-  
+
   func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
     if !flag {
       for window in sender.windows {
         window.makeKeyAndOrderFront(self)
       }
     }
-    
+
     return true
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {
     // Insert code here to tear down your application
   }
-  
-  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
     switch keyPath {
     case Preference.Key.enableMediaKeys.rawValue?:
       setupMediaKeyTap()
@@ -79,10 +80,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       return
     }
   }
-  
+
   func setupMediaKeyTap() {
     guard let mediaKeyTap = mediaKeyTap else { return }
-    
+
     if Preference.bool(for: Preference.Key.enableMediaKeys) {
       if SPMediaKeyTap.usesGlobalMediaKeyTap() {
         mediaKeyTap.startWatchingMediaKeys()
@@ -91,23 +92,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       mediaKeyTap.stopWatchingMediaKeys()
     }
   }
-  
+
   override func mediaKeyTap(_ keyTap: SPMediaKeyTap!, receivedMediaKeyEvent event: NSEvent!) {
-    let keyCode = Int((event.data1 & 0xFFFF0000) >> 16);
-    let keyFlags = (event.data1 & 0x0000FFFF);
-    let keyIsPressed = (((keyFlags & 0xFF00) >> 8)) == 0xA;
-    
+    let keyCode = Int((event.data1 & 0xFFFF0000) >> 16)
+    let keyFlags = (event.data1 & 0x0000FFFF)
+    let keyIsPressed = (((keyFlags & 0xFF00) >> 8)) == 0xA
+
     if (keyIsPressed) {
       switch keyCode {
       case Int(NX_KEYTYPE_PLAY):
         Player.global.togglePlay()
-        
+
       case Int(NX_KEYTYPE_FAST):
         Player.global.skipAhead()
-        
+
       case Int(NX_KEYTYPE_REWIND):
         Player.global.skipBack()
-        
+
       default:
         break
       }
@@ -118,4 +119,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     preferencesWindowController.showWindow(self)
   }
 }
-

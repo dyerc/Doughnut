@@ -17,35 +17,34 @@
  */
 
 import Cocoa
+
 import MASPreferences
 
-@objcMembers
 class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
   static func instantiate() -> PrefGeneralViewController {
     let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
     return storyboard.instantiateController(withIdentifier: "PrefGeneralViewController") as! PrefGeneralViewController
   }
-  
+
   var viewIdentifier: String = "PrefGeneralViewController"
-  
+
   var toolbarItemImage: NSImage? {
     get {
       return NSImage(named: NSImage.preferencesGeneralName)!
     }
   }
-  
+
   var toolbarItemLabel: String? {
     get {
       view.layoutSubtreeIfNeeded()
       return " General "
     }
   }
-  
+
   override func viewDidAppear() {
     super.viewDidAppear()
   }
-  
+
   var hasResizableWidth: Bool = false
   var hasResizableHeight: Bool = false
 }
-

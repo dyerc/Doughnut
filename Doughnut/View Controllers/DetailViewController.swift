@@ -30,26 +30,26 @@ class DetailViewController: NSViewController, WKNavigationDelegate {
   @IBOutlet weak var secondaryTitle: NSTextField!
   @IBOutlet weak var miniTitle: NSTextField!
   @IBOutlet weak var coverImage: NSImageView!
-  
+
   @IBOutlet weak var webView: WKWebView!
-  
+
   let dateFormatter = DateFormatter()
-  
+
   var detailType: DetailViewType = .BlankDetail {
     didSet {
       switch detailType {
       case .PodcastDetail:
         showPodcast()
-        
+
       case .EpisodeDetail:
         showEpisode()
-        
+
       default:
         showBlank()
       }
     }
   }
-  
+
   var episode: Episode? {
     didSet {
       if episode != nil {
@@ -61,7 +61,7 @@ class DetailViewController: NSViewController, WKNavigationDelegate {
       }
     }
   }
-  
+
   var podcast: Podcast? {
     didSet {
       if podcast != nil {
@@ -73,73 +73,73 @@ class DetailViewController: NSViewController, WKNavigationDelegate {
       }
     }
   }
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     let darkMode = DoughnutApp.darkMode()
-    
+
     dateFormatter.dateStyle = .long
     view.wantsLayer = true
-    
+
     if darkMode {
-      view.layer?.backgroundColor = NSColor(calibratedRed:0.220, green:0.204, blue:0.208, alpha:1.00).cgColor
+      view.layer?.backgroundColor = NSColor(calibratedRed: 0.220, green: 0.204, blue: 0.208, alpha: 1.00).cgColor
     } else {
       view.layer?.backgroundColor = CGColor.white
     }
-    
+
     webView.navigationDelegate = self
     webView.loadHTMLString(MarkupGenerator.blankMarkup(), baseURL: nil)
   }
-  
+
   func showBlank() {
     detailTitle.stringValue = ""
     secondaryTitle.stringValue = ""
     miniTitle.stringValue = ""
   }
-  
+
   func showPodcast() {
     guard let podcast = podcast else {
       showBlank()
       return
     }
-    
+
     detailTitle.stringValue = podcast.title
     secondaryTitle.stringValue = podcast.author ?? ""
     miniTitle.stringValue = podcast.link ?? ""
     coverImage.image = podcast.image
-    
+
     webView.loadHTMLString(MarkupGenerator.markup(forPodcast: podcast), baseURL: nil)
   }
-  
+
   func showEpisode() {
     guard let episode = episode else {
       showBlank()
       return
     }
-    
+
     detailTitle.stringValue = episode.title
     secondaryTitle.stringValue = podcast?.title ?? ""
-    
+
     if let pubDate = episode.pubDate {
       miniTitle.stringValue = dateFormatter.string(for: pubDate) ?? ""
     }
-    
+
     if let artwork = episode.artwork {
       coverImage.image = artwork
     } else {
       coverImage.image = podcast?.image
     }
-    
+
     webView.loadHTMLString(MarkupGenerator.markup(forEpisode: episode), baseURL: nil)
   }
-  
+
   func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
     if navigationAction.navigationType == .linkActivated {
       if let url = navigationAction.request.url {
         NSWorkspace.shared.open(url)
       }
-      
+
       decisionHandler(.cancel)
     } else {
       decisionHandler(.allow)

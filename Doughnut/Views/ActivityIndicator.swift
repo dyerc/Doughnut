@@ -22,24 +22,24 @@ class ActivityIndicator: NSView {
   let dotSize: CGFloat = 6.0
   let dotSpacing: CGFloat = 3.0
   let dotCount = 3
-  
+
   override func viewDidMoveToWindow() {
     wantsLayer = true
-    
+
     let replLayer = CAReplicatorLayer()
     replLayer.frame = bounds
-    
+
     let dotsX = (bounds.width - (dotSize * 3) - (dotSize * 2)) / 2
-    
+
     let dot = CALayer()
     dot.frame = CGRect(x: dotsX, y: (bounds.height - dotSize) / 2, width: dotSize, height: dotSize)
     dot.backgroundColor = NSColor.darkGray.cgColor
     dot.cornerRadius = dotSize / 2
-    
+
     replLayer.addSublayer(dot)
     replLayer.instanceCount = dotCount
     replLayer.instanceTransform = CATransform3DMakeTranslation(dotSize + dotSpacing, 0, 0)
-    
+
     let animation = CAKeyframeAnimation()
     animation.keyPath = #keyPath(CALayer.opacity)
     animation.values = [0.0, 1.0, 0.0]
@@ -47,9 +47,9 @@ class ActivityIndicator: NSView {
     animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
     animation.repeatCount = .infinity
     dot.add(animation, forKey: nil)
-    
+
     replLayer.instanceDelay = 0.2
-    
+
     layer?.frame = self.frame
     layer?.addSublayer(replLayer)
   }

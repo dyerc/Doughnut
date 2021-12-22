@@ -94,9 +94,9 @@
 		834CC1B01F95076F00A98DE9 /* MarkupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */; };
 		834CC1B11F95077500A98DE9 /* MarkupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */; };
 		834CC1B31F950ABA00A98DE9 /* DetailWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */; };
-		83504DD61FFC377700375BA0 /* DownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83504DD51FFC377700375BA0 /* DownloadTask.swift */; };
-		83504DD71FFC377700375BA0 /* DownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83504DD51FFC377700375BA0 /* DownloadTask.swift */; };
-		83504DD81FFC377700375BA0 /* DownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83504DD51FFC377700375BA0 /* DownloadTask.swift */; };
+		83504DD61FFC377700375BA0 /* EpisodeDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83504DD51FFC377700375BA0 /* EpisodeDownloadTask.swift */; };
+		83504DD71FFC377700375BA0 /* EpisodeDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83504DD51FFC377700375BA0 /* EpisodeDownloadTask.swift */; };
+		83504DD81FFC377700375BA0 /* EpisodeDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83504DD51FFC377700375BA0 /* EpisodeDownloadTask.swift */; };
 		83659AB81F7D8A0300E09833 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83659AB71F7D8A0300E09833 /* Podcast.swift */; };
 		83659AB91F7DA17500E09833 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83659AB71F7D8A0300E09833 /* Podcast.swift */; };
 		83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */; };
@@ -169,6 +169,7 @@
 		368B5540FC7D1B6258BCF776 /* Pods-DoughnutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.debug.xcconfig"; sourceTree = "<group>"; };
+		6B3ACC982773555700CF1EF1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Release.entitlements"; sourceTree = "<group>"; };
 		830A34021FF0447D00C13B1D /* PodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastUITests.swift; sourceTree = "<group>"; };
 		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
@@ -194,7 +195,7 @@
 		834998B51FF3E3F00035EF87 /* TaskManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerView.swift; sourceTree = "<group>"; };
 		834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkupGenerator.swift; sourceTree = "<group>"; };
 		834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWebView.swift; sourceTree = "<group>"; };
-		83504DD51FFC377700375BA0 /* DownloadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTask.swift; sourceTree = "<group>"; };
+		83504DD51FFC377700375BA0 /* EpisodeDownloadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDownloadTask.swift; sourceTree = "<group>"; };
 		83659AB71F7D8A0300E09833 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
@@ -356,7 +357,7 @@
 		83504DD41FFC376800375BA0 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				83504DD51FFC377700375BA0 /* DownloadTask.swift */,
+				83504DD51FFC377700375BA0 /* EpisodeDownloadTask.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -378,6 +379,7 @@
 		838257C11F759F6F00DB4FD1 = {
 			isa = PBXGroup;
 			children = (
+				6B3ACC982773555700CF1EF1 /* .swiftlint.yml */,
 				838257CC1F759F6F00DB4FD1 /* Doughnut */,
 				838257DF1F759F6F00DB4FD1 /* DoughnutTests */,
 				838257EA1F759F6F00DB4FD1 /* DoughnutUITests */,
@@ -516,6 +518,7 @@
 				838257C81F759F6F00DB4FD1 /* Resources */,
 				4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */,
 				433D2BC19A40DB2041D544F1 /* [CP] Copy Pods Resources */,
+				6B3ACC992773569D00CF1EF1 /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -712,6 +715,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6B3ACC992773569D00CF1EF1 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		6F9C7ADA61728CAC04952B62 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -784,7 +805,7 @@
 				83EFC6041F9954A500E1DE1F /* SPMediaKeyTap.m in Sources */,
 				837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */,
 				83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */,
-				83504DD61FFC377700375BA0 /* DownloadTask.swift in Sources */,
+				83504DD61FFC377700375BA0 /* EpisodeDownloadTask.swift in Sources */,
 				83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
 				830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */,
@@ -857,7 +878,7 @@
 				830E99BE1FF50DD000B728BE /* ActivityIndicator.swift in Sources */,
 				834CC1B11F95077500A98DE9 /* MarkupGenerator.swift in Sources */,
 				83A0D4841FFC2FA400A376FD /* TaskQueue.swift in Sources */,
-				83504DD71FFC377700375BA0 /* DownloadTask.swift in Sources */,
+				83504DD71FFC377700375BA0 /* EpisodeDownloadTask.swift in Sources */,
 				836DBC532008084400AD7EBB /* SortingView.swift in Sources */,
 				834998B71FF3E3F00035EF87 /* TaskManagerView.swift in Sources */,
 			);
@@ -867,7 +888,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83504DD81FFC377700375BA0 /* DownloadTask.swift in Sources */,
+				83504DD81FFC377700375BA0 /* EpisodeDownloadTask.swift in Sources */,
 				838257EC1F759F6F00DB4FD1 /* DoughnutUITests.swift in Sources */,
 				83A0D4851FFC2FA400A376FD /* TaskQueue.swift in Sources */,
 				830A33DA1FF042CE00C13B1D /* DownloadCellView.swift in Sources */,

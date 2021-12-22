@@ -7,7 +7,8 @@
 //
 
 import XCTest
-import Doughnut
+
+@testable import Doughnut
 
 class LibrarySpyDelegate: LibraryDelegate {
   var subscribedToPodcastExpectation: XCTestExpectation?
@@ -17,11 +18,11 @@ class LibrarySpyDelegate: LibraryDelegate {
     self.subscribedToPodcastResult = subscribed
     expectation.fulfill()
   }
-  
+
   func libraryReloaded() {
-    
+
   }
-  
+
   var updatedPodcastExpectation: XCTestExpectation?
   var updatedPodcastResult: Podcast?
   func libraryUpdatedPodcast(podcast: Podcast) {
@@ -29,7 +30,7 @@ class LibrarySpyDelegate: LibraryDelegate {
     updatedPodcastResult = podcast
     expectation.fulfill()
   }
-  
+
   var updatedEpisodeExpectation: XCTestExpectation?
   var updatedEpisodeResult: Episode?
   func libraryUpdatedEpisode(episode: Episode) {
@@ -37,7 +38,7 @@ class LibrarySpyDelegate: LibraryDelegate {
     updatedEpisodeResult = episode
     expectation.fulfill()
   }
-  
+
   var unsubscribedPodcastExpectation: XCTestExpectation?
   var unsubscribedPodcastResult: Podcast?
   func libraryUnsubscribedFromPodcast(unsubscribed: Podcast) {
@@ -45,8 +46,8 @@ class LibrarySpyDelegate: LibraryDelegate {
     unsubscribedPodcastResult = unsubscribed
     expectation.fulfill()
   }
-  
+
   func libraryUpdatingPodcast(podcast: Podcast) {
-    
+
   }
 }
