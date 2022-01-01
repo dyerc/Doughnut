@@ -90,6 +90,12 @@
                                                 <action selector="reloadAll:" target="Ady-hI-5gd" id="yl9-te-ukw"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Jtx-iX-cm5"/>
+                                        <menuItem title="Close Window" keyEquivalent="w" id="YUa-ux-9GU">
+                                            <connections>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="t40-Be-omu"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
