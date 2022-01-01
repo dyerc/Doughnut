@@ -20,7 +20,12 @@
 import Cocoa
 import AVFoundation
 
-class ShowPodcastWindowController: NSWindowController {
+final class ShowPodcastWindowController: NSWindowController {
+
+  static func instantiateFromMainStoryboard() -> ShowPodcastWindowController? {
+    return NSStoryboard.init(name: "PodcastInfo", bundle: nil).instantiateInitialController()
+  }
+
   override func windowDidLoad() {
     window?.isMovableByWindowBackground = true
     window?.titleVisibility = .hidden
@@ -31,6 +36,7 @@ class ShowPodcastWindowController: NSWindowController {
     window?.standardWindowButton(.toolbarButton)?.isHidden = true
     window?.standardWindowButton(.zoomButton)?.isHidden = true
   }
+
 }
 
 class ShowPodcastWindow: NSWindow {
@@ -157,7 +163,8 @@ class ShowPodcastViewController: NSViewController {
   }
   
   @IBAction func cancel(_ sender: Any) {
-    self.view.window?.close()
+    NSApp.stopModal(withCode: .cancel)
+    view.window?.close()
   }
   
   // Permeate UI input changes to podcat object
@@ -190,7 +197,8 @@ class ShowPodcastViewController: NSViewController {
       
       if validate() {
         Library.global.save(podcast: podcast)
-        self.view.window?.close()
+        NSApp.stopModal(withCode: .OK)
+        view.window?.close()
       }
     } else {
       // Create new podcast
@@ -199,7 +207,8 @@ class ShowPodcastViewController: NSViewController {
       
       if validate() {
         Library.global.subscribe(podcast: podcast)
-        self.view.window?.close()
+        NSApp.stopModal(withCode: .OK)
+        view.window?.close()
       }
     }
   }

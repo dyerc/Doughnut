@@ -20,7 +20,12 @@
 import Cocoa
 import AVFoundation
 
-class ShowEpisodeWindowController: NSWindowController {
+final class ShowEpisodeWindowController: NSWindowController {
+
+  static func instantiateFromMainStoryboard() -> ShowEpisodeWindowController? {
+    return NSStoryboard.init(name: "EpisodeInfo", bundle: nil).instantiateInitialController()
+  }
+
   override func windowDidLoad() {
     window?.isMovableByWindowBackground = true
     window?.titleVisibility = .hidden
@@ -31,6 +36,7 @@ class ShowEpisodeWindowController: NSWindowController {
     window?.standardWindowButton(.toolbarButton)?.isHidden = true
     window?.standardWindowButton(.zoomButton)?.isHidden = true
   }
+
 }
 
 class ShowEpisodeWindow: NSWindow {
@@ -92,7 +98,8 @@ class ShowEpisodeViewController: NSViewController {
   }
   
   @IBAction func cancel(_ sender: Any) {
-    self.view.window?.close()
+    NSApp.stopModal(withCode: .cancel)
+    view.window?.close()
   }
   
   // Permeate UI input changes to podcat object
@@ -108,7 +115,8 @@ class ShowEpisodeViewController: NSViewController {
       
       if validate() {
         Library.global.save(episode: episode)
-        self.view.window?.close()
+        NSApp.stopModal(withCode: .OK)
+        view.window?.close()
       }
     }
   }

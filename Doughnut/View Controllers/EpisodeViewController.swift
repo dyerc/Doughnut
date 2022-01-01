@@ -60,13 +60,6 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
   }
   
-  var windowController: WindowController? {
-    get {
-      guard let window = NSApplication.shared.windows.first else { return nil }
-      return window.windowController as? WindowController
-    }
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -336,12 +329,14 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   @IBAction func showEpisode(_ sender: Any) {
-    if let wc = windowController {
-      let editWindow = wc.episodeWindowController
-      let editController = editWindow.contentViewController as? ShowEpisodeViewController
-      editController?.episode = episodes[tableView.clickedRow]
-      editWindow.showWindow(self)
+    guard let episodeWindowController = ShowEpisodeWindowController.instantiateFromMainStoryboard(),
+          let episodeViewController = episodeWindowController.contentViewController as? ShowEpisodeViewController,
+          let episodeWindow = episodeWindowController.window
+    else {
+      return
     }
+    episodeViewController.episode = episodes[tableView.clickedRow]
+    NSApp.runModal(for: episodeWindow)
   }
   
   @IBAction func showInFinder(_ sender: Any) {

@@ -56,13 +56,6 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
   }
   
-  var windowController: WindowController? {
-    get {
-      guard let window = NSApplication.shared.windows.first else { return nil }
-      return window.windowController as? WindowController
-    }
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -175,12 +168,14 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
   
   @IBAction func podcastInfo(_ sender: Any) {
-    if let wc = windowController {
-      let infoWindow = wc.podcastWindowController
-      let infoController = infoWindow.contentViewController as? ShowPodcastViewController
-      infoController?.podcast = podcasts[tableView.clickedRow]
-      infoWindow.showWindow(self)
+    guard let podcastWindowController = ShowPodcastWindowController.instantiateFromMainStoryboard(),
+          let podcastViewController = podcastWindowController.contentViewController as? ShowPodcastViewController,
+          let podcastWindow = podcastWindowController.window
+    else {
+      return
     }
+    podcastViewController.podcast = podcasts[tableView.clickedRow]
+    NSApp.runModal(for: podcastWindow)
   }
   
   @IBAction func markAllAsPlayed(_ sender: Any) {
