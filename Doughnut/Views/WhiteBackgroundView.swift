@@ -22,16 +22,16 @@ class WhiteBackgroundView: NSView {
   override func draw(_ dirtyRect: NSRect) {
     // Fill bottom of window with white bg
     let rect = NSRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
-    
+
     if (DoughnutApp.darkMode()) {
-      NSColor(calibratedRed:0.220, green:0.204, blue:0.208, alpha:1.00).setFill()
+      NSColor(calibratedRed: 0.220, green: 0.204, blue: 0.208, alpha: 1.00).setFill()
     } else {
       NSColor.white.setFill()
     }
-    
+
     rect.fill()
   }
-  
+
   override var mouseDownCanMoveWindow: Bool {
     return false
   }

@@ -15,14 +15,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 import Foundation
 
 class MarkupGenerator {
   static var styles: String {
     get {
       var optional = ""
-      
+
       if (DoughnutApp.darkMode()) {
         optional += """
         body { background-color: #484445; }
@@ -30,7 +30,7 @@ class MarkupGenerator {
         p { color: #EEEEEE; }
         """
       }
-      
+
       return """
       * { margin: 0; padding: 0; }
       body {
@@ -38,12 +38,12 @@ class MarkupGenerator {
         font-size: 12px;
         line-height: 19px;
       }
-      
+
       p {
         color: #777777;
         margin: 10px 0;
       }
-      
+
       hr {
         display: block;
         height: 1px;
@@ -52,16 +52,16 @@ class MarkupGenerator {
         margin: 5px 0;
         padding: 0;
       }
-      
+
       img {
         max-width: 100%;
       }
-      
+
       \(optional)
       """
     }
   }
-  
+
   static func template(_ yield: String) -> String {
     return """
     <html>
@@ -74,11 +74,11 @@ class MarkupGenerator {
     </html>
     """
   }
-  
+
   static func blankMarkup() -> String {
     return template("")
   }
-  
+
   static func markup(forPodcast podcast: Podcast) -> String {
     return template("""
       <hr />
@@ -86,7 +86,7 @@ class MarkupGenerator {
       <hr />
     """)
   }
-  
+
   static func markup(forEpisode episode: Episode) -> String {
     return template("""
       <hr />

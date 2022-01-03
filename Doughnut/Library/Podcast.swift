@@ -17,8 +17,9 @@
  */
 
 import Foundation
-import GRDB
+
 import FeedKit
+import GRDB
 
 class Podcast: Record {
   var id: Int64?
@@ -36,22 +37,22 @@ class Podcast: Record {
   var lastParsed: Date?
   var subscribedAt: Date
   var autoDownload: Bool = false
-  
+
   var reloadFrequency: Int = 0 // 0 is only manually reloaded
   var manualReload: Bool {
     get {
       return reloadFrequency == -1
     }
   }
-  
+
   var defaultReload: Bool {
     get {
       return reloadFrequency == 0
     }
   }
-  
+
   var episodes = [Episode]()
-  
+
   var unplayedCount: Int {
     get {
       return episodes.reduce(0) {
@@ -59,7 +60,7 @@ class Podcast: Record {
       }
     }
   }
-  
+
   var favouriteCount: Int {
     get {
       return episodes.reduce(0) {
@@ -67,32 +68,32 @@ class Podcast: Record {
       }
     }
   }
-  
+
   var latestEpisode: Episode? {
     get {
       return episodes.sorted(by: { (a, b) -> Bool in
         guard let aD = a.pubDate else { return false }
         guard let bD = b.pubDate else { return true }
-        
+
         return aD < bD
       }).last
     }
   }
-  
+
   var loading = false
-  
+
   override class var databaseTableName: String {
     return "podcasts"
   }
-  
+
   init(title: String) {
     self.title = title
     self.path = Library.sanitizePath(title)
     self.subscribedAt = Date()
-    
+
     super.init()
   }
-  
+
   required init(row: Row) {
     id = row["id"]
     title = row["title"]
@@ -104,21 +105,21 @@ class Podcast: Record {
     language = row["language"]
     copyright = row["copyright"]
     pubDate = row["pub_date"]
-    
+
     let imageData: DatabaseValue = row["image"]
     if !imageData.isNull {
       image = NSImage(data: row["image"])
     }
-    
+
     imageUrl = row["image_url"]
     lastParsed = row["last_parsed"]
     subscribedAt = row["subscribed_at"]
     reloadFrequency = row["reload_frequency"]
     autoDownload = row["auto_download"]
-    
+
     super.init(row: row)
   }
-  
+
   override func encode(to container: inout PersistenceContainer) {
     container["id"] = id
     container["title"] = title
@@ -137,16 +138,16 @@ class Podcast: Record {
     container["reload_frequency"] = reloadFrequency
     container["auto_download"] = autoDownload
   }
-  
+
   override func didInsert(with rowID: Int64, for column: String?) {
     id = rowID
-    
+
     for episode in episodes {
       episode.podcast = self
       episode.podcastId = self.id
     }
   }
-  
+
   func storagePath() -> URL? {
     let pathUrl = URL(fileURLWithPath: self.path, relativeTo: Library.global.path)
     var isDir = ObjCBool(true)
@@ -157,14 +158,14 @@ class Podcast: Record {
         print("Failed to create directory \(error)")
       }
     }
-    
+
     return pathUrl
   }
-  
+
   func loadEpisodes(db: Database) {
     do {
       episodes = try Episode.filter(Column("podcast_id") == self.id).fetchAll(db)
-      
+
       for e in episodes {
         if e.podcastId == self.id {
           e.podcast = self
@@ -174,46 +175,46 @@ class Podcast: Record {
       Library.handleDatabaseError(error)
     } catch {}
   }
-  
+
   func deleteEpisode(episode: Episode) {
     guard episode.podcastId == self.id else { return }
-    
-    if let idx = episodes.firstIndex(where: { e -> Bool in return e.id == episode.id}) {
+
+    if let idx = episodes.firstIndex(where: { e -> Bool in return e.id == episode.id }) {
       episodes.remove(at: idx)
     }
-    
+
     Library.global.delete(episode: episode)
   }
-  
+
   func deleteEpisodeAndTrash(episode: Episode) {
-    episode.moveToTrash { (url) in
+    episode.moveToTrash { _ in
       self.deleteEpisode(episode: episode)
     }
   }
-  
+
   func invalid() -> String? {
     if title.isEmpty {
       return "Podcast must have a title"
     }
-    
+
     return nil
   }
-  
+
   private func storeImage(_ url: URL) {
     imageUrl = url.absoluteString
-    
+
     if let downloaded = NSImage(contentsOf: url) {
       image = Podcast.resizeArtwork(image: downloaded, w: 1024, h: 1024)
     }
   }
-  
+
   private func compressImage() -> Data? {
     guard let image = image else { return nil }
     guard let tiffData = image.tiffRepresentation else { return nil }
     guard let imageRep = NSBitmapImageRep(data: tiffData) else { return nil }
     return imageRep.representation(using: .jpeg, properties: [:])
   }
-  
+
   // Called within subscribe or reload
   // 1. Update feed properties
   // 2. Check for new episodes
@@ -224,7 +225,7 @@ class Podcast: Record {
     self.language = feed.language
     self.copyright = feed.copyright
     self.pubDate = feed.pubDate
-    
+
     if let feedUrl = URL(string: self.feed ?? "") {
       // Prioritize iTunes image url over regular RSS
       if let iTunesImageUrl = feed.iTunes?.iTunesImage?.attributes?.href {
@@ -237,15 +238,15 @@ class Podcast: Record {
         }
       }
     }
-    
+
     self.lastParsed = Date()
-    
+
     var newEpisodes = [Episode]()
-    
+
     for item in feed.items ?? [] {
       guard let title = item.title else { continue }
       guard let guid = item.guid?.value else { continue }
-      
+
       if let exists = self.episodes.first(where: { (e) -> Bool in
         return e.guid == guid || e.title == title
       }) {
@@ -256,23 +257,23 @@ class Podcast: Record {
         episode.parse(feedItem: item)
         episode.podcast = self
         episode.podcastId = self.id
-        
+
         self.episodes.append(episode)
         newEpisodes.append(episode)
       }
     }
-    
+
     return newEpisodes
   }
 
   func fetch() -> [Episode] {
     guard let feed = self.feed else { return [] }
     guard let feedUrl = URL(string: feed) else { return [] }
-    
+
     let parser = FeedParser(URL: feedUrl)
-    
+
     let result = parser.parse()
-    
+
     switch result {
     case .success(let feed):
       guard let rssFeed = feed.rssFeed else { return [] }
@@ -282,28 +283,27 @@ class Podcast: Record {
       return []
     }
   }
-  
+
   static func subscribe(feedUrl: URL) -> Podcast? {
     let parser = FeedParser(URL: feedUrl)
-    
     let result = parser.parse()
-    
+
     switch result {
     case .success(let feed):
       guard let rssFeed = feed.rssFeed else { return nil }
       guard let title = rssFeed.title else { return nil }
-      
+
       let podcast = Podcast(title: title)
       podcast.feed = feedUrl.absoluteString
       let _ = podcast.parse(feed: rssFeed)
-      
+
       return podcast
     case .failure(let error):
       NSApplication.shared.presentError(error)
       return nil
     }
   }
-  
+
   // Detect either an iTunes podcast or RSS feed and call completion with resulting podcast
   static func detect(url: String, completion: @escaping (_ result: Podcast?) -> Void) -> Bool {
     if url.contains("itunes.apple.com") {
@@ -311,7 +311,7 @@ class Podcast: Record {
         guard let feedUrl = URL(string: feedUrl ?? "") else {
           return
         }
-          
+
         DispatchQueue.main.async {
           completion(Podcast.subscribe(feedUrl: feedUrl))
         }
@@ -320,20 +320,25 @@ class Podcast: Record {
       guard let url = URL(string: url) else {
         return false
       }
-        
+
       DispatchQueue.main.async {
         completion(Podcast.subscribe(feedUrl: url))
       }
-      
+
       return true
     }
   }
-  
+
   static func resizeArtwork(image: NSImage, w: Int, h: Int) -> NSImage {
-    let destSize = NSMakeSize(CGFloat(w), CGFloat(h))
+    let destSize = CGSize(width: w, height: h)
     let newImage = NSImage(size: destSize)
     newImage.lockFocus()
-    image.draw(in: NSMakeRect(0, 0, destSize.width, destSize.height), from: NSMakeRect(0, 0, image.size.width, image.size.height), operation: NSCompositingOperation.sourceOver, fraction: CGFloat(1))
+    image.draw(
+      in: CGRect(x: 0, y: 0, width: destSize.width, height: destSize.height),
+      from: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height),
+      operation: NSCompositingOperation.sourceOver,
+      fraction: CGFloat(1)
+    )
     newImage.unlockFocus()
     newImage.size = destSize
     return NSImage(data: newImage.tiffRepresentation!)!
