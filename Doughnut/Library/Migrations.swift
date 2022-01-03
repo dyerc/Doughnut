@@ -22,7 +22,7 @@ import GRDB
 class LibraryMigrations {
   static func migrate(db: DatabaseQueue) throws {
     var migrator = DatabaseMigrator()
-    
+
     migrator.registerMigration("v1") { db in
       try db.create(table: "podcasts") { t in
         t.column("id", .integer).primaryKey()
@@ -42,7 +42,7 @@ class LibraryMigrations {
         t.column("download_new", .boolean).notNull().defaults(to: true)
         t.column("delete_played", .boolean).notNull().defaults(to: false)
       }
-      
+
       try db.create(table: "episodes", body: { t in
         t.column("id", .integer).primaryKey()
         t.column("podcast_id", .integer).references("podcasts", onDelete: .cascade)
@@ -61,19 +61,19 @@ class LibraryMigrations {
         t.column("duration", .integer)
       })
     }
-    
+
     migrator.registerMigration("v2") { db in
       try db.alter(table: "podcasts", body: { t in
         t.add(column: "reload_frequency", .integer).notNull().defaults(to: 0)
       })
     }
-    
+
     migrator.registerMigration("v3") { db in
       try db.alter(table: "podcasts", body: { t in
         t.add(column: "auto_download", .boolean).notNull().defaults(to: false)
       })
     }
-    
+
     try migrator.migrate(db)
   }
 }

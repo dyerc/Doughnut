@@ -21,54 +21,52 @@ import Cocoa
 class TaskManagerView: NSView, TaskQueueViewDelegate {
   let activitySpinner = ActivityIndicator()
   let popover = NSPopover()
-  
+
   var tasksViewController: TasksViewController?
-  
+
   var hasActiveTasks: Bool = false {
     didSet {
       activitySpinner.isHidden = !hasActiveTasks
     }
   }
-  
+
   required init?(coder decoder: NSCoder) {
     super.init(coder: decoder)
-    
+
     Library.global.tasks.delegate = self
-    
+
     popover.behavior = .transient
-    
+
     activitySpinner.frame = self.bounds
     activitySpinner.isHidden = true
     addSubview(activitySpinner)
-    
+
     let storyboard = NSStoryboard(name: "Main", bundle: nil)
     tasksViewController = (storyboard.instantiateController(withIdentifier: "TasksPopover") as! TasksViewController)
     tasksViewController?.loadView() // Important: force load views so they exist even before popover is viewed
     popover.contentViewController = tasksViewController
   }
-  
+
   override func mouseDown(with event: NSEvent) {
     if hasActiveTasks {
       popover.show(relativeTo: bounds, of: activitySpinner, preferredEdge: .minY)
     }
   }
-  
+
   func taskPushed(task: Task) {
     tasksViewController?.taskPushed(task: task)
   }
-  
+
   func taskFinished(task: Task) {
     tasksViewController?.taskFinished(task: task)
-    
-    
   }
-  
+
   func tasksRunning(_ running: Bool) {
     if running {
       hasActiveTasks = true
     } else {
       hasActiveTasks = false
-      
+
       if popover.isShown {
         popover.close()
       }

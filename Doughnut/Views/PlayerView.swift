@@ -32,7 +32,7 @@ extension String {
 class PlayerView: NSView, PlayerDelegate {
   let width = 425
   let baseline: CGFloat = 6
-  
+
   var loadingIdc: NSProgressIndicator!
   var artworkImg: NSImageView!
   var reverseBtn: NSButton!
@@ -41,30 +41,30 @@ class PlayerView: NSView, PlayerDelegate {
   var playedDurationLbl: NSTextField!
   var seekSlider: SeekSlider!
   var playedRemainingLbl: NSTextField!
-  
+
   let playIcon = NSImage(imageLiteralResourceName: "PlayIcon")
   let pauseIcon = NSImage(imageLiteralResourceName: "PauseIcon")
-  
+
   override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
     Player.global.delegate = self
   }
-  
+
   required init?(coder decoder: NSCoder) {
     loadingIdc = NSProgressIndicator(frame: NSRect(x: 25, y: baseline + 5, width: 16, height: 16))
     artworkImg = NSImageView(frame: NSRect(x: 25, y: baseline + 3, width: 20, height: 20))
-    
+
     reverseBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(artworkImg) + 6, y: baseline, width: 26, height: 25))
     playBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(reverseBtn) + 1, y: baseline, width: 28, height: 26))
     forwardBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(playBtn) + 1, y: baseline, width: 28, height: 26))
-    
+
     playedDurationLbl = NSTextField(frame: NSRect(x: PlayerView.controlX(forwardBtn) + 2, y: baseline + 6, width: 50, height: 14))
     seekSlider = SeekSlider(frame: NSRect(x: PlayerView.controlX(playedDurationLbl) + 4, y: baseline + 4, width: 200, height: 18))
     playedRemainingLbl = NSTextField(frame: NSRect(x: PlayerView.controlX(seekSlider) + 4, y: baseline + 6, width: 50, height: 14))
-    
+
     super.init(coder: decoder)
     Player.global.delegate = self
-    
+
     loadingIdc.isHidden = true
     loadingIdc.minValue = 0
     loadingIdc.maxValue = 0
@@ -73,19 +73,19 @@ class PlayerView: NSView, PlayerDelegate {
     loadingIdc.style = .spinning
     loadingIdc.controlSize = .small
     addSubview(loadingIdc)
-    
+
     artworkImg.isHidden = false
     artworkImg.imageFrameStyle = .none
     artworkImg.image = NSImage(imageLiteralResourceName: "PlaceholderIcon")
     addSubview(artworkImg)
-    
+
     reverseBtn.stringValue = ""
     reverseBtn.bezelStyle = .texturedRounded
     reverseBtn.image = NSImage(imageLiteralResourceName: "ReverseIcon")
     reverseBtn.action = #selector(skipBack)
     reverseBtn.target = self
     addSubview(reverseBtn)
-    
+
     playBtn.stringValue = ""
     playBtn.bezelStyle = .texturedRounded
     playBtn.setButtonType(.toggle)
@@ -95,14 +95,14 @@ class PlayerView: NSView, PlayerDelegate {
     playBtn.target = self
     playBtn.imagePosition = .imageOnly
     addSubview(playBtn)
-    
+
     forwardBtn.stringValue = ""
     forwardBtn.bezelStyle = .texturedRounded
     forwardBtn.image = NSImage(imageLiteralResourceName: "ForwardIcon")
     forwardBtn.action = #selector(skipAhead)
     forwardBtn.target = self
     addSubview(forwardBtn)
-    
+
     playedDurationLbl.stringValue = "-:--:--"
     playedDurationLbl.isBezeled = false
     playedDurationLbl.drawsBackground = false
@@ -111,7 +111,7 @@ class PlayerView: NSView, PlayerDelegate {
     playedDurationLbl.font = NSFont.systemFont(ofSize: 10)
     playedDurationLbl.isEditable = false
     addSubview(playedDurationLbl)
-    
+
     seekSlider.minValue = 0
     seekSlider.maxValue = 1
     seekSlider.doubleValue = 0
@@ -120,7 +120,7 @@ class PlayerView: NSView, PlayerDelegate {
     seekSlider.target = self
     seekSlider.action = #selector(seek)
     addSubview(seekSlider)
-    
+
     playedRemainingLbl.stringValue = "-:--:--"
     playedRemainingLbl.isBezeled = false
     playedRemainingLbl.drawsBackground = false
@@ -129,72 +129,72 @@ class PlayerView: NSView, PlayerDelegate {
     playedRemainingLbl.isEditable = false
     addSubview(playedRemainingLbl)
  }
-  
+
   override func draw(_ dirtyRect: NSRect) {
     let darkMode = DoughnutApp.darkMode()
-    
+
     if self.window?.isMainWindow ?? false {
       var bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.945, green: 0.945, blue: 0.945, alpha: 1.0), ending: NSColor(calibratedRed: 0.894, green: 0.894, blue: 0.894, alpha: 1.0))
-      
+
       NSColor(calibratedRed: 0.784, green: 0.784, blue: 0.784, alpha: 1.0).setStroke()
-      
+
       if darkMode {
         bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.170, green: 0.162, blue: 0.158, alpha: 1.00), ending: NSColor(calibratedRed: 0.220, green: 0.212, blue: 0.208, alpha: 1.00))
-        
+
         NSColor(calibratedRed: 0.180, green: 0.161, blue: 0.161, alpha: 1.0).setStroke()
       }
-      
+
       bgGradient?.draw(in: self.bounds, angle: 270)
-      
+
     } else {
       var bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.980, green: 0.980, blue: 0.980, alpha: 1.0), ending: NSColor(calibratedRed: 0.980, green: 0.980, blue: 0.980, alpha: 1.0))
-      
+
       NSColor(calibratedRed: 0.902, green: 0.902, blue: 0.902, alpha: 1.0).setStroke()
-      
+
       if darkMode {
         bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.170, green: 0.162, blue: 0.158, alpha: 1.00), ending: NSColor(calibratedRed: 0.220, green: 0.212, blue: 0.208, alpha: 1.00))
-        
+
         NSColor(calibratedRed: 0.180, green: 0.161, blue: 0.161, alpha: 1.0).setStroke()
       }
-      
+
       bgGradient?.draw(in: self.bounds, angle: 270)
     }
-    
+
     let leftBorder = NSBezierPath()
     leftBorder.move(to: NSPoint(x: 0.5, y: 0))
     leftBorder.line(to: NSPoint(x: 0.5, y: self.bounds.size.height))
     leftBorder.stroke()
-    
+
     let rightBorder = NSBezierPath()
     rightBorder.move(to: NSPoint(x: self.bounds.size.width - 0.5, y: 0))
     rightBorder.line(to: NSPoint(x: self.bounds.size.width - 0.5, y: self.bounds.size.height))
     rightBorder.stroke()
-    
+
     // Draw a solid black line at the bottom to match macOS's dark mode style
     if darkMode {
       NSColor.black.setStroke()
-      
+
       let bottomBorder = NSBezierPath()
       bottomBorder.move(to: NSPoint(x: 0.5, y: 0))
       bottomBorder.line(to: NSPoint(x: self.bounds.size.width - 0.5, y: 0))
       bottomBorder.lineWidth = 1.5
       bottomBorder.stroke()
     }
-    
+
     super.draw(dirtyRect)
   }
-  
+
   func formatTime(total: Int) -> String {
     let hrs = Int(floor(Double(total / 3600)))
     let mins = Int(floor(Double((total % 3600) / 60)))
     let secs = Int(total % 60)
-    
+
     return String(hrs) + ":" + String(mins).leftPadding(toLength: 2, withPad: "0") + ":" + String(secs).leftPadding(toLength: 2, withPad: "0")
   }
-  
+
   func update(forEpisode episode: Episode) {
     let loadStatus = Player.global.loadStatus
-    
+
     if loadStatus == .loading {
       loadingIdc.isHidden = false
       loadingIdc.startAnimation(nil)
@@ -204,52 +204,52 @@ class PlayerView: NSView, PlayerDelegate {
       loadingIdc.stopAnimation(nil)
       artworkImg.isHidden = false
     }
-    
+
     artworkImg.image = episode.podcast?.image
-    
+
     if let image = episode.artwork {
       if image.isValid {
         artworkImg.image = image
       }
     }
   }
-  
+
   func updatePlayback() {
     let player = Player.global
-    
+
     if player.isPlaying {
       playBtn.state = .on
     } else {
       playBtn.state = .off
     }
-    
+
     let duration = player.duration
     let position = player.position
-    
+
     playedDurationLbl.stringValue = formatTime(total: Int(position))
     playedRemainingLbl.stringValue = formatTime(total: Int(duration - position))
-    
+
     seekSlider.minValue = 0
     seekSlider.maxValue = duration
     seekSlider.doubleValue = position
     seekSlider.streamedValue = player.buffered
   }
-  
+
   @objc func seek(_ sender: Any) {
     let event = NSApplication.shared.currentEvent
     // Only react to dragging so that we don't skip back after slider release
     if event?.type == .leftMouseDragged {
       Player.global.seek(seconds: seekSlider.doubleValue)
     }
-    
+
     if event?.type == .leftMouseUp {
       // Handle a single click
     }
   }
-  
+
   @objc func playPause(_ sender: Any) {
     let player = Player.global
-    
+
     if playBtn.state == .on {
       if player.canPlay {
         Player.global.play()
@@ -260,17 +260,17 @@ class PlayerView: NSView, PlayerDelegate {
       player.pause()
     }
   }
-  
+
   @objc func skipAhead(_ sender: Any) {
     let player = Player.global
     player.skipAhead()
   }
-  
+
   @objc func skipBack(_ sender: Any) {
     let player = Player.global
     player.skipBack()
   }
-  
+
   static private func controlX(_ view: NSView) -> CGFloat {
     return view.frame.origin.x + view.frame.size.width
   }

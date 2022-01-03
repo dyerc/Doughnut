@@ -10,6 +10,6 @@ import XCTest
 
 class PodcastUITests: XCTestCase {
   func createsBlankPodcast() {
-    
+
   }
 }

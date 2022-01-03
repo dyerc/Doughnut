@@ -22,20 +22,20 @@ class DownloadCellView: NSTableCellView, DownloadProgressDelegate {
   @IBOutlet weak var episodeTitle: NSTextField!
   @IBOutlet weak var progressBar: NSProgressIndicator!
   @IBOutlet weak var progressText: NSTextField!
-  
+
   let byteFormatter = ByteCountFormatter()
-  
+
   var download: DownloadTask? {
     didSet {
       download?.progressDelegate = self
-      
+
       byteFormatter.allowedUnits = .useMB
       byteFormatter.countStyle = .file
-      
+
       episodeTitle.stringValue = download?.episode.title ?? ""
     }
   }
-  
+
   func download(progressed download: DownloadTask) {
     if download.totalBytes > 0 {
       progressBar.stopAnimation(self)
@@ -51,7 +51,7 @@ class DownloadCellView: NSTableCellView, DownloadProgressDelegate {
       progressBar.doubleValue = 0
       progressBar.minValue = 0
       progressBar.maxValue = 0
-      
+
       progressText.stringValue = "Unknown"
     }
   }

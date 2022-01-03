@@ -31,53 +31,53 @@ class SortMenuButtonView: NSButton {
     }
   }
   let textFont = NSFont.systemFont(ofSize: 11)
-  
+
   override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
   }
-  
+
   required init?(coder: NSCoder) {
     super.init(coder: coder)
   }
-  
+
   override func mouseEntered(with event: NSEvent) {
     isBordered = true
     updateLabel()
   }
-  
+
   override func mouseExited(with event: NSEvent) {
     isBordered = false
     updateLabel()
   }
-  
+
   override func updateTrackingAreas() {
     super.updateTrackingAreas()
-    
+
     if let trackingArea = trackingArea {
       removeTrackingArea(trackingArea)
     }
-    
+
     trackingArea = NSTrackingArea(rect: bounds, options: [.mouseEnteredAndExited, .activeAlways], owner: self, userInfo: nil)
     addTrackingArea(trackingArea!)
   }
-  
+
   func updateLabel() {
     var color = NSColor.gray
     let string = " \(textLabel)"
-    
+
     if DoughnutApp.darkMode() {
       color = NSColor.white
     }
-    
+
     if isBordered {
       color = NSColor.white
     }
-    
+
     let attributedString = NSAttributedString(string: string, attributes: [
       NSAttributedString.Key.font: textFont,
-      NSAttributedString.Key.foregroundColor: color
+      NSAttributedString.Key.foregroundColor: color,
     ])
-    
+
     let newFrame = NSRect(x: frame.minX, y: frame.minY, width: attributedString.size().width + 10, height: frame.height)
     attributedTitle = attributedString
     frame = newFrame
@@ -91,29 +91,29 @@ protocol SortingViewDelegate {
 class SortingView: NSView {
   let menuButtonView: SortMenuButtonView = SortMenuButtonView()
   let sortMenu = NSMenu()
-  
+
   var menuItems: [NSMenuItem] = []
   var directionMenuItems: [NSMenuItem] = []
-  
+
   var delegate: SortingViewDelegate?
   open var menuItemTitles: [String] = [] {
     didSet {
       buildMenu()
     }
   }
-  
+
   required init?(coder decoder: NSCoder) {
     super.init(coder: decoder)
-    
+
     // Background
     wantsLayer = true
-    
+
     if DoughnutApp.darkMode() {
       layer?.backgroundColor = NSColor(calibratedRed: 0.161, green: 0.153, blue: 0.157, alpha: 1.0).cgColor
     } else {
       layer?.backgroundColor = NSColor(calibratedRed: 0.961, green: 0.961, blue: 0.961, alpha: 1.0).cgColor
     }
-    
+
     // Setup inline button
     menuButtonView.frame = NSRect(x: 2, y: 2, width: 0, height: 16)
     menuButtonView.bezelStyle = .inline
@@ -124,62 +124,62 @@ class SortingView: NSView {
     menuButtonView.textLabel = "Sort by Unknown"
     menuButtonView.action = #selector(showMenu)
     menuButtonView.target = self
-    
+
     directionMenuItems.append(NSMenuItem(title: SortDirection.Asc.rawValue, action: #selector(performSortDirection), keyEquivalent: ""))
     directionMenuItems.append(NSMenuItem(title: SortDirection.Desc.rawValue, action: #selector(performSortDirection), keyEquivalent: ""))
-    
+
     buildMenu()
-    
+
     addSubview(menuButtonView)
   }
-  
+
   func buildMenu() {
     sortMenu.removeAllItems()
-    
+
     for title in menuItemTitles {
       let item = NSMenuItem(title: title, action: #selector(performSort), keyEquivalent: "")
       item.target = self
       menuItems.append(item)
       sortMenu.addItem(item)
-      
+
       if title == sortParam {
         item.state = .on
         menuButtonView.textLabel = "Sort by \(item.title)"
       }
     }
-    
+
     sortMenu.addItem(NSMenuItem.separator())
-    
+
     for item in directionMenuItems {
       item.target = self
       sortMenu.addItem(item)
     }
   }
-  
+
   override func resizeSubviews(withOldSize oldSize: NSSize) {
     menuButtonView.updateLabel()
   }
-  
+
   override func draw(_ dirtyRect: NSRect) {
     super.draw(dirtyRect)
-    
+
     let bottomBorder = NSBezierPath()
     bottomBorder.move(to: NSPoint(x: 0, y: 0))
     bottomBorder.line(to: NSPoint(x: bounds.width, y: 0))
-    
+
     if DoughnutApp.darkMode() {
       NSColor.lightGray.setStroke()
     } else {
       NSColor.darkGray.setStroke()
     }
-    
+
     bottomBorder.stroke()
   }
-  
+
   @objc func showMenu(_ sender: Any) {
     sortMenu.popUp(positioning: nil, at: NSPoint(x: menuButtonView.bounds.minX, y: menuButtonView.bounds.minY), in: self)
   }
-  
+
   var sortParam: String? {
     get {
       for item in menuItems {
@@ -187,10 +187,10 @@ class SortingView: NSView {
           return item.title
         }
       }
-      
+
       return nil
     }
-    
+
     set {
       for item in menuItems {
         if item.title == newValue {
@@ -202,7 +202,7 @@ class SortingView: NSView {
       }
     }
   }
-  
+
   @objc func performSort(_ sender: NSMenuItem) {
     for item in menuItems {
       if item == sender {
@@ -212,10 +212,10 @@ class SortingView: NSView {
         item.state = .off
       }
     }
-    
+
     delegate?.sorted(by: sortParam, direction: sortDirection)
   }
-  
+
   var sortDirection: SortDirection {
     get {
       for item in directionMenuItems {
@@ -223,10 +223,10 @@ class SortingView: NSView {
           return .Desc
         }
       }
-      
+
       return .Asc
     }
-    
+
     set {
       for item in directionMenuItems {
         if item.title == newValue.rawValue {
@@ -237,7 +237,7 @@ class SortingView: NSView {
       }
     }
   }
-  
+
   @objc func performSortDirection(_ sender: NSMenuItem) {
     for item in directionMenuItems {
       if item == sender {
@@ -246,7 +246,7 @@ class SortingView: NSView {
         item.state = .off
       }
     }
-    
+
     delegate?.sorted(by: sortParam, direction: sortDirection)
   }
 }

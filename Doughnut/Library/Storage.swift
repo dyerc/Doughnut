@@ -21,31 +21,31 @@ import Foundation
 class Storage {
   static func librarySize() -> String? {
     guard let libraryUrl = Preference.url(for: Preference.Key.libraryPath) else { return nil }
-    
+
     guard let size = Storage.folderSize(libraryUrl) else { return nil }
-    
+
     let byteFormatter = ByteCountFormatter()
     byteFormatter.allowedUnits = .useGB
     byteFormatter.countStyle = .file
     return byteFormatter.string(fromByteCount: size)
   }
-  
+
   static func podcastSize(_ podcast: Podcast) -> String? {
     guard let url = podcast.storagePath() else { return nil }
 
     guard let size = Storage.folderSize(url) else { return nil }
-    
+
     let byteFormatter = ByteCountFormatter()
     byteFormatter.allowedUnits = .useMB
     byteFormatter.countStyle = .file
-    
+
     if size > (1024 * 1024 * 1024) {
       byteFormatter.allowedUnits = .useGB
     }
-    
+
     return byteFormatter.string(fromByteCount: size)
   }
-  
+
   static func folderSize(_ url: URL) -> Int64? {
     var bool: ObjCBool = false
     if FileManager.default.fileExists(atPath: url.path, isDirectory: &bool) {
@@ -58,10 +58,10 @@ class Storage {
         }
         folderSize += fileSize
       })
-      
+
       return Int64(folderSize)
     }
-    
+
     return nil
   }
 }

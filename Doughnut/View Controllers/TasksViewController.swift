@@ -24,12 +24,12 @@ class TaskView: NSView, TaskProgressDelegate {
   let titleLabelView: NSTextField
   let progressView: NSProgressIndicator
   let informationLabelView: NSTextField
-  
+
   let task: Task
-  
+
   init(task: Task, frame frameRect: NSRect) {
     self.task = task
-    
+
     titleLabelView = NSTextField(frame: NSRect(x: 0, y: 38, width: frameRect.width, height: 17))
     titleLabelView.stringValue = task.name
     titleLabelView.isBezeled = false
@@ -37,14 +37,14 @@ class TaskView: NSView, TaskProgressDelegate {
     titleLabelView.isSelectable = false
     titleLabelView.font = NSFont.systemFont(ofSize: 12)
     titleLabelView.isEditable = false
-    
+
     progressView = NSProgressIndicator(frame: NSRect(x: 0, y: 18, width: frameRect.width, height: 20))
     progressView.minValue = 0
     progressView.maxValue = 0
     progressView.doubleValue = 0
     progressView.isIndeterminate = true
     progressView.style = .bar
-    
+
     informationLabelView = NSTextField(frame: NSRect(x: 0, y: 4, width: frameRect.width, height: 14))
     informationLabelView.stringValue = task.detailInformation ?? ""
     informationLabelView.isBezeled = false
@@ -53,27 +53,27 @@ class TaskView: NSView, TaskProgressDelegate {
     informationLabelView.font = NSFont.systemFont(ofSize: 10)
     informationLabelView.textColor = NSColor.gray
     informationLabelView.isEditable = false
-    
+
     super.init(frame: frameRect)
-    
+
     addSubview(titleLabelView)
     addSubview(progressView)
     addSubview(informationLabelView)
     progressView.startAnimation(self)
-    
+
     task.progressDelegate = self
   }
-  
+
   required convenience init?(coder decoder: NSCoder) {
     self.init(task: Task(name: ""), frame: NSRect())
   }
-  
+
   override var intrinsicContentSize: NSSize {
     get {
       return NSSize(width: bounds.size.width, height: TASK_VIEW_HEIGHT)
     }
   }
-  
+
   func progressed() {
     progressView.isIndeterminate = task.isIndeterminate
     progressView.doubleValue = task.progressValue
@@ -84,30 +84,30 @@ class TaskView: NSView, TaskProgressDelegate {
 
 class TasksViewController: NSViewController, TaskQueueViewDelegate {
   @IBOutlet weak var stackView: NSStackView!
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
     stackView.translatesAutoresizingMaskIntoConstraints = false
   }
-  
+
   func taskPushed(task: Task) {
     let view = TaskView(task: task, frame: NSRect(x: 0, y: 0, width: stackView.bounds.width, height: TASK_VIEW_HEIGHT))
     stackView.addView(view, in: .top)
   }
-  
+
   func taskFinished(task: Task) {
     let taskView = stackView.views.first { view -> Bool in
       return (view as! TaskView).task == task
     }
-    
+
     if let matchedView = taskView {
       stackView.removeView(matchedView)
       matchedView.removeFromSuperview()
     }
   }
-  
+
   func tasksRunning(_ running: Bool) {
-    
+
   }
 }

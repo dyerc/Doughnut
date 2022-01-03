@@ -16,9 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-import Cocoa
 import AVFoundation
+import Cocoa
 
 final class ShowPodcastWindowController: NSWindowController {
 
@@ -30,7 +29,7 @@ final class ShowPodcastWindowController: NSWindowController {
     window?.isMovableByWindowBackground = true
     window?.titleVisibility = .hidden
     window?.styleMask.insert([ .resizable ])
-    
+
     window?.standardWindowButton(.closeButton)?.isHidden = true
     window?.standardWindowButton(.miniaturizeButton)?.isHidden = true
     window?.standardWindowButton(.toolbarButton)?.isHidden = true
@@ -49,60 +48,59 @@ class ShowPodcastWindow: NSWindow {
 
 class ShowPodcastViewController: NSViewController {
   let defaultPodcastArtwork = NSImage(named: "PodcastPlaceholder")
-  
+
   @IBOutlet weak var artworkView: NSImageView!
   @IBOutlet weak var titleLabelView: NSTextField!
   @IBOutlet weak var authorLabelView: NSTextField!
   @IBOutlet weak var copyrightLabelView: NSTextField!
-  
+
   @IBOutlet weak var tabBarView: NSSegmentedControl!
   @IBOutlet weak var tabView: NSTabView!
-  
+
   // Details Tab
   @IBOutlet weak var titleInputView: NSTextField!
   @IBOutlet weak var authorInputView: NSTextField!
   @IBOutlet weak var linkInputView: NSTextField!
   @IBOutlet weak var copyrightInputView: NSTextField!
-  
+
   @IBAction func titleInputEvent(_ sender: NSTextField) {
     titleLabelView.stringValue = sender.stringValue
   }
-  
+
   @IBAction func authorInputEvent(_ sender: NSTextField) {
     authorLabelView.stringValue = sender.stringValue
   }
-  
+
   @IBAction func copyrightInputEvent(_ sender: NSTextField) {
     copyrightLabelView.stringValue = sender.stringValue
   }
-  
+
   // Artwork Tab
   var modifiedImage = false
   @IBOutlet weak var artworkLargeView: NSImageView!
-  
+
   // Description Tab
   var modifiedDescription = false
   @IBOutlet weak var descriptionInputView: NSTextField!
-  
+
   // Options Tab
   @IBOutlet weak var reloadInputView: NSPopUpButton!
   @IBOutlet weak var lastParsedLabelView: NSTextField!
   @IBOutlet weak var autoDownloadCheckView: NSButton!
   @IBOutlet weak var storageLabelView: NSTextField!
   @IBOutlet weak var capacityLabelView: NSTextField!
-  
-  
+
   override func viewDidLoad() {
     tabBarView.selectedSegment = 0
     tabView.selectTabViewItem(at: 0)
-    
+
     artworkView.wantsLayer = true
     artworkView.layer?.borderWidth = 1.0
     artworkView.layer?.borderColor = NSColor(calibratedWhite: 0.8, alpha: 1.0).cgColor
     artworkView.layer?.cornerRadius = 3.0
     artworkView.layer?.masksToBounds = true
   }
-  
+
   var podcast: Podcast? {
     didSet {
       if let artwork = podcast?.image {
@@ -110,43 +108,43 @@ class ShowPodcastViewController: NSViewController {
       } else {
         artworkView.image = defaultPodcastArtwork
       }
-      
+
       titleLabelView.stringValue = podcast?.title ?? ""
       authorLabelView.stringValue = podcast?.author ?? ""
       copyrightLabelView.stringValue = podcast?.copyright ?? ""
-      
+
       // Details View
       titleInputView.stringValue = podcast?.title ?? ""
       authorInputView.stringValue = podcast?.author ?? ""
       linkInputView.stringValue = podcast?.link ?? ""
       copyrightInputView.stringValue = podcast?.copyright ?? ""
-      
+
       // Artwork View
       if let artwork = podcast?.image {
         artworkLargeView.image = artwork
       } else {
         artworkLargeView.image = defaultPodcastArtwork
       }
-      
+
       // Description View
       descriptionInputView.stringValue = podcast?.description ?? ""
-      
+
       // Options View
       reloadInputView.selectItem(withTag: podcast?.reloadFrequency ?? 0)
       autoDownloadCheckView.state = (podcast?.autoDownload ?? false) ? .on : .off
-      
+
       let dateFormatter = DateFormatter()
       dateFormatter.dateStyle = .long
       dateFormatter.timeStyle = .short
-      
+
       if let lastParsed = podcast?.lastParsed {
         lastParsedLabelView.stringValue = dateFormatter.string(from: lastParsed)
       } else {
         lastParsedLabelView.stringValue = "Never"
       }
-      
+
       storageLabelView.stringValue = podcast?.storagePath()?.path ?? "Unknown"
-      
+
       if let podcast = podcast {
         if let capacity = Storage.podcastSize(podcast) {
           capacityLabelView.stringValue = capacity
@@ -156,45 +154,45 @@ class ShowPodcastViewController: NSViewController {
       }
     }
   }
-  
+
   @IBAction func switchTab(_ sender: NSSegmentedCell) {
     let clickedSegment = sender.selectedSegment
     tabView.selectTabViewItem(at: clickedSegment)
   }
-  
+
   @IBAction func cancel(_ sender: Any) {
     NSApp.stopModal(withCode: .cancel)
     view.window?.close()
   }
-  
+
   // Permeate UI input changes to podcat object
   func commitChanges(_ podcast: Podcast) {
     podcast.title = titleInputView.stringValue
     podcast.author = authorInputView.stringValue
     podcast.link = linkInputView.stringValue
     podcast.copyright = copyrightInputView.stringValue
-    
+
     if modifiedImage {
       podcast.image = artworkLargeView.image
     }
-    
+
     if modifiedDescription {
       podcast.description = descriptionInputView.stringValue
     }
-    
+
     podcast.reloadFrequency = reloadInputView.selectedTag()
-    
+
     if autoDownloadCheckView.state == .on {
       podcast.autoDownload = true
     } else {
       podcast.autoDownload = false
     }
   }
-  
+
   @IBAction func savePodcast(_ sender: Any) {
     if let podcast = podcast {
       commitChanges(podcast)
-      
+
       if validate() {
         Library.global.save(podcast: podcast)
         NSApp.stopModal(withCode: .OK)
@@ -204,7 +202,7 @@ class ShowPodcastViewController: NSViewController {
       // Create new podcast
       let podcast = Podcast(title: titleInputView.stringValue)
       commitChanges(podcast)
-      
+
       if validate() {
         Library.global.subscribe(podcast: podcast)
         NSApp.stopModal(withCode: .OK)
@@ -212,21 +210,21 @@ class ShowPodcastViewController: NSViewController {
       }
     }
   }
-  
+
   @IBAction func addArtwork(_ sender: Any) {
     let panel = NSOpenPanel()
     panel.canChooseFiles = true
     panel.canChooseDirectories = false
     panel.allowsMultipleSelection = false
-    
+
     panel.runModal()
-    
+
     if let url = panel.url {
       if url.pathExtension == "jpg" || url.pathExtension == "png" {
         artworkLargeView.image = NSImage(contentsOfFile: url.path)
       } else {
         let asset = AVAsset(url: url)
-        
+
         for item in asset.commonMetadata {
           if let key = item.commonKey, let value = item.value {
             if key.rawValue == "artwork" {
@@ -235,21 +233,21 @@ class ShowPodcastViewController: NSViewController {
           }
         }
       }
-      
+
       artworkView.image = artworkLargeView.image
       modifiedImage = true
     }
   }
-  
+
   func validate() -> Bool {
     guard let podcast = podcast else { return false }
-    
+
     if let invalid = podcast.invalid() {
       let alert = NSAlert()
       alert.messageText = "Unable to Save Podcast"
       alert.informativeText = invalid
       alert.runModal()
-      
+
       return false
     } else {
       return true

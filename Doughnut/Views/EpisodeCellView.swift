@@ -24,53 +24,53 @@ class EpisodeCellView: NSTableCellView {
   @IBOutlet weak var date: NSTextField!
   @IBOutlet weak var dateOriginConstraint: NSLayoutConstraint!
   @IBOutlet weak var duration: NSTextField!
-  
+
   let playedIndicatorSize: CGFloat = 10
-  
+
   var episode: Episode? {
     didSet {
       title.stringValue = episode?.title ?? ""
       summary.stringValue = episode?.plainDescription ?? ""
-      
+
       let dateFormatter = DateFormatter()
       dateFormatter.dateStyle = .short
       dateFormatter.timeStyle = .none
       date.stringValue = dateFormatter.string(from: episode?.pubDate ?? Date())
-      
+
       if (episode?.played ?? true) == false {
         dateOriginConstraint.constant = (12 + playedIndicatorSize + 6)
       } else {
         dateOriginConstraint.constant = 12
       }
-      
+
       if (episode?.duration ?? 0) > 0 {
         duration.stringValue = Utils.formatDuration((episode?.duration ?? 0) - (episode?.playPosition ?? 0))
       } else {
         duration.stringValue = ""
       }
-      
+
       // Needed in order for favourite, played marks etc to be updated
       needsDisplay = true
     }
   }
-  
+
   override func draw(_ dirtyRect: NSRect) {
     super.draw(dirtyRect)
-    
+
     guard let episode = episode else { return }
-    
+
     let selected = backgroundStyle == .dark
     let selectedBlue = NSColor(calibratedRed: 0.090, green: 0.433, blue: 0.937, alpha: 1.0)
     var selectedColor = selectedBlue
     if selected {
       selectedColor = NSColor.white
     }
-    
+
     if episode.favourite {
       NSColor.init(red: 1.0, green: 0.824, blue: 0.180, alpha: 1.0).setFill()
       __NSRectFill(NSRect(x: 0, y: -0, width: 3, height: self.bounds.height))
     }
-    
+
     if episode.downloaded {
       // Draw download corner triangle
       selectedColor.setFill()
@@ -81,7 +81,7 @@ class EpisodeCellView: NSTableCellView {
       downloadCorner.line(to: NSPoint(x: self.bounds.width - downloadCornerSize, y: self.bounds.height))
       downloadCorner.close()
       downloadCorner.fill()
-      
+
       // Draw download arrow
       if selected {
         selectedBlue.setFill()
@@ -105,14 +105,14 @@ class EpisodeCellView: NSTableCellView {
       downloadTriangle.close()
       downloadTriangle.fill()
     }
-    
+
     if !episode.played {
       let playedIndicatorRect = NSRect(x: 12, y: 7, width: playedIndicatorSize, height: playedIndicatorSize)
-      
+
       let playedBg = NSBezierPath(ovalIn: playedIndicatorRect)
       selectedColor.setStroke()
       playedBg.stroke()
-      
+
       if episode.playPosition > 0 && episode.duration > 0 {
         let playedSlice = NSBezierPath()
         let center = CGPoint(x: playedIndicatorRect.midX, y: playedIndicatorRect.midY)
@@ -122,7 +122,7 @@ class EpisodeCellView: NSTableCellView {
         playedSlice.line(to: CGPoint(x: center.x, y: playedIndicatorRect.maxY))
         playedSlice.appendArc(withCenter: center, radius: playedIndicatorRect.size.width / 2, startAngle: 90, endAngle: 90 - endAngle)
         playedSlice.close()
-        
+
         if backgroundStyle == .dark {
           selectedColor.setFill()
         } else {
@@ -134,10 +134,10 @@ class EpisodeCellView: NSTableCellView {
         playedBg.fill()
       }
     }
-    
+
     drawBottomBorder()
   }
-  
+
   override var backgroundStyle: NSView.BackgroundStyle {
     willSet {
       if newValue == .dark {
@@ -151,11 +151,11 @@ class EpisodeCellView: NSTableCellView {
         date.textColor = NSColor.secondaryLabelColor
         duration.textColor = NSColor.secondaryLabelColor
       }
-      
+
       needsDisplay = true
     }
   }
-  
+
   func drawBottomBorder() {
     NSColor.init(white: 0.9, alpha: 1.0).setStroke()
     let bottomBorder = NSBezierPath()
