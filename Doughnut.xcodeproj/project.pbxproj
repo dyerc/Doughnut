@@ -10,6 +10,8 @@
 		1D7B5D7B127AE8F635350D7F /* Pods_DoughnutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */; };
 		2AB07BF789841271ED80EA26 /* Pods_DoughnutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25D4796441E8F7922FCDAF9A /* Pods_DoughnutUITests.framework */; };
 		4125A143137AD05319B3DEFC /* Pods_Doughnut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */; };
+		6BF126D12780727100D840A4 /* EpisodeInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */; };
+		6BF126D32780742600D840A4 /* PodcastInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF126D22780742600D840A4 /* PodcastInfo.storyboard */; };
 		830A33C81FF042C900C13B1D /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
 		830A33C91FF042C900C13B1D /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341B83A1F7BEB0500B50A5D /* Migrations.swift */; };
 		830A33CA1FF042C900C13B1D /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83659AB71F7D8A0300E09833 /* Podcast.swift */; };
@@ -170,6 +172,8 @@
 		558EE5E875BAF91152803575 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.debug.xcconfig"; sourceTree = "<group>"; };
 		6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Release.entitlements"; sourceTree = "<group>"; };
+		6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EpisodeInfo.storyboard; sourceTree = "<group>"; };
+		6BF126D22780742600D840A4 /* PodcastInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PodcastInfo.storyboard; sourceTree = "<group>"; };
 		830A34021FF0447D00C13B1D /* PodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastUITests.swift; sourceTree = "<group>"; };
 		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
 		830E99BC1FF50DD000B728BE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -447,7 +451,9 @@
 			isa = PBXGroup;
 			children = (
 				839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */,
+				6BF126D22780742600D840A4 /* PodcastInfo.storyboard */,
 				839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */,
+				6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -630,9 +636,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				838257D21F759F6F00DB4FD1 /* Assets.xcassets in Resources */,
+				6BF126D12780727100D840A4 /* EpisodeInfo.storyboard in Resources */,
 				83235C0C2009481400BC356F /* dsa_pub.pem in Resources */,
 				838257D51F759F6F00DB4FD1 /* Main.storyboard in Resources */,
 				83235C0D2009502D00BC356F /* Preferences.storyboard in Resources */,
+				6BF126D32780742600D840A4 /* PodcastInfo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

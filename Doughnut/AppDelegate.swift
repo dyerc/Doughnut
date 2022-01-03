@@ -21,7 +21,17 @@ import MASPreferences
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+
   var mediaKeyTap: SPMediaKeyTap?
+
+  var mainWindowController: WindowController? {
+    guard let doughnutWindow = NSApp.windows.first(where: {
+      $0.windowController is WindowController
+    }) else {
+      return nil
+    }
+    return doughnutWindow.windowController as? WindowController
+  }
 
   lazy var preferencesWindowController: NSWindowController = {
     return MASPreferencesWindowController(viewControllers: [
@@ -58,13 +68,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
   
   func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-    if !flag {
-      for window in sender.windows {
-        window.makeKeyAndOrderFront(self)
-      }
-    }
-    
-    return true
+    mainWindowController?.showWindow(self)
+    return false
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {

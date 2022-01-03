@@ -35,18 +35,6 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
     }
   }
   
-  var episodeWindowController: NSWindowController {
-    get {
-      return self.storyboard!.instantiateController(withIdentifier: "EpisodeWindowController") as! NSWindowController
-    }
-  }
-  
-  var podcastWindowController: NSWindowController {
-    get {
-      return self.storyboard!.instantiateController(withIdentifier: "PodcastWindowController") as! NSWindowController
-    }
-  }
-  
   override func windowDidLoad() {
     super.windowDidLoad()
     window?.titleVisibility = .hidden
@@ -106,9 +94,12 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
   }
   
   @IBAction func newPodcast(_ sender: Any) {
-    let infoController = podcastWindowController.contentViewController as? ShowPodcastViewController
-    infoController?.podcast = nil
-    podcastWindowController.showWindow(self)
+    guard let podcastWindowController = ShowPodcastWindowController.instantiateFromMainStoryboard(),
+          let podcastWindow = podcastWindowController.window
+    else {
+      return
+    }
+    self.window?.beginSheet(podcastWindow, completionHandler: nil)
   }
   
   @IBAction func showDownloads(_ button: NSButton) {
