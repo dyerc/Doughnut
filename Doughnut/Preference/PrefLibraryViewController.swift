@@ -31,14 +31,18 @@ final class PrefLibraryViewController: NSViewController, MASPreferencesViewContr
 
   @objc var toolbarItemImage: NSImage? {
     get {
-      return NSImage(named: "PrefLibrary")!
+      if #available(macOS 11.0, *) {
+        return NSImage(systemSymbolName: "square.stack", accessibilityDescription: nil)!
+      } else {
+        return NSImage(named: "PrefIcon/Library")!
+      }
     }
   }
 
   @objc var toolbarItemLabel: String? {
     get {
       view.layoutSubtreeIfNeeded()
-      return "  Library  "
+      return "Library"
     }
   }
 
