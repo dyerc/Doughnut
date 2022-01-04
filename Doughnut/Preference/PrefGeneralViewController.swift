@@ -20,21 +20,22 @@ import Cocoa
 
 import MASPreferences
 
-class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
+final class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
+
   static func instantiate() -> PrefGeneralViewController {
     let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
     return storyboard.instantiateController(withIdentifier: "PrefGeneralViewController") as! PrefGeneralViewController
   }
 
-  var viewIdentifier: String = "PrefGeneralViewController"
+  @objc var viewIdentifier: String = "PrefGeneralViewController"
 
-  var toolbarItemImage: NSImage? {
+  @objc var toolbarItemImage: NSImage? {
     get {
       return NSImage(named: NSImage.preferencesGeneralName)!
     }
   }
 
-  var toolbarItemLabel: String? {
+  @objc var toolbarItemLabel: String? {
     get {
       view.layoutSubtreeIfNeeded()
       return " General "
@@ -45,6 +46,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     super.viewDidAppear()
   }
 
-  var hasResizableWidth: Bool = false
-  var hasResizableHeight: Bool = false
+  @objc var hasResizableWidth: Bool = false
+  @objc var hasResizableHeight: Bool = false
+
 }

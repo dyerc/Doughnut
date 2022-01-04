@@ -20,27 +20,29 @@ import Cocoa
 
 import MASPreferences
 
-class PrefPlaybackViewController: NSViewController, MASPreferencesViewController {
+final class PrefPlaybackViewController: NSViewController, MASPreferencesViewController {
+
   static func instantiate() -> PrefPlaybackViewController {
     let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
     return storyboard.instantiateController(withIdentifier: "PrefPlaybackViewController") as! PrefPlaybackViewController
   }
 
-  var viewIdentifier: String = "PrefPlaybackViewController"
+  @objc var viewIdentifier: String = "PrefPlaybackViewController"
 
-  var toolbarItemImage: NSImage? {
+  @objc var toolbarItemImage: NSImage? {
     get {
       return NSImage(named: "PrefPlayback")
     }
   }
 
-  var toolbarItemLabel: String? {
+  @objc var toolbarItemLabel: String? {
     get {
       view.layoutSubtreeIfNeeded()
       return " Playback "
     }
   }
 
-  var hasResizableWidth: Bool = false
-  var hasResizableHeight: Bool = false
+  @objc var hasResizableWidth: Bool = false
+  @objc var hasResizableHeight: Bool = false
+
 }
