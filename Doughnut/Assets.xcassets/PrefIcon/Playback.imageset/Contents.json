@@ -1,11 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "PrefPlayback.png",
       "idiom" : "universal",
-      "filename" : "pref_playback.png",
       "scale" : "1x"
     },
     {
+      "filename" : "PrefPlayback@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -15,7 +16,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

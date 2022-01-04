@@ -30,14 +30,18 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
   var toolbarItemImage: NSImage? {
     get {
-      return NSImage(named: NSImage.preferencesGeneralName)!
+      if #available(macOS 11.0, *) {
+        return NSImage(systemSymbolName: "gearshape", accessibilityDescription: nil)!
+      } else {
+        return NSImage(named: "PrefIcon/General")!
+      }
     }
   }
 
   var toolbarItemLabel: String? {
     get {
       view.layoutSubtreeIfNeeded()
-      return " General "
+      return "General"
     }
   }
 

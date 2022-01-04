@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       PrefGeneralViewController.instantiate(),
       PrefPlaybackViewController.instantiate(),
       PrefLibraryViewController.instantiate(),
-      ], title: NSLocalizedString("preference.title", comment: "Preference"))
+      ], title: nil)
   }()
 
   override init() {
