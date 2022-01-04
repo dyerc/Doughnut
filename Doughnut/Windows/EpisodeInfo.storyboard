@@ -9,7 +9,7 @@
         <!--Episode Window-->
         <scene sceneID="vrY-Bp-z0e">
             <objects>
-                <windowController storyboardIdentifier="EpisodeWindowController" id="hJl-9H-saa" userLabel="Episode Window" customClass="ShowEpisodeWindowController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController id="hJl-9H-saa" userLabel="Episode Window" customClass="ShowEpisodeWindowController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Episode" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="A1S-Q4-jMs" customClass="ShowEpisodeWindow" customModule="Doughnut" customModuleProvider="target">
                         <windowStyleMask key="styleMask" titled="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

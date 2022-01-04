@@ -20,21 +20,22 @@ import Cocoa
 
 import MASPreferences
 
-class PrefLibraryViewController: NSViewController {
+final class PrefLibraryViewController: NSViewController, MASPreferencesViewController {
+
   static func instantiate() -> PrefLibraryViewController {
     let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
     return storyboard.instantiateController(withIdentifier: "PrefLibraryViewController") as! PrefLibraryViewController
   }
 
-  var viewIdentifier: String = "PrefLibraryViewController"
+  @objc var viewIdentifier: String = "PrefLibraryViewController"
 
-  var toolbarItemImage: NSImage {
+  @objc var toolbarItemImage: NSImage? {
     get {
       return NSImage(named: "PrefLibrary")!
     }
   }
 
-  var toolbarItemLabel: String? {
+  @objc var toolbarItemLabel: String? {
     get {
       view.layoutSubtreeIfNeeded()
       return "  Library  "
@@ -47,8 +48,8 @@ class PrefLibraryViewController: NSViewController {
     calculateLibrarySize()
   }
 
-  var hasResizableWidth: Bool = false
-  var hasResizableHeight: Bool = false
+  @objc var hasResizableWidth: Bool = false
+  @objc var hasResizableHeight: Bool = false
 
   @IBOutlet weak var librarySizeTxt: NSTextField!
 
@@ -82,4 +83,5 @@ class PrefLibraryViewController: NSViewController {
   @IBAction func revealLibraryFinder(_ sender: Any) {
     NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: Preference.url(for: Preference.Key.libraryPath)?.path ?? "~")
   }
+
 }
