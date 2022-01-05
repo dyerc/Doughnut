@@ -193,7 +193,7 @@ class ShowPodcastViewController: NSViewController {
     if let podcast = podcast {
       commitChanges(podcast)
 
-      if validate() {
+      if Self.validate(forPodcast: podcast) {
         Library.global.save(podcast: podcast)
         NSApp.stopModal(withCode: .OK)
         view.window?.close()
@@ -203,7 +203,7 @@ class ShowPodcastViewController: NSViewController {
       let podcast = Podcast(title: titleInputView.stringValue)
       commitChanges(podcast)
 
-      if validate() {
+      if Self.validate(forPodcast: podcast) {
         Library.global.subscribe(podcast: podcast)
         NSApp.stopModal(withCode: .OK)
         view.window?.close()
@@ -239,9 +239,7 @@ class ShowPodcastViewController: NSViewController {
     }
   }
 
-  func validate() -> Bool {
-    guard let podcast = podcast else { return false }
-
+  static func validate(forPodcast podcast: Podcast) -> Bool {
     if let invalid = podcast.invalid() {
       let alert = NSAlert()
       alert.messageText = "Unable to Save Podcast"
@@ -253,4 +251,5 @@ class ShowPodcastViewController: NSViewController {
       return true
     }
   }
+
 }
