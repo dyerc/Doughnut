@@ -25,14 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   var mediaKeyTap: SPMediaKeyTap?
 
-  var mainWindowController: WindowController? {
-    guard let doughnutWindow = NSApp.windows.first(where: {
-      $0.windowController is WindowController
-    }) else {
-      return nil
-    }
-    return doughnutWindow.windowController as? WindowController
-  }
+  var mainWindowController: WindowController?
 
   lazy var preferencesWindowController: NSWindowController = {
     return MASPreferencesWindowController(viewControllers: [
@@ -66,6 +59,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     if !connected {
       abort()
     }
+
+    createAndShowMainWindow()
   }
 
   func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
@@ -84,6 +79,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     default:
       return
     }
+  }
+
+  private func createAndShowMainWindow() {
+    if mainWindowController == nil {
+      mainWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateInitialController()
+    }
+    mainWindowController?.showWindow(self)
   }
 
   func setupMediaKeyTap() {

@@ -30,7 +30,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 Chris Dyer. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
-	<string>Main</string>
+	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>DoughnutApp</string>
 	<key>SUFeedURL</key>
