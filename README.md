@@ -29,7 +29,7 @@ Previously Doughnut was built on top of Electron which worked ok, but using 200+
 
 ### Local Environments
 
-* Xcode 12.2+, latest stable release is recommanded, but not required.
+* Xcode 12.2+, latest stable release is recommended, but not required.
 
 * Install [SwiftLint](https://github.com/realm/SwiftLint).
 
