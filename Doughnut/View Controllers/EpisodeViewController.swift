@@ -211,33 +211,33 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     return true
   }
 
-  func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-    if tableView.clickedRow < 0 {
-        return false
+  @objc func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    guard tableView.clickedRow != -1, tableView.clickedRow < episodes.count else {
+      return false
     }
 
     let episode = episodes[tableView.clickedRow]
 
-    switch menuItem.title {
-    case "Play Now":
+    switch menuItem.action {
+    case #selector(playNow(_:)):
       return true
-    case "Mark as Played":
+    case #selector(markAsPlayed(_:)):
       return !episode.played
-    case "Mark as Unplayed":
+    case #selector(markAsUnplayed(_:)):
       return episode.played
-    case "Mark as Favourite":
+    case #selector(markAsFavourite(_:)):
       return !episode.favourite
-    case "Unmark Favourite":
+    case #selector(unmarkAsFavourite(_:)):
       return episode.favourite
-    case "Delete Episode":
+    case #selector(deleteEpisode(_:)):
       return true
-    case "Download":
+    case #selector(download(_:)):
       return episode.enclosureUrl != nil && !episode.downloaded
-    case "Move to Trash":
+    case #selector(moveToTrash(_:)):
       return episode.downloaded
-    case "Show Episode":
+    case #selector(showEpisode(_:)):
       return true
-    case "Show in Finder":
+    case #selector(showInFinder(_:)):
       return episode.downloaded
     default:
       return false
