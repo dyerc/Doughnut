@@ -350,7 +350,7 @@ class Library: NSObject {
     }
 
     // Reload podcasts on the default schedule
-    if (minutesSinceLastScheduledReload >= reloadFrequency) {
+    if (reloadFrequency != -1 && minutesSinceLastScheduledReload >= reloadFrequency) {
       for podcast in podcasts {
         if podcast.defaultReload {
           reload(podcast: podcast, onQueue: backgroundQueue)

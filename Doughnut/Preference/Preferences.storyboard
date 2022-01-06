@@ -134,7 +134,7 @@
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem isSeparatorItem="YES" id="vtl-Rc-0YD"/>
-                                            <menuItem title="Manually" id="9Hr-fP-57g">
+                                            <menuItem title="Manually" tag="-1" id="9Hr-fP-57g">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                         </items>
