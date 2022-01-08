@@ -329,6 +329,9 @@
                                         </menuItem>
                                         <menuItem title="Reload" keyEquivalent="r" id="6GL-kM-gC5">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="reloadPodcast:" target="Ady-hI-5gd" id="G9N-aZ-Xec"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="mGw-AR-fTX"/>
                                         <menuItem title="Play Now" keyEquivalent="p" id="Uoq-Ng-H9L">
