@@ -326,6 +326,9 @@
                                     <items>
                                         <menuItem title="Rename" id="Pr3-Z8-FZ1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="rename:" target="Ady-hI-5gd" id="Ahp-Mo-eVa"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Reload" keyEquivalent="r" id="6GL-kM-gC5">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
@@ -366,6 +369,9 @@
                                         </menuItem>
                                         <menuItem title="Delete All Played" id="Jry-P3-Eq0">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="deleteAllPlayed:" target="Ady-hI-5gd" id="O6A-7A-elP"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="8dx-2Z-yrg"/>
                                         <menuItem title="Download" keyEquivalent="l" id="Wn0-fi-sPT">
