@@ -212,35 +212,60 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
 
   @objc func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-    guard tableView.clickedRow != -1, tableView.clickedRow < episodes.count else {
-      return false
-    }
+    let menuType = menuItem.menuType
+    let allowHidingMenuItem = menuType != .main
 
-    let episode = episodes[tableView.clickedRow]
+    let episodes = activeEpisodesForAction()
 
     switch menuItem.action {
     case #selector(playNow(_:)):
-      return true
-    case #selector(markAsPlayed(_:)):
-      return !episode.played
-    case #selector(markAsUnplayed(_:)):
-      return episode.played
-    case #selector(markAsFavourite(_:)):
-      return !episode.favourite
-    case #selector(unmarkAsFavourite(_:)):
-      return episode.favourite
-    case #selector(deleteEpisode(_:)):
-      return true
-    case #selector(download(_:)):
-      return episode.enclosureUrl != nil && !episode.downloaded
-    case #selector(moveToTrash(_:)):
-      return episode.downloaded
+      return episodes.count == 1
     case #selector(showEpisode(_:)):
-      return true
+      return episodes.count == 1
+    case #selector(togglePlayed(_:)):
+      let playedCount = episodes.filter({ $0.played }).count
+      let allPlayed = playedCount == episodes.count
+      let allUnplayed = playedCount == 0
+
+      menuItem.title = (!allPlayed || episodes.isEmpty) ? "Mark as Played" : "Mark as Unplayed"
+      menuItem.state = (!allPlayed && !allUnplayed) ? .mixed : .off
+
+      return !episodes.isEmpty
+    case #selector(toggleFavourite(_:)):
+      let markedAsFavouritecount = episodes.filter({ $0.favourite }).count
+      let allMarkedAsFavourite = markedAsFavouritecount == episodes.count
+      let allMarkedAsUnFavourite = markedAsFavouritecount == 0
+
+      menuItem.title = (!allMarkedAsFavourite || episodes.isEmpty) ? "Mark as Favourite" : "Unmark Favourite"
+      menuItem.state = (!allMarkedAsFavourite && !allMarkedAsUnFavourite) ? .mixed : .off
+
+      return !episodes.isEmpty
+    case #selector(downloadEpisode(_:)):
+      menuItem.isHidden = allowHidingMenuItem && episodes.count != 1
+      if episodes.count == 1 {
+        let episode = episodes.first!
+        return episode.enclosureUrl != nil && !episode.downloaded
+      } else {
+        return false
+      }
+    case #selector(moveToTrash(_:)):
+      menuItem.isHidden = allowHidingMenuItem && episodes.count != 1
+      return episodes.count == 1 && episodes.first!.downloaded
     case #selector(showInFinder(_:)):
-      return episode.downloaded
+      menuItem.isHidden = allowHidingMenuItem && episodes.count != 1
+      return episodes.count == 1 && episodes.first!.downloaded
+    case #selector(deleteEpisode(_:)):
+      menuItem.isHidden = allowHidingMenuItem && episodes.count != 1
+      return episodes.count == 1
     default:
+      assert(false, "Unhandled menu item in \(#function)")
       return false
+    }
+  }
+
+  private func activeEpisodesForAction() -> [Episode] {
+    return tableView.activeRowIndices.compactMap { rowIndex in
+      return rowIndex < episodes.count ? episodes[rowIndex] : nil
     }
   }
 
@@ -254,56 +279,77 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     reloadEpisodes()
   }
 
+  // MARK: - Actions
+
   @IBAction func episodeDoubleClicked(_ sender: Any) {
+    guard tableView.clickedRow != -1, tableView.clickedRow < episodes.count else {
+      return
+    }
+
     let episode = episodes[tableView.clickedRow]
     Player.global.play(episode: episode)
   }
 
-  @IBAction func playNow(_ sender: Any) {
-    let episode = episodes[tableView.clickedRow]
+  @IBAction @objc func playNow(_ sender: Any) {
+    let episodes = activeEpisodesForAction()
+    assert(episodes.count == 1)
+    guard let episode = episodes.first else { return }
+
     Player.global.play(episode: episode)
   }
 
-  @IBAction func markAsPlayed(_ sender: Any) {
-    let episode = episodes[tableView.clickedRow]
-    episode.played = true
-    Library.global.save(episode: episode)
+  @IBAction func togglePlayed(_ sender: Any) {
+    let episodes = activeEpisodesForAction()
+    let playedCount = episodes.filter({ $0.played }).count
+    let allPlayed = playedCount == episodes.count
+
+    let shouldMarkPlayed = !allPlayed
+
+    for episode in episodes {
+      episode.played = shouldMarkPlayed
+      Library.global.save(episode: episode)
+    }
   }
 
-  @IBAction func markAsUnplayed(_ sender: Any) {
-    let episode = episodes[tableView.clickedRow]
-    episode.played = false
-    Library.global.save(episode: episode)
+  @IBAction func toggleFavourite(_ sender: Any) {
+    let episodes = activeEpisodesForAction()
+    let favouriteCount = episodes.filter({ $0.favourite }).count
+    let allMarkedAsFavourite = favouriteCount == episodes.count
+
+    let shouldMarkAsFavourite = !allMarkedAsFavourite
+
+    for episode in activeEpisodesForAction() {
+      episode.favourite = shouldMarkAsFavourite
+      Library.global.save(episode: episode)
+    }
   }
 
-  @IBAction func markAsFavourite(_ sender: Any) {
-    let episode = episodes[tableView.clickedRow]
-    episode.favourite = true
-    Library.global.save(episode: episode)
-  }
+  @IBAction func downloadEpisode(_ sender: Any) {
+    let episodes = activeEpisodesForAction()
+    assert(episodes.count == 1)
+    guard let episode = episodes.first else { return }
 
-  @IBAction func unmarkAsFavourite(_ sender: Any) {
-    let episode = episodes[tableView.clickedRow]
-    episode.favourite = false
-    Library.global.save(episode: episode)
-  }
-
-  @IBAction func download(_ sender: Any) {
-    let episode = episodes[tableView.clickedRow]
     // Library.global.downloadManager.queueDownload(episode: episode)
     episode.download()
   }
 
   @IBAction func moveToTrash(_ sender: Any) {
-    let episode = episodes[tableView.clickedRow]
+    let episodes = activeEpisodesForAction()
+    assert(episodes.count == 1)
+    guard let episode = episodes.first else { return }
+
     episode.downloaded = false
     episode.fileName = nil
     Library.global.save(episode: episode)
   }
 
   @IBAction func deleteEpisode(_ sender: Any) {
-    let episode = episodes[tableView.clickedRow]
-    guard let podcast = episode.podcast else { return }
+    let episodes = activeEpisodesForAction()
+    assert(episodes.count == 1)
+
+    guard let episode = episodes.first, let podcast = episode.podcast else {
+      return
+    }
 
     var moveToTrash = false
     if episode.downloaded {
@@ -329,20 +375,29 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
 
   @IBAction func showEpisode(_ sender: Any) {
+    let episodes = activeEpisodesForAction()
+    assert(episodes.count == 1)
+    guard let episode = episodes.first else { return }
+
     guard let episodeWindowController = ShowEpisodeWindowController.instantiateFromMainStoryboard(),
           let episodeViewController = episodeWindowController.contentViewController as? ShowEpisodeViewController,
           let episodeWindow = episodeWindowController.window
     else {
       return
     }
-    episodeViewController.episode = episodes[tableView.clickedRow]
+    episodeViewController.episode = episode
     NSApp.runModal(for: episodeWindow)
   }
 
   @IBAction func showInFinder(_ sender: Any) {
-    let episode = episodes[tableView.clickedRow]
-    guard let podcast = episode.podcast else { return }
+    let episodes = activeEpisodesForAction()
+    assert(episodes.count == 1)
+
+    guard let episode = episodes.first, let podcast = episode.podcast else {
+      return
+    }
 
     NSWorkspace.shared.selectFile(episode.url()?.path, inFileViewerRootedAtPath: podcast.path)
   }
+
 }
