@@ -21,7 +21,6 @@ import Cocoa
 class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegate, DownloadManagerDelegate {
   @IBOutlet var allToggle: NSButton!
   @IBOutlet var newToggle: NSButton!
-  @IBOutlet var playerView: NSToolbarItem!
   @IBOutlet weak var downloadsButton: NSToolbarItem!
   @IBOutlet weak var searchInputView: NSTextField!
 
@@ -143,13 +142,13 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
   }
 
   func windowDidResignKey(_ notification: Notification) {
-    if let player = playerView.view as? PlayerView {
+    if let player = viewController?.playerViewController.playerView {
       player.needsDisplay = true
     }
   }
 
   func windowDidBecomeKey(_ notification: Notification) {
-    if let player = playerView.view as? PlayerView {
+    if let player = viewController?.playerViewController.playerView {
       player.needsDisplay = true
     }
   }

@@ -23,7 +23,12 @@ enum GlobalFilter {
   case New
 }
 
-class ViewController: NSSplitViewController, LibraryDelegate {
+final class ViewController: NSSplitViewController, LibraryDelegate {
+
+  struct Constants {
+    static let playerViewHeight: CGFloat = 38
+  }
+
   enum Events: String {
     case PodcastSelected
 
@@ -31,6 +36,8 @@ class ViewController: NSSplitViewController, LibraryDelegate {
       return Notification.Name(rawValue: self.rawValue)
     }
   }
+
+  @IBOutlet var playerViewController: PlayerViewController!
 
   var globalFilter: GlobalFilter = .All
 
@@ -61,6 +68,55 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     splitView.autosaveName = "Main"
 
     Library.global.delegate = self
+
+    setupPlayerView()
+  }
+
+  private func setupPlayerView() {
+    view.addSubview(playerViewController.view)
+    playerViewController.view.translatesAutoresizingMaskIntoConstraints = false
+
+    let secondColumnController = splitViewItems[1].viewController
+    let thirdColumnController = splitViewItems[2].viewController
+
+    view.addConstraints([
+      NSLayoutConstraint(
+        item: playerViewController.view,
+        attribute: .bottom,
+        relatedBy: .equal,
+        toItem: view,
+        attribute: .bottom,
+        multiplier: 1,
+        constant: 0
+      ),
+      NSLayoutConstraint(
+        item: playerViewController.view,
+        attribute: .leading,
+        relatedBy: .equal,
+        toItem: secondColumnController.view,
+        attribute: .leading,
+        multiplier: 1,
+        constant: 0
+      ),
+      NSLayoutConstraint(
+        item: playerViewController.view,
+        attribute: .trailing,
+        relatedBy: .equal,
+        toItem: thirdColumnController.view,
+        attribute: .trailing,
+        multiplier: 1,
+        constant: 0
+      ),
+      NSLayoutConstraint(
+        item: playerViewController.view,
+        attribute: .height,
+        relatedBy: .equal,
+        toItem: nil,
+        attribute: .notAnAttribute,
+        multiplier: 1,
+        constant: Constants.playerViewHeight
+      ),
+    ])
   }
 
   deinit {

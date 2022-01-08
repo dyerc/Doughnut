@@ -13,6 +13,7 @@
 		6B0605C52788627D00A8A91E /* NSMenu+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */; };
 		6B94DF4C278968F500BCB149 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */; };
 		6BB5771E278602B400DFF99F /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BB5771C278602B400DFF99F /* MainMenu.storyboard */; };
+		6BD0F42F27872EDB0008F881 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD0F42E27872EDB0008F881 /* PlayerViewController.swift */; };
 		6BF126D12780727100D840A4 /* EpisodeInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */; };
 		6BF126D32780742600D840A4 /* PodcastInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF126D22780742600D840A4 /* PodcastInfo.storyboard */; };
 		830A33C81FF042C900C13B1D /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
@@ -179,6 +180,7 @@
 		6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Release.entitlements"; sourceTree = "<group>"; };
 		6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
 		6BB5771D278602B400DFF99F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainMenu.storyboard; sourceTree = "<group>"; };
+		6BD0F42E27872EDB0008F881 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EpisodeInfo.storyboard; sourceTree = "<group>"; };
 		6BF126D22780742600D840A4 /* PodcastInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PodcastInfo.storyboard; sourceTree = "<group>"; };
 		830A34021FF0447D00C13B1D /* PodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastUITests.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				834342691F802C1400913C0B /* EpisodeFilterViewController.swift */,
 				837D52BD1F8E622200C17514 /* TasksViewController.swift */,
 				83DB16E01F93FB460062B266 /* SubscribeViewController.swift */,
+				6BD0F42E27872EDB0008F881 /* PlayerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -841,6 +844,7 @@
 				83A0D4831FFC2FA400A376FD /* TaskQueue.swift in Sources */,
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
 				83D9710C1F812E910091822A /* PlayerView.swift in Sources */,
+				6BD0F42F27872EDB0008F881 /* PlayerViewController.swift in Sources */,
 				83235C042009473200BC356F /* PrefLibraryViewController.swift in Sources */,
 				6B0605C52788627D00A8A91E /* NSMenu+Extensions.swift in Sources */,
 				839DBDA41FEEE658007610EF /* ShowPodcastWindow.swift in Sources */,

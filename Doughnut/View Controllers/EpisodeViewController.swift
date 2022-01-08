@@ -82,6 +82,15 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     sortView.sortDirection = sortDirection
     sortView.delegate = self
 
+    let scrollView = tableView.enclosingScrollView!
+    scrollView.automaticallyAdjustsContentInsets = false
+    scrollView.contentInsets = NSEdgeInsets(
+      top: 0,
+      left: 0,
+      bottom: ViewController.Constants.playerViewHeight,
+      right: 0
+    )
+
     tableView.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
   }
 
@@ -209,6 +218,12 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
 
     return true
+  }
+
+  func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+    // Implement -[NSTableViewDelegate tableView:heightOfRow:] to fix an issue
+    // that the bottom inset of NSTableView disappears on macOS Monterey.
+    return tableView.rowHeight
   }
 
   @objc func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {

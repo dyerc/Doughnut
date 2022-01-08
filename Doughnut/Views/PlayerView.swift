@@ -130,60 +130,6 @@ class PlayerView: NSView, PlayerDelegate {
     addSubview(playedRemainingLbl)
  }
 
-  override func draw(_ dirtyRect: NSRect) {
-    let darkMode = DoughnutApp.darkMode()
-
-    if self.window?.isMainWindow ?? false {
-      var bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.945, green: 0.945, blue: 0.945, alpha: 1.0), ending: NSColor(calibratedRed: 0.894, green: 0.894, blue: 0.894, alpha: 1.0))
-
-      NSColor(calibratedRed: 0.784, green: 0.784, blue: 0.784, alpha: 1.0).setStroke()
-
-      if darkMode {
-        bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.170, green: 0.162, blue: 0.158, alpha: 1.00), ending: NSColor(calibratedRed: 0.220, green: 0.212, blue: 0.208, alpha: 1.00))
-
-        NSColor(calibratedRed: 0.180, green: 0.161, blue: 0.161, alpha: 1.0).setStroke()
-      }
-
-      bgGradient?.draw(in: self.bounds, angle: 270)
-
-    } else {
-      var bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.980, green: 0.980, blue: 0.980, alpha: 1.0), ending: NSColor(calibratedRed: 0.980, green: 0.980, blue: 0.980, alpha: 1.0))
-
-      NSColor(calibratedRed: 0.902, green: 0.902, blue: 0.902, alpha: 1.0).setStroke()
-
-      if darkMode {
-        bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.170, green: 0.162, blue: 0.158, alpha: 1.00), ending: NSColor(calibratedRed: 0.220, green: 0.212, blue: 0.208, alpha: 1.00))
-
-        NSColor(calibratedRed: 0.180, green: 0.161, blue: 0.161, alpha: 1.0).setStroke()
-      }
-
-      bgGradient?.draw(in: self.bounds, angle: 270)
-    }
-
-    let leftBorder = NSBezierPath()
-    leftBorder.move(to: NSPoint(x: 0.5, y: 0))
-    leftBorder.line(to: NSPoint(x: 0.5, y: self.bounds.size.height))
-    leftBorder.stroke()
-
-    let rightBorder = NSBezierPath()
-    rightBorder.move(to: NSPoint(x: self.bounds.size.width - 0.5, y: 0))
-    rightBorder.line(to: NSPoint(x: self.bounds.size.width - 0.5, y: self.bounds.size.height))
-    rightBorder.stroke()
-
-    // Draw a solid black line at the bottom to match macOS's dark mode style
-    if darkMode {
-      NSColor.black.setStroke()
-
-      let bottomBorder = NSBezierPath()
-      bottomBorder.move(to: NSPoint(x: 0.5, y: 0))
-      bottomBorder.line(to: NSPoint(x: self.bounds.size.width - 0.5, y: 0))
-      bottomBorder.lineWidth = 1.5
-      bottomBorder.stroke()
-    }
-
-    super.draw(dirtyRect)
-  }
-
   func formatTime(total: Int) -> String {
     let hrs = Int(floor(Double(total / 3600)))
     let mins = Int(floor(Double((total % 3600) / 60)))

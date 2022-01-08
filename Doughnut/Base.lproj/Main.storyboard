@@ -229,15 +229,6 @@ Gw
                                         <action selector="toggleNewEpisodes:" target="B8D-0N-5wS" id="AqT-s0-Y6z"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" label="Custom View" paletteLabel="Player View" tag="-1" id="Psv-5X-LNl">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="465" height="38"/>
-                                    <size key="maxSize" width="465" height="41"/>
-                                    <customView key="view" id="qY3-fM-qgT" customClass="PlayerView" customModule="Doughnut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="465" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </customView>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="9A64A10D-F674-4BDB-B75D-5D7AEF001779" label="" paletteLabel="Download Queue Button" image="DownloadsIcon" id="3ZS-BL-qK1">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="28" height="25"/>
@@ -292,8 +283,6 @@ Gw
                                 <toolbarItem reference="6L2-aH-OKv"/>
                                 <toolbarItem reference="xhE-FB-d65"/>
                                 <toolbarItem reference="cKK-pR-jXd"/>
-                                <toolbarItem reference="Psv-5X-LNl"/>
-                                <toolbarItem reference="cKK-pR-jXd"/>
                                 <toolbarItem reference="zd4-bJ-Dkk"/>
                                 <toolbarItem reference="9qL-Cl-fVy"/>
                             </defaultToolbarItems>
@@ -306,7 +295,6 @@ Gw
                         <outlet property="allToggle" destination="0x1-F9-vTA" id="5Ik-2C-flf"/>
                         <outlet property="downloadsButton" destination="3ZS-BL-qK1" id="Dx5-9Y-qk9"/>
                         <outlet property="newToggle" destination="lAe-YH-TAR" id="0xd-Ho-EFT"/>
-                        <outlet property="playerView" destination="Psv-5X-LNl" id="WFu-8c-S1d"/>
                         <outlet property="searchInputView" destination="Q3N-wA-1B1" id="JgQ-vM-uE4"/>
                         <segue destination="zrU-nU-rD6" kind="relationship" relationship="window.shadowedContentViewController" id="KFV-RY-whX"/>
                     </connections>
@@ -332,6 +320,7 @@ Gw
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="playerViewController" destination="UKb-Ik-lcF" id="7Pf-4A-npC"/>
                         <outlet property="splitView" destination="ucZ-EJ-Szj" id="vKW-Rh-xTc"/>
                         <segue destination="hBf-lZ-L6q" kind="relationship" relationship="splitItems" id="0dw-28-qmw"/>
                         <segue destination="GEj-8A-BQz" kind="relationship" relationship="splitItems" id="mSO-oJ-Inb"/>
@@ -339,6 +328,45 @@ Gw
                     </connections>
                 </splitViewController>
                 <customObject id="aEf-6q-K2I" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customView id="J7h-Vy-J1l">
+                    <rect key="frame" x="0.0" y="0.0" width="465" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="hXb-MT-AcX">
+                            <rect key="frame" x="0.0" y="0.0" width="465" height="38"/>
+                        </visualEffectView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="78j-yn-uqz" customClass="PlayerView" customModule="Doughnut" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="465" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="38" id="DSx-Wi-TuU"/>
+                                <constraint firstAttribute="width" constant="465" id="gJz-hR-Ryq"/>
+                            </constraints>
+                        </customView>
+                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="NKm-ft-W3Y">
+                            <rect key="frame" x="0.0" y="35" width="465" height="5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="aHe-jm-15F"/>
+                            </constraints>
+                        </box>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="NKm-ft-W3Y" secondAttribute="trailing" id="2TT-hL-Na4"/>
+                        <constraint firstItem="78j-yn-uqz" firstAttribute="centerX" secondItem="J7h-Vy-J1l" secondAttribute="centerX" id="4aO-Wz-HaR"/>
+                        <constraint firstAttribute="trailing" secondItem="hXb-MT-AcX" secondAttribute="trailing" id="BBc-TI-pQE"/>
+                        <constraint firstItem="hXb-MT-AcX" firstAttribute="top" secondItem="J7h-Vy-J1l" secondAttribute="top" id="OLv-fj-Noa"/>
+                        <constraint firstItem="78j-yn-uqz" firstAttribute="centerY" secondItem="J7h-Vy-J1l" secondAttribute="centerY" id="Pdo-kB-Q5c"/>
+                        <constraint firstItem="NKm-ft-W3Y" firstAttribute="leading" secondItem="J7h-Vy-J1l" secondAttribute="leading" id="X48-mh-OHI"/>
+                        <constraint firstItem="NKm-ft-W3Y" firstAttribute="top" secondItem="J7h-Vy-J1l" secondAttribute="top" id="hPo-Iz-LW0"/>
+                        <constraint firstAttribute="bottom" secondItem="hXb-MT-AcX" secondAttribute="bottom" id="qIv-XQ-nWQ"/>
+                        <constraint firstItem="hXb-MT-AcX" firstAttribute="leading" secondItem="J7h-Vy-J1l" secondAttribute="leading" id="vQg-8L-uQw"/>
+                    </constraints>
+                </customView>
+                <customObject id="UKb-Ik-lcF" customClass="PlayerViewController" customModule="Doughnut" customModuleProvider="target">
+                    <connections>
+                        <outlet property="playerView" destination="78j-yn-uqz" id="i4E-Om-KC1"/>
+                        <outlet property="view" destination="J7h-Vy-J1l" id="bEp-bC-Fuv"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-102.5" y="707"/>
         </scene>
