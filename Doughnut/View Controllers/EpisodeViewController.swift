@@ -220,6 +220,8 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     switch menuItem.action {
     case #selector(playNow(_:)):
       return episodes.count == 1
+    case #selector(getInfo(_:)):
+      fallthrough
     case #selector(showEpisode(_:)):
       return episodes.count == 1
     case #selector(togglePlayed(_:)):
@@ -254,6 +256,8 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     case #selector(showInFinder(_:)):
       menuItem.isHidden = allowHidingMenuItem && episodes.count != 1
       return episodes.count == 1 && episodes.first!.downloaded
+    case #selector(delete(_:)):
+      fallthrough
     case #selector(deleteEpisode(_:)):
       menuItem.isHidden = allowHidingMenuItem && episodes.count != 1
       return episodes.count == 1
@@ -343,6 +347,10 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     Library.global.save(episode: episode)
   }
 
+  @IBAction func delete(_ sender: Any) {
+    deleteEpisode(sender)
+  }
+
   @IBAction func deleteEpisode(_ sender: Any) {
     let episodes = activeEpisodesForAction()
     assert(episodes.count == 1)
@@ -372,6 +380,10 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     } else {
       podcast.deleteEpisode(episode: episode)
     }
+  }
+
+  @IBAction func getInfo(_ sender: Any) {
+    showEpisode(sender)
   }
 
   @IBAction func showEpisode(_ sender: Any) {

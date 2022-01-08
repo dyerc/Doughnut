@@ -179,6 +179,10 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     Library.global.reload(podcast: podcast)
   }
 
+  @IBAction func getInfo(_ sender: Any) {
+    podcastInfo(sender)
+  }
+
   @IBAction func podcastInfo(_ sender: Any) {
     let podcasts = activePodcastsForAction()
     assert(podcasts.count == 1)
@@ -238,6 +242,10 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     NSPasteboard.general.setString(feed, forType: .string)
   }
 
+  @IBAction func delete(_ sender: Any) {
+    unsubscribe(sender)
+  }
+
   @IBAction func unsubscribe(_ sender: Any) {
     let podcasts = activePodcastsForAction()
     assert(podcasts.count == 1)
@@ -268,6 +276,8 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     switch menuItem.action {
     case #selector(reloadPodcast(_:)):
       return podcasts.count == 1
+    case #selector(getInfo(_:)):
+      fallthrough
     case #selector(podcastInfo(_:)):
       return podcasts.count == 1
     case #selector(markAllAsPlayed(_:)):
@@ -276,6 +286,8 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       return !podcasts.isEmpty
     case #selector(copyPodcastURL(_:)):
       return podcasts.count == 1
+    case #selector(delete(_:)):
+      fallthrough
     case #selector(unsubscribe(_:)):
       return podcasts.count == 1
     case #selector(refreshAll(_:)):
