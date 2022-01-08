@@ -506,13 +506,13 @@ Gw
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="NIm-sA-E4i"/>
-                        <menuItem title="Mark all as Played" id="NOB-qZ-qu3">
+                        <menuItem title="Mark All as Played" id="NOB-qZ-qu3">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="markAllAsPlayed:" target="hBf-lZ-L6q" id="dML-ns-6PJ"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="Mark all as Unplayed" id="odr-TI-b44">
+                        <menuItem title="Mark All as Unplayed" id="odr-TI-b44">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="markAllAsUnplayed:" target="hBf-lZ-L6q" id="lWi-VW-cM5"/>
@@ -711,31 +711,20 @@ Gw
                         <menuItem title="Mark as Played" id="sAj-NI-EpU">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="markAsPlayed:" target="GEj-8A-BQz" id="rCh-vf-blD"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Mark as Unplayed" id="NdV-Fl-a2L">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="markAsUnplayed:" target="GEj-8A-BQz" id="eaz-Bw-pwF"/>
+                                <action selector="togglePlayed:" target="GEj-8A-BQz" id="0y6-Tb-pvq"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Mark as Favourite" id="ZU1-sa-mhd">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="markAsFavourite:" target="GEj-8A-BQz" id="sQh-Ae-2hn"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Unmark Favourite" id="JO7-nZ-bKZ">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="unmarkAsFavourite:" target="GEj-8A-BQz" id="Z7S-bH-h12"/>
+                                <action selector="toggleFavourite:" target="GEj-8A-BQz" id="37f-LS-VrS"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="UqD-Im-R8k"/>
-                        <menuItem title="Download" keyEquivalent="l" id="Ttf-1g-CF8">
+                        <menuItem title="Download" id="Ttf-1g-CF8">
+                            <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="download:" target="GEj-8A-BQz" id="Mkl-S2-B8g"/>
+                                <action selector="downloadEpisode:" target="GEj-8A-BQz" id="Uqm-1f-W1J"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Move to Trash" id="Kvk-D3-5SU">
@@ -750,6 +739,7 @@ Gw
                                 <action selector="showInFinder:" target="GEj-8A-BQz" id="WVj-Gy-Scq"/>
                             </connections>
                         </menuItem>
+                        <menuItem isSeparatorItem="YES" id="TyR-cB-wKc"/>
                         <menuItem title="Delete Episode" id="wAG-jG-ZSc">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
