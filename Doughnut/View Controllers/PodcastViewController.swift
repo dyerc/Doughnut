@@ -153,6 +153,12 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     return true
   }
 
+  private func activePodcastsForAction() -> [Podcast] {
+    return tableView.activeRowIndices.compactMap { rowIndex in
+      return rowIndex < podcasts.count ? podcasts[rowIndex] : nil
+    }
+  }
+
   func sorted(by: String?, direction: SortDirection) {
     if let sortParam = PodcastSortParameter(rawValue: by ?? "") {
       sortBy = sortParam
@@ -163,58 +169,87 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     reloadPodcasts()
   }
 
+  // MARK: - Actions
+
   @IBAction func reloadPodcast(_ sender: Any) {
-    Library.global.reload(podcast: podcasts[tableView.clickedRow])
+    let podcasts = activePodcastsForAction()
+    assert(podcasts.count == 1)
+    guard let podcast = podcasts.first else { return }
+
+    Library.global.reload(podcast: podcast)
+  }
+
+  @IBAction func getInfo(_ sender: Any) {
+    podcastInfo(sender)
   }
 
   @IBAction func podcastInfo(_ sender: Any) {
+    let podcasts = activePodcastsForAction()
+    assert(podcasts.count == 1)
+    guard let podcast = podcasts.first else { return }
+
     guard let podcastWindowController = ShowPodcastWindowController.instantiateFromMainStoryboard(),
           let podcastViewController = podcastWindowController.contentViewController as? ShowPodcastViewController,
           let podcastWindow = podcastWindowController.window
     else {
       return
     }
-    podcastViewController.podcast = podcasts[tableView.clickedRow]
+    podcastViewController.podcast = podcast
     NSApp.runModal(for: podcastWindow)
   }
 
   @IBAction func markAllAsPlayed(_ sender: Any) {
-    let podcast = podcasts[tableView.clickedRow]
+    let podcasts = activePodcastsForAction()
 
-    for episode in podcast.episodes {
-      episode.played = true
+    for podcast in podcasts {
+      for episode in podcast.episodes {
+        episode.played = true
+      }
+
+      // Manually trigger a view reload to make update seem instant
+      viewController.libraryUpdatedPodcast(podcast: podcast)
+
+      // Commit changes to library
+      Library.global.save(podcast: podcast)
     }
-
-    // Manually trigger a view reload to make update seem instant
-    viewController.libraryUpdatedPodcast(podcast: podcast)
-
-    // Commit changes to library
-    Library.global.save(podcast: podcast)
   }
 
   @IBAction func markAllAsUnplayed(_ sender: Any) {
-    let podcast = podcasts[tableView.clickedRow]
+    let podcasts = activePodcastsForAction()
 
-    for episode in podcast.episodes {
-      episode.played = false
+    for podcast in podcasts {
+      for episode in podcast.episodes {
+        episode.played = false
+      }
+
+      // Manually trigger a view reload to make update seem instant
+      viewController.libraryUpdatedPodcast(podcast: podcast)
+
+      // Commit changes to library
+      Library.global.save(podcast: podcast)
     }
-
-    // Manually trigger a view reload to make update seem instant
-    viewController.libraryUpdatedPodcast(podcast: podcast)
-
-    // Commit changes to library
-    Library.global.save(podcast: podcast)
   }
 
   @IBAction func copyPodcastURL(_ sender: Any) {
-    if let feed = podcasts[tableView.clickedRow].feed {
-      NSPasteboard.general.declareTypes([.string], owner: nil)
-      NSPasteboard.general.setString(feed, forType: .string)
+    let podcasts = activePodcastsForAction()
+    assert(podcasts.count == 1)
+
+    guard let podcast = podcasts.first, let feed = podcast.feed else {
+      return
     }
+
+    NSPasteboard.general.declareTypes([.string], owner: nil)
+    NSPasteboard.general.setString(feed, forType: .string)
+  }
+
+  @IBAction func delete(_ sender: Any) {
+    unsubscribe(sender)
   }
 
   @IBAction func unsubscribe(_ sender: Any) {
-    let podcast = podcasts[tableView.clickedRow]
+    let podcasts = activePodcastsForAction()
+    assert(podcasts.count == 1)
+    guard let podcast = podcasts.first else { return }
 
     let alert = NSAlert()
     alert.addButton(withTitle: "Leave Files")
@@ -236,13 +271,31 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
 
   @objc func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-    if menuItem.action == #selector(refreshAll(_:)) {
+    let podcasts = activePodcastsForAction()
+
+    switch menuItem.action {
+    case #selector(reloadPodcast(_:)):
+      return podcasts.count == 1
+    case #selector(getInfo(_:)):
+      fallthrough
+    case #selector(podcastInfo(_:)):
+      return podcasts.count == 1
+    case #selector(markAllAsPlayed(_:)):
+      return !podcasts.isEmpty
+    case #selector(markAllAsUnplayed(_:)):
+      return !podcasts.isEmpty
+    case #selector(copyPodcastURL(_:)):
+      return podcasts.count == 1
+    case #selector(delete(_:)):
+      fallthrough
+    case #selector(unsubscribe(_:)):
+      return podcasts.count == 1
+    case #selector(refreshAll(_:)):
       return true
+    default:
+      assert(false, "Unhandled menu item in \(#function)")
+      return false
     }
-    if tableView.clickedRow != -1 {
-      return true
-    }
-    return false
   }
 
 }

@@ -125,4 +125,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   @IBAction func showPreferences(_ sender: AnyObject) {
     preferencesWindowController.showWindow(self)
   }
+
+  @IBAction func rename(_ sender: AnyObject) {
+    assert(false, "This menu item is to be implemented: \(#function)")
+  }
+
+  @IBAction func deleteAllPlayed(_ sender: AnyObject) {
+    assert(false, "This menu item is to be implemented: \(#function)")
+  }
+
+  @objc func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    // Hide main menu items that is not impelemented for release build.
+    switch menuItem.action {
+    case #selector(rename(_:)):
+#if !DEBUG
+      menuItem.isHidden = true
+#endif
+      break
+    case #selector(deleteAllPlayed(_:)):
+#if !DEBUG
+      menuItem.isHidden = true
+#endif
+      break
+    default:
+      break
+    }
+    return true
+  }
+
 }

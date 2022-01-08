@@ -74,14 +74,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="Subscribe to Podcast" id="lgi-VV-buh">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="Subscribe to Podcast" keyEquivalent="n" id="lgi-VV-buh">
                                             <connections>
                                                 <action selector="subscribeToPodcast:" target="Ady-hI-5gd" id="Nrj-bB-7WF"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="New Podcast" id="r57-2i-B99">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="New Podcast" keyEquivalent="N" id="r57-2i-B99">
                                             <connections>
                                                 <action selector="newPodcast:" target="Ady-hI-5gd" id="KXx-5u-PuP"/>
                                             </connections>
@@ -138,7 +136,9 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Delete" id="pa3-QI-u2k">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
                                             <connections>
                                                 <action selector="delete:" target="Ady-hI-5gd" id="0Mk-Ml-PaM"/>
                                             </connections>
@@ -326,31 +326,64 @@
                                     <items>
                                         <menuItem title="Rename" id="Pr3-Z8-FZ1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="rename:" target="Ady-hI-5gd" id="Ahp-Mo-eVa"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Reload" keyEquivalent="r" id="6GL-kM-gC5">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="reloadPodcast:" target="Ady-hI-5gd" id="G9N-aZ-Xec"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Get Info" keyEquivalent="i" id="4kt-61-eYA">
+                                            <connections>
+                                                <action selector="getInfo:" target="Ady-hI-5gd" id="Af0-oA-5H7"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="mGw-AR-fTX"/>
-                                        <menuItem title="Play Now" keyEquivalent="p" id="Uoq-Ng-H9L"/>
+                                        <menuItem title="Play Now" keyEquivalent="p" id="Uoq-Ng-H9L">
+                                            <connections>
+                                                <action selector="playNow:" target="Ady-hI-5gd" id="OZl-G6-iyi"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="MW8-7q-b1c"/>
                                         <menuItem title="Mark as Played" keyEquivalent="m" id="sD6-MD-JPa">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="togglePlayed:" target="Ady-hI-5gd" id="L2N-rs-UUC"/>
+                                            </connections>
                                         </menuItem>
-                                        <menuItem title="Mark as Unplayed" keyEquivalent="M" id="LQ2-01-YsU"/>
-                                        <menuItem title="Mark as Favourite" keyEquivalent="b" id="YGQ-dO-zxl"/>
-                                        <menuItem title="Unmark Favourite" keyEquivalent="B" id="2XW-mi-VBH"/>
+                                        <menuItem title="Mark as Favourite" keyEquivalent="b" id="YGQ-dO-zxl">
+                                            <connections>
+                                                <action selector="toggleFavourite:" target="Ady-hI-5gd" id="VUd-Rv-Fbk"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="anr-AG-0sS"/>
-                                        <menuItem title="Mark all as Played" id="1nS-fp-Zqn">
+                                        <menuItem title="Mark All as Played" id="1nS-fp-Zqn">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="markAllAsPlayed:" target="Ady-hI-5gd" id="d0l-SO-2bq"/>
+                                            </connections>
                                         </menuItem>
-                                        <menuItem title="Mark all as Unplayed" id="1ZI-AO-bKd">
+                                        <menuItem title="Mark All as Unplayed" id="1ZI-AO-bKd">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="markAllAsUnplayed:" target="Ady-hI-5gd" id="bOV-jv-7hS"/>
+                                            </connections>
                                         </menuItem>
-                                        <menuItem title="Delete all Played" id="Jry-P3-Eq0">
+                                        <menuItem title="Delete All Played" id="Jry-P3-Eq0">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="deleteAllPlayed:" target="Ady-hI-5gd" id="O6A-7A-elP"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="8dx-2Z-yrg"/>
-                                        <menuItem title="Download" keyEquivalent="l" id="Wn0-fi-sPT"/>
+                                        <menuItem title="Download" keyEquivalent="l" id="Wn0-fi-sPT">
+                                            <connections>
+                                                <action selector="downloadEpisode:" target="Ady-hI-5gd" id="hJr-Jv-VEw"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
