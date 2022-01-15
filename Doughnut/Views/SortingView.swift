@@ -160,22 +160,6 @@ class SortingView: NSView {
     menuButtonView.updateLabel()
   }
 
-  override func draw(_ dirtyRect: NSRect) {
-    super.draw(dirtyRect)
-
-    let bottomBorder = NSBezierPath()
-    bottomBorder.move(to: NSPoint(x: 0, y: 0))
-    bottomBorder.line(to: NSPoint(x: bounds.width, y: 0))
-
-    if DoughnutApp.darkMode() {
-      NSColor.lightGray.setStroke()
-    } else {
-      NSColor.darkGray.setStroke()
-    }
-
-    bottomBorder.stroke()
-  }
-
   @objc func showMenu(_ sender: Any) {
     sortMenu.popUp(positioning: nil, at: NSPoint(x: menuButtonView.bounds.minX, y: menuButtonView.bounds.minY), in: self)
   }
