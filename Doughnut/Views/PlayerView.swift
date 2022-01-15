@@ -31,7 +31,9 @@ extension String {
 
 class PlayerView: NSView, PlayerDelegate {
   let width = 425
-  let baseline: CGFloat = 6
+  var baseline: CGFloat {
+    return frame.size.height / 2 - 13
+  }
 
   var loadingIdc: NSProgressIndicator!
   var artworkImg: NSImageView!
@@ -51,16 +53,16 @@ class PlayerView: NSView, PlayerDelegate {
   }
 
   required init?(coder decoder: NSCoder) {
-    loadingIdc = NSProgressIndicator(frame: NSRect(x: 25, y: baseline + 5, width: 16, height: 16))
-    artworkImg = NSImageView(frame: NSRect(x: 25, y: baseline + 3, width: 20, height: 20))
+    loadingIdc = NSProgressIndicator(frame: .zero)
+    artworkImg = NSImageView(frame: .zero)
 
-    reverseBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(artworkImg) + 6, y: baseline, width: 26, height: 25))
-    playBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(reverseBtn) + 1, y: baseline, width: 28, height: 26))
-    forwardBtn = NSButton.init(frame: NSRect(x: PlayerView.controlX(playBtn) + 1, y: baseline, width: 28, height: 26))
+    reverseBtn = NSButton.init(frame: .zero)
+    playBtn = NSButton.init(frame: .zero)
+    forwardBtn = NSButton.init(frame: .zero)
 
-    playedDurationLbl = NSTextField(frame: NSRect(x: PlayerView.controlX(forwardBtn) + 2, y: baseline + 6, width: 50, height: 14))
-    seekSlider = SeekSlider(frame: NSRect(x: PlayerView.controlX(playedDurationLbl) + 4, y: baseline + 4, width: 200, height: 18))
-    playedRemainingLbl = NSTextField(frame: NSRect(x: PlayerView.controlX(seekSlider) + 4, y: baseline + 6, width: 50, height: 14))
+    playedDurationLbl = NSTextField(frame: .zero)
+    seekSlider = SeekSlider(frame: .zero)
+    playedRemainingLbl = NSTextField(frame: .zero)
 
     super.init(coder: decoder)
     Player.global.delegate = self
@@ -128,60 +130,33 @@ class PlayerView: NSView, PlayerDelegate {
     playedRemainingLbl.font = NSFont.systemFont(ofSize: 10)
     playedRemainingLbl.isEditable = false
     addSubview(playedRemainingLbl)
- }
 
-  override func draw(_ dirtyRect: NSRect) {
-    let darkMode = DoughnutApp.darkMode()
-
-    if self.window?.isMainWindow ?? false {
-      var bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.945, green: 0.945, blue: 0.945, alpha: 1.0), ending: NSColor(calibratedRed: 0.894, green: 0.894, blue: 0.894, alpha: 1.0))
-
-      NSColor(calibratedRed: 0.784, green: 0.784, blue: 0.784, alpha: 1.0).setStroke()
-
-      if darkMode {
-        bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.170, green: 0.162, blue: 0.158, alpha: 1.00), ending: NSColor(calibratedRed: 0.220, green: 0.212, blue: 0.208, alpha: 1.00))
-
-        NSColor(calibratedRed: 0.180, green: 0.161, blue: 0.161, alpha: 1.0).setStroke()
-      }
-
-      bgGradient?.draw(in: self.bounds, angle: 270)
-
-    } else {
-      var bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.980, green: 0.980, blue: 0.980, alpha: 1.0), ending: NSColor(calibratedRed: 0.980, green: 0.980, blue: 0.980, alpha: 1.0))
-
-      NSColor(calibratedRed: 0.902, green: 0.902, blue: 0.902, alpha: 1.0).setStroke()
-
-      if darkMode {
-        bgGradient = NSGradient(starting: NSColor(calibratedRed: 0.170, green: 0.162, blue: 0.158, alpha: 1.00), ending: NSColor(calibratedRed: 0.220, green: 0.212, blue: 0.208, alpha: 1.00))
-
-        NSColor(calibratedRed: 0.180, green: 0.161, blue: 0.161, alpha: 1.0).setStroke()
-      }
-
-      bgGradient?.draw(in: self.bounds, angle: 270)
+    wantsLayer = true
+    let backgroundColor = DoughnutApp.darkMode() ? NSColor.white.withAlphaComponent(0.04)
+                                                 : NSColor.black.withAlphaComponent(0.04)
+    var cornerRadius: CGFloat = 4
+    if #available(macOS 11.0, *) {
+      cornerRadius = 6
     }
+    layer?.backgroundColor = backgroundColor.cgColor
+    layer?.cornerRadius = cornerRadius
+  }
 
-    let leftBorder = NSBezierPath()
-    leftBorder.move(to: NSPoint(x: 0.5, y: 0))
-    leftBorder.line(to: NSPoint(x: 0.5, y: self.bounds.size.height))
-    leftBorder.stroke()
+  override func layout() {
+    resizeSubviews(withOldSize: NSZeroSize)
+  }
 
-    let rightBorder = NSBezierPath()
-    rightBorder.move(to: NSPoint(x: self.bounds.size.width - 0.5, y: 0))
-    rightBorder.line(to: NSPoint(x: self.bounds.size.width - 0.5, y: self.bounds.size.height))
-    rightBorder.stroke()
+  override func resizeSubviews(withOldSize oldSize: NSSize) {
+    loadingIdc.frame = NSRect(x: 25, y: baseline + 5, width: 16, height: 16)
+    artworkImg.frame = NSRect(x: 25, y: baseline + 3, width: 20, height: 20)
 
-    // Draw a solid black line at the bottom to match macOS's dark mode style
-    if darkMode {
-      NSColor.black.setStroke()
+    reverseBtn.frame = NSRect(x: PlayerView.controlX(artworkImg) + 6, y: baseline, width: 26, height: 25)
+    playBtn.frame = NSRect(x: PlayerView.controlX(reverseBtn) + 1, y: baseline, width: 28, height: 26)
+    forwardBtn.frame = NSRect(x: PlayerView.controlX(playBtn) + 1, y: baseline, width: 28, height: 26)
 
-      let bottomBorder = NSBezierPath()
-      bottomBorder.move(to: NSPoint(x: 0.5, y: 0))
-      bottomBorder.line(to: NSPoint(x: self.bounds.size.width - 0.5, y: 0))
-      bottomBorder.lineWidth = 1.5
-      bottomBorder.stroke()
-    }
-
-    super.draw(dirtyRect)
+    playedDurationLbl.frame = NSRect(x: PlayerView.controlX(forwardBtn) + 2, y: baseline + 6, width: 50, height: 14)
+    seekSlider.frame = NSRect(x: PlayerView.controlX(playedDurationLbl) + 4, y: baseline + 4, width: 200, height: 18)
+    playedRemainingLbl.frame = NSRect(x: PlayerView.controlX(seekSlider) + 4, y: baseline + 6, width: 50, height: 14)
   }
 
   func formatTime(total: Int) -> String {

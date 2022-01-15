@@ -230,13 +230,11 @@ Gw
                                         <action selector="toggleNewEpisodes:" target="B8D-0N-5wS" id="AqT-s0-Y6z"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" label="Custom View" paletteLabel="Player View" tag="-1" id="Psv-5X-LNl">
+                                <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" label="Playback" paletteLabel="Player View" tag="-1" visibilityPriority="1001" sizingBehavior="auto" id="Psv-5X-LNl">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="465" height="38"/>
-                                    <size key="maxSize" width="465" height="41"/>
                                     <customView key="view" id="qY3-fM-qgT" customClass="PlayerView" customModule="Doughnut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="465" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="0.0" y="14" width="465" height="32"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                     </customView>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="9A64A10D-F674-4BDB-B75D-5D7AEF001779" label="" paletteLabel="Download Queue Button" image="DownloadsIcon" id="3ZS-BL-qK1">
@@ -255,20 +253,6 @@ Gw
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="824C3448-3C44-4816-BEC9-E61A2DE9BD00" label="Search" paletteLabel="Search" id="9qL-Cl-fVy">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="124" height="22"/>
-                                    <size key="maxSize" width="124" height="22"/>
-                                    <textField key="view" verticalHuggingPriority="750" id="Q3N-wA-1B1">
-                                        <rect key="frame" x="0.0" y="14" width="124" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="Search..." drawsBackground="YES" id="ngp-Ov-F6y">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="0446AA35-D828-4B36-B4C9-23B4D2BF0006" label="Task Manager" paletteLabel="Task Manager" tag="-1" id="zd4-bJ-Dkk">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="32" height="38"/>
@@ -278,25 +262,26 @@ Gw
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </customView>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="4D92DF7E-3C1E-417A-979F-6131A608B925" label="Offset Spacer" paletteLabel="Offset Spacer" tag="-1" id="xhE-FB-d65">
+                                <toolbarItem implicitItemIdentifier="30738650-C932-4F7A-90D7-03F06658D853" label="Search" paletteLabel="Search" visibilityPriority="1000" sizingBehavior="auto" id="mto-Rc-MWj">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="60" height="38"/>
-                                    <size key="maxSize" width="60" height="38"/>
-                                    <customView key="view" id="XjW-RQ-MVw">
-                                        <rect key="frame" x="10" y="14" width="60" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </customView>
+                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="zQC-lo-HKP">
+                                        <rect key="frame" x="0.0" y="14" width="96" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="4eX-Wf-kbB">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </searchFieldCell>
+                                    </searchField>
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="kDe-15-3rO"/>
                                 <toolbarItem reference="6L2-aH-OKv"/>
-                                <toolbarItem reference="xhE-FB-d65"/>
-                                <toolbarItem reference="cKK-pR-jXd"/>
                                 <toolbarItem reference="Psv-5X-LNl"/>
                                 <toolbarItem reference="cKK-pR-jXd"/>
                                 <toolbarItem reference="zd4-bJ-Dkk"/>
-                                <toolbarItem reference="9qL-Cl-fVy"/>
+                                <toolbarItem reference="mto-Rc-MWj"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -308,7 +293,7 @@ Gw
                         <outlet property="downloadsButton" destination="3ZS-BL-qK1" id="Dx5-9Y-qk9"/>
                         <outlet property="newToggle" destination="lAe-YH-TAR" id="0xd-Ho-EFT"/>
                         <outlet property="playerView" destination="Psv-5X-LNl" id="WFu-8c-S1d"/>
-                        <outlet property="searchInputView" destination="Q3N-wA-1B1" id="JgQ-vM-uE4"/>
+                        <outlet property="searchInputView" destination="zQC-lo-HKP" id="Hrm-SR-1bt"/>
                         <segue destination="zrU-nU-rD6" kind="relationship" relationship="window.shadowedContentViewController" id="KFV-RY-whX"/>
                     </connections>
                 </windowController>
