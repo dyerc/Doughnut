@@ -320,6 +320,25 @@ CA
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="View" id="Ne4-Rg-c0f">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="View" id="BQe-Pd-Fvh">
+                                    <items>
+                                        <menuItem title="Show Sidebar" keyEquivalent="s" id="6B0-Rt-3BQ">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="RsP-uM-egP"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Enter Full Screen" keyEquivalent="f" id="9YY-sk-BCp">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleFullScreen:" target="Ady-hI-5gd" id="5tD-Ms-8kl"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Item" id="1rK-XZ-TGH">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Item" id="eQr-zC-APd">

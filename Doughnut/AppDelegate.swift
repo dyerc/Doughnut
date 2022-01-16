@@ -36,6 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }()
 
   override init() {
+    NSWindow.allowsAutomaticWindowTabbing = false
+
     UserDefaults.standard.register(
       defaults: [kMediaKeyUsingBundleIdentifiersDefaultsKey: SPMediaKeyTap.defaultMediaKeyUserBundleIdentifiers()!])
   }
