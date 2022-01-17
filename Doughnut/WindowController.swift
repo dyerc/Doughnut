@@ -19,8 +19,6 @@
 import Cocoa
 
 class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegate, DownloadManagerDelegate {
-  @IBOutlet var allToggle: NSButton!
-  @IBOutlet var newToggle: NSButton!
   @IBOutlet var playerView: NSToolbarItem!
   @IBOutlet weak var downloadsButton: NSToolbarItem!
   @IBOutlet weak var searchInputView: NSTextField!
@@ -123,24 +121,6 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
     popover.behavior = .transient
     popover.contentViewController = downloadsViewController
     popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)*/
-  }
-
-  @IBAction func toggleAllEpisodes(_ sender: Any) {
-    allToggle.state = .on
-    newToggle.state = .off
-
-    if let vc = viewController {
-      vc.filter(.All)
-    }
-  }
-
-  @IBAction func toggleNewEpisodes(_ sender: Any) {
-    allToggle.state = .off
-    newToggle.state = .on
-
-    if let vc = viewController {
-      vc.filter(.New)
-    }
   }
 
   func downloadStarted() {

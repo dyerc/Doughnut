@@ -144,14 +144,8 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     }
   }
 
-  func filter(_ filter: GlobalFilter) {
-    globalFilter = filter
-
-    podcastViewController.filter = globalFilter
-    episodeViewController.filter = globalFilter
-  }
-
   func search(_ query: String?) {
     episodeViewController.searchQuery = query
   }
+
 }

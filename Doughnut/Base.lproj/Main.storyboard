@@ -198,38 +198,6 @@ Gw
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="24m-vf-dRH"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="cKK-pR-jXd"/>
-                                <toolbarItem implicitItemIdentifier="F8E7139A-1097-4EC9-9875-0FAB2336FC65" label="Custom View" paletteLabel="Custom View" title="All" id="kDe-15-3rO">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="40" height="18"/>
-                                    <size key="maxSize" width="40" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="0x1-F9-vTA">
-                                        <rect key="frame" x="18" y="14" width="40" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="recessed" title="All" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B7H-1a-TNL">
-                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
-                                        </buttonCell>
-                                    </button>
-                                    <connections>
-                                        <action selector="toggleAllEpisodes:" target="B8D-0N-5wS" id="gpj-C0-hOS"/>
-                                    </connections>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="8965E721-3D66-41BE-9EA1-7C449D303C1B" label="Custom View" paletteLabel="Custom View" title="New" id="6L2-aH-OKv">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="40" height="18"/>
-                                    <size key="maxSize" width="40" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="lAe-YH-TAR">
-                                        <rect key="frame" x="18" y="14" width="40" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="recessed" title="New" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LOi-LR-sxa">
-                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
-                                        </buttonCell>
-                                    </button>
-                                    <connections>
-                                        <action selector="toggleNewEpisodes:" target="B8D-0N-5wS" id="AqT-s0-Y6z"/>
-                                    </connections>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" label="Playback" paletteLabel="Player View" tag="-1" visibilityPriority="1001" sizingBehavior="auto" id="Psv-5X-LNl">
                                     <nil key="toolTip"/>
                                     <customView key="view" id="qY3-fM-qgT" customClass="PlayerView" customModule="Doughnut" customModuleProvider="target">
@@ -276,8 +244,6 @@ Gw
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="kDe-15-3rO"/>
-                                <toolbarItem reference="6L2-aH-OKv"/>
                                 <toolbarItem reference="Psv-5X-LNl"/>
                                 <toolbarItem reference="cKK-pR-jXd"/>
                                 <toolbarItem reference="zd4-bJ-Dkk"/>
@@ -289,9 +255,7 @@ Gw
                         </connections>
                     </window>
                     <connections>
-                        <outlet property="allToggle" destination="0x1-F9-vTA" id="5Ik-2C-flf"/>
                         <outlet property="downloadsButton" destination="3ZS-BL-qK1" id="Dx5-9Y-qk9"/>
-                        <outlet property="newToggle" destination="lAe-YH-TAR" id="0xd-Ho-EFT"/>
                         <outlet property="playerView" destination="Psv-5X-LNl" id="WFu-8c-S1d"/>
                         <outlet property="searchInputView" destination="zQC-lo-HKP" id="Hrm-SR-1bt"/>
                         <segue destination="zrU-nU-rD6" kind="relationship" relationship="window.shadowedContentViewController" id="KFV-RY-whX"/>
