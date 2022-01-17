@@ -308,7 +308,7 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     Player.global.play(episode: episode)
   }
 
-  @IBAction @objc func playNow(_ sender: Any) {
+  @IBAction func playNow(_ sender: Any) {
     let episodes = activeEpisodesForAction()
     assert(episodes.count == 1)
     guard let episode = episodes.first else { return }

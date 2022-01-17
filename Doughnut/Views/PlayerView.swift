@@ -143,7 +143,7 @@ class PlayerView: NSView, PlayerDelegate {
   }
 
   override func layout() {
-    resizeSubviews(withOldSize: NSZeroSize)
+    resizeSubviews(withOldSize: .zero)
   }
 
   override func resizeSubviews(withOldSize oldSize: NSSize) {
