@@ -297,17 +297,17 @@ Gw
             <objects>
                 <viewController id="hBf-lZ-L6q" customClass="PodcastViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="D1G-wk-4ey">
-                        <rect key="frame" x="0.0" y="0.0" width="251" height="473"/>
+                        <rect key="frame" x="0.0" y="0.0" width="251" height="483"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="uiz-QK-vYc" customClass="SortingView" customModule="Doughnut" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="251" height="20"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="uiz-QK-vYc">
+                                <rect key="frame" x="0.0" y="0.0" width="251" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="z3j-li-cq1"/>
+                                    <constraint firstAttribute="height" constant="30" id="z3j-li-cq1"/>
                                 </constraints>
                             </customView>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="59" horizontalPageScroll="10" verticalLineScroll="59" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olf-xm-4xZ">
-                                <rect key="frame" x="0.0" y="20" width="251" height="401"/>
+                                <rect key="frame" x="0.0" y="30" width="251" height="401"/>
                                 <clipView key="contentView" drawsBackground="NO" id="RU8-8U-i4z">
                                     <rect key="frame" x="0.0" y="0.0" width="251" height="401"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -501,7 +501,7 @@ Gw
             <objects>
                 <viewController id="GEj-8A-BQz" customClass="EpisodeViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="tvM-2C-S0k">
-                        <rect key="frame" x="0.0" y="0.0" width="351" height="472"/>
+                        <rect key="frame" x="0.0" y="0.0" width="351" height="484"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="76" horizontalPageScroll="10" verticalLineScroll="76" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPG-xC-7JH">
@@ -623,10 +623,46 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="z1v-iO-axc" customClass="SortingView" customModule="Doughnut" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="400" width="351" height="20"/>
+                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z1v-iO-axc">
+                                <rect key="frame" x="0.0" y="400" width="351" height="32"/>
+                                <subviews>
+                                    <visualEffectView blendingMode="withinWindow" material="contentBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="UAU-9G-p2G">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="32"/>
+                                        <subviews>
+                                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="svO-VQ-8jg">
+                                                <rect key="frame" x="0.0" y="-2" width="351" height="5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="KJb-ap-usI"/>
+                                                </constraints>
+                                            </box>
+                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BwK-xu-ji4">
+                                                <rect key="frame" x="10" y="6" width="63" height="19"/>
+                                                <popUpButtonCell key="cell" type="recessed" title="Sort by" bezelStyle="recessed" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="cUW-Fb-q2L" id="ecC-p0-44Q">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                    <font key="font" metaFont="smallSystemBold"/>
+                                                    <menu key="menu" id="ymb-YI-6o0">
+                                                        <items>
+                                                            <menuItem title="Sort by" state="on" hidden="YES" id="cUW-Fb-q2L"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                            </popUpButton>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="svO-VQ-8jg" secondAttribute="trailing" id="3hB-3f-eUe"/>
+                                            <constraint firstItem="svO-VQ-8jg" firstAttribute="leading" secondItem="UAU-9G-p2G" secondAttribute="leading" id="4V0-AM-iks"/>
+                                            <constraint firstItem="BwK-xu-ji4" firstAttribute="centerY" secondItem="UAU-9G-p2G" secondAttribute="centerY" id="HU1-MI-S7F"/>
+                                            <constraint firstItem="BwK-xu-ji4" firstAttribute="leading" secondItem="UAU-9G-p2G" secondAttribute="leading" constant="10" id="rPI-rO-uMp"/>
+                                            <constraint firstAttribute="bottom" secondItem="svO-VQ-8jg" secondAttribute="bottom" id="z4t-6M-Su2"/>
+                                        </constraints>
+                                    </visualEffectView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="w7A-wS-W8s"/>
+                                    <constraint firstAttribute="trailing" secondItem="UAU-9G-p2G" secondAttribute="trailing" id="M8H-Nm-hg8"/>
+                                    <constraint firstAttribute="bottom" secondItem="UAU-9G-p2G" secondAttribute="bottom" id="csj-cb-eEd"/>
+                                    <constraint firstItem="UAU-9G-p2G" firstAttribute="leading" secondItem="z1v-iO-axc" secondAttribute="leading" id="jVp-Ee-vov"/>
+                                    <constraint firstAttribute="height" constant="32" id="w7A-wS-W8s"/>
+                                    <constraint firstItem="UAU-9G-p2G" firstAttribute="top" secondItem="z1v-iO-axc" secondAttribute="top" id="xnS-er-qeQ"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -644,6 +680,7 @@ Gw
                     </view>
                     <connections>
                         <outlet property="sortView" destination="z1v-iO-axc" id="qCw-4z-ayn"/>
+                        <outlet property="sortingButton" destination="BwK-xu-ji4" id="RWp-r8-815"/>
                         <outlet property="tableView" destination="Xrx-cp-IWJ" id="WVH-k1-4XS"/>
                     </connections>
                 </viewController>

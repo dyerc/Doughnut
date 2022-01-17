@@ -18,19 +18,25 @@
 
 import Cocoa
 
-enum PodcastSortParameter: String {
-  case PodcastTitle = "Title"
-  case PodcastEpisodes = "Episodes"
-  case PodcastUnplayed = "Unplayed"
-  case PodcastFavourites = "Favourited"
-  case PodcastRecentEpisodes = "Recent Episode"
-}
+final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, SortingMenuProviderDelegate {
 
-class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, SortingViewDelegate {
+  enum SortParameter: String {
+    case title = "Title"
+    case episodes = "Episodes"
+    case unplayed = "Unplayed"
+    case favourites = "Favourited"
+    case recentEpisodes = "Recent Episode"
+  }
+
+
   var podcasts = [Podcast]()
 
   @IBOutlet var tableView: NSTableView!
-  @IBOutlet var sortView: SortingView!
+  @IBOutlet var sortView: NSView!
+
+  private var sortingMenuProvider: SortingMenuProvider {
+    return SortingMenuProvider.Shared.podcasts
+  }
 
   private var tableScrollView: NSScrollView {
     return tableView.enclosingScrollView!
@@ -42,13 +48,13 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
   }
 
-  var sortBy: PodcastSortParameter = .PodcastTitle {
+  var sortBy: SortParameter = .title {
     didSet {
       Preference.set(sortBy.rawValue, for: Preference.Key.podcastSortParam)
     }
   }
 
-  var sortDirection: SortDirection = .Desc {
+  var sortDirection: SortDirection = .desc {
     didSet {
       Preference.set(sortDirection.rawValue, for: Preference.Key.podcastSortDirection)
     }
@@ -95,27 +101,19 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       constant: 0
     ).isActive = true
 
-    sortView.menuItemTitles = [
-      PodcastSortParameter.PodcastTitle.rawValue,
-      PodcastSortParameter.PodcastEpisodes.rawValue,
-      PodcastSortParameter.PodcastFavourites.rawValue,
-      PodcastSortParameter.PodcastRecentEpisodes.rawValue,
-      PodcastSortParameter.PodcastUnplayed.rawValue,
-    ]
-
-    if let sortPreference = Preference.string(for: Preference.Key.podcastSortParam), let sortParam = PodcastSortParameter(rawValue: sortPreference) {
+    if let sortPreference = Preference.string(for: Preference.Key.podcastSortParam), let sortParam = SortParameter(rawValue: sortPreference) {
       sortBy = sortParam
     }
 
     if Preference.string(for: Preference.Key.podcastSortDirection) == "Ascending" {
-      sortDirection = .Asc
+      sortDirection = .asc
     } else {
-      sortDirection = .Desc
+      sortDirection = .desc
     }
 
-    sortView.sortParam = sortBy.rawValue
-    sortView.sortDirection = sortDirection
-    sortView.delegate = self
+    sortingMenuProvider.sortParam = sortBy.rawValue
+    sortingMenuProvider.sortDirection = sortDirection
+    sortingMenuProvider.delegate = self
 
     reloadPodcasts()
   }
@@ -134,15 +132,15 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     // Sort into ascending order
     podcasts.sort { (a, b) -> Bool in
       switch sortBy {
-      case .PodcastTitle:
+      case .title:
         return a.title < b.title
-      case .PodcastEpisodes:
+      case .episodes:
         return a.episodes.count < b.episodes.count
-      case .PodcastFavourites:
+      case .favourites:
         return a.favouriteCount < b.favouriteCount
-      case .PodcastUnplayed:
+      case .unplayed:
         return a.unplayedCount < b.unplayedCount
-      case .PodcastRecentEpisodes:
+      case .recentEpisodes:
         guard let aD = a.latestEpisode?.pubDate else { return false }
         guard let bD = b.latestEpisode?.pubDate else { return true }
 
@@ -150,7 +148,7 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       }
     }
 
-    if sortDirection == .Desc {
+    if sortDirection == .desc {
       podcasts.reverse()
     }
 
@@ -196,7 +194,7 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
 
   func sorted(by: String?, direction: SortDirection) {
-    if let sortParam = PodcastSortParameter(rawValue: by ?? "") {
+    if let sortParam = SortParameter(rawValue: by ?? "") {
       sortBy = sortParam
     }
 

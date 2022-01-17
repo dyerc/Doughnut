@@ -18,22 +18,28 @@
 
 import Cocoa
 
-enum EpisodeSortParameter: String {
-  case EpisodeMostRecent = "Most Recent"
-  case EpisodeFavourites = "Favourites"
-}
+final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, SortingMenuProviderDelegate {
 
-class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, SortingViewDelegate {
+  enum SortParameter: String {
+    case mostRecent = "Most Recent"
+    case favourites = "Favourites"
+  }
+
+
   var podcast: Podcast?
   var episodes = [Episode]()
 
-  var sortBy: EpisodeSortParameter = .EpisodeMostRecent {
+  private var sortingMenuProvider: SortingMenuProvider {
+    return SortingMenuProvider.Shared.episodes
+  }
+
+  var sortBy: SortParameter = .mostRecent {
     didSet {
       Preference.set(sortBy.rawValue, for: Preference.Key.episodeSortParam)
     }
   }
 
-  var sortDirection: SortDirection = .Desc {
+  var sortDirection: SortDirection = .desc {
     didSet {
       Preference.set(sortDirection.rawValue, for: Preference.Key.episodeSortDirection)
     }
@@ -52,7 +58,8 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
 
   @IBOutlet var tableView: NSTableView!
-  @IBOutlet var sortView: SortingView!
+  @IBOutlet var sortView: NSView!
+  @IBOutlet var sortingButton: NSButton!
 
   var viewController: ViewController {
     get {
@@ -77,24 +84,21 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       constant: 0
     ).isActive = true
 
-    sortView.menuItemTitles = [
-      EpisodeSortParameter.EpisodeFavourites.rawValue,
-      EpisodeSortParameter.EpisodeMostRecent.rawValue,
-    ]
-
-    if let sortPreference = Preference.string(for: Preference.Key.episodeSortParam), let sortParam = EpisodeSortParameter(rawValue: sortPreference) {
+    if let sortPreference = Preference.string(for: Preference.Key.episodeSortParam), let sortParam = SortParameter(rawValue: sortPreference) {
       sortBy = sortParam
     }
 
     if Preference.string(for: Preference.Key.episodeSortDirection) == "Ascending" {
-      sortDirection = .Asc
+      sortDirection = .asc
     } else {
-      sortDirection = .Desc
+      sortDirection = .desc
     }
 
-    sortView.sortParam = sortBy.rawValue
-    sortView.sortDirection = sortDirection
-    sortView.delegate = self
+    sortingMenuProvider.sortParam = sortBy.rawValue
+    sortingMenuProvider.sortDirection = sortDirection
+    sortingMenuProvider.delegate = self
+
+    sortingButton.menu = sortingMenuProvider.buildPullDownMenu()
 
     tableView.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
   }
@@ -122,17 +126,17 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
 
       episodes.sort(by: { (a, b) -> Bool in
         switch sortBy {
-        case .EpisodeMostRecent:
+        case .mostRecent:
           guard let aD = a.pubDate else { return false }
           guard let bD = b.pubDate else { return true }
 
           return aD.compare(bD) == .orderedAscending
-        case .EpisodeFavourites:
+        case .favourites:
           return (a.favourite ? 1 : 0) < (b.favourite ? 1 : 0)
         }
       })
 
-      if sortDirection == .Desc {
+      if sortDirection == .desc {
         episodes.reverse()
       }
     }
@@ -288,11 +292,16 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
 
   func sorted(by: String?, direction: SortDirection) {
-    if let sortParam = EpisodeSortParameter(rawValue: by ?? "") {
+    if let sortParam = SortParameter(rawValue: by ?? "") {
       sortBy = sortParam
     }
 
     sortDirection = direction
+
+    // Rebuild the pulldown menu after sorting to ensure its title being updated
+    // We should have an another mechanism to trigger menu updates. For now it's
+    // fine to keep it simple.
+    sortingButton.menu = sortingMenuProvider.buildPullDownMenu()
 
     reloadEpisodes()
   }

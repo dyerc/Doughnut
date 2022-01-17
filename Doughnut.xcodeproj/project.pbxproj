@@ -108,8 +108,8 @@
 		83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DEF1F76D20C00F1ABC0 /* PodcastViewController.swift */; };
 		83667DF21F76D21900F1ABC0 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF11F76D21900F1ABC0 /* EpisodeViewController.swift */; };
 		83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83667DF31F76D22600F1ABC0 /* DetailViewController.swift */; };
-		836DBC532008084400AD7EBB /* SortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389709B20069D720094795D /* SortingView.swift */; };
-		836DBC542008084400AD7EBB /* SortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389709B20069D720094795D /* SortingView.swift */; };
+		836DBC532008084400AD7EBB /* SortingMenuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389709B20069D720094795D /* SortingMenuProvider.swift */; };
+		836DBC542008084400AD7EBB /* SortingMenuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389709B20069D720094795D /* SortingMenuProvider.swift */; };
 		837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837068121F7BBD63007FE973 /* EpisodeCellView.swift */; };
 		8379899B1F81616C00234577 /* SeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379899A1F81616C00234577 /* SeekSlider.swift */; };
 		837D52BE1F8E622200C17514 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* TasksViewController.swift */; };
@@ -120,7 +120,7 @@
 		838257D51F759F6F00DB4FD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 838257D31F759F6F00DB4FD1 /* Main.storyboard */; };
 		838257E11F759F6F00DB4FD1 /* DoughnutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257E01F759F6F00DB4FD1 /* DoughnutTests.swift */; };
 		838257EC1F759F6F00DB4FD1 /* DoughnutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257EB1F759F6F00DB4FD1 /* DoughnutUITests.swift */; };
-		8389709C20069D720094795D /* SortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389709B20069D720094795D /* SortingView.swift */; };
+		8389709C20069D720094795D /* SortingMenuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389709B20069D720094795D /* SortingMenuProvider.swift */; };
 		8397B9D11F8FC64D00C92AE6 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FF90A1F8D60430065E593 /* DownloadManager.swift */; };
 		839A32811FF9831B002D2023 /* ShowEpisodeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */; };
 		839DBDA41FEEE658007610EF /* ShowPodcastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */; };
@@ -229,7 +229,7 @@
 		838257E71F759F6F00DB4FD1 /* DoughnutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoughnutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		838257EB1F759F6F00DB4FD1 /* DoughnutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutUITests.swift; sourceTree = "<group>"; };
 		838257ED1F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8389709B20069D720094795D /* SortingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingView.swift; sourceTree = "<group>"; };
+		8389709B20069D720094795D /* SortingMenuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingMenuProvider.swift; sourceTree = "<group>"; };
 		839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEpisodeWindow.swift; sourceTree = "<group>"; };
 		839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPodcastWindow.swift; sourceTree = "<group>"; };
 		839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBackgroundView.swift; sourceTree = "<group>"; };
@@ -340,7 +340,7 @@
 				839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */,
 				834998B51FF3E3F00035EF87 /* TaskManagerView.swift */,
 				830E99BC1FF50DD000B728BE /* ActivityIndicator.swift */,
-				8389709B20069D720094795D /* SortingView.swift */,
+				8389709B20069D720094795D /* SortingMenuProvider.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -837,7 +837,7 @@
 			files = (
 				8343426A1F802C1400913C0B /* EpisodeFilterViewController.swift in Sources */,
 				839A32811FF9831B002D2023 /* ShowEpisodeWindow.swift in Sources */,
-				8389709C20069D720094795D /* SortingView.swift in Sources */,
+				8389709C20069D720094795D /* SortingMenuProvider.swift in Sources */,
 				83EFC6051F9954AD00E1DE1F /* NSObject+SPInvocationGrabbing.m in Sources */,
 				83E95A5E1FFBCA3C00C6AABF /* Storage.swift in Sources */,
 				8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */,
@@ -927,7 +927,7 @@
 				834CC1B11F95077500A98DE9 /* MarkupGenerator.swift in Sources */,
 				83A0D4841FFC2FA400A376FD /* TaskQueue.swift in Sources */,
 				83504DD71FFC377700375BA0 /* EpisodeDownloadTask.swift in Sources */,
-				836DBC532008084400AD7EBB /* SortingView.swift in Sources */,
+				836DBC532008084400AD7EBB /* SortingMenuProvider.swift in Sources */,
 				834998B71FF3E3F00035EF87 /* TaskManagerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -976,7 +976,7 @@
 				830A33D91FF042CE00C13B1D /* SeekSlider.swift in Sources */,
 				830A33E61FF042D100C13B1D /* ViewController.swift in Sources */,
 				830A33CE1FF042C900C13B1D /* MarkupGenerator.swift in Sources */,
-				836DBC542008084400AD7EBB /* SortingView.swift in Sources */,
+				836DBC542008084400AD7EBB /* SortingMenuProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
