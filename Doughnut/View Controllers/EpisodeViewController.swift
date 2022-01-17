@@ -63,6 +63,20 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    if #available(macOS 11.0, *) {
+      tableView.style = .inset
+    }
+
+    NSLayoutConstraint(
+      item: sortView!,
+      attribute: .top,
+      relatedBy: .equal,
+      toItem: view.comptableSafeAreaLayoutGuide,
+      attribute: .top,
+      multiplier: 1,
+      constant: 0
+    ).isActive = true
+
     sortView.menuItemTitles = [
       EpisodeSortParameter.EpisodeFavourites.rawValue,
       EpisodeSortParameter.EpisodeMostRecent.rawValue,

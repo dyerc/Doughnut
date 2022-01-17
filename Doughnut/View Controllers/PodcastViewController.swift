@@ -32,6 +32,10 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   @IBOutlet var tableView: NSTableView!
   @IBOutlet var sortView: SortingView!
 
+  private var tableScrollView: NSScrollView {
+    return tableView.enclosingScrollView!
+  }
+
   var filter: GlobalFilter = .All {
     didSet {
       reloadPodcasts()
@@ -58,6 +62,38 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    if #available(macOS 11.0, *) {
+      tableView.style = .sourceList
+
+      // NSTableView is not getting top inset at sourceList style,
+      // temporarily adding 10pt to inset to align with the episode list.
+      // The whole sidebar tableView should be migrated to a NSOutlineView.
+      let scrollViewTopInset: CGFloat = 10
+      tableScrollView.automaticallyAdjustsContentInsets = false
+      tableScrollView.contentInsets = NSEdgeInsets(
+        top: scrollViewTopInset,
+        left: 0,
+        bottom: 0,
+        right: 0
+      )
+      tableScrollView.scrollerInsets = NSEdgeInsets(
+        top: -scrollViewTopInset,
+        left: 0,
+        bottom: 0,
+        right: 0
+      )
+    }
+
+    NSLayoutConstraint(
+      item: tableScrollView,
+      attribute: .top,
+      relatedBy: .equal,
+      toItem: view.comptableSafeAreaLayoutGuide,
+      attribute: .top,
+      multiplier: 1,
+      constant: 0
+    ).isActive = true
 
     sortView.menuItemTitles = [
       PodcastSortParameter.PodcastTitle.rawValue,

@@ -37,7 +37,21 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
 
   override func windowDidLoad() {
     super.windowDidLoad()
+
+    if #available(macOS 11.0, *) {
+      window?.toolbarStyle = .unified
+    } else {
+      window?.styleMask.remove(.fullSizeContentView)
+    }
+
     window?.titleVisibility = .hidden
+
+    window?.toolbar?.centeredItemIdentifier = playerView.itemIdentifier
+
+    // https://stackoverflow.com/questions/65723318/how-to-set-initial-width-of-nssearchtoolbaritem
+    searchInputView.addConstraint(
+      searchInputView.widthAnchor.constraint(lessThanOrEqualToConstant: 180)
+    )
 
     searchInputView.delegate = self
 

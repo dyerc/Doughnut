@@ -25,12 +25,14 @@ enum DetailViewType {
   case EpisodeDetail
 }
 
-class DetailViewController: NSViewController, WKNavigationDelegate {
+final class DetailViewController: NSViewController, WKNavigationDelegate {
+
   @IBOutlet weak var detailTitle: NSTextField!
   @IBOutlet weak var secondaryTitle: NSTextField!
   @IBOutlet weak var miniTitle: NSTextField!
   @IBOutlet weak var coverImage: NSImageView!
 
+  @IBOutlet weak var headerView: NSView!
   @IBOutlet weak var webView: WKWebView!
 
   let dateFormatter = DateFormatter()
@@ -82,11 +84,23 @@ class DetailViewController: NSViewController, WKNavigationDelegate {
     dateFormatter.dateStyle = .long
     view.wantsLayer = true
 
+    NSLayoutConstraint(
+      item: headerView!,
+      attribute: .top,
+      relatedBy: .equal,
+      toItem: view.comptableSafeAreaLayoutGuide,
+      attribute: .top,
+      multiplier: 1,
+      constant: 16
+    ).isActive = true
+
     if darkMode {
       view.layer?.backgroundColor = NSColor(calibratedRed: 0.220, green: 0.204, blue: 0.208, alpha: 1.00).cgColor
     } else {
       view.layer?.backgroundColor = CGColor.white
     }
+
+    showBlank()
 
     webView.navigationDelegate = self
     webView.loadHTMLString(MarkupGenerator.blankMarkup(), baseURL: nil)
