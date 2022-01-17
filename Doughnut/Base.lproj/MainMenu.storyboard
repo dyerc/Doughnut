@@ -324,6 +324,13 @@ CA
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="BQe-Pd-Fvh">
                                     <items>
+                                        <menuItem title="Sort Podcasts By" identifier="NSDoughnutViewMenuSortPodcastsItem" id="eqT-nn-3Om">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Sort Episodes By" identifier="NSDoughnutViewMenuSortEpisodesItem" id="a1c-Gw-3kB">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="c1f-lQ-xA4"/>
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="6B0-Rt-3BQ">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>

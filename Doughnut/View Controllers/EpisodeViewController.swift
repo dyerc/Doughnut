@@ -25,6 +25,10 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     case favourites = "Favourites"
   }
 
+  enum Filter {
+    case all
+    case unplayed
+  }
 
   var podcast: Podcast?
   var episodes = [Episode]()
@@ -45,8 +49,9 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     }
   }
 
-  var filter: GlobalFilter = .All {
+  var filter: Filter = .all {
     didSet {
+      updateFilteringButtonState()
       reloadEpisodes()
     }
   }
@@ -60,6 +65,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
   @IBOutlet var tableView: NSTableView!
   @IBOutlet var sortView: NSView!
   @IBOutlet var sortingButton: NSButton!
+  @IBOutlet var filteringButton: NSButton!
 
   var viewController: ViewController {
     get {
@@ -100,7 +106,20 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
 
     sortingButton.menu = sortingMenuProvider.buildPullDownMenu()
 
+    filteringButton.contentTintColor = .secondaryLabelColor
+
     tableView.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
+  }
+
+  override func viewWillAppear() {
+    super.viewWillAppear()
+    updateFilteringButtonState()
+  }
+
+  private func updateFilteringButtonState() {
+    filteringButton.image = filter == .all
+                          ? NSImage(named: "FilterInactive")
+                          : NSImage(named: "FilterActive")
   }
 
   func reloadEpisodes() {
@@ -109,7 +128,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
 
       // Global All | New filter
       episodes = episodes.filter({ episode -> Bool in
-        if filter == .New {
+        if filter == .unplayed {
           return !episode.played
         } else {
           return true
@@ -306,6 +325,10 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     reloadEpisodes()
   }
 
+  func toggleFilter() {
+    filter = (filter == .unplayed) ? .all : .unplayed
+  }
+
   // MARK: - Actions
 
   @IBAction func episodeDoubleClicked(_ sender: Any) {
@@ -434,5 +457,11 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
 
     NSWorkspace.shared.selectFile(episode.url()?.path, inFileViewerRootedAtPath: podcast.path)
   }
+
+}
+
+extension EpisodeViewController: NSMenuDelegate {
+
+  func menuNeedsUpdate(_ menu: NSMenu) { }
 
 }

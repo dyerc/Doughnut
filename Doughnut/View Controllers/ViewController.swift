@@ -18,11 +18,6 @@
 
 import Cocoa
 
-enum GlobalFilter {
-  case All
-  case New
-}
-
 class ViewController: NSSplitViewController, LibraryDelegate {
   enum Events: String {
     case PodcastSelected
@@ -31,8 +26,6 @@ class ViewController: NSSplitViewController, LibraryDelegate {
       return Notification.Name(rawValue: self.rawValue)
     }
   }
-
-  var globalFilter: GlobalFilter = .All
 
   var podcastViewController: PodcastViewController {
     get {
@@ -130,6 +123,12 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   }
 
   // MARK: Actions
+
+  @IBAction func toggleFilterEpisodes(_ sender: Any) {
+    // sender
+    episodeViewController.toggleFilter()
+  }
+
   func updateDockIcon() {
     if Preference.bool(for: Preference.Key.showDockBadge) {
       let unplayedCount = Library.global.unplayedCount

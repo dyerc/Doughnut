@@ -20,8 +20,15 @@ import Cocoa
 
 import MASPreferences
 
+private extension NSUserInterfaceItemIdentifier {
+
+  static let doughnutViewMenuSortPodcasts = Self("NSDoughnutViewMenuSortPodcastsItem")
+  static let doughnutViewMenuSortEpisodes = Self("NSDoughnutViewMenuSortEpisodesItem")
+
+}
+
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate {
 
   var mediaKeyTap: SPMediaKeyTap?
 
@@ -43,6 +50,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
+    // Register NSMenuDelegate for all main menu items
+    NSApp.mainMenu?.items.forEach {
+      $0.submenu?.delegate = self
+    }
+
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
 
     mediaKeyTap = SPMediaKeyTap(delegate: self)
@@ -128,6 +140,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     preferencesWindowController.showWindow(self)
   }
 
+  @IBAction func popUpContextualMenu(_ sender: Any) {
+    guard
+      let senderView = sender as? NSView,
+      let menu = senderView.menu,
+      let event = NSApp.currentEvent
+    else {
+      return
+    }
+    NSMenu.popUpContextMenu(menu, with: event, for: senderView)
+  }
+
   @IBAction func rename(_ sender: AnyObject) {
     assert(false, "This menu item is to be implemented: \(#function)")
   }
@@ -136,23 +159,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     assert(false, "This menu item is to be implemented: \(#function)")
   }
 
-  @objc func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-    // Hide main menu items that is not impelemented for release build.
-    switch menuItem.action {
-    case #selector(rename(_:)):
+}
+
+extension AppDelegate: NSMenuDelegate {
+
+  func menuNeedsUpdate(_ menu: NSMenu) {
+    for menuItem in menu.items {
+      // Hide main menu items that is not impelemented for release build.
+      switch menuItem.action {
+      case #selector(rename(_:)):
 #if !DEBUG
-      menuItem.isHidden = true
+        menuItem.isHidden = true
 #endif
-      break
-    case #selector(deleteAllPlayed(_:)):
+      case #selector(deleteAllPlayed(_:)):
 #if !DEBUG
-      menuItem.isHidden = true
+        menuItem.isHidden = true
 #endif
-      break
-    default:
-      break
+      default:
+        break
+      }
+      if let itemIdentifier = menuItem.identifier {
+        switch itemIdentifier {
+        case .doughnutViewMenuSortPodcasts:
+          menuItem.submenu = SortingMenuProvider.Shared.podcasts.buildMenu()
+        case .doughnutViewMenuSortEpisodes:
+          menuItem.submenu = SortingMenuProvider.Shared.episodes.buildMenu()
+        default:
+          break
+        }
+      }
     }
-    return true
   }
 
 }

@@ -28,11 +28,16 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     case recentEpisodes = "Recent Episode"
   }
 
+  enum Filter {
+    case all
+    case newEpisodes
+  }
 
   var podcasts = [Podcast]()
 
   @IBOutlet var tableView: NSTableView!
   @IBOutlet var sortView: NSView!
+  @IBOutlet var filteringButton: NSButton!
 
   private var sortingMenuProvider: SortingMenuProvider {
     return SortingMenuProvider.Shared.podcasts
@@ -42,8 +47,9 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     return tableView.enclosingScrollView!
   }
 
-  var filter: GlobalFilter = .All {
+  var filter: Filter = .all {
     didSet {
+      updateFilteringButtonState()
       reloadPodcasts()
     }
   }
@@ -118,11 +124,25 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     reloadPodcasts()
   }
 
+  override func viewWillAppear() {
+    super.viewWillAppear()
+    updateFilteringButtonState()
+  }
+
+  private func updateFilteringButtonState() {
+    filteringButton.contentTintColor = filter == .all
+                                     ? .secondaryLabelColor
+                                     : .controlAccentColor
+    filteringButton.image = filter == .all
+                          ? NSImage(named: "FilterInactive")
+                          : NSImage(named: "FilterActive")
+  }
+
   func reloadPodcasts() {
     podcasts = Library.global.podcasts
 
     podcasts = podcasts.filter({ podcast -> Bool in
-      if filter == .New {
+      if filter == .newEpisodes {
         return podcast.unplayedCount > 0
       } else {
         return true
@@ -204,6 +224,10 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
   }
 
   // MARK: - Actions
+
+  @IBAction func toggleFilterPodcasts(_ sender: Any) {
+    filter = (filter == .newEpisodes) ? .all : .newEpisodes
+  }
 
   @IBAction func reloadPodcast(_ sender: Any) {
     let podcasts = activePodcastsForAction()
@@ -308,6 +332,9 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     let podcasts = activePodcastsForAction()
 
     switch menuItem.action {
+    case #selector(toggleFilterPodcasts(_:)):
+      menuItem.state = filter == .newEpisodes ? .on : .off
+      return true
     case #selector(reloadPodcast(_:)):
       return podcasts.count == 1
     case #selector(getInfo(_:)):
@@ -329,6 +356,21 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     default:
       assert(false, "Unhandled menu item in \(#function)")
       return false
+    }
+  }
+
+}
+
+extension PodcastViewController: NSMenuDelegate {
+
+  func menuNeedsUpdate(_ menu: NSMenu) {
+    for menuItem in menu.items {
+      switch menuItem.identifier?.rawValue {
+      case "podcastViewSortBy":
+        menuItem.submenu = sortingMenuProvider.buildMenu()
+      default:
+        break
+      }
     }
   }
 
