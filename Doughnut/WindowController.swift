@@ -20,7 +20,6 @@ import Cocoa
 
 class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegate, DownloadManagerDelegate {
   @IBOutlet var playerView: NSToolbarItem!
-  @IBOutlet weak var downloadsButton: NSToolbarItem!
   @IBOutlet weak var searchInputView: NSTextField!
 
   var viewController: ViewController? {
@@ -53,7 +52,6 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
 
     searchInputView.delegate = self
 
-    downloadsButton.view?.isHidden = true
     Library.global.downloadManager.delegate = self
 
     NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
@@ -124,14 +122,14 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
   }
 
   func downloadStarted() {
-    downloadsButton.view?.isHidden = false
+    //downloadsButton.view?.isHidden = false
     //self.downloadsViewController?.downloadStarted()
   }
 
   func downloadFinished() {
-    if Library.global.downloadManager.queueCount < 1 {
-      downloadsButton.view?.isHidden = true
-    }
+//    if Library.global.downloadManager.queueCount < 1 {
+//      downloadsButton.view?.isHidden = true
+//    }
 
     //self.downloadsViewController?.downloadFinished()
   }

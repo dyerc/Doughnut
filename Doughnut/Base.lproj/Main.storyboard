@@ -205,22 +205,6 @@ Gw
                                         <autoresizingMask key="autoresizingMask"/>
                                     </customView>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="9A64A10D-F674-4BDB-B75D-5D7AEF001779" label="" paletteLabel="Download Queue Button" image="DownloadsIcon" id="3ZS-BL-qK1">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="28" height="25"/>
-                                    <size key="maxSize" width="28" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="mQV-3x-PO1">
-                                        <rect key="frame" x="54" y="14" width="28" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="DownloadsIcon" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="55t-ny-Pj9">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="showDownloads:" target="B8D-0N-5wS" id="X9B-tf-UQv"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="0446AA35-D828-4B36-B4C9-23B4D2BF0006" label="Task Manager" paletteLabel="Task Manager" tag="-1" id="zd4-bJ-Dkk">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="32" height="38"/>
@@ -255,7 +239,6 @@ Gw
                         </connections>
                     </window>
                     <connections>
-                        <outlet property="downloadsButton" destination="3ZS-BL-qK1" id="Dx5-9Y-qk9"/>
                         <outlet property="playerView" destination="Psv-5X-LNl" id="WFu-8c-S1d"/>
                         <outlet property="searchInputView" destination="zQC-lo-HKP" id="Hrm-SR-1bt"/>
                         <segue destination="zrU-nU-rD6" kind="relationship" relationship="window.shadowedContentViewController" id="KFV-RY-whX"/>
@@ -923,7 +906,6 @@ Gw
         </scene>
     </scenes>
     <resources>
-        <image name="DownloadsIcon" width="18" height="18"/>
         <image name="FilterInactive" width="80" height="80"/>
         <image name="NSRefreshTemplate" width="14" height="16"/>
         <image name="PlaceholderIcon" width="79" height="78.5"/>
