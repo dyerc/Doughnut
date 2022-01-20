@@ -18,8 +18,10 @@
 
 import Cocoa
 
-class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegate, DownloadManagerDelegate {
-  @IBOutlet var playerView: NSToolbarItem!
+final class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegate, DownloadManagerDelegate {
+
+  @IBOutlet weak var filterEpisodesToolbarItem: NSToolbarItem!
+  @IBOutlet weak var playerView: NSToolbarItem!
   @IBOutlet weak var searchInputView: NSTextField!
 
   var viewController: ViewController? {
@@ -35,13 +37,14 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
   override func windowDidLoad() {
     super.windowDidLoad()
 
+    window?.title = "Doughnut"
+
     if #available(macOS 11.0, *) {
       window?.toolbarStyle = .unified
     } else {
+      window?.titleVisibility = .hidden
       window?.styleMask.remove(.fullSizeContentView)
     }
-
-    window?.titleVisibility = .hidden
 
     window?.toolbar?.centeredItemIdentifier = playerView.itemIdentifier
 
@@ -168,4 +171,5 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
     let current = Player.global.volume
     Player.global.volume = max(current - 0.1, 0.0)
   }
+
 }

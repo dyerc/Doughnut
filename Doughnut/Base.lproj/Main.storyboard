@@ -198,14 +198,72 @@ Gw
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="24m-vf-dRH"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="cKK-pR-jXd"/>
-                                <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" label="Playback" paletteLabel="Player View" tag="-1" visibilityPriority="1001" sizingBehavior="auto" id="Psv-5X-LNl">
+                                <toolbarItem implicitItemIdentifier="31412741-2178-4E7A-A660-3958FA2EA5B6" explicitItemIdentifier="NSToolbarDoughnutRefreshItemIdentifier" label="Refresh" paletteLabel="Refresh" image="NSRefreshTemplate" bordered="YES" sizingBehavior="auto" id="qEB-5J-ABV">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="deY-6U-AhQ">
+                                        <rect key="frame" x="11" y="14" width="26" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AHr-dr-87D">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="reloadAll:" target="Oky-zY-oP4" id="H3Y-FH-fp9"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="2E100060-EAE2-4575-9B45-049AB3958720" explicitItemIdentifier="NSToolbarDoughnutNewPodcastItemIdentifier" label="New Podcast" paletteLabel="New Podcast" image="NSAddTemplate" bordered="YES" sizingBehavior="auto" id="Iqh-yQ-i9G">
+                                    <nil key="toolTip"/>
+                                    <popUpButton key="view" verticalHuggingPriority="750" id="hvf-w5-wFX">
+                                        <rect key="frame" x="14" y="14" width="49" height="25"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="UQO-bJ-cdA" id="aBq-be-gs8">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" id="UhU-J5-wax">
+                                                <items>
+                                                    <menuItem image="NSAddTemplate" hidden="YES" id="UQO-bJ-cdA">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="New Podcast…" id="huO-s9-skY">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="newPodcast:" target="B8D-0N-5wS" id="kxI-AU-NVA"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Subscribe to Podcast…" id="ZC8-zi-2pA">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="subscribeToPodcast:" target="B8D-0N-5wS" id="pa9-kn-HKj"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                    </popUpButton>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="2DA83EF3-3567-425B-9A15-6F3B6C17EC05" explicitItemIdentifier="NSToolbarDoughnutFilterItemIdentifier" label="Filter Unplayed" paletteLabel="Filter" image="NSActionTemplate" bordered="YES" visibilityPriority="1000" sizingBehavior="auto" id="7tO-yF-9ly">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="dpN-Xz-b8k">
+                                        <rect key="frame" x="4" y="14" width="27" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSActionTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QKn-g0-xH9">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="toggleFilterEpisodes:" target="Oky-zY-oP4" id="QhC-e4-Fe1"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" explicitItemIdentifier="NSToolbarDoughnutPlayerViewItemIdentifier" label="Playback" paletteLabel="Playback" tag="-1" visibilityPriority="1002" sizingBehavior="auto" id="Psv-5X-LNl">
                                     <nil key="toolTip"/>
                                     <customView key="view" id="qY3-fM-qgT" customClass="PlayerView" customModule="Doughnut" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="14" width="465" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </customView>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="0446AA35-D828-4B36-B4C9-23B4D2BF0006" label="Task Manager" paletteLabel="Task Manager" tag="-1" id="zd4-bJ-Dkk">
+                                <toolbarItem implicitItemIdentifier="0446AA35-D828-4B36-B4C9-23B4D2BF0006" explicitItemIdentifier="NSToolbarDoughnutTaskManagerItemIdentifier" label="Task Manager" paletteLabel="Task Manager" tag="-1" id="zd4-bJ-Dkk">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="32" height="38"/>
                                     <size key="maxSize" width="32" height="38"/>
@@ -214,7 +272,7 @@ Gw
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </customView>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="30738650-C932-4F7A-90D7-03F06658D853" label="Search" paletteLabel="Search" visibilityPriority="1000" sizingBehavior="auto" id="mto-Rc-MWj">
+                                <toolbarItem implicitItemIdentifier="30738650-C932-4F7A-90D7-03F06658D853" explicitItemIdentifier="NSToolbarDoughnutSearchItemIdentifier" label="Search" paletteLabel="Search" visibilityPriority="1001" sizingBehavior="auto" id="mto-Rc-MWj">
                                     <nil key="toolTip"/>
                                     <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="zQC-lo-HKP">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
@@ -227,18 +285,17 @@ Gw
                                     </searchField>
                                 </toolbarItem>
                             </allowedToolbarItems>
-                            <defaultToolbarItems>
-                                <toolbarItem reference="Psv-5X-LNl"/>
-                                <toolbarItem reference="cKK-pR-jXd"/>
-                                <toolbarItem reference="zd4-bJ-Dkk"/>
-                                <toolbarItem reference="mto-Rc-MWj"/>
-                            </defaultToolbarItems>
+                            <defaultToolbarItems/>
+                            <connections>
+                                <outlet property="delegate" destination="B8D-0N-5wS" id="ptN-lP-YIG"/>
+                            </connections>
                         </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="F8A-Sb-plI"/>
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="filterEpisodesToolbarItem" destination="7tO-yF-9ly" id="jr7-Hc-11g"/>
                         <outlet property="playerView" destination="Psv-5X-LNl" id="WFu-8c-S1d"/>
                         <outlet property="searchInputView" destination="zQC-lo-HKP" id="Hrm-SR-1bt"/>
                         <segue destination="zrU-nU-rD6" kind="relationship" relationship="window.shadowedContentViewController" id="KFV-RY-whX"/>
@@ -650,7 +707,7 @@ Gw
                                     </subviews>
                                 </clipView>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="7Si-iI-Qlx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="7Si-iI-Qlx"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="r32-FB-sgI">
                                     <rect key="frame" x="0.0" y="404" width="331" height="16"/>
@@ -813,6 +870,9 @@ Gw
                         <subviews>
                             <wkWebView wantsLayer="YES" verticalHuggingPriority="750" allowsLinkPreview="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElX-b1-U2Z" customClass="DetailWebView" customModule="Doughnut" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="407" height="317"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="380" id="UWr-3h-3bo"/>
+                                </constraints>
                                 <wkWebViewConfiguration key="configuration" applicationNameForUserAgent="Doughnut" suppressesIncrementalRendering="YES">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences" javaScriptCanOpenWindowsAutomatically="NO" javaScriptEnabled="NO"/>
@@ -907,6 +967,8 @@ Gw
     </scenes>
     <resources>
         <image name="FilterInactive" width="80" height="80"/>
+        <image name="NSActionTemplate" width="15" height="15"/>
+        <image name="NSAddTemplate" width="14" height="13"/>
         <image name="NSRefreshTemplate" width="14" height="16"/>
         <image name="PlaceholderIcon" width="79" height="78.5"/>
     </resources>

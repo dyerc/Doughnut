@@ -67,6 +67,10 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
   @IBOutlet var sortingButton: NSButton!
   @IBOutlet var filteringButton: NSButton!
 
+  var filterEpisodesToolbarItem: NSToolbarItem? {
+    return (view.window?.windowController as? WindowController)?.filterEpisodesToolbarItem
+  }
+
   var viewController: ViewController {
     get {
       return parent as! ViewController
@@ -78,6 +82,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
 
     if #available(macOS 11.0, *) {
       tableView.style = .inset
+      filteringButton.isHidden = true
     }
 
     NSLayoutConstraint(
@@ -117,6 +122,12 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
   }
 
   private func updateFilteringButtonState() {
+    if #available(macOS 11.0, *) {
+      filterEpisodesToolbarItem?.image = filter == .all
+                               ? NSImage(systemSymbolName: "line.horizontal.3.decrease.circle", accessibilityDescription: nil)
+                               : NSImage(systemSymbolName: "line.horizontal.3.decrease.circle.fill", accessibilityDescription: nil)
+    }
+
     filteringButton.image = filter == .all
                           ? NSImage(named: "FilterInactive")
                           : NSImage(named: "FilterActive")

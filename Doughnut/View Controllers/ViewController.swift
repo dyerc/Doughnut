@@ -18,7 +18,10 @@
 
 import Cocoa
 
-class ViewController: NSSplitViewController, LibraryDelegate {
+final class ViewController: NSSplitViewController, LibraryDelegate {
+
+  static let minimumWidthToShowWindowTitle: CGFloat = 930
+
   enum Events: String {
     case PodcastSelected
 
@@ -49,7 +52,7 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     super.viewDidLoad()
 
     UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.showDockBadge.rawValue, options: [], context: nil)
-    updateDockIcon()
+    updateWindowTitleAndDockIcon()
 
     splitView.autosaveName = "Main"
 
@@ -63,7 +66,7 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
     switch keyPath {
     case Preference.Key.showDockBadge.rawValue?:
-      updateDockIcon()
+      updateWindowTitleAndDockIcon()
     default:
       return
     }
@@ -72,6 +75,7 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   func selectPodcast(podcast: Podcast?) {
     episodeViewController.selectPodcast(podcast)
     detailViewController.podcast = podcast
+    updateWindowTitle()
   }
 
   func selectEpisode(episode: Episode?) {
@@ -81,12 +85,12 @@ class ViewController: NSSplitViewController, LibraryDelegate {
   // MARK: Library Delegate
   func libraryReloaded() {
     podcastViewController.reloadPodcasts()
-    updateDockIcon()
+    updateWindowTitleAndDockIcon()
   }
 
   func librarySubscribedToPodcast(subscribed: Podcast) {
     podcastViewController.reloadPodcasts()
-    updateDockIcon()
+    updateWindowTitleAndDockIcon()
   }
 
   func libraryUnsubscribedFromPodcast(unsubscribed: Podcast) {
@@ -96,12 +100,12 @@ class ViewController: NSSplitViewController, LibraryDelegate {
       selectPodcast(podcast: nil)
     }
 
-    updateDockIcon()
+    updateWindowTitleAndDockIcon()
   }
 
   func libraryUpdatingPodcast(podcast: Podcast) {
     podcastViewController.reloadPodcasts()
-    updateDockIcon()
+    updateWindowTitleAndDockIcon()
   }
 
   func libraryUpdatedPodcast(podcast: Podcast) {
@@ -111,7 +115,7 @@ class ViewController: NSSplitViewController, LibraryDelegate {
       episodeViewController.reloadEpisodes()
     }
 
-    updateDockIcon()
+    updateWindowTitleAndDockIcon()
   }
 
   func libraryUpdatedEpisode(episode: Episode) {
@@ -119,7 +123,7 @@ class ViewController: NSSplitViewController, LibraryDelegate {
       episodeViewController.reloadEpisode(episode)
     }
 
-    updateDockIcon()
+    updateWindowTitleAndDockIcon()
   }
 
   // MARK: Actions
@@ -129,7 +133,24 @@ class ViewController: NSSplitViewController, LibraryDelegate {
     episodeViewController.toggleFilter()
   }
 
-  func updateDockIcon() {
+  private func updateWindowTitle() {
+    if #available(macOS 11.0, *) {
+      if let podcast = detailViewController.podcast {
+        view.window?.title = podcast.title
+        view.window?.subtitle = "\(podcast.unplayedCount) Unplayed"
+      } else {
+        view.window?.title = "Doughnut"
+        view.window?.subtitle = ""
+      }
+    }
+  }
+
+  private func updateWindowTitleAndDockIcon() {
+    updateWindowTitle()
+    updateDockIcon()
+  }
+
+  private func updateDockIcon() {
     if Preference.bool(for: Preference.Key.showDockBadge) {
       let unplayedCount = Library.global.unplayedCount
 
@@ -145,6 +166,18 @@ class ViewController: NSSplitViewController, LibraryDelegate {
 
   func search(_ query: String?) {
     episodeViewController.searchQuery = query
+  }
+
+}
+
+extension ViewController {
+
+  override func splitViewDidResizeSubviews(_ notification: Notification) {
+    if #available(macOS 11.0, *) {
+      let primaryColumnsWidth = episodeViewController.view.bounds.width + detailViewController.view.bounds.width
+      view.window?.titleVisibility = primaryColumnsWidth >= Self.minimumWidthToShowWindowTitle
+                                   ? .visible : .hidden
+    }
   }
 
 }
