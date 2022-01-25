@@ -18,29 +18,40 @@
 
 import Cocoa
 
-enum EpisodeSortParameter: String {
-  case EpisodeMostRecent = "Most Recent"
-  case EpisodeFavourites = "Favourites"
-}
+final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, SortingMenuProviderDelegate {
 
-class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, SortingViewDelegate {
+  enum SortParameter: String {
+    case mostRecent = "Most Recent"
+    case favourites = "Favourites"
+  }
+
+  enum Filter {
+    case all
+    case unplayed
+  }
+
   var podcast: Podcast?
   var episodes = [Episode]()
 
-  var sortBy: EpisodeSortParameter = .EpisodeMostRecent {
+  private var sortingMenuProvider: SortingMenuProvider {
+    return SortingMenuProvider.Shared.episodes
+  }
+
+  var sortBy: SortParameter = .mostRecent {
     didSet {
       Preference.set(sortBy.rawValue, for: Preference.Key.episodeSortParam)
     }
   }
 
-  var sortDirection: SortDirection = .Desc {
+  var sortDirection: SortDirection = .desc {
     didSet {
       Preference.set(sortDirection.rawValue, for: Preference.Key.episodeSortDirection)
     }
   }
 
-  var filter: GlobalFilter = .All {
+  var filter: Filter = .all {
     didSet {
+      updateFilteringButtonState()
       reloadEpisodes()
     }
   }
@@ -52,7 +63,13 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
 
   @IBOutlet var tableView: NSTableView!
-  @IBOutlet var sortView: SortingView!
+  @IBOutlet var sortView: NSView!
+  @IBOutlet var sortingButton: NSButton!
+  @IBOutlet var filteringButton: NSButton!
+
+  var filterEpisodesToolbarItem: NSToolbarItem? {
+    return (view.window?.windowController as? WindowController)?.filterEpisodesToolbarItem
+  }
 
   var viewController: ViewController {
     get {
@@ -65,6 +82,7 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
 
     if #available(macOS 11.0, *) {
       tableView.style = .inset
+      filteringButton.isHidden = true
     }
 
     NSLayoutConstraint(
@@ -77,26 +95,42 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
       constant: 0
     ).isActive = true
 
-    sortView.menuItemTitles = [
-      EpisodeSortParameter.EpisodeFavourites.rawValue,
-      EpisodeSortParameter.EpisodeMostRecent.rawValue,
-    ]
-
-    if let sortPreference = Preference.string(for: Preference.Key.episodeSortParam), let sortParam = EpisodeSortParameter(rawValue: sortPreference) {
+    if let sortPreference = Preference.string(for: Preference.Key.episodeSortParam), let sortParam = SortParameter(rawValue: sortPreference) {
       sortBy = sortParam
     }
 
     if Preference.string(for: Preference.Key.episodeSortDirection) == "Ascending" {
-      sortDirection = .Asc
+      sortDirection = .asc
     } else {
-      sortDirection = .Desc
+      sortDirection = .desc
     }
 
-    sortView.sortParam = sortBy.rawValue
-    sortView.sortDirection = sortDirection
-    sortView.delegate = self
+    sortingMenuProvider.sortParam = sortBy.rawValue
+    sortingMenuProvider.sortDirection = sortDirection
+    sortingMenuProvider.delegate = self
+
+    sortingButton.menu = sortingMenuProvider.buildPullDownMenu()
+
+    filteringButton.contentTintColor = .secondaryLabelColor
 
     tableView.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
+  }
+
+  override func viewWillAppear() {
+    super.viewWillAppear()
+    updateFilteringButtonState()
+  }
+
+  private func updateFilteringButtonState() {
+    if #available(macOS 11.0, *) {
+      filterEpisodesToolbarItem?.image = filter == .all
+                               ? NSImage(systemSymbolName: "line.horizontal.3.decrease.circle", accessibilityDescription: nil)
+                               : NSImage(systemSymbolName: "line.horizontal.3.decrease.circle.fill", accessibilityDescription: nil)
+    }
+
+    filteringButton.image = filter == .all
+                          ? NSImage(named: "FilterInactive")
+                          : NSImage(named: "FilterActive")
   }
 
   func reloadEpisodes() {
@@ -105,7 +139,7 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
 
       // Global All | New filter
       episodes = episodes.filter({ episode -> Bool in
-        if filter == .New {
+        if filter == .unplayed {
           return !episode.played
         } else {
           return true
@@ -122,17 +156,17 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
 
       episodes.sort(by: { (a, b) -> Bool in
         switch sortBy {
-        case .EpisodeMostRecent:
+        case .mostRecent:
           guard let aD = a.pubDate else { return false }
           guard let bD = b.pubDate else { return true }
 
           return aD.compare(bD) == .orderedAscending
-        case .EpisodeFavourites:
+        case .favourites:
           return (a.favourite ? 1 : 0) < (b.favourite ? 1 : 0)
         }
       })
 
-      if sortDirection == .Desc {
+      if sortDirection == .desc {
         episodes.reverse()
       }
     }
@@ -288,13 +322,22 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
   }
 
   func sorted(by: String?, direction: SortDirection) {
-    if let sortParam = EpisodeSortParameter(rawValue: by ?? "") {
+    if let sortParam = SortParameter(rawValue: by ?? "") {
       sortBy = sortParam
     }
 
     sortDirection = direction
 
+    // Rebuild the pulldown menu after sorting to ensure its title being updated
+    // We should have an another mechanism to trigger menu updates. For now it's
+    // fine to keep it simple.
+    sortingButton.menu = sortingMenuProvider.buildPullDownMenu()
+
     reloadEpisodes()
+  }
+
+  func toggleFilter() {
+    filter = (filter == .unplayed) ? .all : .unplayed
   }
 
   // MARK: - Actions
@@ -308,7 +351,7 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     Player.global.play(episode: episode)
   }
 
-  @IBAction @objc func playNow(_ sender: Any) {
+  @IBAction func playNow(_ sender: Any) {
     let episodes = activeEpisodesForAction()
     assert(episodes.count == 1)
     guard let episode = episodes.first else { return }
@@ -425,5 +468,11 @@ class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTableViewD
 
     NSWorkspace.shared.selectFile(episode.url()?.path, inFileViewerRootedAtPath: podcast.path)
   }
+
+}
+
+extension EpisodeViewController: NSMenuDelegate {
+
+  func menuNeedsUpdate(_ menu: NSMenu) { }
 
 }

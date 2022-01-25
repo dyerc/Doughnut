@@ -198,62 +198,72 @@ Gw
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="24m-vf-dRH"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="cKK-pR-jXd"/>
-                                <toolbarItem implicitItemIdentifier="F8E7139A-1097-4EC9-9875-0FAB2336FC65" label="Custom View" paletteLabel="Custom View" title="All" id="kDe-15-3rO">
+                                <toolbarItem implicitItemIdentifier="31412741-2178-4E7A-A660-3958FA2EA5B6" explicitItemIdentifier="NSToolbarDoughnutRefreshItemIdentifier" label="Refresh" paletteLabel="Refresh" image="NSRefreshTemplate" bordered="YES" sizingBehavior="auto" id="qEB-5J-ABV">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="40" height="18"/>
-                                    <size key="maxSize" width="40" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="0x1-F9-vTA">
-                                        <rect key="frame" x="18" y="14" width="40" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="recessed" title="All" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B7H-1a-TNL">
-                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
+                                    <button key="view" verticalHuggingPriority="750" id="deY-6U-AhQ">
+                                        <rect key="frame" x="11" y="14" width="26" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AHr-dr-87D">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
                                     <connections>
-                                        <action selector="toggleAllEpisodes:" target="B8D-0N-5wS" id="gpj-C0-hOS"/>
+                                        <action selector="reloadAll:" target="Oky-zY-oP4" id="H3Y-FH-fp9"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="8965E721-3D66-41BE-9EA1-7C449D303C1B" label="Custom View" paletteLabel="Custom View" title="New" id="6L2-aH-OKv">
+                                <toolbarItem implicitItemIdentifier="2E100060-EAE2-4575-9B45-049AB3958720" explicitItemIdentifier="NSToolbarDoughnutNewPodcastItemIdentifier" label="New Podcast" paletteLabel="New Podcast" image="NSAddTemplate" bordered="YES" sizingBehavior="auto" id="Iqh-yQ-i9G">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="40" height="18"/>
-                                    <size key="maxSize" width="40" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="lAe-YH-TAR">
-                                        <rect key="frame" x="18" y="14" width="40" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="recessed" title="New" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LOi-LR-sxa">
-                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
+                                    <popUpButton key="view" verticalHuggingPriority="750" id="hvf-w5-wFX">
+                                        <rect key="frame" x="14" y="14" width="49" height="25"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="UQO-bJ-cdA" id="aBq-be-gs8">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" id="UhU-J5-wax">
+                                                <items>
+                                                    <menuItem image="NSAddTemplate" hidden="YES" id="UQO-bJ-cdA">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="New Podcast…" id="huO-s9-skY">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="newPodcast:" target="B8D-0N-5wS" id="kxI-AU-NVA"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Subscribe to Podcast…" id="ZC8-zi-2pA">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="subscribeToPodcast:" target="B8D-0N-5wS" id="pa9-kn-HKj"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                    </popUpButton>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="2DA83EF3-3567-425B-9A15-6F3B6C17EC05" explicitItemIdentifier="NSToolbarDoughnutFilterItemIdentifier" label="Filter Unplayed" paletteLabel="Filter" image="NSActionTemplate" bordered="YES" visibilityPriority="1000" sizingBehavior="auto" id="7tO-yF-9ly">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="dpN-Xz-b8k">
+                                        <rect key="frame" x="4" y="14" width="27" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSActionTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QKn-g0-xH9">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
                                     <connections>
-                                        <action selector="toggleNewEpisodes:" target="B8D-0N-5wS" id="AqT-s0-Y6z"/>
+                                        <action selector="toggleFilterEpisodes:" target="Oky-zY-oP4" id="QhC-e4-Fe1"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" label="Playback" paletteLabel="Player View" tag="-1" visibilityPriority="1001" sizingBehavior="auto" id="Psv-5X-LNl">
+                                <toolbarItem implicitItemIdentifier="D9AB39C8-3B36-4357-95AC-C446E076C634" explicitItemIdentifier="NSToolbarDoughnutPlayerViewItemIdentifier" label="Playback" paletteLabel="Playback" tag="-1" visibilityPriority="1002" sizingBehavior="auto" id="Psv-5X-LNl">
                                     <nil key="toolTip"/>
                                     <customView key="view" id="qY3-fM-qgT" customClass="PlayerView" customModule="Doughnut" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="14" width="465" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </customView>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="9A64A10D-F674-4BDB-B75D-5D7AEF001779" label="" paletteLabel="Download Queue Button" image="DownloadsIcon" id="3ZS-BL-qK1">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="28" height="25"/>
-                                    <size key="maxSize" width="28" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="mQV-3x-PO1">
-                                        <rect key="frame" x="54" y="14" width="28" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="DownloadsIcon" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="55t-ny-Pj9">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="showDownloads:" target="B8D-0N-5wS" id="X9B-tf-UQv"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="0446AA35-D828-4B36-B4C9-23B4D2BF0006" label="Task Manager" paletteLabel="Task Manager" tag="-1" id="zd4-bJ-Dkk">
+                                <toolbarItem implicitItemIdentifier="0446AA35-D828-4B36-B4C9-23B4D2BF0006" explicitItemIdentifier="NSToolbarDoughnutTaskManagerItemIdentifier" label="Task Manager" paletteLabel="Task Manager" tag="-1" id="zd4-bJ-Dkk">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="32" height="38"/>
                                     <size key="maxSize" width="32" height="38"/>
@@ -262,7 +272,7 @@ Gw
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </customView>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="30738650-C932-4F7A-90D7-03F06658D853" label="Search" paletteLabel="Search" visibilityPriority="1000" sizingBehavior="auto" id="mto-Rc-MWj">
+                                <toolbarItem implicitItemIdentifier="30738650-C932-4F7A-90D7-03F06658D853" explicitItemIdentifier="NSToolbarDoughnutSearchItemIdentifier" label="Search" paletteLabel="Search" visibilityPriority="1001" sizingBehavior="auto" id="mto-Rc-MWj">
                                     <nil key="toolTip"/>
                                     <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="zQC-lo-HKP">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
@@ -275,23 +285,17 @@ Gw
                                     </searchField>
                                 </toolbarItem>
                             </allowedToolbarItems>
-                            <defaultToolbarItems>
-                                <toolbarItem reference="kDe-15-3rO"/>
-                                <toolbarItem reference="6L2-aH-OKv"/>
-                                <toolbarItem reference="Psv-5X-LNl"/>
-                                <toolbarItem reference="cKK-pR-jXd"/>
-                                <toolbarItem reference="zd4-bJ-Dkk"/>
-                                <toolbarItem reference="mto-Rc-MWj"/>
-                            </defaultToolbarItems>
+                            <defaultToolbarItems/>
+                            <connections>
+                                <outlet property="delegate" destination="B8D-0N-5wS" id="ptN-lP-YIG"/>
+                            </connections>
                         </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="F8A-Sb-plI"/>
                         </connections>
                     </window>
                     <connections>
-                        <outlet property="allToggle" destination="0x1-F9-vTA" id="5Ik-2C-flf"/>
-                        <outlet property="downloadsButton" destination="3ZS-BL-qK1" id="Dx5-9Y-qk9"/>
-                        <outlet property="newToggle" destination="lAe-YH-TAR" id="0xd-Ho-EFT"/>
+                        <outlet property="filterEpisodesToolbarItem" destination="7tO-yF-9ly" id="jr7-Hc-11g"/>
                         <outlet property="playerView" destination="Psv-5X-LNl" id="WFu-8c-S1d"/>
                         <outlet property="searchInputView" destination="zQC-lo-HKP" id="Hrm-SR-1bt"/>
                         <segue destination="zrU-nU-rD6" kind="relationship" relationship="window.shadowedContentViewController" id="KFV-RY-whX"/>
@@ -333,17 +337,45 @@ Gw
             <objects>
                 <viewController id="hBf-lZ-L6q" customClass="PodcastViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="D1G-wk-4ey">
-                        <rect key="frame" x="0.0" y="0.0" width="251" height="473"/>
+                        <rect key="frame" x="0.0" y="0.0" width="251" height="483"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="uiz-QK-vYc" customClass="SortingView" customModule="Doughnut" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="251" height="20"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="uiz-QK-vYc">
+                                <rect key="frame" x="0.0" y="0.0" width="251" height="30"/>
+                                <subviews>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Pkz-GU-AL9">
+                                        <rect key="frame" x="10" y="7" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="1ey-UM-1K6"/>
+                                            <constraint firstAttribute="height" constant="16" id="edJ-L8-BeT"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="FilterInactive" imagePosition="only" alignment="center" controlSize="small" imageScaling="proportionallyUpOrDown" inset="2" id="1pl-TM-f2l">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="popUpContextualMenu:" target="ioO-eb-ohg" id="8sS-My-9LM"/>
+                                            <outlet property="menu" destination="HHi-Kh-WaX" id="iW8-Dh-6TZ"/>
+                                        </connections>
+                                    </button>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Q9V-7G-TPX">
+                                        <rect key="frame" x="0.0" y="27" width="251" height="5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="yYT-XN-B8Z"/>
+                                        </constraints>
+                                    </box>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="z3j-li-cq1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q9V-7G-TPX" secondAttribute="trailing" id="A44-yV-1Em"/>
+                                    <constraint firstItem="Pkz-GU-AL9" firstAttribute="leading" secondItem="uiz-QK-vYc" secondAttribute="leading" constant="10" id="K3X-4F-EFf"/>
+                                    <constraint firstItem="Q9V-7G-TPX" firstAttribute="top" secondItem="uiz-QK-vYc" secondAttribute="top" id="Sbc-WQ-qD2"/>
+                                    <constraint firstItem="Q9V-7G-TPX" firstAttribute="leading" secondItem="uiz-QK-vYc" secondAttribute="leading" id="svA-Pp-CMo"/>
+                                    <constraint firstAttribute="height" constant="30" id="z3j-li-cq1"/>
+                                    <constraint firstItem="Pkz-GU-AL9" firstAttribute="centerY" secondItem="uiz-QK-vYc" secondAttribute="centerY" id="zwL-bm-bF1"/>
                                 </constraints>
                             </customView>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="59" horizontalPageScroll="10" verticalLineScroll="59" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olf-xm-4xZ">
-                                <rect key="frame" x="0.0" y="20" width="251" height="401"/>
+                                <rect key="frame" x="0.0" y="30" width="251" height="401"/>
                                 <clipView key="contentView" drawsBackground="NO" id="RU8-8U-i4z">
                                     <rect key="frame" x="0.0" y="0.0" width="251" height="401"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -474,6 +506,7 @@ Gw
                         <viewLayoutGuide key="layoutMargins" id="8eP-ga-5Bq"/>
                     </view>
                     <connections>
+                        <outlet property="filteringButton" destination="Pkz-GU-AL9" id="0A7-FY-mz9"/>
                         <outlet property="sortView" destination="uiz-QK-vYc" id="2M8-u2-XLD"/>
                         <outlet property="tableView" destination="aVy-1A-ODd" id="MSD-C6-DW1"/>
                     </connections>
@@ -528,6 +561,32 @@ Gw
                             </connections>
                         </menuItem>
                     </items>
+                    <connections>
+                        <outlet property="delegate" destination="Pkz-GU-AL9" id="ZaK-a7-6Wq"/>
+                    </connections>
+                </menu>
+                <menu id="HHi-Kh-WaX">
+                    <items>
+                        <menuItem title="Sort By" identifier="podcastViewSortBy" id="dyf-fU-Ugh">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="Filter By" id="sC2-Ue-2nz">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="Filter By" id="731-j4-Wha">
+                                <items>
+                                    <menuItem title="New Episodes" id="jv1-Gl-Reg">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="toggleFilterPodcasts:" target="ioO-eb-ohg" id="1pb-k4-Zho"/>
+                                        </connections>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="hBf-lZ-L6q" id="xzQ-ok-WgY"/>
+                    </connections>
                 </menu>
             </objects>
             <point key="canvasLocation" x="753.5" y="403.5"/>
@@ -537,7 +596,7 @@ Gw
             <objects>
                 <viewController id="GEj-8A-BQz" customClass="EpisodeViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="tvM-2C-S0k">
-                        <rect key="frame" x="0.0" y="0.0" width="351" height="472"/>
+                        <rect key="frame" x="0.0" y="0.0" width="351" height="484"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="76" horizontalPageScroll="10" verticalLineScroll="76" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPG-xC-7JH">
@@ -648,7 +707,7 @@ Gw
                                     </subviews>
                                 </clipView>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="7Si-iI-Qlx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="7Si-iI-Qlx"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="r32-FB-sgI">
                                     <rect key="frame" x="0.0" y="404" width="331" height="16"/>
@@ -659,10 +718,63 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="z1v-iO-axc" customClass="SortingView" customModule="Doughnut" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="400" width="351" height="20"/>
+                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z1v-iO-axc">
+                                <rect key="frame" x="0.0" y="400" width="351" height="32"/>
+                                <subviews>
+                                    <visualEffectView blendingMode="withinWindow" material="contentBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="UAU-9G-p2G">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="32"/>
+                                        <subviews>
+                                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="svO-VQ-8jg">
+                                                <rect key="frame" x="0.0" y="-2" width="351" height="5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="KJb-ap-usI"/>
+                                                </constraints>
+                                            </box>
+                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BwK-xu-ji4">
+                                                <rect key="frame" x="10" y="6" width="63" height="19"/>
+                                                <popUpButtonCell key="cell" type="recessed" title="Sort by" bezelStyle="recessed" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="cUW-Fb-q2L" id="ecC-p0-44Q">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                    <font key="font" metaFont="smallSystemBold"/>
+                                                    <menu key="menu" id="ymb-YI-6o0">
+                                                        <items>
+                                                            <menuItem title="Sort by" state="on" hidden="YES" id="cUW-Fb-q2L"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                            </popUpButton>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Aug-ac-Djf">
+                                                <rect key="frame" x="325" y="8" width="16" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="16" id="BxR-pe-5Xw"/>
+                                                    <constraint firstAttribute="height" constant="16" id="mIR-9f-Rkh"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="FilterInactive" imagePosition="only" alignment="center" controlSize="small" imageScaling="proportionallyUpOrDown" inset="2" id="zva-Tk-jQB">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="toggleFilterEpisodes:" target="qq1-Uz-mef" id="hXT-3a-3Em"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Aug-ac-Djf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BwK-xu-ji4" secondAttribute="trailing" constant="8" id="1hr-kF-Phg"/>
+                                            <constraint firstAttribute="trailing" secondItem="svO-VQ-8jg" secondAttribute="trailing" id="3hB-3f-eUe"/>
+                                            <constraint firstItem="svO-VQ-8jg" firstAttribute="leading" secondItem="UAU-9G-p2G" secondAttribute="leading" id="4V0-AM-iks"/>
+                                            <constraint firstAttribute="trailing" secondItem="Aug-ac-Djf" secondAttribute="trailing" constant="10" id="6hx-pk-c6z"/>
+                                            <constraint firstItem="Aug-ac-Djf" firstAttribute="centerY" secondItem="UAU-9G-p2G" secondAttribute="centerY" id="8Uw-oa-Tgz"/>
+                                            <constraint firstItem="BwK-xu-ji4" firstAttribute="centerY" secondItem="UAU-9G-p2G" secondAttribute="centerY" id="HU1-MI-S7F"/>
+                                            <constraint firstItem="BwK-xu-ji4" firstAttribute="leading" secondItem="UAU-9G-p2G" secondAttribute="leading" constant="10" id="rPI-rO-uMp"/>
+                                            <constraint firstAttribute="bottom" secondItem="svO-VQ-8jg" secondAttribute="bottom" id="z4t-6M-Su2"/>
+                                        </constraints>
+                                    </visualEffectView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="w7A-wS-W8s"/>
+                                    <constraint firstAttribute="trailing" secondItem="UAU-9G-p2G" secondAttribute="trailing" id="M8H-Nm-hg8"/>
+                                    <constraint firstAttribute="bottom" secondItem="UAU-9G-p2G" secondAttribute="bottom" id="csj-cb-eEd"/>
+                                    <constraint firstItem="UAU-9G-p2G" firstAttribute="leading" secondItem="z1v-iO-axc" secondAttribute="leading" id="jVp-Ee-vov"/>
+                                    <constraint firstAttribute="height" constant="32" id="w7A-wS-W8s"/>
+                                    <constraint firstItem="UAU-9G-p2G" firstAttribute="top" secondItem="z1v-iO-axc" secondAttribute="top" id="xnS-er-qeQ"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -679,7 +791,9 @@ Gw
                         <viewLayoutGuide key="layoutMargins" id="fgU-SA-hc5"/>
                     </view>
                     <connections>
+                        <outlet property="filteringButton" destination="Aug-ac-Djf" id="0E6-Ya-ceM"/>
                         <outlet property="sortView" destination="z1v-iO-axc" id="qCw-4z-ayn"/>
+                        <outlet property="sortingButton" destination="BwK-xu-ji4" id="RWp-r8-815"/>
                         <outlet property="tableView" destination="Xrx-cp-IWJ" id="WVH-k1-4XS"/>
                     </connections>
                 </viewController>
@@ -756,6 +870,9 @@ Gw
                         <subviews>
                             <wkWebView wantsLayer="YES" verticalHuggingPriority="750" allowsLinkPreview="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElX-b1-U2Z" customClass="DetailWebView" customModule="Doughnut" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="407" height="317"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="380" id="UWr-3h-3bo"/>
+                                </constraints>
                                 <wkWebViewConfiguration key="configuration" applicationNameForUserAgent="Doughnut" suppressesIncrementalRendering="YES">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences" javaScriptCanOpenWindowsAutomatically="NO" javaScriptEnabled="NO"/>
@@ -849,7 +966,9 @@ Gw
         </scene>
     </scenes>
     <resources>
-        <image name="DownloadsIcon" width="18" height="18"/>
+        <image name="FilterInactive" width="80" height="80"/>
+        <image name="NSActionTemplate" width="15" height="15"/>
+        <image name="NSAddTemplate" width="14" height="13"/>
         <image name="NSRefreshTemplate" width="14" height="16"/>
         <image name="PlaceholderIcon" width="79" height="78.5"/>
     </resources>

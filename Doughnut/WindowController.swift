@@ -18,11 +18,10 @@
 
 import Cocoa
 
-class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegate, DownloadManagerDelegate {
-  @IBOutlet var allToggle: NSButton!
-  @IBOutlet var newToggle: NSButton!
-  @IBOutlet var playerView: NSToolbarItem!
-  @IBOutlet weak var downloadsButton: NSToolbarItem!
+final class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegate, DownloadManagerDelegate {
+
+  @IBOutlet weak var filterEpisodesToolbarItem: NSToolbarItem!
+  @IBOutlet weak var playerView: NSToolbarItem!
   @IBOutlet weak var searchInputView: NSTextField!
 
   var viewController: ViewController? {
@@ -38,13 +37,14 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
   override func windowDidLoad() {
     super.windowDidLoad()
 
+    window?.title = "Doughnut"
+
     if #available(macOS 11.0, *) {
       window?.toolbarStyle = .unified
     } else {
+      window?.titleVisibility = .hidden
       window?.styleMask.remove(.fullSizeContentView)
     }
-
-    window?.titleVisibility = .hidden
 
     window?.toolbar?.centeredItemIdentifier = playerView.itemIdentifier
 
@@ -55,7 +55,6 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
 
     searchInputView.delegate = self
 
-    downloadsButton.view?.isHidden = true
     Library.global.downloadManager.delegate = self
 
     NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
@@ -125,33 +124,15 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
     popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)*/
   }
 
-  @IBAction func toggleAllEpisodes(_ sender: Any) {
-    allToggle.state = .on
-    newToggle.state = .off
-
-    if let vc = viewController {
-      vc.filter(.All)
-    }
-  }
-
-  @IBAction func toggleNewEpisodes(_ sender: Any) {
-    allToggle.state = .off
-    newToggle.state = .on
-
-    if let vc = viewController {
-      vc.filter(.New)
-    }
-  }
-
   func downloadStarted() {
-    downloadsButton.view?.isHidden = false
+    //downloadsButton.view?.isHidden = false
     //self.downloadsViewController?.downloadStarted()
   }
 
   func downloadFinished() {
-    if Library.global.downloadManager.queueCount < 1 {
-      downloadsButton.view?.isHidden = true
-    }
+//    if Library.global.downloadManager.queueCount < 1 {
+//      downloadsButton.view?.isHidden = true
+//    }
 
     //self.downloadsViewController?.downloadFinished()
   }
@@ -190,4 +171,5 @@ class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegat
     let current = Player.global.volume
     Player.global.volume = max(current - 0.1, 0.0)
   }
+
 }
