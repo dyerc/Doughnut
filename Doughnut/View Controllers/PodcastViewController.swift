@@ -77,35 +77,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
 
     if #available(macOS 11.0, *) {
       tableView.style = .sourceList
-
-      // NSTableView is not getting top inset at sourceList style,
-      // temporarily adding 10pt to inset to align with the episode list.
-      // The whole sidebar tableView should be migrated to a NSOutlineView.
-      let scrollViewTopInset: CGFloat = 10
-      tableScrollView.automaticallyAdjustsContentInsets = false
-      tableScrollView.contentInsets = NSEdgeInsets(
-        top: scrollViewTopInset,
-        left: 0,
-        bottom: 0,
-        right: 0
-      )
-      tableScrollView.scrollerInsets = NSEdgeInsets(
-        top: -scrollViewTopInset,
-        left: 0,
-        bottom: 0,
-        right: 0
-      )
     }
-
-    NSLayoutConstraint(
-      item: tableScrollView,
-      attribute: .top,
-      relatedBy: .equal,
-      toItem: view.comptableSafeAreaLayoutGuide,
-      attribute: .top,
-      multiplier: 1,
-      constant: 0
-    ).isActive = true
 
     if let sortPreference = Preference.string(for: Preference.Key.podcastSortParam), let sortParam = SortParameter(rawValue: sortPreference) {
       sortBy = sortParam
@@ -124,9 +96,26 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     reloadPodcasts()
   }
 
-  override func viewWillAppear() {
-    super.viewWillAppear()
+  override func viewDidAppear() {
+    super.viewDidAppear()
+
     updateFilteringButtonState()
+
+    tableScrollView.automaticallyAdjustsContentInsets = false
+
+    let scrollViewTopInset: CGFloat
+    if #available(macOS 11.0, *) {
+      scrollViewTopInset = view.safeAreaInsets.top
+    } else {
+      scrollViewTopInset = 0
+    }
+
+    tableScrollView.contentInsets = NSEdgeInsets(
+      top: scrollViewTopInset,
+      left: 0,
+      bottom: sortView.bounds.height,
+      right: 0
+    )
   }
 
   private func updateFilteringButtonState() {
