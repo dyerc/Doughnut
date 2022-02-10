@@ -56,23 +56,6 @@ final class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldD
     searchInputView.delegate = self
 
     Library.global.downloadManager.delegate = self
-
-    NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
-      if self.keyDown(with: $0) {
-        return nil
-      } else {
-        return $0
-      }
-    }
-  }
-
-  func keyDown(with event: NSEvent) -> Bool {
-    if event.characters == " " {
-      Player.global.togglePlay()
-      return true
-    } else {
-      return false
-    }
   }
 
   // Subscribed to Search input changes
@@ -147,29 +130,6 @@ final class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldD
     if let player = playerView.view as? PlayerView {
       player.needsDisplay = true
     }
-  }
-
-  // Control Menu
-  @IBAction func playerBackward(_ sender: Any) {
-    Player.global.skipBack()
-  }
-
-  @IBAction func playerPlay(_ sender: Any) {
-    Player.global.play()
-  }
-
-  @IBAction func playerForward(_ sender: Any) {
-    Player.global.skipAhead()
-  }
-
-  @IBAction func volumeUp(_ sender: Any) {
-    let current = Player.global.volume
-    Player.global.volume = min(current + 0.1, 1.0)
-  }
-
-  @IBAction func volumeDown(_ sender: Any) {
-    let current = Player.global.volume
-    Player.global.volume = max(current - 0.1, 0.0)
   }
 
 }

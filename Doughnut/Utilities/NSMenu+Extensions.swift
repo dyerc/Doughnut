@@ -45,6 +45,12 @@ extension NSMenu {
     return current!
   }
 
+  var menuItem: NSMenuItem? {
+    return supermenu?.items.first {
+      $0.submenu == self
+    }
+  }
+
 }
 
 extension NSMenuItem {

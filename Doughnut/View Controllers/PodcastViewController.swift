@@ -201,10 +201,15 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     return result
   }
 
-  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+  func tableViewSelectionDidChange(_ notification: Notification) {
     //NotificationCenter.default.post(name: ViewController.Events.PodcastSelected.notification, object: nil, userInfo: ["podcast": podcasts[row]])
-    viewController.selectPodcast(podcast: podcasts[row])
-    return true
+    let podcastToSelect: Podcast?
+    if tableView.selectedRow != -1, tableView.selectedRow < podcasts.count {
+      podcastToSelect = podcasts[tableView.selectedRow]
+    } else {
+      podcastToSelect = nil
+    }
+    viewController.selectPodcast(podcast: podcastToSelect)
   }
 
   private func activePodcastsForAction() -> [Podcast] {

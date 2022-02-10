@@ -380,7 +380,7 @@ Gw
                                     <rect key="frame" x="0.0" y="0.0" width="251" height="401"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnSelection="YES" columnResizing="NO" autosaveColumns="NO" rowHeight="55" viewBased="YES" id="aVy-1A-ODd">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnSelection="YES" columnResizing="NO" autosaveColumns="NO" rowHeight="55" viewBased="YES" id="aVy-1A-ODd" customClass="BaseTableView" customModule="Doughnut" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="251" height="401"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="0.0" height="4"/>
@@ -605,7 +605,7 @@ Gw
                                     <rect key="frame" x="0.0" y="0.0" width="351" height="400"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" rowHeight="76" viewBased="YES" id="Xrx-cp-IWJ">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" rowHeight="76" viewBased="YES" id="Xrx-cp-IWJ" customClass="BaseTableView" customModule="Doughnut" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="351" height="400"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
