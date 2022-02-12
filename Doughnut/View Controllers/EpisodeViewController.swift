@@ -37,6 +37,10 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     return SortingMenuProvider.Shared.episodes
   }
 
+  private var tableScrollView: NSScrollView {
+    return tableView.enclosingScrollView!
+  }
+
   var sortBy: SortParameter = .mostRecent {
     didSet {
       Preference.set(sortBy.rawValue, for: Preference.Key.episodeSortParam)
@@ -116,9 +120,25 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     tableView.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
   }
 
-  override func viewWillAppear() {
-    super.viewWillAppear()
+  override func viewDidAppear() {
+    super.viewDidAppear()
+
     updateFilteringButtonState()
+
+    let scrollViewTopInset: CGFloat
+    if #available(macOS 11.0, *) {
+      scrollViewTopInset = view.safeAreaInsets.top
+    } else {
+      scrollViewTopInset = 0
+    }
+
+    tableScrollView.automaticallyAdjustsContentInsets = false
+    tableScrollView.contentInsets = NSEdgeInsets(
+      top: scrollViewTopInset + sortView.bounds.height,
+      left: 0,
+      bottom: 0,
+      right: 0
+    )
   }
 
   private func updateFilteringButtonState() {
