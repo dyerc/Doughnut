@@ -74,18 +74,18 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="Subscribe to Podcast" keyEquivalent="n" id="lgi-VV-buh">
+                                        <menuItem title="Subscribe to Podcast…" keyEquivalent="n" id="lgi-VV-buh">
                                             <connections>
                                                 <action selector="subscribeToPodcast:" target="Ady-hI-5gd" id="Nrj-bB-7WF"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="New Podcast" keyEquivalent="N" id="r57-2i-B99">
+                                        <menuItem title="New Podcast…" keyEquivalent="N" id="r57-2i-B99">
                                             <connections>
                                                 <action selector="newPodcast:" target="Ady-hI-5gd" id="KXx-5u-PuP"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="YCs-FF-LlJ"/>
-                                        <menuItem title="Reload All" keyEquivalent="r" id="cPz-Rd-hBn">
+                                        <menuItem title="Refresh All" keyEquivalent="r" id="cPz-Rd-hBn">
                                             <connections>
                                                 <action selector="reloadAll:" target="Ady-hI-5gd" id="yl9-te-ukw"/>
                                             </connections>
@@ -350,13 +350,13 @@ CA
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Item" id="eQr-zC-APd">
                                     <items>
-                                        <menuItem title="Rename" id="Pr3-Z8-FZ1">
+                                        <menuItem title="Rename…" id="Pr3-Z8-FZ1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="rename:" target="Ady-hI-5gd" id="Ahp-Mo-eVa"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Reload" keyEquivalent="r" id="6GL-kM-gC5">
+                                        <menuItem title="Refresh" keyEquivalent="r" id="6GL-kM-gC5">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="reloadPodcast:" target="Ady-hI-5gd" id="G9N-aZ-Xec"/>
