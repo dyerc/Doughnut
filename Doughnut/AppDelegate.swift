@@ -24,6 +24,7 @@ private extension NSUserInterfaceItemIdentifier {
 
   static let doughnutViewMenuSortPodcasts = Self("NSDoughnutViewMenuSortPodcastsItem")
   static let doughnutViewMenuSortEpisodes = Self("NSDoughnutViewMenuSortEpisodesItem")
+  static let doughnutControlMenu = Self("NSDoughnutControlMenuItem")
 
 }
 
@@ -84,6 +85,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
   func applicationWillTerminate(_ aNotification: Notification) {
     // Insert code here to tear down your application
+  }
+
+  func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
+    let menu = NSMenu()
+    menu.items = ControlMenuProvider.shared.buildControlMenuItems(isForDockMenu: true)
+    return menu
   }
 
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
@@ -164,6 +171,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 extension AppDelegate: NSMenuDelegate {
 
   func menuNeedsUpdate(_ menu: NSMenu) {
+    if let menuItem = menu.menuItem, let identifier = menuItem.identifier {
+      switch identifier {
+      case .doughnutControlMenu:
+        menu.items = ControlMenuProvider.shared.buildControlMenuItems(isForDockMenu: false)
+      default:
+        break
+      }
+    }
+
     for menuItem in menu.items {
       // Hide main menu items that is not impelemented for release build.
       switch menuItem.action {

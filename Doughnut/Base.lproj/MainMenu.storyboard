@@ -413,39 +413,9 @@ CA
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Control" id="WLk-DP-BZ5">
+                            <menuItem title="Control" identifier="NSDoughnutControlMenuItem" id="WLk-DP-BZ5">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Control" id="222-rP-pvk">
-                                    <items>
-                                        <menuItem title="Backward 30 seconds" keyEquivalent="" id="Bdi-lX-YGo">
-                                            <connections>
-                                                <action selector="playerBackward:" target="Ady-hI-5gd" id="hTx-1L-HGE"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Play" id="BLT-Qs-aQt">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="playerPlay:" target="Ady-hI-5gd" id="Nvp-ru-1xS"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Forward 30 seconds" keyEquivalent="" id="Jxl-SS-SIr">
-                                            <connections>
-                                                <action selector="playerForward:" target="Ady-hI-5gd" id="AXf-Y2-6k2"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="ir9-XQ-Nwc"/>
-                                        <menuItem title="Increase Volume" keyEquivalent="" id="DFF-RD-r67">
-                                            <connections>
-                                                <action selector="volumeUp:" target="Ady-hI-5gd" id="Qln-aq-N4Z"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Decrease Volume" keyEquivalent="" id="yFw-DO-DFl">
-                                            <connections>
-                                                <action selector="volumeDown:" target="Ady-hI-5gd" id="PJm-Rn-vaV"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
+                                <menu key="submenu" title="Control" id="222-rP-pvk"/>
                             </menuItem>
                             <menuItem title="Window" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>

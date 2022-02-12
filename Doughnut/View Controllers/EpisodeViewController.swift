@@ -235,9 +235,14 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     return result
   }
 
-  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-    viewController.selectEpisode(episode: episodes[row])
-    return true
+  func tableViewSelectionDidChange(_ notification: Notification) {
+    let episodeToSelect: Episode?
+    if tableView.selectedRow != -1, tableView.selectedRow < episodes.count {
+      episodeToSelect = episodes[tableView.selectedRow]
+    } else {
+      episodeToSelect = nil
+    }
+    viewController.selectEpisode(episode: episodeToSelect)
   }
 
   func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
