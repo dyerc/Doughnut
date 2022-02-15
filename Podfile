@@ -6,28 +6,28 @@ target 'Doughnut' do
   use_frameworks! :linkage => :static
 
   # Pods for Doughnut
-
-  target 'DoughnutTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'DoughnutUITests' do
-    use_frameworks!
-    inherit! :search_paths
-    # Pods for testing
-  end
-
   pod 'GRDB.swift', '5.17.0'
   pod 'FeedKit', '9.1.2'
   pod 'MASPreferences', :git => 'https://github.com/shpakovski/MASPreferences.git', :commit => '135869c'
   pod 'Sparkle', '1.27.1'
+end
 
-  post_install do |installer|
-    installer.pods_project.targets.each do |target|
-      target.build_configurations.each do |config|
-        config.build_settings.delete 'ARCHS'
-      end
+target 'DoughnutTests' do
+  use_frameworks!
+  inherit! :search_paths
+  # Pods for testing
+end
+
+target 'DoughnutUITests' do
+  use_frameworks!
+  inherit! :search_paths
+  # Pods for testing
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings.delete 'ARCHS'
     end
   end
 end

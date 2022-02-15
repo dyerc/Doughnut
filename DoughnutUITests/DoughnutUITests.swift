@@ -23,13 +23,6 @@ class DoughnutUITests: XCTestCase {
     let app = XCUIApplication()
     app.launchArguments += ["UI-TEST"]
     app.launch()
-
-    if !Preference.testEnv() {
-      fatalError("Not running in test mode")
-    }
-
-    XCTAssertEqual(Library.global.connect(), true)
-    print("Using library at \(Library.global.path)")
   }
 
   override func tearDown() {
