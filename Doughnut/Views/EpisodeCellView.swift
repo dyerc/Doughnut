@@ -135,7 +135,9 @@ class EpisodeCellView: NSTableCellView {
       }
     }
 
-    drawBottomBorder()
+    if #available(macOS 11.0, *) { } else {
+      drawBottomBorder()
+    }
   }
 
   override var backgroundStyle: NSView.BackgroundStyle {
