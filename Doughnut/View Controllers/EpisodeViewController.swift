@@ -200,10 +200,8 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     tableView.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
   }
 
-  func reloadEpisode(_ episode: Episode) {
-    if let index = episodes.firstIndex(where: { e -> Bool in
-      e.id == episode.id
-    }) {
+  func reload(forEpisode episode: Episode) {
+    if let index = episodes.firstIndex(where: { $0.id == episode.id }) {
       tableView.reloadData(forRowIndexes: IndexSet.init(integer: index), columnIndexes: IndexSet.init(integer: 0))
     }
   }

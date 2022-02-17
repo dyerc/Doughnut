@@ -418,10 +418,6 @@ class Library: NSObject {
 
         DispatchQueue.main.async {
           self.delegate?.libraryUpdatedEpisode(episode: episode)
-
-          if let parent = episode.podcast {
-            self.delegate?.libraryUpdatedPodcast(podcast: parent)
-          }
         }
       })
     }

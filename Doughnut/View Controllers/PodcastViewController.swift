@@ -166,6 +166,12 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     tableView.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
   }
 
+  func reload(forPodcast podcast: Podcast) {
+    if let index = podcasts.firstIndex(where: { $0.id == podcast.id }) {
+      tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
+    }
+  }
+
   func numberOfRows(in tableView: NSTableView) -> Int {
     return podcasts.count
   }
