@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import Doughnut
+
 class LibraryTestCase: XCTestCase {
   func fixtureURL(_ name: String, type: String) -> URL {
     let bundle = Bundle(for: Swift.type(of: self))
