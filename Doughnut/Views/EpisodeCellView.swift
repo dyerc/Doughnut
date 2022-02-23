@@ -60,8 +60,8 @@ class EpisodeCellView: NSTableCellView {
     guard let episode = episode else { return }
 
     let selected = backgroundStyle == .dark
-    let selectedBlue = NSColor(calibratedRed: 0.090, green: 0.433, blue: 0.937, alpha: 1.0)
-    var selectedColor = selectedBlue
+    let selectedAccent = NSColor.controlAccentColor
+    var selectedColor = selectedAccent
     if selected {
       selectedColor = NSColor.white
     }
@@ -84,7 +84,7 @@ class EpisodeCellView: NSTableCellView {
 
       // Draw download arrow
       if selected {
-        selectedBlue.setFill()
+        selectedAccent.setFill()
       } else {
         NSColor.white.setFill()
       }
@@ -126,7 +126,7 @@ class EpisodeCellView: NSTableCellView {
         if backgroundStyle == .dark {
           selectedColor.setFill()
         } else {
-          selectedBlue.setFill()
+          selectedAccent.setFill()
         }
         playedSlice.fill()
       } else {
@@ -135,7 +135,9 @@ class EpisodeCellView: NSTableCellView {
       }
     }
 
-    drawBottomBorder()
+    if #available(macOS 11.0, *) { } else {
+      drawBottomBorder()
+    }
   }
 
   override var backgroundStyle: NSView.BackgroundStyle {

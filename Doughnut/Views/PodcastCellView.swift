@@ -96,8 +96,7 @@ class PodcastUnplayedCountView: NSView {
       let bg = NSBezierPath(roundedRect: bgRect, xRadius: 5, yRadius: 5)
 
       if highlightColor {
-        let selectedBlue = NSColor(calibratedRed: 0.090, green: 0.433, blue: 0.937, alpha: 1.0)
-        selectedBlue.setFill()
+        NSColor.black.withAlphaComponent(0.15).setFill()
       } else {
         NSColor.gray.setFill()
       }
