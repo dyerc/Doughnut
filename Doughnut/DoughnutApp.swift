@@ -20,6 +20,7 @@ import Cocoa
 
 @objc(DoughnutApp)
 class DoughnutApp: NSApplication {
+
   override init() {
     super.init()
   }
@@ -32,15 +33,4 @@ class DoughnutApp: NSApplication {
     fatalError("init(coder:) has not been implemented")
   }
 
-  override func sendEvent(_ event: NSEvent) {
-    let shouldHandleLocally = !SPMediaKeyTap.usesGlobalMediaKeyTap()
-
-    if shouldHandleLocally && event.type == .systemDefined && Int32(event.subtype.rawValue) == SPSystemDefinedEventMediaKeys {
-      if let delegate = self.delegate as? AppDelegate {
-        delegate.mediaKeyTap(nil, receivedMediaKeyEvent: event)
-      }
-    }
-
-    super.sendEvent(event)
-  }
 }

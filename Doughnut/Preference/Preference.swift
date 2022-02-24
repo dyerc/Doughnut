@@ -40,7 +40,6 @@ class Preference {
 
     // General
     static let showDockBadge = Key("showDockBadge")
-    static let enableMediaKeys = Key("enableMediaKeys")
 
     // Library
     static let libraryPath = Key("libraryPath")

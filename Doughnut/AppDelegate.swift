@@ -31,8 +31,6 @@ private extension NSUserInterfaceItemIdentifier {
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
-  var mediaKeyTap: SPMediaKeyTap?
-
   var mainWindowController: WindowController?
 
   lazy var preferencesWindowController: NSWindowController = {
@@ -45,9 +43,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
   override init() {
     NSWindow.allowsAutomaticWindowTabbing = false
-
-    UserDefaults.standard.register(
-      defaults: [kMediaKeyUsingBundleIdentifiersDefaultsKey: SPMediaKeyTap.defaultMediaKeyUserBundleIdentifiers()!])
   }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -57,13 +52,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
-
-    mediaKeyTap = SPMediaKeyTap(delegate: self)
-
-    UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.enableMediaKeys.rawValue, options: [], context: nil)
-    if Preference.bool(for: Preference.Key.enableMediaKeys) {
-      setupMediaKeyTap()
-    }
 
     /*do {
       try Player.audioOutputDevices()
@@ -93,54 +81,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     return menu
   }
 
-  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-    switch keyPath {
-    case Preference.Key.enableMediaKeys.rawValue?:
-      setupMediaKeyTap()
-    default:
-      return
-    }
-  }
-
   private func createAndShowMainWindow() {
     if mainWindowController == nil {
       mainWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateInitialController()
     }
     mainWindowController?.showWindow(self)
-  }
-
-  func setupMediaKeyTap() {
-    guard let mediaKeyTap = mediaKeyTap else { return }
-
-    if Preference.bool(for: Preference.Key.enableMediaKeys) {
-      if SPMediaKeyTap.usesGlobalMediaKeyTap() {
-        mediaKeyTap.startWatchingMediaKeys()
-      }
-    } else {
-      mediaKeyTap.stopWatchingMediaKeys()
-    }
-  }
-
-  override func mediaKeyTap(_ keyTap: SPMediaKeyTap!, receivedMediaKeyEvent event: NSEvent!) {
-    let keyCode = Int((event.data1 & 0xFFFF0000) >> 16)
-    let keyFlags = (event.data1 & 0x0000FFFF)
-    let keyIsPressed = (((keyFlags & 0xFF00) >> 8)) == 0xA
-
-    if (keyIsPressed) {
-      switch keyCode {
-      case Int(NX_KEYTYPE_PLAY):
-        Player.global.togglePlay()
-
-      case Int(NX_KEYTYPE_FAST):
-        Player.global.skipAhead()
-
-      case Int(NX_KEYTYPE_REWIND):
-        Player.global.skipBack()
-
-      default:
-        break
-      }
-    }
   }
 
   @IBAction func showPreferences(_ sender: AnyObject) {

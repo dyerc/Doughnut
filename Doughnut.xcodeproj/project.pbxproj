@@ -70,8 +70,6 @@
 		83DB16DE1F93F1CE0062B266 /* LibraryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16DD1F93F1CE0062B266 /* LibraryUtils.swift */; };
 		83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16E01F93FB460062B266 /* SubscribeViewController.swift */; };
 		83E95A5E1FFBCA3C00C6AABF /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E95A5D1FFBCA3C00C6AABF /* Storage.swift */; };
-		83EFC6041F9954A500E1DE1F /* SPMediaKeyTap.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */; };
-		83EFC6051F9954AD00E1DE1F /* NSObject+SPInvocationGrabbing.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */; };
 		83FB4EB81F7BD9A1001CD842 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,10 +110,6 @@
 		830A34021FF0447D00C13B1D /* PodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastUITests.swift; sourceTree = "<group>"; };
 		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
 		830E99BC1FF50DD000B728BE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		831EEADE1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SPInvocationGrabbing.h"; sourceTree = "<group>"; };
-		831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPInvocationGrabbing.m"; sourceTree = "<group>"; };
-		831EEAE01F994F6C00DCC872 /* SPMediaKeyTap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPMediaKeyTap.h; sourceTree = "<group>"; };
-		831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPMediaKeyTap.m; sourceTree = "<group>"; };
 		83235BF6200945D900BC356F /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		83235BF7200945D900BC356F /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		83235BF8200945D900BC356F /* PrefGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefGeneralViewController.swift; sourceTree = "<group>"; };
@@ -272,33 +266,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		831EEADB1F994F6C00DCC872 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				831EEADC1F994F6C00DCC872 /* SPMediaKeyTap */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
-		831EEADC1F994F6C00DCC872 /* SPMediaKeyTap */ = {
-			isa = PBXGroup;
-			children = (
-				831EEADD1F994F6C00DCC872 /* SPInvocationGrabbing */,
-				831EEAE01F994F6C00DCC872 /* SPMediaKeyTap.h */,
-				831EEAE11F994F6C00DCC872 /* SPMediaKeyTap.m */,
-			);
-			path = SPMediaKeyTap;
-			sourceTree = "<group>";
-		};
-		831EEADD1F994F6C00DCC872 /* SPInvocationGrabbing */ = {
-			isa = PBXGroup;
-			children = (
-				831EEADE1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.h */,
-				831EEADF1F994F6C00DCC872 /* NSObject+SPInvocationGrabbing.m */,
-			);
-			path = SPInvocationGrabbing;
-			sourceTree = "<group>";
-		};
 		83235BF5200945D900BC356F /* Preference */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,7 +354,6 @@
 				838257D71F759F6F00DB4FD1 /* Doughnut-Debug.entitlements */,
 				6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */,
 				83235C0A200947F200BC356F /* Resources */,
-				831EEADB1F994F6C00DCC872 /* Vendor */,
 			);
 			path = Doughnut;
 			sourceTree = "<group>";
@@ -765,7 +731,6 @@
 				8343426A1F802C1400913C0B /* EpisodeFilterViewController.swift in Sources */,
 				839A32811FF9831B002D2023 /* ShowEpisodeWindow.swift in Sources */,
 				8389709C20069D720094795D /* SortingMenuProvider.swift in Sources */,
-				83EFC6051F9954AD00E1DE1F /* NSObject+SPInvocationGrabbing.m in Sources */,
 				83E95A5E1FFBCA3C00C6AABF /* Storage.swift in Sources */,
 				8341B83B1F7BEB0500B50A5D /* Migrations.swift in Sources */,
 				6B9C30BB27B5708300D462BE /* BaseTableView.swift in Sources */,
@@ -778,7 +743,6 @@
 				839DBDA41FEEE658007610EF /* ShowPodcastWindow.swift in Sources */,
 				6B0233BD27B2CA6500500E28 /* ControlMenuProvider.swift in Sources */,
 				83D9710A1F812B270091822A /* Player.swift in Sources */,
-				83EFC6041F9954A500E1DE1F /* SPMediaKeyTap.m in Sources */,
 				837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */,
 				83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */,
 				83504DD61FFC377700375BA0 /* EpisodeDownloadTask.swift in Sources */,

@@ -180,11 +180,11 @@
             <objects>
                 <viewController storyboardIdentifier="PrefPlaybackViewController" id="Fq1-jU-rl7" customClass="PrefPlaybackViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="xec-XO-2PT">
-                        <rect key="frame" x="0.0" y="0.0" width="620" height="159"/>
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="129"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cfx-Y9-KLY">
-                                <rect key="frame" x="18" y="122" width="187" height="17"/>
+                                <rect key="frame" x="18" y="92" width="187" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Skipping Back:" id="2zt-dd-ER4">
                                     <font key="font" metaFont="system"/>
@@ -193,7 +193,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-sH-TcM">
-                                <rect key="frame" x="215" y="116" width="261" height="26"/>
+                                <rect key="frame" x="215" y="86" width="261" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="5 seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="5" imageScaling="proportionallyDown" inset="2" selectedItem="MFI-bB-deB" id="PJk-QI-9AZ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -223,7 +223,7 @@
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-9o-kBm">
-                                <rect key="frame" x="18" y="86" width="187" height="17"/>
+                                <rect key="frame" x="18" y="56" width="187" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Skipping Forward:" id="VFU-LC-tba">
                                     <font key="font" metaFont="system"/>
@@ -232,7 +232,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNE-Uq-c2K">
-                                <rect key="frame" x="215" y="80" width="261" height="26"/>
+                                <rect key="frame" x="215" y="50" width="261" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="5 seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="5" imageScaling="proportionallyDown" inset="2" selectedItem="cEg-Mp-Dyu" id="Yr7-db-C5M">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -262,7 +262,7 @@
                                 </connections>
                             </popUpButton>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIb-gL-zwy">
-                                <rect key="frame" x="215" y="49" width="135" height="18"/>
+                                <rect key="frame" x="215" y="19" width="135" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Replay after pause" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="TWS-bO-89n">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -272,24 +272,13 @@
                                     <binding destination="THH-sN-3K5" name="value" keyPath="values.replayAfterPause" id="iPK-15-gBm"/>
                                 </connections>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KqF-l0-JhQ">
-                                <rect key="frame" x="215" y="19" width="174" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Enable Apple Media Keys" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2lW-D5-buD">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <binding destination="THH-sN-3K5" name="value" keyPath="values.enableMediaKeys" id="Mmi-t7-b32"/>
-                                </connections>
-                            </button>
                         </subviews>
                     </view>
                 </viewController>
                 <customObject id="DTs-nT-24u" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="THH-sN-3K5"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="315"/>
+            <point key="canvasLocation" x="-475" y="299.5"/>
         </scene>
     </scenes>
 </document>
