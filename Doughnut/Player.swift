@@ -162,6 +162,7 @@ final class Player: NSObject {
       postNowPlayingEpisodeUpdates()
 
       avPlayer.play()
+      beginRoutingArbitration()
     }
   }
 
@@ -175,6 +176,8 @@ final class Player: NSObject {
       }
       self.avPlayer = nil
     }
+
+    leaveRoutingArbitration()
 
     // Reset lcoal states
     loadStatus = .none
@@ -244,6 +247,7 @@ final class Player: NSObject {
 
   func pause() {
     guard let av = avPlayer else { return }
+
     av.pause()
 
     pausedAt = Date().timeIntervalSince1970
@@ -283,6 +287,25 @@ final class Player: NSObject {
   func seek(seconds: Double) {
     guard let av = avPlayer else { return }
     av.seek(to: CMTime(seconds: seconds))
+  }
+
+  private func beginRoutingArbitration() {
+    if #available(macOS 11.0, *) {
+      AVAudioRoutingArbiter.shared.begin(category: .playback) { defaultDeviceChanged, error in
+        if let error = error {
+          print("begins routing arbitration failed, defaultDeviceChanged: \(defaultDeviceChanged), error: \(error)")
+        } else {
+          print("begins routing arbitration, defaultDeviceChanged: \(defaultDeviceChanged)")
+        }
+      }
+    }
+  }
+
+  private func leaveRoutingArbitration() {
+    if #available(macOS 11.0, *) {
+      AVAudioRoutingArbiter.shared.leave()
+      print("leaves routing arbitration")
+    }
   }
 
   // MARK: -

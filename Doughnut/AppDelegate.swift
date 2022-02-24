@@ -72,7 +72,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {
-    // Insert code here to tear down your application
+    Player.global.stop()
   }
 
   func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
