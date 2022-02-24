@@ -17,6 +17,8 @@
 		6B9C30BB27B5708300D462BE /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C30BA27B5708300D462BE /* BaseTableView.swift */; };
 		6BA21C4F279D690700CD3672 /* WindowController+Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */; };
 		6BB5771E278602B400DFF99F /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BB5771C278602B400DFF99F /* MainMenu.storyboard */; };
+		6BC6395F27A6800500535897 /* Player+RemoteCommandCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */; };
+		6BC6396127A687E400535897 /* Player+NowPlayingInfoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC6396027A687E400535897 /* Player+NowPlayingInfoCenter.swift */; };
 		6BC6396427A68E2100535897 /* CMTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC6396327A68E2100535897 /* CMTime+Extensions.swift */; };
 		6BF126D12780727100D840A4 /* EpisodeInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */; };
 		6BF126D32780742600D840A4 /* PodcastInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF126D22780742600D840A4 /* PodcastInfo.storyboard */; };
@@ -106,6 +108,8 @@
 		6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Toolbar.swift"; sourceTree = "<group>"; };
 		6BB5771D278602B400DFF99F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainMenu.storyboard; sourceTree = "<group>"; };
 		6BE29F62CFF7B122D5C39998 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+RemoteCommandCenter.swift"; sourceTree = "<group>"; };
+		6BC6396027A687E400535897 /* Player+NowPlayingInfoCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+NowPlayingInfoCenter.swift"; sourceTree = "<group>"; };
 		6BC6396327A68E2100535897 /* CMTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Extensions.swift"; sourceTree = "<group>"; };
 		6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EpisodeInfo.storyboard; sourceTree = "<group>"; };
 		6BF126D22780742600D840A4 /* PodcastInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PodcastInfo.storyboard; sourceTree = "<group>"; };
@@ -355,6 +359,8 @@
 				83BA22E21F994EA6006BF58A /* DoughnutApp.swift */,
 				83D971091F812B270091822A /* Player.swift */,
 				6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */,
+				6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */,
+				6BC6396027A687E400535897 /* Player+NowPlayingInfoCenter.swift */,
 				832A04331F76EBDC00C92D25 /* WindowController.swift */,
 				6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */,
 				832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */,
@@ -747,6 +753,7 @@
 				6B9C30BB27B5708300D462BE /* BaseTableView.swift in Sources */,
 				83A0D4831FFC2FA400A376FD /* TaskQueue.swift in Sources */,
 				83667DF01F76D20C00F1ABC0 /* PodcastViewController.swift in Sources */,
+				6BC6395F27A6800500535897 /* Player+RemoteCommandCenter.swift in Sources */,
 				83D9710C1F812E910091822A /* PlayerView.swift in Sources */,
 				83235C042009473200BC356F /* PrefLibraryViewController.swift in Sources */,
 				6B0605C52788627D00A8A91E /* NSMenu+Extensions.swift in Sources */,
@@ -777,6 +784,7 @@
 				834998B61FF3E3F00035EF87 /* TaskManagerView.swift in Sources */,
 				834CC1B31F950ABA00A98DE9 /* DetailWebView.swift in Sources */,
 				83DB16DC1F93E34B0062B266 /* Utils.swift in Sources */,
+				6BC6396127A687E400535897 /* Player+NowPlayingInfoCenter.swift in Sources */,
 				83667DF21F76D21900F1ABC0 /* EpisodeViewController.swift in Sources */,
 				834CC1B01F95076F00A98DE9 /* MarkupGenerator.swift in Sources */,
 				838257CE1F759F6F00DB4FD1 /* AppDelegate.swift in Sources */,
