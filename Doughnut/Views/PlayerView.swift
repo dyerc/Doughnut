@@ -167,7 +167,7 @@ class PlayerView: NSView, PlayerDelegate {
     return String(hrs) + ":" + String(mins).leftPadding(toLength: 2, withPad: "0") + ":" + String(secs).leftPadding(toLength: 2, withPad: "0")
   }
 
-  func update(forEpisode episode: Episode) {
+  func update(forEpisode episode: Episode?) {
     let loadStatus = Player.global.loadStatus
 
     if loadStatus == .loading {
@@ -180,12 +180,10 @@ class PlayerView: NSView, PlayerDelegate {
       artworkImg.isHidden = false
     }
 
-    artworkImg.image = episode.podcast?.image
+    artworkImg.image = episode?.podcast?.image
 
-    if let image = episode.artwork {
-      if image.isValid {
-        artworkImg.image = image
-      }
+    if let image = episode?.artwork, image.isValid {
+      artworkImg.image = image
     }
   }
 

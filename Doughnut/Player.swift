@@ -20,7 +20,7 @@ import AVFoundation
 import Cocoa
 
 protocol PlayerDelegate: AnyObject {
-  func update(forEpisode episode: Episode)
+  func update(forEpisode episode: Episode?)
   func updatePlayback()
 }
 
@@ -30,14 +30,23 @@ enum PlayerLoadStatus {
   case loading
 }
 
-class Player: NSObject {
+final class Player: NSObject {
   static var global = Player()
 
   weak var delegate: PlayerDelegate?
 
-  var loadStatus: PlayerLoadStatus = .none
-  var avPlayer: AVPlayer?
-  var currentEpisode: Episode?
+  private static let playedThreshold: Double = 0.9
+
+  private(set) var loadStatus: PlayerLoadStatus = .none
+  private(set) var avPlayer: AVPlayer?
+  private(set) var currentEpisode: Episode?
+  private(set) var currentPlaybackURL: URL?
+
+  private(set) var position: Double = 0
+  private(set) var buffered: Double = 0
+  private(set) var duration: Double = 0
+
+  private(set) var pausedAt: TimeInterval? = nil
 
   var volume: Float = 0.6 { //UserDefaults.standard.float(forKey: Preference.kVolume) {
     didSet {
@@ -60,43 +69,45 @@ class Player: NSObject {
     }
   }
 
-  var position: Double = 0
-  var buffered: Double = 0
-  var duration: Double = 0
+  var nowPlayingEpisodeInfoDictionary = [String: Any]()
 
-  let playedThreshold: Double = 0.9
+  private var periodicTimeObservers = [Any]()
 
-  var pausedAt: TimeInterval? = nil
+  override init() {
+    super.init()
+    setupRemoteCommands()
+  }
 
   func play(episode: Episode) {
     guard episode.podcast != nil else { return }
 
-    // Destroy any existing player
-    if let avPlayer = avPlayer {
-      if let existing = currentEpisode, existing.id == episode.id {
-        // This episode is already playing so just ignore and abort play()
-        return
-      }
-
-      // Destroy the existing player and let a new one be created
-      avPlayer.pause()
-      self.avPlayer = nil
+    if let existing = currentEpisode, existing.id == episode.id, avPlayer != nil {
+      // This episode is already playing so just ignore and abort play()
+      play()
+      return
     }
+
+    destroyAVPlayerAndResetState()
 
     if episode.downloaded {
       guard let episodeUrl = episode.url() else { return }
 
+      currentPlaybackURL = episodeUrl
       avPlayer = AVPlayer(url: episodeUrl)
     } else {
       guard let enclosureUrl = episode.enclosureUrl else { return }
       guard let url = URL(string: enclosureUrl) else { return }
 
+      currentPlaybackURL = url
       avPlayer = AVPlayer(url: url)
     }
 
     if let avPlayer = avPlayer, let episodeId = episode.id {
+      var timeObserver: Any?
+
       // Register to receive timing events
-      avPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: .main, using: { time in
+      timeObserver = avPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5), queue: .main) { [weak self] time in
+        guard let self = self else { return }
         self.position = time.seconds
         self.duration = avPlayer.currentItem?.asset.duration.seconds ?? 0
 
@@ -104,22 +115,24 @@ class Player: NSObject {
           self.buffered = CMTimeRangeGetEnd(bufferedRange.timeRangeValue).seconds
         }
 
-        self.delegate?.updatePlayback()
-      })
+        self.postPlaybackStatusUpdates()
+      }
+      periodicTimeObservers.append(timeObserver!)
 
       // Update episode with playback state
-      avPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 5, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: .main, using: { time in
+      timeObserver = avPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 5), queue: .main) { time in
         if let episode = Library.global.episode(id: episodeId) {
           episode.playPosition = Int(time.seconds)
           episode.duration = Int(avPlayer.currentItem?.asset.duration.seconds ?? 0)
 
-          if episode.duration > 0 && (Double(episode.playPosition) / Double(episode.duration)) > self.playedThreshold {
+          if episode.duration > 0, (Double(episode.playPosition) / Double(episode.duration)) > Self.playedThreshold {
             episode.played = true
           }
 
           Library.global.save(episode: episode)
         }
-      })
+      }
+      periodicTimeObservers.append(timeObserver!)
 
       // Register to receive status events
       avPlayer.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions(rawValue: 0), context: nil)
@@ -130,31 +143,57 @@ class Player: NSObject {
         if item.commonKey == nil { continue }
 
         if let key = item.commonKey, let value = item.value {
-          if key.rawValue == "artwork" {
+          if key == .commonKeyArtwork {
             episode.artwork = NSImage(data: value as! Data)
           }
         }
       }
 
-      avPlayer.currentItem?.preferredForwardBufferDuration = CMTimeGetSeconds(CMTime(seconds: 120, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+      if #available(macOS 11.0, *) {
+        avPlayer.currentItem?.allowedAudioSpatializationFormats = .monoStereoAndMultichannel
+      }
 
-      // Reset state
-      self.duration = 0
-      self.buffered = 0
-      self.position = 0
-      self.pausedAt = nil
-      delegate?.updatePlayback()
+      avPlayer.currentItem?.preferredForwardBufferDuration = CMTimeGetSeconds(CMTime(seconds: 120))
 
       // Seek to existing position
       if episode.playPosition > 0 {
-        avPlayer.seek(to: CMTime(seconds: Double(episode.playPosition), preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+        avPlayer.seek(to: CMTime(seconds: Double(episode.playPosition)))
       }
 
       avPlayer.volume = volume
-      delegate?.update(forEpisode: episode)
+
       currentEpisode = episode
+      postNowPlayingEpisodeUpdates()
+
       avPlayer.play()
+      beginRoutingArbitration()
     }
+  }
+
+  private func destroyAVPlayerAndResetState() {
+    // Destroy any existing player
+    if let avPlayer = avPlayer {
+      // Destroy the existing player and let a new one be created
+      avPlayer.pause()
+      while !periodicTimeObservers.isEmpty {
+        avPlayer.removeTimeObserver(periodicTimeObservers.popLast()!)
+      }
+      self.avPlayer = nil
+    }
+
+    leaveRoutingArbitration()
+
+    // Reset lcoal states
+    loadStatus = .none
+    currentEpisode = nil
+    currentPlaybackURL = nil
+    duration = 0
+    buffered = 0
+    position = 0
+    pausedAt = nil
+
+    postNowPlayingEpisodeUpdates()
+    postPlaybackStatusUpdates()
   }
 
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
@@ -170,10 +209,22 @@ class Player: NSObject {
         }
 
         print("Playing")
-        delegate?.updatePlayback()
+        postPlaybackStatusUpdates()
       }
     }
   }
+
+  private func postNowPlayingEpisodeUpdates() {
+     delegate?.update(forEpisode: currentEpisode)
+     updateNowPlayingEpisodeInfo()
+   }
+
+  private func postPlaybackStatusUpdates() {
+    delegate?.updatePlayback()
+    updateNowPlayingPlaybackInfo()
+  }
+
+  // MARK: - Actions
 
   func togglePlay() {
     if isPlaying {
@@ -200,41 +251,68 @@ class Player: NSObject {
 
   func pause() {
     guard let av = avPlayer else { return }
+
     av.pause()
 
     pausedAt = Date().timeIntervalSince1970
   }
 
-  func skipAhead() {
+  func stop() {
+    destroyAVPlayerAndResetState()
+  }
+
+  func skipAhead(seconds: Double? = nil) {
     guard let av = avPlayer else { return }
     guard let duration = av.currentItem?.duration else { return }
 
     let currentTime = CMTimeGetSeconds(av.currentTime())
-    let skipDuration = Preference.double(for: Preference.Key.skipForwardDuration)
+    let skipDuration = seconds ?? Preference.double(for: Preference.Key.skipForwardDuration)
     let targetTime = currentTime + skipDuration
 
     if targetTime < (CMTimeGetSeconds(duration) - skipDuration) {
-      av.seek(to: CMTime(seconds: targetTime, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+      av.seek(to: CMTime(seconds: targetTime))
     }
   }
 
-  func skipBack() {
+  func skipBack(seconds: Double? = nil) {
     guard let av = avPlayer else { return }
 
     let currentTime = CMTimeGetSeconds(av.currentTime())
-    var targetTime = currentTime - Preference.double(for: Preference.Key.skipBackDuration)
+    let skipDuration = seconds ?? Preference.double(for: Preference.Key.skipForwardDuration)
+    var targetTime = currentTime - skipDuration
 
     if targetTime < 0 {
       targetTime = 0
     }
 
-    av.seek(to: CMTime(seconds: targetTime, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+    av.seek(to: CMTime(seconds: targetTime))
   }
 
   func seek(seconds: Double) {
     guard let av = avPlayer else { return }
-    av.seek(to: CMTime(seconds: seconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+    av.seek(to: CMTime(seconds: seconds))
   }
+
+  private func beginRoutingArbitration() {
+    if #available(macOS 11.0, *) {
+      AVAudioRoutingArbiter.shared.begin(category: .playback) { defaultDeviceChanged, error in
+        if let error = error {
+          print("begins routing arbitration failed, defaultDeviceChanged: \(defaultDeviceChanged), error: \(error)")
+        } else {
+          print("begins routing arbitration, defaultDeviceChanged: \(defaultDeviceChanged)")
+        }
+      }
+    }
+  }
+
+  private func leaveRoutingArbitration() {
+    if #available(macOS 11.0, *) {
+      AVAudioRoutingArbiter.shared.leave()
+      print("leaves routing arbitration")
+    }
+  }
+
+  // MARK: -
 
   static func audioOutputDevices() throws -> [AudioDeviceID] {
     var inputDevices: [AudioDeviceID] = []

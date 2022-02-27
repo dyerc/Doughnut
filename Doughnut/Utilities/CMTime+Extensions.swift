@@ -1,6 +1,6 @@
 /*
  * Doughnut Podcast Client
- * Copyright (C) 2017 Chris Dyer
+ * Copyright (C) 2022 Ethan Wong
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,9 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef Doughnut_Bridging_Header_h
-#define Doughnut_Bridging_Header_h
+import CoreMedia
+import Foundation
 
-#import <MASPreferences/MASPreferencesViewController.h>
+extension CMTime {
 
-#endif /* Doughnut_Bridging_Header_h */
+  init(seconds: Double) {
+    self.init(seconds: seconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+  }
+
+}
