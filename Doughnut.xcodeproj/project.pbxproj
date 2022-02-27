@@ -25,6 +25,7 @@
 		830A34031FF0447D00C13B1D /* PodcastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A34021FF0447D00C13B1D /* PodcastUITests.swift */; };
 		830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B159A1F7B97910086C121 /* PodcastCellView.swift */; };
 		830E99BD1FF50DD000B728BE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E99BC1FF50DD000B728BE /* ActivityIndicator.swift */; };
+		831EBADA27CC120000F212B4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 831EBAD927CC11E700F212B4 /* Credits.rtf */; };
 		83235BFE2009472900BC356F /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF6200945D900BC356F /* Preference.swift */; };
 		83235C012009472F00BC356F /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF8200945D900BC356F /* PrefGeneralViewController.swift */; };
 		83235C042009473200BC356F /* PrefLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BF9200945D900BC356F /* PrefLibraryViewController.swift */; };
@@ -107,15 +108,16 @@
 		6B9C30BA27B5708300D462BE /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Toolbar.swift"; sourceTree = "<group>"; };
 		6BB5771D278602B400DFF99F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainMenu.storyboard; sourceTree = "<group>"; };
-		6BE29F62CFF7B122D5C39998 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+RemoteCommandCenter.swift"; sourceTree = "<group>"; };
 		6BC6396027A687E400535897 /* Player+NowPlayingInfoCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+NowPlayingInfoCenter.swift"; sourceTree = "<group>"; };
 		6BC6396327A68E2100535897 /* CMTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Extensions.swift"; sourceTree = "<group>"; };
+		6BE29F62CFF7B122D5C39998 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EpisodeInfo.storyboard; sourceTree = "<group>"; };
 		6BF126D22780742600D840A4 /* PodcastInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PodcastInfo.storyboard; sourceTree = "<group>"; };
 		830A34021FF0447D00C13B1D /* PodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastUITests.swift; sourceTree = "<group>"; };
 		830B159A1F7B97910086C121 /* PodcastCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCellView.swift; sourceTree = "<group>"; };
 		830E99BC1FF50DD000B728BE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		831EBAD927CC11E700F212B4 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		83235BF6200945D900BC356F /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		83235BF7200945D900BC356F /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		83235BF8200945D900BC356F /* PrefGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefGeneralViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +283,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		831EBAD427CC0DA500F212B4 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				83D971091F812B270091822A /* Player.swift */,
+				6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */,
+				6BC6396027A687E400535897 /* Player+NowPlayingInfoCenter.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		83235BF5200945D900BC356F /* Preference */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,21 +362,20 @@
 			isa = PBXGroup;
 			children = (
 				83FB4EB61F7BD996001CD842 /* Library */,
+				831EBAD427CC0DA500F212B4 /* Player */,
+				83235BF5200945D900BC356F /* Preference */,
+				6B0605BF2788624B00A8A91E /* Utilities */,
 				830B15991F7B97250086C121 /* Views */,
 				83667DEE1F76D1F300F1ABC0 /* View Controllers */,
 				839DBDA51FEEE872007610EF /* Windows */,
-				83235BF5200945D900BC356F /* Preference */,
-				6B0605BF2788624B00A8A91E /* Utilities */,
 				838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */,
 				83BA22E21F994EA6006BF58A /* DoughnutApp.swift */,
-				83D971091F812B270091822A /* Player.swift */,
 				6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */,
-				6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */,
-				6BC6396027A687E400535897 /* Player+NowPlayingInfoCenter.swift */,
 				832A04331F76EBDC00C92D25 /* WindowController.swift */,
 				6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */,
 				832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */,
 				838257D11F759F6F00DB4FD1 /* Assets.xcassets */,
+				831EBAD927CC11E700F212B4 /* Credits.rtf */,
 				838257D31F759F6F00DB4FD1 /* Main.storyboard */,
 				6BB5771C278602B400DFF99F /* MainMenu.storyboard */,
 				838257D61F759F6F00DB4FD1 /* Info.plist */,
@@ -589,6 +600,7 @@
 				838257D21F759F6F00DB4FD1 /* Assets.xcassets in Resources */,
 				6BB5771E278602B400DFF99F /* MainMenu.storyboard in Resources */,
 				6BF126D12780727100D840A4 /* EpisodeInfo.storyboard in Resources */,
+				831EBADA27CC120000F212B4 /* Credits.rtf in Resources */,
 				83235C0C2009481400BC356F /* dsa_pub.pem in Resources */,
 				838257D51F759F6F00DB4FD1 /* Main.storyboard in Resources */,
 				83235C0D2009502D00BC356F /* Preferences.storyboard in Resources */,
@@ -921,6 +933,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -932,6 +945,7 @@
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2.0.0;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DTEST";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
@@ -1113,12 +1127,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2.0.0;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1137,11 +1153,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 70;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2.0.0;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
