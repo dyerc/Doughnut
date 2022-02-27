@@ -149,6 +149,10 @@ final class Player: NSObject {
         }
       }
 
+      if #available(macOS 11.0, *) {
+        avPlayer.currentItem?.allowedAudioSpatializationFormats = .monoStereoAndMultichannel
+      }
+
       avPlayer.currentItem?.preferredForwardBufferDuration = CMTimeGetSeconds(CMTime(seconds: 120))
 
       // Seek to existing position
