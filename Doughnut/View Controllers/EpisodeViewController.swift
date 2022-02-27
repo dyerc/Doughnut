@@ -154,17 +154,21 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
   }
 
   func reloadEpisodes() {
+    let previousSelectedEpisodeIds = tableView.selectedRowIndexes.compactMap {
+      return episodes[$0].id
+    }
+
     if let podcast = podcast {
       episodes = podcast.episodes
 
       // Global All | New filter
-      episodes = episodes.filter({ episode -> Bool in
+      episodes = episodes.filter { episode -> Bool in
         if filter == .unplayed {
           return !episode.played
         } else {
           return true
         }
-      })
+      }
 
       // Filter based on possible search query
       if let query = searchQuery {
@@ -195,15 +199,28 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     if episodes.isEmpty {
     }
 
-    let selectedRow = tableView.selectedRow
     tableView.reloadData()
-    tableView.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
+
+    let episodeIdToIndexMap = episodes.enumerated().reduce(into: [Int64: Int]()) { dict, pair in
+      let (index, podcast) = pair
+      if let id = podcast.id {
+        dict[id] = index
+      }
+    }
+
+    let selectionIndices = episodeIdToIndexMap.compactMap { pair -> Int? in
+      return previousSelectedEpisodeIds.contains(pair.key) ? pair.value : nil
+    }
+
+    tableView.selectRowIndexes(IndexSet(selectionIndices), byExtendingSelection: false)
+    if selectionIndices.isEmpty {
+      viewController.selectEpisode(episode: nil)
+    }
+    tableView.scrollRowToVisible(tableView.selectedRow)
   }
 
-  func reloadEpisode(_ episode: Episode) {
-    if let index = episodes.firstIndex(where: { e -> Bool in
-      e.id == episode.id
-    }) {
+  func reload(forEpisode episode: Episode) {
+    if let index = episodes.firstIndex(where: { $0.id == episode.id }) {
       tableView.reloadData(forRowIndexes: IndexSet.init(integer: index), columnIndexes: IndexSet.init(integer: 0))
     }
   }

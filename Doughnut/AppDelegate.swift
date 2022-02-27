@@ -69,13 +69,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
       try Player.audioOutputDevices()
     } catch {}*/
 
+    createAndShowMainWindow()
+
     let connected = Library.global.connect()
 
     if !connected {
       abort()
     }
-
-    createAndShowMainWindow()
   }
 
   func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {

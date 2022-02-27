@@ -104,12 +104,12 @@ final class ViewController: NSSplitViewController, LibraryDelegate {
   }
 
   func libraryUpdatingPodcast(podcast: Podcast) {
-    podcastViewController.reloadPodcasts()
+    podcastViewController.reload(forPodcast: podcast)
     updateWindowTitleAndDockIcon()
   }
 
   func libraryUpdatedPodcast(podcast: Podcast) {
-    podcastViewController.reloadPodcasts()
+    podcastViewController.reload(forPodcast: podcast)
 
     if episodeViewController.podcast?.id == podcast.id {
       episodeViewController.reloadEpisodes()
@@ -120,7 +120,11 @@ final class ViewController: NSSplitViewController, LibraryDelegate {
 
   func libraryUpdatedEpisode(episode: Episode) {
     if episodeViewController.podcast?.id == episode.podcastId {
-      episodeViewController.reloadEpisode(episode)
+      episodeViewController.reload(forEpisode: episode)
+    }
+
+    if let podcast = episode.podcast {
+      podcastViewController.reload(forPodcast: podcast)
     }
 
     updateWindowTitleAndDockIcon()

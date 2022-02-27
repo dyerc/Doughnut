@@ -92,8 +92,6 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     sortingMenuProvider.sortParam = sortBy.rawValue
     sortingMenuProvider.sortDirection = sortDirection
     sortingMenuProvider.delegate = self
-
-    reloadPodcasts()
   }
 
   override func viewDidAppear() {
@@ -128,15 +126,19 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
   }
 
   func reloadPodcasts() {
+    let previousSelectedPodcastIds = tableView.selectedRowIndexes.compactMap {
+      return podcasts[$0].id
+    }
+
     podcasts = Library.global.podcasts
 
-    podcasts = podcasts.filter({ podcast -> Bool in
+    podcasts = podcasts.filter { podcast -> Bool in
       if filter == .newEpisodes {
         return podcast.unplayedCount > 0
       } else {
         return true
       }
-    })
+    }
 
     // Sort into ascending order
     podcasts.sort { (a, b) -> Bool in
@@ -161,9 +163,30 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       podcasts.reverse()
     }
 
-    let selectedRow = tableView.selectedRow
     tableView.reloadData()
-    tableView.selectRowIndexes(IndexSet(integer: selectedRow), byExtendingSelection: false)
+
+    let podcastIdToIndexMap = podcasts.enumerated().reduce(into: [Int64: Int]()) { dict, pair in
+      let (index, podcast) = pair
+      if let id = podcast.id {
+        dict[id] = index
+      }
+    }
+
+    let selectionIndices = podcastIdToIndexMap.compactMap { pair -> Int? in
+      return previousSelectedPodcastIds.contains(pair.key) ? pair.value : nil
+    }
+
+    tableView.selectRowIndexes(IndexSet(selectionIndices), byExtendingSelection: false)
+    if selectionIndices.isEmpty {
+      viewController.selectPodcast(podcast: nil)
+    }
+    tableView.scrollRowToVisible(tableView.selectedRow)
+  }
+
+  func reload(forPodcast podcast: Podcast) {
+    if let index = podcasts.firstIndex(where: { $0.id == podcast.id }) {
+      tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
+    }
   }
 
   func numberOfRows(in tableView: NSTableView) -> Int {

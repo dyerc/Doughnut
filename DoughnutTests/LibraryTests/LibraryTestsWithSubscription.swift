@@ -180,7 +180,7 @@ class LibraryTestsWithSubscription: LibraryTestCase {
 
     let spy = LibrarySpyDelegate()
     Library.global.delegate = spy
-    spy.updatedPodcastExpectation = self.expectation(description: "Library updated episode")
+    spy.updatedEpisodeExpectation = self.expectation(description: "Library updated episode")
 
     episode.title = "This is the new episode"
     Library.global.save(episode: episode)
