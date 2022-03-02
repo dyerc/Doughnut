@@ -39,6 +39,7 @@ class Preference {
     static let episodeSortDirection = Key("episodeSortDirection")
 
     // General
+    static let appIconStyle = Key("appIconStyle")
     static let showDockBadge = Key("showDockBadge")
 
     // Library
@@ -49,6 +50,11 @@ class Preference {
     static let skipForwardDuration = Key("skipForwardDuration")
     static let skipBackDuration = Key("skipBackDuration")
     static let replayAfterPause = Key("replayAfterPause")
+  }
+
+  enum AppIconStyle: Int {
+    case catalina = 0
+    case bigSur = 1
   }
 
   static let kLibraryPath = "LibraryPath"

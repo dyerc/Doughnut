@@ -15,6 +15,7 @@
 		6B3A75F8278F44F500F25578 /* NSView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */; };
 		6B94DF4C278968F500BCB149 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */; };
 		6B9C30BB27B5708300D462BE /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C30BA27B5708300D462BE /* BaseTableView.swift */; };
+		6B9E154727C9EA5F00C919D5 /* AppIcon_Big_Sur.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6B9E154627C9EA5F00C919D5 /* AppIcon_Big_Sur.icns */; };
 		6BA21C4F279D690700CD3672 /* WindowController+Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */; };
 		6BB5771E278602B400DFF99F /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BB5771C278602B400DFF99F /* MainMenu.storyboard */; };
 		6BC6395F27A6800500535897 /* Player+RemoteCommandCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */; };
@@ -106,6 +107,7 @@
 		6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Release.entitlements"; sourceTree = "<group>"; };
 		6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
 		6B9C30BA27B5708300D462BE /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
+		6B9E154627C9EA5F00C919D5 /* AppIcon_Big_Sur.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon_Big_Sur.icns; sourceTree = "<group>"; };
 		6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Toolbar.swift"; sourceTree = "<group>"; };
 		6BB5771D278602B400DFF99F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainMenu.storyboard; sourceTree = "<group>"; };
 		6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+RemoteCommandCenter.swift"; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 		83235C0A200947F200BC356F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6B9E154627C9EA5F00C919D5 /* AppIcon_Big_Sur.icns */,
 				83235C0B2009481200BC356F /* dsa_pub.pem */,
 			);
 			path = Resources;
@@ -481,6 +484,7 @@
 				838257C71F759F6F00DB4FD1 /* Frameworks */,
 				83D454AE200BFDD50078CA3D /* Bump Build Number */,
 				838257C81F759F6F00DB4FD1 /* Resources */,
+				6B339CC727C9F1BD00181204 /* Remove Custom Bundle Icon */,
 				4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */,
 				433D2BC19A40DB2041D544F1 /* [CP] Copy Pods Resources */,
 				6B3ACC992773569D00CF1EF1 /* Run SwiftLint */,
@@ -601,6 +605,7 @@
 				6BB5771E278602B400DFF99F /* MainMenu.storyboard in Resources */,
 				6BF126D12780727100D840A4 /* EpisodeInfo.storyboard in Resources */,
 				831EBADA27CC120000F212B4 /* Credits.rtf in Resources */,
+				6B9E154727C9EA5F00C919D5 /* AppIcon_Big_Sur.icns in Resources */,
 				83235C0C2009481400BC356F /* dsa_pub.pem in Resources */,
 				838257D51F759F6F00DB4FD1 /* Main.storyboard in Resources */,
 				83235C0D2009502D00BC356F /* Preferences.storyboard in Resources */,
@@ -681,6 +686,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6B339CC727C9F1BD00181204 /* Remove Custom Bundle Icon */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Remove Custom Bundle Icon";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -x\n\nPRODUCT_PATH=${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}\n\nxattr -d 'com.apple.FinderInfo' \"${PRODUCT_PATH}\"\nfind \"${PRODUCT_PATH}\" -maxdepth 1 -type f -name 'Icon?' -print -delete\n";
 		};
 		6B3ACC992773569D00CF1EF1 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -928,6 +951,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F42DD5B957A39D2CA878BEA8 /* Pods-Doughnut.test.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "-";
@@ -1122,6 +1146,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "-";
@@ -1148,6 +1173,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Release.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
