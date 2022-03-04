@@ -28,16 +28,27 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     case recentEpisodes = "Recent Episode"
   }
 
-  enum Filter {
-    case all
-    case newEpisodes
+  struct Filter: Equatable {
+    enum Category: Equatable {
+      case all
+      case newEpisodes
+    }
+
+    var category: Category
+    var query: String
+
+    static var all: Self {
+      return Self(category: .all, query: "")
+    }
   }
 
   var podcasts = [Podcast]()
 
   @IBOutlet var tableView: NSTableView!
+
   @IBOutlet var sortView: NSView!
-  @IBOutlet var filteringButton: NSButton!
+  @IBOutlet var moreButton: NSButton!
+  @IBOutlet var searchField: PodcastSearchFiled!
 
   private var sortingMenuProvider: SortingMenuProvider {
     return SortingMenuProvider.Shared.podcasts
@@ -47,9 +58,8 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     return tableView.enclosingScrollView!
   }
 
-  var filter: Filter = .all {
+  private var filter: Filter = .all {
     didSet {
-      updateFilteringButtonState()
       reloadPodcasts()
     }
   }
@@ -92,12 +102,15 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     sortingMenuProvider.sortParam = sortBy.rawValue
     sortingMenuProvider.sortDirection = sortDirection
     sortingMenuProvider.delegate = self
+
+    searchField.searchFieldDelegate = self
   }
 
   override func viewDidAppear() {
     super.viewDidAppear()
 
-    updateFilteringButtonState()
+    let moreButtonCell = moreButton.cell as? NSButtonCell
+    moreButtonCell?.highlightsBy = []
 
     tableScrollView.automaticallyAdjustsContentInsets = false
 
@@ -116,15 +129,6 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     )
   }
 
-  private func updateFilteringButtonState() {
-    filteringButton.contentTintColor = filter == .all
-                                     ? .secondaryLabelColor
-                                     : .controlAccentColor
-    filteringButton.image = filter == .all
-                          ? NSImage(named: "FilterInactive")
-                          : NSImage(named: "FilterActive")
-  }
-
   func reloadPodcasts() {
     let previousSelectedPodcastIds = tableView.selectedRowIndexes.compactMap {
       return podcasts[$0].id
@@ -133,10 +137,19 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     podcasts = Library.global.podcasts
 
     podcasts = podcasts.filter { podcast -> Bool in
-      if filter == .newEpisodes {
+      if filter.category == .newEpisodes {
         return podcast.unplayedCount > 0
       } else {
         return true
+      }
+    }
+
+    if !filter.query.isEmpty {
+      let query = filter.query.lowercased().filter { !$0.isWhitespace }
+      podcasts = podcasts.filter { podcast in
+        return podcast.title
+          .lowercased().filter { !$0.isWhitespace }
+          .contains(query)
       }
     }
 
@@ -242,10 +255,6 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
 
   // MARK: - Actions
 
-  @IBAction func toggleFilterPodcasts(_ sender: Any) {
-    filter = (filter == .newEpisodes) ? .all : .newEpisodes
-  }
-
   @IBAction func reloadPodcast(_ sender: Any) {
     let podcasts = activePodcastsForAction()
     assert(podcasts.count == 1)
@@ -349,9 +358,6 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     let podcasts = activePodcastsForAction()
 
     switch menuItem.action {
-    case #selector(toggleFilterPodcasts(_:)):
-      menuItem.state = filter == .newEpisodes ? .on : .off
-      return true
     case #selector(reloadPodcast(_:)):
       return podcasts.count == 1
     case #selector(getInfo(_:)):
@@ -374,6 +380,14 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       assert(false, "Unhandled menu item in \(#function)")
       return false
     }
+  }
+
+}
+
+extension PodcastViewController: PodcastSearchFiledDelegate {
+
+  func podcastSearchFiledDidUpdate(withFilter filter: Filter) {
+    self.filter = filter
   }
 
 }
