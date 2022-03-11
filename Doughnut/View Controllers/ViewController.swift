@@ -52,11 +52,16 @@ final class ViewController: NSSplitViewController, LibraryDelegate {
     super.viewDidLoad()
 
     UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.showDockBadge.rawValue, options: [], context: nil)
-    updateWindowTitleAndDockIcon()
 
     splitView.autosaveName = "Main"
 
     Library.global.delegate = self
+  }
+
+  override func viewWillAppear() {
+    super.viewWillAppear()
+
+    updateWindowTitleAndDockIcon()
   }
 
   deinit {

@@ -37,12 +37,11 @@ final class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldD
   override func windowDidLoad() {
     super.windowDidLoad()
 
-    window?.title = "Doughnut"
+    window?.titleVisibility = .hidden
 
     if #available(macOS 11.0, *) {
       window?.toolbarStyle = .unified
     } else {
-      window?.titleVisibility = .hidden
       window?.styleMask.remove(.fullSizeContentView)
     }
 
