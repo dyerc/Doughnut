@@ -48,7 +48,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
 
   @IBOutlet var sortView: NSView!
   @IBOutlet var moreButton: NSButton!
-  @IBOutlet var searchField: PodcastSearchFiled!
+  @IBOutlet var searchField: PodcastSearchField!
 
   private var sortingMenuProvider: SortingMenuProvider {
     return SortingMenuProvider.Shared.podcasts
@@ -384,9 +384,9 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
 
 }
 
-extension PodcastViewController: PodcastSearchFiledDelegate {
+extension PodcastViewController: PodcastSearchFieldDelegate {
 
-  func podcastSearchFiledDidUpdate(withFilter filter: Filter) {
+  func podcastSearchFieldDidUpdate(withFilter filter: Filter) {
     self.filter = filter
   }
 

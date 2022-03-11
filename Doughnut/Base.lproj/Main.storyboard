@@ -483,7 +483,7 @@ Gw
                                             <constraint firstAttribute="height" constant="1" id="yYT-XN-B8Z"/>
                                         </constraints>
                                     </box>
-                                    <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-jJ-Pmb" customClass="PodcastSearchFiled" customModule="Doughnut" customModuleProvider="target">
+                                    <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-jJ-Pmb" customClass="PodcastSearchField" customModule="Doughnut" customModuleProvider="target">
                                         <rect key="frame" x="30" y="3" width="217" height="22"/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" maximumRecents="0" id="kGs-iR-hTg">
                                             <font key="font" metaFont="system"/>

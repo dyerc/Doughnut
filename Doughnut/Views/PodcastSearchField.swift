@@ -18,20 +18,20 @@
 
 import AppKit
 
-protocol PodcastSearchFiledDelegate: AnyObject {
+protocol PodcastSearchFieldDelegate: AnyObject {
 
-  func podcastSearchFiledDidUpdate(withFilter filter: PodcastViewController.Filter)
+  func podcastSearchFieldDidUpdate(withFilter filter: PodcastViewController.Filter)
 
 }
 
-final class PodcastSearchFiled: NSSearchField {
+final class PodcastSearchField: NSSearchField {
 
-  weak var searchFieldDelegate: PodcastSearchFiledDelegate?
+  weak var searchFieldDelegate: PodcastSearchFieldDelegate?
 
   private var filter: PodcastViewController.Filter = .all {
     didSet {
       updateFilteringButtonState()
-      searchFieldDelegate?.podcastSearchFiledDidUpdate(withFilter: filter)
+      searchFieldDelegate?.podcastSearchFieldDidUpdate(withFilter: filter)
     }
   }
 
