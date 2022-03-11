@@ -205,6 +205,8 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
       if sortDirection == .desc {
         episodes.reverse()
       }
+    } else {
+      episodes = []
     }
 
     // Handle an empty table
