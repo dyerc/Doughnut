@@ -104,7 +104,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   @IBAction func rename(_ sender: AnyObject) {
-    assert(false, "This menu item is to be implemented: \(#function)")
+    assert(false, "This menu item is to be implmented: \(#function)")
   }
 
   @IBAction func deleteAllPlayed(_ sender: AnyObject) {
