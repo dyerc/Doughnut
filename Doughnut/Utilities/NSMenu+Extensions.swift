@@ -63,4 +63,13 @@ extension NSMenuItem {
     return menu?.menuType
   }
 
+  func configureWithDefaultFont() {
+    attributedTitle = NSAttributedString(
+      string: title,
+      attributes: [
+        .font: NSFont.controlContentFont(ofSize: NSFont.systemFontSize),
+      ]
+    )
+  }
+
 }

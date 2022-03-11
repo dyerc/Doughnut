@@ -460,15 +460,15 @@ Gw
                                 </scroller>
                             </scrollView>
                             <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-rT-KIQ">
-                                <rect key="frame" x="0.0" y="0.0" width="251" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="251" height="28"/>
                                 <subviews>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Pkz-GU-AL9">
-                                        <rect key="frame" x="10" y="7" width="16" height="16"/>
+                                        <rect key="frame" x="8" y="3.5" width="16" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="16" id="1ey-UM-1K6"/>
                                             <constraint firstAttribute="height" constant="16" id="edJ-L8-BeT"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="FilterInactive" imagePosition="only" alignment="center" controlSize="small" imageScaling="proportionallyUpOrDown" inset="2" id="1pl-TM-f2l">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" controlSize="small" imageScaling="proportionallyUpOrDown" inset="2" id="1pl-TM-f2l">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
@@ -478,19 +478,30 @@ Gw
                                         </connections>
                                     </button>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Q9V-7G-TPX">
-                                        <rect key="frame" x="0.0" y="27" width="251" height="5"/>
+                                        <rect key="frame" x="0.0" y="25" width="251" height="5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="yYT-XN-B8Z"/>
                                         </constraints>
                                     </box>
+                                    <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-jJ-Pmb" customClass="PodcastSearchFiled" customModule="Doughnut" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="3" width="217" height="22"/>
+                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" maximumRecents="0" id="kGs-iR-hTg">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </searchFieldCell>
+                                    </searchField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Q9V-7G-TPX" firstAttribute="leading" secondItem="Mge-rT-KIQ" secondAttribute="leading" id="212-QD-g9h"/>
+                                    <constraint firstItem="mtS-jJ-Pmb" firstAttribute="centerY" secondItem="Mge-rT-KIQ" secondAttribute="centerY" id="GEi-rY-ITF"/>
+                                    <constraint firstAttribute="trailing" secondItem="mtS-jJ-Pmb" secondAttribute="trailing" constant="4" id="MWF-dz-0Mc"/>
+                                    <constraint firstItem="mtS-jJ-Pmb" firstAttribute="leading" secondItem="Pkz-GU-AL9" secondAttribute="trailing" constant="6" id="MWU-Fi-5X6"/>
                                     <constraint firstItem="Q9V-7G-TPX" firstAttribute="top" secondItem="Mge-rT-KIQ" secondAttribute="top" id="gmI-qG-Rft"/>
-                                    <constraint firstItem="Pkz-GU-AL9" firstAttribute="leading" secondItem="Mge-rT-KIQ" secondAttribute="leading" constant="10" id="ll2-91-qQc"/>
+                                    <constraint firstItem="Pkz-GU-AL9" firstAttribute="leading" secondItem="Mge-rT-KIQ" secondAttribute="leading" constant="8" id="ll2-91-qQc"/>
                                     <constraint firstItem="Pkz-GU-AL9" firstAttribute="centerY" secondItem="Mge-rT-KIQ" secondAttribute="centerY" id="m3p-Vc-TfH"/>
                                     <constraint firstAttribute="trailing" secondItem="Q9V-7G-TPX" secondAttribute="trailing" id="t9t-Ca-5lf"/>
-                                    <constraint firstAttribute="height" constant="30" id="zJ3-3v-cjb"/>
+                                    <constraint firstAttribute="height" constant="28" id="zJ3-3v-cjb"/>
                                 </constraints>
                             </visualEffectView>
                         </subviews>
@@ -507,7 +518,8 @@ Gw
                         <viewLayoutGuide key="layoutMargins" id="8eP-ga-5Bq"/>
                     </view>
                     <connections>
-                        <outlet property="filteringButton" destination="Pkz-GU-AL9" id="0A7-FY-mz9"/>
+                        <outlet property="moreButton" destination="Pkz-GU-AL9" id="O9K-hE-JvA"/>
+                        <outlet property="searchField" destination="mtS-jJ-Pmb" id="OFh-oJ-WxW"/>
                         <outlet property="sortView" destination="Mge-rT-KIQ" id="UXl-BK-k3s"/>
                         <outlet property="tableView" destination="aVy-1A-ODd" id="MSD-C6-DW1"/>
                     </connections>
@@ -570,19 +582,6 @@ Gw
                     <items>
                         <menuItem title="Sort By" identifier="podcastViewSortBy" id="dyf-fU-Ugh">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                        <menuItem title="Filter By" id="sC2-Ue-2nz">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="Filter By" id="731-j4-Wha">
-                                <items>
-                                    <menuItem title="New Episodes" id="jv1-Gl-Reg">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="toggleFilterPodcasts:" target="ioO-eb-ohg" id="1pb-k4-Zho"/>
-                                        </connections>
-                                    </menuItem>
-                                </items>
-                            </menu>
                         </menuItem>
                     </items>
                     <connections>

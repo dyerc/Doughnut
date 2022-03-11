@@ -12,8 +12,10 @@
 		5E0288D17E6858855545E02E /* Pods_DoughnutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE29F62CFF7B122D5C39998 /* Pods_DoughnutTests.framework */; };
 		6B0233BD27B2CA6500500E28 /* ControlMenuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */; };
 		6B0605C52788627D00A8A91E /* NSMenu+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */; };
+		6B36624627CFB339008E1CA5 /* NSImage+Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36624527CFB339008E1CA5 /* NSImage+Tint.swift */; };
 		6B3A75F8278F44F500F25578 /* NSView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */; };
 		6B94DF4C278968F500BCB149 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */; };
+		6B96F45D27CE6F10001941BA /* PodcastSearchFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96F45C27CE6F10001941BA /* PodcastSearchFiled.swift */; };
 		6B9C30BB27B5708300D462BE /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C30BA27B5708300D462BE /* BaseTableView.swift */; };
 		6B9E154727C9EA5F00C919D5 /* AppIcon_Big_Sur.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6B9E154627C9EA5F00C919D5 /* AppIcon_Big_Sur.icns */; };
 		6BA21C4F279D690700CD3672 /* WindowController+Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */; };
@@ -101,10 +103,12 @@
 		5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.debug.xcconfig"; sourceTree = "<group>"; };
 		6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlMenuProvider.swift; sourceTree = "<group>"; };
 		6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+Extensions.swift"; sourceTree = "<group>"; };
+		6B36624527CFB339008E1CA5 /* NSImage+Tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Tint.swift"; sourceTree = "<group>"; };
 		6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extensions.swift"; sourceTree = "<group>"; };
 		6B3ACC982773555700CF1EF1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Release.entitlements"; sourceTree = "<group>"; };
 		6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
+		6B96F45C27CE6F10001941BA /* PodcastSearchFiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSearchFiled.swift; sourceTree = "<group>"; };
 		6B9C30BA27B5708300D462BE /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		6B9E154627C9EA5F00C919D5 /* AppIcon_Big_Sur.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon_Big_Sur.icns; sourceTree = "<group>"; };
 		6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Toolbar.swift"; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */,
 				6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */,
 				6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */,
+				6B36624527CFB339008E1CA5 /* NSImage+Tint.swift */,
 			);
 			name = AppKit;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */,
 				832A04331F76EBDC00C92D25 /* WindowController.swift */,
 				6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */,
+				6B96F45C27CE6F10001941BA /* PodcastSearchFiled.swift */,
 				832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */,
 				838257D11F759F6F00DB4FD1 /* Assets.xcassets */,
 				831EBAD927CC11E700F212B4 /* Credits.rtf */,
@@ -809,6 +815,7 @@
 				83659AB81F7D8A0300E09833 /* Podcast.swift in Sources */,
 				837D52BE1F8E622200C17514 /* TasksViewController.swift in Sources */,
 				8379899B1F81616C00234577 /* SeekSlider.swift in Sources */,
+				6B36624627CFB339008E1CA5 /* NSImage+Tint.swift in Sources */,
 				837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */,
 				832FF90B1F8D60430065E593 /* DownloadManager.swift in Sources */,
 				83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */,
@@ -824,6 +831,7 @@
 				83235C012009472F00BC356F /* PrefGeneralViewController.swift in Sources */,
 				83235BFE2009472900BC356F /* Preference.swift in Sources */,
 				83FB4EB81F7BD9A1001CD842 /* Library.swift in Sources */,
+				6B96F45D27CE6F10001941BA /* PodcastSearchFiled.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

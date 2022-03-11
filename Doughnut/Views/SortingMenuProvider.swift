@@ -107,12 +107,7 @@ final class SortingMenuProvider {
       // Ensure menuItems' title font is consistent with normal menus for
       // recessed pull-down button.
       for item in sortMenu.items[1...] {
-        item.attributedTitle = NSAttributedString(
-          string: item.title,
-          attributes: [
-            .font: NSFont.controlContentFont(ofSize: NSFont.systemFontSize),
-          ]
-        )
+        item.configureWithDefaultFont()
       }
     }
 
