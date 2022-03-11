@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://github.com/dyerc/Doughnut/raw/master/Assets/icon.png" alt="Doughnut" width="200">
+  <img src="./Assets/icon.png" alt="Doughnut" width="200">
   <br>
   Doughnut
   <br>
@@ -8,8 +8,12 @@
 <h4 align="center">Podcast app. For Mac.</h4>
 
 <p align="center">
-  <a href="https://travis-ci.org/dyerc/Doughnut"><img src="https://img.shields.io/travis/dyerc/Doughnut/master.svg" alt="Travis CI Status" /></a>
-  <a href="https://github.com/dyerc/Doughnut/releases"><img src="https://img.shields.io/github/release/dyerc/doughnut.svg" alt="github release"></a>
+  <a href="https://github.com/serhii-londar/open-source-mac-os-apps#podcast"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome" /></a>
+  <a href="https://github.com/dyerc/Doughnut/releases"><img src="https://img.shields.io/github/release/dyerc/doughnut.svg" alt="Github Release"></a>
+</p>
+
+<p align="center">
+  <code>brew install --cask doughnut</code>
 </p>
 
 <p align="center">
