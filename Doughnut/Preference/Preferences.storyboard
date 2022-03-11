@@ -102,11 +102,11 @@
             <objects>
                 <viewController storyboardIdentifier="PrefGeneralViewController" showSeguePresentationStyle="single" id="eoZ-8V-Te0" customClass="PrefGeneralViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="PcR-69-Pzw">
-                        <rect key="frame" x="0.0" y="0.0" width="620" height="92"/>
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="127"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bgc-a3-JKi">
-                                <rect key="frame" x="18" y="55" width="187" height="17"/>
+                                <rect key="frame" x="18" y="90" width="187" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Check for New Episodes:" id="9W0-lG-slR">
                                     <font key="font" metaFont="system"/>
@@ -115,7 +115,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OrJ-V8-xVo">
-                                <rect key="frame" x="220" y="48" width="261" height="26"/>
+                                <rect key="frame" x="220" y="83" width="261" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Every 15 minutes" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="15" imageScaling="proportionallyDown" inset="2" selectedItem="qpW-wK-UaC" id="iWW-SZ-Fua">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -145,25 +145,55 @@
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cUa-0X-uyd">
-                                <rect key="frame" x="18" y="20" width="187" height="17"/>
+                                <rect key="frame" x="18" y="55" width="187" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Miscellaneous:" id="RED-YY-nxd">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="App Icon Style:" id="RED-YY-nxd">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZk-Bh-u55">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lNU-LA-elY">
+                                <rect key="frame" x="18" y="20" width="187" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Miscellaneous:" id="4pJ-4Z-3Kz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X7b-uP-CQb">
                                 <rect key="frame" x="220" y="19" width="262" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Display unplayed episode count in dock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YEa-38-XiC">
+                                <buttonCell key="cell" type="check" title="Display unplayed episode count in dock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="L7g-5A-Adh">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <binding destination="S6J-dJ-Xz8" name="value" keyPath="values.showDockBadge" id="NYu-uQ-gMe"/>
+                                    <binding destination="S6J-dJ-Xz8" name="value" keyPath="values.showDockBadge" id="NbF-3E-Y99"/>
                                 </connections>
                             </button>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GSM-Mc-ofi">
+                                <rect key="frame" x="220" y="48" width="261" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Rounded" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="gvr-LP-eQs" id="bPr-R7-VOm">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="vcO-r8-oxE">
+                                        <items>
+                                            <menuItem title="Rounded" state="on" image="PrefAppIcon/Icon_Catalina" id="gvr-LP-eQs">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="Square" image="PrefAppIcon/Icon_Big_Sur" tag="1" id="SFZ-Hl-RJ2">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <binding destination="S6J-dJ-Xz8" name="selectedTag" keyPath="values.appIconStyle" id="fac-sw-aIS"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                     </view>
                     <connections>
@@ -281,4 +311,8 @@
             <point key="canvasLocation" x="-475" y="299.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="PrefAppIcon/Icon_Big_Sur" width="16" height="16"/>
+        <image name="PrefAppIcon/Icon_Catalina" width="16" height="16"/>
+    </resources>
 </document>

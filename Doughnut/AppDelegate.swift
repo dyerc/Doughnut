@@ -53,6 +53,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
 
+    UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.appIconStyle.rawValue, options: [], context: nil)
+
     /*do {
       try Player.audioOutputDevices()
     } catch {}*/
@@ -81,11 +83,40 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     return menu
   }
 
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    switch keyPath {
+    case Preference.Key.appIconStyle.rawValue?:
+      updateAppIcon()
+    default:
+      return
+    }
+  }
+
   private func createAndShowMainWindow() {
     if mainWindowController == nil {
       mainWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateInitialController()
     }
     mainWindowController?.showWindow(self)
+  }
+
+  private func updateAppIcon() {
+    guard let iconStyle = Preference.AppIconStyle(rawValue: Preference.integer(for: Preference.Key.appIconStyle)) else {
+      return
+    }
+
+    let bundlePath = Bundle.main.bundlePath
+
+    switch iconStyle {
+    case .catalina:
+      // Setting applicationIconImage to nil won't clear the icon if custom icon is set
+      let iconImage = NSImage(named: "AppIcon")
+      NSApp.applicationIconImage = iconImage
+      NSWorkspace.shared.setIcon(nil, forFile: bundlePath, options: [])
+    case .bigSur:
+      let iconImage = NSImage(named: "AppIcon_Big_Sur")
+      NSApp.applicationIconImage = iconImage
+      NSWorkspace.shared.setIcon(iconImage, forFile: bundlePath, options: [])
+    }
   }
 
   @IBAction func showPreferences(_ sender: AnyObject) {
