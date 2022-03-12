@@ -50,6 +50,9 @@ class Preference {
     static let skipForwardDuration = Key("skipForwardDuration")
     static let skipBackDuration = Key("skipBackDuration")
     static let replayAfterPause = Key("replayAfterPause")
+
+    // Debuging
+    static let debugMenuEnabled = Key("debugMenuEnabled")
   }
 
   enum AppIconStyle: Int {
