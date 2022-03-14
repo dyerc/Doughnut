@@ -139,6 +139,8 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
       bottom: 0,
       right: 0
     )
+
+    tableView.sizeLastColumnToFit()
   }
 
   private func updateFilteringButtonState() {

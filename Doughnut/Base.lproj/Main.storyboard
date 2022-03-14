@@ -338,7 +338,7 @@ Gw
                                     <rect key="frame" x="0.0" y="0.0" width="251" height="480"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowHeight="55" viewBased="YES" id="aVy-1A-ODd" customClass="BaseTableView" customModule="Doughnut" customModuleProvider="target">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowHeight="55" viewBased="YES" id="aVy-1A-ODd" customClass="BaseTableView" customModule="Doughnut" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="251" height="480"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="0.0" height="4"/>
@@ -355,7 +355,7 @@ Gw
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="Caz-b2-UzS" customClass="PodcastCellView" customModule="Doughnut" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="2" width="231" height="55"/>
@@ -423,6 +423,7 @@ Gw
                                                                 <outlet property="episodeCount" destination="Pkl-Lr-qxa" id="A5q-iE-0c5"/>
                                                                 <outlet property="imageView" destination="WuW-3B-toC" id="qce-6g-Mlb"/>
                                                                 <outlet property="podcastUnplayedCount" destination="qSa-lt-Xvr" id="eZs-zW-Ttc"/>
+                                                                <outlet property="podcastUnplayedCountTrailingConstraint" destination="1o0-ea-oPQ" id="sIJ-Rk-cs4"/>
                                                                 <outlet property="title" destination="yFZ-qJ-tU0" id="WAu-w6-NGc"/>
                                                             </connections>
                                                         </tableCellView>
@@ -586,7 +587,7 @@ Gw
                                     <rect key="frame" x="0.0" y="0.0" width="351" height="480"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowHeight="76" viewBased="YES" id="Xrx-cp-IWJ" customClass="BaseTableView" customModule="Doughnut" customModuleProvider="target">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowHeight="76" viewBased="YES" id="Xrx-cp-IWJ" customClass="BaseTableView" customModule="Doughnut" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="351" height="480"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -602,7 +603,7 @@ Gw
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="duq-gB-b2g" customClass="EpisodeCellView" customModule="Doughnut" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="0.0" width="331" height="76"/>

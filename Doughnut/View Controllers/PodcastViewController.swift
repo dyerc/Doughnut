@@ -127,6 +127,8 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       bottom: sortView.bounds.height,
       right: 0
     )
+
+    tableView.sizeLastColumnToFit()
   }
 
   func reloadPodcasts() {
