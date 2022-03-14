@@ -113,7 +113,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     sortingMenuProvider.sortDirection = sortDirection
     sortingMenuProvider.delegate = self
 
-    sortingButton.menu = sortingMenuProvider.buildPullDownMenu()
+    sortingButton.menu = sortingMenuProvider.build(forStyle: .pullDownMenu)
 
     filteringButton.contentTintColor = .secondaryLabelColor
 
@@ -373,7 +373,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     // Rebuild the pulldown menu after sorting to ensure its title being updated
     // We should have an another mechanism to trigger menu updates. For now it's
     // fine to keep it simple.
-    sortingButton.menu = sortingMenuProvider.buildPullDownMenu()
+    sortingButton.menu = sortingMenuProvider.build(forStyle: .pullDownMenu)
 
     reloadEpisodes()
   }

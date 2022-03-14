@@ -27,4 +27,11 @@ extension NSView {
     return self
   }
 
+  func popUpContextualMenu(_ menu: NSMenu) {
+    guard let event = NSApp.currentEvent else {
+      return
+    }
+    NSMenu.popUpContextMenu(menu, with: event, for: self)
+  }
+
 }

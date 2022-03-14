@@ -465,8 +465,7 @@ Gw
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="popUpContextualMenu:" target="ioO-eb-ohg" id="8sS-My-9LM"/>
-                                            <outlet property="menu" destination="HHi-Kh-WaX" id="iW8-Dh-6TZ"/>
+                                            <action selector="actionMenuClicked:" target="hBf-lZ-L6q" id="36J-CH-2si"/>
                                         </connections>
                                     </button>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Q9V-7G-TPX">
@@ -477,7 +476,7 @@ Gw
                                     </box>
                                     <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-jJ-Pmb" customClass="PodcastSearchField" customModule="Doughnut" customModuleProvider="target">
                                         <rect key="frame" x="30" y="3" width="217" height="22"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" maximumRecents="0" id="kGs-iR-hTg">
+                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Filter Podcasts" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" maximumRecents="0" id="kGs-iR-hTg">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -568,16 +567,6 @@ Gw
                     </items>
                     <connections>
                         <outlet property="delegate" destination="Pkz-GU-AL9" id="ZaK-a7-6Wq"/>
-                    </connections>
-                </menu>
-                <menu id="HHi-Kh-WaX">
-                    <items>
-                        <menuItem title="Sort By" identifier="podcastViewSortBy" id="dyf-fU-Ugh">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                    </items>
-                    <connections>
-                        <outlet property="delegate" destination="hBf-lZ-L6q" id="xzQ-ok-WgY"/>
                     </connections>
                 </menu>
             </objects>

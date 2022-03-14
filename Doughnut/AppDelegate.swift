@@ -123,17 +123,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     preferencesWindowController.showWindow(self)
   }
 
-  @IBAction func popUpContextualMenu(_ sender: Any) {
-    guard
-      let senderView = sender as? NSView,
-      let menu = senderView.menu,
-      let event = NSApp.currentEvent
-    else {
-      return
-    }
-    NSMenu.popUpContextMenu(menu, with: event, for: senderView)
-  }
-
   @IBAction func rename(_ sender: AnyObject) {
     assert(false, "This menu item is to be implmented: \(#function)")
   }
@@ -173,9 +162,9 @@ extension AppDelegate: NSMenuDelegate {
       if let itemIdentifier = menuItem.identifier {
         switch itemIdentifier {
         case .doughnutViewMenuSortPodcasts:
-          menuItem.submenu = SortingMenuProvider.Shared.podcasts.buildMenu()
+          menuItem.submenu = SortingMenuProvider.Shared.podcasts.build(forStyle: .mainMenu)
         case .doughnutViewMenuSortEpisodes:
-          menuItem.submenu = SortingMenuProvider.Shared.episodes.buildMenu()
+          menuItem.submenu = SortingMenuProvider.Shared.episodes.build(forStyle: .mainMenu)
         default:
           break
         }

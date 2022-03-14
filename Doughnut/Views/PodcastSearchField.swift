@@ -71,7 +71,13 @@ final class PodcastSearchField: NSSearchField {
     action = #selector(onSearchTextChange(_:))
 
     let menu = NSMenu()
-    menu.addItem(withTitle: "New Episodes", action: #selector(toggleFilterPodcasts(_:)), keyEquivalent: "")
+
+    menu.addItem(withTitle: "Filter by", action: nil, keyEquivalent: "")
+
+    let newEpisodesItem = NSMenuItem(title: "New Episodes", action: #selector(toggleFilterPodcasts(_:)), keyEquivalent: "")
+    newEpisodesItem.indentationLevel = 1
+    menu.addItem(newEpisodesItem)
+
     for item in menu.items[0...] {
       item.configureWithDefaultFont()
     }
