@@ -20,7 +20,7 @@ import AppKit
 
 extension NSView {
 
-  var comptableSafeAreaLayoutGuide: Any {
+  var compatibleSafeAreaLayoutGuide: Any {
     if #available(macOS 11.0, *) {
       return safeAreaLayoutGuide
     }

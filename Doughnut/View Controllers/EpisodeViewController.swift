@@ -93,7 +93,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
       item: sortView!,
       attribute: .top,
       relatedBy: .equal,
-      toItem: view.comptableSafeAreaLayoutGuide,
+      toItem: view.compatibleSafeAreaLayoutGuide,
       attribute: .top,
       multiplier: 1,
       constant: 0
@@ -324,9 +324,9 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
 
       return !episodes.isEmpty
     case #selector(toggleFavourite(_:)):
-      let markedAsFavouritecount = episodes.filter({ $0.favourite }).count
-      let allMarkedAsFavourite = markedAsFavouritecount == episodes.count
-      let allMarkedAsUnFavourite = markedAsFavouritecount == 0
+      let markedAsFavouriteCount = episodes.filter({ $0.favourite }).count
+      let allMarkedAsFavourite = markedAsFavouriteCount == episodes.count
+      let allMarkedAsUnFavourite = markedAsFavouriteCount == 0
 
       menuItem.title = (!allMarkedAsFavourite || episodes.isEmpty) ? "Mark as Favourite" : "Unmark Favourite"
       menuItem.state = (!allMarkedAsFavourite && !allMarkedAsUnFavourite) ? .mixed : .off
