@@ -60,12 +60,11 @@ final class PodcastSearchField: NSSearchField {
 
     let searchFieldCell = cell as? NSSearchFieldCell
     searchFieldCell?.searchButtonCell?.image = filterImage
-    searchFieldCell?.searchButtonCell?.alternateImage = filterImageActive
-    searchFieldCell?.searchButtonCell?.showsStateBy = [.contentsCellMask]
     searchFieldCell?.searchButtonCell?.imageScaling = .scaleProportionallyDown
 
     searchFieldCell?.cancelButtonCell?.image = cancelImage
     searchFieldCell?.cancelButtonCell?.alternateImage = controlSelectedImage
+    searchFieldCell?.cancelButtonCell?.imageScaling = .scaleProportionallyDown
 
     target = self
     action = #selector(onSearchTextChange(_:))
@@ -136,7 +135,9 @@ final class PodcastSearchField: NSSearchField {
   private func updateFilteringButtonState() {
     let isActive = !filter.query.isEmpty || filter.category != .all
     let searchFieldCell = cell as? NSSearchFieldCell
-    searchFieldCell?.searchButtonCell?.state = isActive ? .on : .off
+    // On 10.15, `alternateImage` shows above `image`, rather than replacing it.
+    // thus togging `state` results poor result, we have to set `image` directly.
+    searchFieldCell?.searchButtonCell?.image = isActive ? filterImageActive : filterImage
     needsDisplay = true
   }
 
