@@ -49,6 +49,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
   @IBOutlet var sortView: NSView!
   @IBOutlet var moreButton: NSButton!
   @IBOutlet var searchField: PodcastSearchField!
+  @IBOutlet var filterBarSeperator: NSBox!
 
   private var sortingMenuProvider: SortingMenuProvider {
     return SortingMenuProvider.Shared.podcasts
@@ -127,6 +128,13 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       bottom: sortView.bounds.height,
       right: 0
     )
+
+    updateFilterBarSeperatorVisibility()
+  }
+
+  override func viewDidLayout() {
+    super.viewDidLayout()
+    updateFilterBarSeperatorVisibility()
   }
 
   func reloadPodcasts() {
@@ -234,6 +242,13 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     if selectionIndices.isEmpty {
       viewController.selectPodcast(podcast: nil)
     }
+
+    updateFilterBarSeperatorVisibility()
+  }
+
+  private func updateFilterBarSeperatorVisibility() {
+    let hidesSeperator = tableView.frame.height <= tableScrollView.contentView.frame.height
+    filterBarSeperator.isHidden = hidesSeperator
   }
 
   func numberOfRows(in tableView: NSTableView) -> Int {
