@@ -170,6 +170,7 @@ class Preference {
   static func libraryPath() -> URL {
     if testEnv() {
       let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
+      try? FileManager.default.removeItem(at: url)
       createLibraryIfNotExists(url)
       return url
     } else {

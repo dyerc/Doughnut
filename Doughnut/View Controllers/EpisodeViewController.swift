@@ -294,7 +294,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
 
       Episode.fromFile(podcast: podcast, url: sourceURL, copyToLibrary: moveToLibrary, completion: { episode in
         podcast.episodes.append(episode)
-        Library.global.save(podcast: podcast)
+        Library.global.update(podcast: podcast)
       })
     }
 
