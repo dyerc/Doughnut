@@ -343,7 +343,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       viewController.libraryUpdatedPodcast(podcast: podcast)
 
       // Commit changes to library
-      Library.global.save(podcast: podcast)
+      Library.global.update(podcast: podcast)
     }
   }
 
@@ -359,7 +359,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       viewController.libraryUpdatedPodcast(podcast: podcast)
 
       // Commit changes to library
-      Library.global.save(podcast: podcast)
+      Library.global.update(podcast: podcast)
     }
   }
 

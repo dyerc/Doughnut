@@ -194,9 +194,11 @@ class ShowPodcastViewController: NSViewController {
       commitChanges(podcast)
 
       if Self.validate(forPodcast: podcast) {
-        Library.global.save(podcast: podcast)
-        NSApp.stopModal(withCode: .OK)
-        view.window?.close()
+        Library.global.update(podcast: podcast) { [weak self] _ in
+          // TODO: prompt for error on failure
+          NSApp.stopModal(withCode: .OK)
+          self?.view.window?.close()
+        }
       }
     } else {
       // Create new podcast

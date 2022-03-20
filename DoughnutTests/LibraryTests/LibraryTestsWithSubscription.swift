@@ -169,7 +169,7 @@ class LibraryTestsWithSubscription: LibraryTestCase {
     spy.updatedPodcastExpectation = self.expectation(description: "Library updated podcast")
 
     podcast.title = "This is the new title"
-    Library.global.save(podcast: podcast)
+    Library.global.update(podcast: podcast)
 
     self.waitForExpectations(timeout: 10) { _ in
       XCTAssertEqual(Library.global.podcasts.first?.title, "This is the new title")
