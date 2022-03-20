@@ -50,6 +50,9 @@ class Preference {
     static let skipForwardDuration = Key("skipForwardDuration")
     static let skipBackDuration = Key("skipBackDuration")
     static let replayAfterPause = Key("replayAfterPause")
+
+    // Debuging
+    static let debugMenuEnabled = Key("debugMenuEnabled")
   }
 
   enum AppIconStyle: Int {
@@ -170,6 +173,7 @@ class Preference {
   static func libraryPath() -> URL {
     if testEnv() {
       let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
+      try? FileManager.default.removeItem(at: url)
       createLibraryIfNotExists(url)
       return url
     } else {

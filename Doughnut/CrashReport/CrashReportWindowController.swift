@@ -18,20 +18,22 @@
 
 import AppKit
 
-extension NSView {
+final class CrashReportWindowController: NSWindowController, NSWindowDelegate {
 
-  var compatibleSafeAreaLayoutGuide: Any {
-    if #available(macOS 11.0, *) {
-      return safeAreaLayoutGuide
-    }
-    return self
+  private var crashReportViewController: CrashReportViewController {
+    return contentViewController as! CrashReportViewController
   }
 
-  func popUpContextualMenu(_ menu: NSMenu) {
-    guard let event = NSApp.currentEvent else {
-      return
-    }
-    NSMenu.popUpContextMenu(menu, with: event, for: self)
+  static func instantiateFromMainStoryboard() -> Self? {
+    return NSStoryboard(name: "CrashReport", bundle: nil).instantiateInitialController() as? Self
+  }
+
+  func setCrashContent(_ content: String) {
+    crashReportViewController.setCrashContent(content)
+  }
+
+  func windowWillClose(_ notification: Notification) {
+    NSApp.stopModal(withCode: .OK)
   }
 
 }

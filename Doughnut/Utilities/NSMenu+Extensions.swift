@@ -64,10 +64,14 @@ extension NSMenuItem {
   }
 
   func configureWithDefaultFont() {
+    configureWithSystemFont(ofSize: NSFont.systemFontSize)
+  }
+
+  func configureWithSystemFont(ofSize size: CGFloat) {
     attributedTitle = NSAttributedString(
       string: title,
       attributes: [
-        .font: NSFont.controlContentFont(ofSize: NSFont.systemFontSize),
+        .font: NSFont.controlContentFont(ofSize: size),
       ]
     )
   }

@@ -18,20 +18,26 @@
 
 import AppKit
 
-extension NSView {
+final class ModalSheetStoryboardSegue: NSStoryboardSegue {
 
-  var compatibleSafeAreaLayoutGuide: Any {
-    if #available(macOS 11.0, *) {
-      return safeAreaLayoutGuide
+  override func perform() {
+    let resolveViewController: (Any) -> NSViewController? = { controller in
+      if let controller = controller as? NSViewController {
+        return controller
+      } else if let controller = controller as? NSWindowController {
+        return controller.contentViewController
+      }
+      return nil
     }
-    return self
-  }
 
-  func popUpContextualMenu(_ menu: NSMenu) {
-    guard let event = NSApp.currentEvent else {
+    guard
+      let sourceViewController = resolveViewController(sourceController),
+      let destinationViewController = resolveViewController(destinationController)
+    else {
+      assert(false, "ModalSheetStoryboardSegue: failed to resolve viewControllers in \(#function)")
       return
     }
-    NSMenu.popUpContextMenu(menu, with: event, for: self)
+    sourceViewController.presentAsSheet(destinationViewController)
   }
 
 }

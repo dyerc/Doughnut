@@ -23,9 +23,9 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
   enum SortParameter: String {
     case title = "Title"
     case episodes = "Episodes"
-    case unplayed = "Unplayed"
-    case favourites = "Favourited"
-    case recentEpisodes = "Recent Episode"
+    case unplayed = "Unplayed Episodes"
+    case favourites = "Favourites"
+    case recentEpisodes = "Recently Updated"
   }
 
   struct Filter: Equatable {
@@ -49,6 +49,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
   @IBOutlet var sortView: NSView!
   @IBOutlet var moreButton: NSButton!
   @IBOutlet var searchField: PodcastSearchField!
+  @IBOutlet var filterBarSeperator: NSBox!
 
   private var sortingMenuProvider: SortingMenuProvider {
     return SortingMenuProvider.Shared.podcasts
@@ -127,10 +128,30 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       bottom: sortView.bounds.height,
       right: 0
     )
+
+    tableView.sizeLastColumnToFit()
+    updateFilterBarSeperatorVisibility()
+  }
+
+  override func viewDidLayout() {
+    super.viewDidLayout()
+    updateFilterBarSeperatorVisibility()
   }
 
   func reloadPodcasts() {
-    let previousSelectedPodcastIds = tableView.selectedRowIndexes.compactMap {
+    reload(forChangedPodcasts: nil)
+    tableView.scrollRowToVisible(tableView.selectedRow)
+  }
+
+  func reload(forPodcast podcast: Podcast) {
+    reload(forChangedPodcasts: [podcast])
+  }
+
+  private func reload(forChangedPodcasts changedPodcasts: [Podcast]?) {
+    let availableRowIndicesRange = tableView.availableRowIndicesRange
+
+    let podcastIdsBeforeReload = podcasts.map { $0.id }
+    let selectedPodcastIdsBeforeReload = tableView.selectedRowIndexes.compactMap {
       return podcasts[$0].id
     }
 
@@ -176,30 +197,59 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       podcasts.reverse()
     }
 
-    tableView.reloadData()
+    let podcastIdsAfterReload = podcasts.map { $0.id }
 
     let podcastIdToIndexMap = podcasts.enumerated().reduce(into: [Int64: Int]()) { dict, pair in
-      let (index, podcast) = pair
-      if let id = podcast.id {
+      let (index, item) = pair
+      if let id = item.id {
         dict[id] = index
       }
     }
 
+    if podcastIdsBeforeReload.count != podcastIdsAfterReload.count {
+      // if item count being changed, a full reload is needed, which triggers `numberOfRowsInTableView:` call
+      tableView.reloadData()
+    } else {
+      // take the short path to only reload at most items in availableRowIndicesRange
+      if let changedPodcasts = changedPodcasts {
+        let changedIds = changedPodcasts.map { $0.id }
+        let changedIndices = podcastIdToIndexMap.compactMap { pair -> Int? in
+          return changedIds.contains(pair.key) ? pair.value : nil
+        }
+        let indicesToReload = availableRowIndicesRange.filter { index in
+          if changedIndices.contains(index) {
+            return true
+          } else {
+            guard index < podcastIdsBeforeReload.count, index < podcastIdsAfterReload.count else {
+              return false
+            }
+            return podcastIdsBeforeReload[index] != podcastIdsAfterReload[index]
+          }
+        }
+        tableView.reloadData(forRowIndexes: IndexSet(indicesToReload))
+      } else {
+        // otherwise, reload the entire availableRowIndicesRange
+        tableView.reloadData(forRowIndexes: IndexSet(availableRowIndicesRange))
+      }
+    }
+
     let selectionIndices = podcastIdToIndexMap.compactMap { pair -> Int? in
-      return previousSelectedPodcastIds.contains(pair.key) ? pair.value : nil
+      return selectedPodcastIdsBeforeReload.contains(pair.key) ? pair.value : nil
     }
 
     tableView.selectRowIndexes(IndexSet(selectionIndices), byExtendingSelection: false)
+
+    // explicitly deselect since `tableViewSelectionDidChange:` won't call after `selectRowIndexes:byExtendingSelection:`
     if selectionIndices.isEmpty {
       viewController.selectPodcast(podcast: nil)
     }
-    tableView.scrollRowToVisible(tableView.selectedRow)
+
+    updateFilterBarSeperatorVisibility()
   }
 
-  func reload(forPodcast podcast: Podcast) {
-    if let index = podcasts.firstIndex(where: { $0.id == podcast.id }) {
-      tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
-    }
+  private func updateFilterBarSeperatorVisibility() {
+    let hidesSeperator = tableView.frame.height <= tableScrollView.contentView.frame.height
+    filterBarSeperator.isHidden = hidesSeperator
   }
 
   func numberOfRows(in tableView: NSTableView) -> Int {
@@ -294,7 +344,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       viewController.libraryUpdatedPodcast(podcast: podcast)
 
       // Commit changes to library
-      Library.global.save(podcast: podcast)
+      Library.global.update(podcast: podcast)
     }
   }
 
@@ -310,7 +360,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       viewController.libraryUpdatedPodcast(podcast: podcast)
 
       // Commit changes to library
-      Library.global.save(podcast: podcast)
+      Library.global.update(podcast: podcast)
     }
   }
 
@@ -382,6 +432,19 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     }
   }
 
+  @IBAction func actionMenuClicked(_ sender: Any) {
+    let menu = NSMenu()
+
+    menu.addItem(withTitle: "Sort Podcasts", action: nil, keyEquivalent: "")
+
+    for item in sortingMenuProvider.build(forStyle: .actionMenu).items {
+      item.indentationLevel = 1
+      menu.addItem(item)
+    }
+
+    (sender as? NSView)?.popUpContextualMenu(menu)
+  }
+
 }
 
 extension PodcastViewController: PodcastSearchFieldDelegate {
@@ -394,15 +457,6 @@ extension PodcastViewController: PodcastSearchFieldDelegate {
 
 extension PodcastViewController: NSMenuDelegate {
 
-  func menuNeedsUpdate(_ menu: NSMenu) {
-    for menuItem in menu.items {
-      switch menuItem.identifier?.rawValue {
-      case "podcastViewSortBy":
-        menuItem.submenu = sortingMenuProvider.buildMenu()
-      default:
-        break
-      }
-    }
-  }
+  func menuNeedsUpdate(_ menu: NSMenu) { }
 
 }

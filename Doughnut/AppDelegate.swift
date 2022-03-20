@@ -22,6 +22,8 @@ import MASPreferences
 
 private extension NSUserInterfaceItemIdentifier {
 
+  static let doughnutMainMenuDebug = Self("NSDoughnutMainMenuDebug")
+
   static let doughnutViewMenuSortPodcasts = Self("NSDoughnutViewMenuSortPodcastsItem")
   static let doughnutViewMenuSortEpisodes = Self("NSDoughnutViewMenuSortEpisodesItem")
   static let doughnutControlMenu = Self("NSDoughnutControlMenuItem")
@@ -41,14 +43,23 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
       ], title: nil)
   }()
 
+  private lazy var crashReportWindowController: CrashReportWindowController? = {
+    return CrashReportWindowController.instantiateFromMainStoryboard()
+  }()
+
   override init() {
     NSWindow.allowsAutomaticWindowTabbing = false
   }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     // Register NSMenuDelegate for all main menu items
-    NSApp.mainMenu?.items.forEach {
-      $0.submenu?.delegate = self
+    NSApp.mainMenu?.items.forEach { item in
+      if item.identifier == .doughnutMainMenuDebug {
+#if !DEBUG
+        item.isHidden = !Preference.bool(for: .debugMenuEnabled)
+#endif
+      }
+      item.submenu?.delegate = self
     }
 
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
@@ -60,6 +71,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     } catch {}*/
 
     createAndShowMainWindow()
+
+    showCrashReportWindowIfNeeded()
 
     let connected = Library.global.connect()
 
@@ -123,23 +136,37 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     preferencesWindowController.showWindow(self)
   }
 
-  @IBAction func popUpContextualMenu(_ sender: Any) {
-    guard
-      let senderView = sender as? NSView,
-      let menu = senderView.menu,
-      let event = NSApp.currentEvent
-    else {
-      return
-    }
-    NSMenu.popUpContextMenu(menu, with: event, for: senderView)
-  }
-
   @IBAction func rename(_ sender: AnyObject) {
     assert(false, "This menu item is to be implmented: \(#function)")
   }
 
   @IBAction func deleteAllPlayed(_ sender: AnyObject) {
     assert(false, "This menu item is to be implemented: \(#function)")
+  }
+
+  @IBAction func forceCrash(_ sender: AnyObject) {
+    CrashReporter.shared.forceCrash()
+  }
+
+}
+
+extension AppDelegate {
+
+  @discardableResult
+  private func showCrashReportWindowIfNeeded() -> Bool {
+    guard
+      let crashContent = CrashReporter.shared.getPendingCrashReport(),
+      let crashReportWindowController = crashReportWindowController,
+      let crashReportWindow = crashReportWindowController.window
+    else {
+      return false
+    }
+
+    crashReportWindowController.setCrashContent(crashContent)
+
+    NSApp.runModal(for: crashReportWindow)
+
+    return true
   }
 
 }
@@ -173,9 +200,9 @@ extension AppDelegate: NSMenuDelegate {
       if let itemIdentifier = menuItem.identifier {
         switch itemIdentifier {
         case .doughnutViewMenuSortPodcasts:
-          menuItem.submenu = SortingMenuProvider.Shared.podcasts.buildMenu()
+          menuItem.submenu = SortingMenuProvider.Shared.podcasts.build(forStyle: .mainMenu)
         case .doughnutViewMenuSortEpisodes:
-          menuItem.submenu = SortingMenuProvider.Shared.episodes.buildMenu()
+          menuItem.submenu = SortingMenuProvider.Shared.episodes.build(forStyle: .mainMenu)
         default:
           break
         }

@@ -88,7 +88,7 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
       item: headerView!,
       attribute: .top,
       relatedBy: .equal,
-      toItem: view.comptableSafeAreaLayoutGuide,
+      toItem: view.compatibleSafeAreaLayoutGuide,
       attribute: .top,
       multiplier: 1,
       constant: 16
@@ -103,13 +103,15 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
     showBlank()
 
     webView.navigationDelegate = self
-    webView.loadHTMLString(MarkupGenerator.blankMarkup(), baseURL: nil)
   }
 
   func showBlank() {
     detailTitle.stringValue = ""
     secondaryTitle.stringValue = ""
     miniTitle.stringValue = ""
+    coverImage.image = nil
+
+    webView.loadHTMLString(MarkupGenerator.blankMarkup(), baseURL: nil)
   }
 
   func showPodcast() {

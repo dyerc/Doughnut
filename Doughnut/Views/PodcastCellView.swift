@@ -109,11 +109,20 @@ class PodcastUnplayedCountView: NSView {
 }
 
 class PodcastCellView: NSTableCellView {
+
   @IBOutlet weak var artwork: NSImageView!
   @IBOutlet weak var title: NSTextField!
   @IBOutlet weak var author: NSTextField!
   @IBOutlet weak var episodeCount: NSTextField!
   @IBOutlet weak var podcastUnplayedCount: PodcastUnplayedCountView!
+  @IBOutlet weak var podcastUnplayedCountTrailingConstraint: NSLayoutConstraint!
+
+  override func viewWillMove(toWindow newWindow: NSWindow?) {
+    super.viewWillMove(toWindow: newWindow)
+    if #available(macOS 11.0, *) { } else {
+      podcastUnplayedCountTrailingConstraint.constant = 8
+    }
+  }
 
   var loading: Bool = false {
     didSet {
@@ -137,4 +146,5 @@ class PodcastCellView: NSTableCellView {
       }
     }
   }
+
 }

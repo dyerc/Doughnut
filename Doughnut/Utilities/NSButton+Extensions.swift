@@ -18,20 +18,16 @@
 
 import AppKit
 
-extension NSView {
+extension NSButton {
 
-  var compatibleSafeAreaLayoutGuide: Any {
-    if #available(macOS 11.0, *) {
-      return safeAreaLayoutGuide
-    }
-    return self
-  }
-
-  func popUpContextualMenu(_ menu: NSMenu) {
-    guard let event = NSApp.currentEvent else {
-      return
-    }
-    NSMenu.popUpContextMenu(menu, with: event, for: self)
+  func setTitleColor(_ color: NSColor) {
+    let coloredTitle = NSMutableAttributedString(
+      string: title,
+      attributes: [
+        .foregroundColor: color,
+      ]
+    )
+    attributedTitle = coloredTitle
   }
 
 }

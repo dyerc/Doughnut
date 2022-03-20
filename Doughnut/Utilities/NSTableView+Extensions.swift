@@ -27,4 +27,24 @@ extension NSTableView {
     return selectedRowIndexes
   }
 
+  var availableRowIndices: IndexSet {
+    var avaliableIndices = IndexSet()
+    enumerateAvailableRowViews { _, index in
+      avaliableIndices.insert(index)
+    }
+    return avaliableIndices
+  }
+
+  var availableRowIndicesRange: Range<Int> {
+    let availableRowIndices = availableRowIndices
+    if !availableRowIndices.isEmpty {
+      return Range((availableRowIndices.min()!)...(availableRowIndices.max()!))
+    }
+    return 0..<0
+  }
+
+  func reloadData(forRowIndexes rowIndexes: IndexSet) {
+    reloadData(forRowIndexes: rowIndexes, columnIndexes: IndexSet(0..<numberOfColumns))
+  }
+
 }

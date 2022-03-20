@@ -324,10 +324,10 @@ CA
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="BQe-Pd-Fvh">
                                     <items>
-                                        <menuItem title="Sort Podcasts By" identifier="NSDoughnutViewMenuSortPodcastsItem" id="eqT-nn-3Om">
+                                        <menuItem title="Sort Podcasts by" identifier="NSDoughnutViewMenuSortPodcastsItem" id="eqT-nn-3Om">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="Sort Episodes By" identifier="NSDoughnutViewMenuSortEpisodesItem" id="a1c-Gw-3kB">
+                                        <menuItem title="Sort Episodes by" identifier="NSDoughnutViewMenuSortEpisodesItem" id="a1c-Gw-3kB">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="c1f-lQ-xA4"/>
@@ -437,6 +437,19 @@ CA
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="arrangeInFront:" target="Ady-hI-5gd" id="DRN-fu-gQh"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Debug" id="Hwi-3h-UUh">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Debug" identifier="NSDoughnutMainMenuDebug" id="G8T-am-4h4">
+                                    <items>
+                                        <menuItem title="Force Crash" id="3HW-XB-yuZ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="forceCrash:" target="Voe-Tx-rLC" id="Rdo-Iq-6uW"/>
                                             </connections>
                                         </menuItem>
                                     </items>

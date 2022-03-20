@@ -36,6 +36,11 @@ protocol LibraryDelegate {
   func libraryReloaded()
 }
 
+enum LibraryError: Error {
+  case databaseError(_: DatabaseError)
+  case unknown(_: Error)
+}
+
 class Library: NSObject {
   static var global = Library()
   static let databaseFilename = "Doughnut Library.dnl"
@@ -178,9 +183,7 @@ class Library: NSObject {
   }
 
   static func handleDatabaseError(_ error: Error) {
-    print("Library error \(error)")
-    // let alert = NSAlert()
-
+    print("Library: error \(error), stack trace: \(Thread.callStackSymbols)")
   }
 
   static func sanitizePath(_ path: String) -> String {
@@ -218,6 +221,8 @@ class Library: NSObject {
     NSUserNotificationCenter.default.deliver(notification)
   }
 
+  // MARK: - Database Operations
+
   func subscribe(url: String) {
     guard let dbQueue = self.dbQueue else { return }
     guard let feedUrl = URL(string: url) else { return }
@@ -238,8 +243,8 @@ class Library: NSObject {
       }
 
       if let podcast = Podcast.subscribe(feedUrl: feedUrl) {
-        self.save(podcast: podcast, completion: { (podcast, error) in
-          guard error == nil else { return }
+        self.insert(podcast: podcast) { result in
+          guard case .success = result else { return }
 
           // Don't notify newly detected episodes for a new subscription, maybe change in future?
           // self.detectedNewEpisodes(podcast: podcast, episodes: podcast.episodes)
@@ -248,7 +253,7 @@ class Library: NSObject {
             self.podcasts.append(podcast)
             self.delegate?.librarySubscribedToPodcast(subscribed: podcast)
           }
-        })
+        }
       }
     }
   }
@@ -271,8 +276,8 @@ class Library: NSObject {
         return
       }
 
-      self.save(podcast: podcast, completion: { (podcast, error) in
-        guard error == nil else { return }
+      self.insert(podcast: podcast, completion: { result in
+        guard case .success = result else { return }
 
         DispatchQueue.main.async {
           self.podcasts.append(podcast)
@@ -380,11 +385,12 @@ class Library: NSObject {
       let newEpisodes = podcast.fetch()
       podcast.loading = false
 
-      self.save(podcast: podcast)
-
-      DispatchQueue.main.async {
-        if newEpisodes.count > 0 {
-          self.detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
+      self.update(podcast: podcast) { [weak self] result in
+        // TODO: error handling
+        if case .success = result, newEpisodes.count > 0{
+          DispatchQueue.main.async {
+            self?.detectedNewEpisodes(podcast: podcast, episodes: newEpisodes)
+          }
         }
       }
     }
@@ -441,42 +447,60 @@ class Library: NSObject {
     }
   }
 
-  // Synchronous podcast save
-  func save(podcast: Podcast, completion: (_ result: Podcast, _ error: Error?) -> Void) {
-    do {
-      try self.dbQueue?.inDatabase { db in
-        try podcast.save(db)
+  // Async podcast insert
+  func insert(podcast: Podcast, completion: ((Result<Podcast, LibraryError>) -> Void)? = nil) {
+    dbQueue?.asyncWrite({ db in
+      try podcast.insert(db)
 
-        for episode in podcast.episodes {
-          if episode.id != nil {
-            try episode.updateChanges(db)
-          } else {
-            try episode.save(db)
-          }
+      for episode in podcast.episodes {
+        if episode.id != nil {
+          try episode.updateChanges(db)
+        } else {
+          try episode.save(db)
         }
       }
-
-      completion(podcast, nil)
-    } catch let error as DatabaseError {
-      Library.handleDatabaseError(error)
-      completion(podcast, nil)
-    } catch {
-      completion(podcast, nil)
-    }
+    }, completion: { _, result in
+      switch result {
+      case .success:
+        completion?(.success(podcast))
+      case let .failure(error):
+        if let error = error as? DatabaseError {
+          Library.handleDatabaseError(error)
+          completion?(.failure(.databaseError(error)))
+        } else {
+          completion?(.failure(.unknown(error)))
+        }
+      }
+    })
   }
 
-  // Async podcast save and event emission
-  func save(podcast: Podcast) {
-    taskQueue.async {
-      self.save(podcast: podcast, completion: { (podcast, error) in
-        guard error == nil else { return }
+  // Async podcast update and event emission
+  func update(podcast: Podcast, completion: ((Result<Podcast, LibraryError>) -> Void)? = nil) {
+    dbQueue?.asyncWrite({ db in
+      try podcast.updateChanges(db)
 
-        podcast.loading = false
-
+      for episode in podcast.episodes {
+        if episode.id != nil {
+          try episode.updateChanges(db)
+        } else {
+          try episode.save(db)
+        }
+      }
+    }, completion: { _, result in
+      switch result {
+      case .success:
+        completion?(.success(podcast))
         DispatchQueue.main.async {
           self.delegate?.libraryUpdatedPodcast(podcast: podcast)
         }
-      })
-    }
+      case let .failure(error):
+        if let error = error as? DatabaseError {
+          Library.handleDatabaseError(error)
+          completion?(.failure(.databaseError(error)))
+        } else {
+          completion?(.failure(.unknown(error)))
+        }
+      }
+    })
   }
 }
