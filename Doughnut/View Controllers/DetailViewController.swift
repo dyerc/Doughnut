@@ -103,13 +103,15 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
     showBlank()
 
     webView.navigationDelegate = self
-    webView.loadHTMLString(MarkupGenerator.blankMarkup(), baseURL: nil)
   }
 
   func showBlank() {
     detailTitle.stringValue = ""
     secondaryTitle.stringValue = ""
     miniTitle.stringValue = ""
+    coverImage.image = nil
+
+    webView.loadHTMLString(MarkupGenerator.blankMarkup(), baseURL: nil)
   }
 
   func showPodcast() {
