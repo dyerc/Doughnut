@@ -156,7 +156,19 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
   }
 
   func reloadEpisodes() {
-    let previousSelectedEpisodeIds = tableView.selectedRowIndexes.compactMap {
+    reload(forChangedEpisodes: nil)
+    tableView.scrollRowToVisible(tableView.selectedRow)
+  }
+
+  func reload(forEpisode episode: Episode) {
+    reload(forChangedEpisodes: [episode])
+  }
+
+  func reload(forChangedEpisodes changedEpisodes: [Episode]?) {
+    let availableRowIndicesRange = tableView.availableRowIndicesRange
+
+    let episodeIdsBeforeReload = episodes.map { $0.id }
+    let selectedEpisodeIdsBeforeReload = tableView.selectedRowIndexes.compactMap {
       return episodes[$0].id
     }
 
@@ -195,35 +207,59 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
       if sortDirection == .desc {
         episodes.reverse()
       }
+    } else {
+      episodes = []
     }
 
     // Handle an empty table
     if episodes.isEmpty {
     }
 
-    tableView.reloadData()
+    let episodeIdsAfterReload = episodes.map { $0.id }
 
     let episodeIdToIndexMap = episodes.enumerated().reduce(into: [Int64: Int]()) { dict, pair in
-      let (index, podcast) = pair
-      if let id = podcast.id {
+      let (index, item) = pair
+      if let id = item.id {
         dict[id] = index
       }
     }
 
+    if episodeIdsBeforeReload.count != episodeIdsAfterReload.count {
+      // if item count being changed, a full reload is needed, which triggers `numberOfRowsInTableView:` call
+      tableView.reloadData()
+    } else {
+      // take the short path to only reload at most items in availableRowIndicesRange
+      if let changedEpisodes = changedEpisodes {
+        let changedIds = changedEpisodes.map { $0.id }
+        let changedIndices = episodeIdToIndexMap.compactMap { pair -> Int? in
+          return changedIds.contains(pair.key) ? pair.value : nil
+        }
+        let indicesToReload = availableRowIndicesRange.filter { index in
+          if changedIndices.contains(index) {
+            return true
+          } else {
+            guard index < episodeIdsBeforeReload.count, index < episodeIdsAfterReload.count else {
+              return false
+            }
+            return episodeIdsBeforeReload[index] != episodeIdsAfterReload[index]
+          }
+        }
+        tableView.reloadData(forRowIndexes: IndexSet(indicesToReload))
+      } else {
+        // otherwise, reload the entire availableRowIndicesRange
+        tableView.reloadData(forRowIndexes: IndexSet(availableRowIndicesRange))
+      }
+    }
+
     let selectionIndices = episodeIdToIndexMap.compactMap { pair -> Int? in
-      return previousSelectedEpisodeIds.contains(pair.key) ? pair.value : nil
+      return selectedEpisodeIdsBeforeReload.contains(pair.key) ? pair.value : nil
     }
 
     tableView.selectRowIndexes(IndexSet(selectionIndices), byExtendingSelection: false)
+
+    // explicitly deselect since `tableViewSelectionDidChange:` won't call after `selectRowIndexes:byExtendingSelection:`
     if selectionIndices.isEmpty {
       viewController.selectEpisode(episode: nil)
-    }
-    tableView.scrollRowToVisible(tableView.selectedRow)
-  }
-
-  func reload(forEpisode episode: Episode) {
-    if let index = episodes.firstIndex(where: { $0.id == episode.id }) {
-      tableView.reloadData(forRowIndexes: IndexSet.init(integer: index), columnIndexes: IndexSet.init(integer: 0))
     }
   }
 
@@ -296,7 +332,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
 
       Episode.fromFile(podcast: podcast, url: sourceURL, copyToLibrary: moveToLibrary, completion: { episode in
         podcast.episodes.append(episode)
-        Library.global.save(podcast: podcast)
+        Library.global.update(podcast: podcast)
       })
     }
 

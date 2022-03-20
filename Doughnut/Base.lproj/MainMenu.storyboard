@@ -442,6 +442,19 @@ CA
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Debug" id="Hwi-3h-UUh">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Debug" identifier="NSDoughnutMainMenuDebug" id="G8T-am-4h4">
+                                    <items>
+                                        <menuItem title="Force Crash" id="3HW-XB-yuZ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="forceCrash:" target="Voe-Tx-rLC" id="Rdo-Iq-6uW"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Help" id="wpr-3q-Mcd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
