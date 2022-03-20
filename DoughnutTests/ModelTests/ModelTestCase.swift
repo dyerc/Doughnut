@@ -20,18 +20,31 @@ import XCTest
 
 @testable import Doughnut
 
-class DoughnutTests: XCTestCase {
+import GRDB
 
-    override func setUp() {
-      super.setUp()
+class ModelTestCase: DoughnutTestCase {
 
-      LibraryTestCase.tearDown()
-      // Put setup code here. This method is called before the invocation of each test method in the class.
+  var dbQueue: DatabaseQueue!
+
+  override func setUp() {
+    super.setUp()
+
+    do {
+      let libraryPath = Preference.libraryPath()
+      let modelTestsFilePath = libraryPath.appendingPathComponent("ModelTests.dnl").path
+      if FileManager.default.fileExists(atPath: modelTestsFilePath) {
+        try FileManager.default.removeItem(atPath: modelTestsFilePath)
+      }
+      try FileManager.default.copyItem(atPath: fixtureURL("ModelTests", type: "dnl").path, toPath: modelTestsFilePath)
+
+      dbQueue = try DatabaseQueue(path: modelTestsFilePath)
+    } catch {
+      fatalError("ModelTestCase: failed to setup with error: \(error)")
     }
+  }
 
-    override func tearDown() {
-      // Put teardown code here. This method is called after the invocation of each test method in the class.
-      super.tearDown()
-    }
+  override func tearDown() {
+    super.tearDown()
+  }
 
 }
