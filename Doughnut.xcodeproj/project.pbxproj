@@ -285,6 +285,8 @@
 				6B571B4627E74C31008E1534 /* Fixtures */,
 			);
 			path = ModelTests;
+			sourceTree = "<group>";
+		};
 		6BB11F9A27A292A3009CBAF8 /* CrashReport */ = {
 			isa = PBXGroup;
 			children = (
