@@ -88,7 +88,7 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
       item: headerView!,
       attribute: .top,
       relatedBy: .equal,
-      toItem: view.comptableSafeAreaLayoutGuide,
+      toItem: view.compatibleSafeAreaLayoutGuide,
       attribute: .top,
       multiplier: 1,
       constant: 16

@@ -84,6 +84,7 @@ class PlayerView: NSView, PlayerDelegate {
     reverseBtn.stringValue = ""
     reverseBtn.bezelStyle = .texturedRounded
     reverseBtn.image = NSImage(imageLiteralResourceName: "ReverseIcon")
+    reverseBtn.contentTintColor = .controlTextColor
     reverseBtn.action = #selector(skipBack)
     reverseBtn.target = self
     addSubview(reverseBtn)
@@ -92,6 +93,7 @@ class PlayerView: NSView, PlayerDelegate {
     playBtn.bezelStyle = .texturedRounded
     playBtn.setButtonType(.toggle)
     playBtn.image = playIcon
+    playBtn.contentTintColor = .controlTextColor
     playBtn.alternateImage = pauseIcon
     playBtn.action = #selector(playPause)
     playBtn.target = self
@@ -101,6 +103,7 @@ class PlayerView: NSView, PlayerDelegate {
     forwardBtn.stringValue = ""
     forwardBtn.bezelStyle = .texturedRounded
     forwardBtn.image = NSImage(imageLiteralResourceName: "ForwardIcon")
+    forwardBtn.contentTintColor = .controlTextColor
     forwardBtn.action = #selector(skipAhead)
     forwardBtn.target = self
     addSubview(forwardBtn)
@@ -150,7 +153,7 @@ class PlayerView: NSView, PlayerDelegate {
     loadingIdc.frame = NSRect(x: 25, y: baseline + 5, width: 16, height: 16)
     artworkImg.frame = NSRect(x: 25, y: baseline + 3, width: 20, height: 20)
 
-    reverseBtn.frame = NSRect(x: PlayerView.controlX(artworkImg) + 6, y: baseline, width: 26, height: 25)
+    reverseBtn.frame = NSRect(x: PlayerView.controlX(artworkImg) + 6, y: baseline, width: 28, height: 26)
     playBtn.frame = NSRect(x: PlayerView.controlX(reverseBtn) + 1, y: baseline, width: 28, height: 26)
     forwardBtn.frame = NSRect(x: PlayerView.controlX(playBtn) + 1, y: baseline, width: 28, height: 26)
 

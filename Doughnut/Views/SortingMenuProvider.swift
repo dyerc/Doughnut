@@ -23,6 +23,12 @@ enum SortDirection: String, CaseIterable {
   case desc = "Descending"
 }
 
+enum SortingMenuStyle {
+  case mainMenu
+  case pullDownMenu
+  case actionMenu
+}
+
 protocol SortingMenuProviderDelegate {
 
   func sorted(by: String?, direction: SortDirection)
@@ -57,15 +63,7 @@ final class SortingMenuProvider {
     self.menuItemTitles = menuItemTitles
   }
 
-  func buildMenu() -> NSMenu {
-    return internalBuildMenu(isPullDownMenu: false)
-  }
-
-  func buildPullDownMenu() -> NSMenu {
-    return internalBuildMenu(isPullDownMenu: true)
-  }
-
-  private func internalBuildMenu(isPullDownMenu: Bool) -> NSMenu {
+  func build(forStyle style: SortingMenuStyle) -> NSMenu {
     let sortMenu = NSMenu()
 
     let titleItems: [NSMenuItem] = menuItemTitles.map { title in
@@ -88,13 +86,26 @@ final class SortingMenuProvider {
       return item
     }
 
-    if isPullDownMenu {
-      // Title item for pull-down button
-      sortMenu.addItem(NSMenuItem(title: "Sort by \(sortParam ?? "Unknown")", action: nil, keyEquivalent: ""))
-    }
+    if style == .actionMenu {
+      // Entry item for action button menu
+      let entryItem = NSMenuItem(title: "by \(sortParam ?? "Unknown")", action: nil, keyEquivalent: "")
 
-    for item in titleItems {
-      sortMenu.addItem(item)
+      let entryMenu = NSMenu()
+      for item in titleItems {
+        entryMenu.addItem(item)
+      }
+      entryItem.submenu = entryMenu
+
+      sortMenu.addItem(entryItem)
+    } else {
+      if style == .pullDownMenu {
+        // Title item for pull-down button
+        sortMenu.addItem(NSMenuItem(title: "Sort by \(sortParam ?? "Unknown")", action: nil, keyEquivalent: ""))
+      }
+
+      for item in titleItems {
+        sortMenu.addItem(item)
+      }
     }
 
     sortMenu.addItem(NSMenuItem.separator())
@@ -103,7 +114,7 @@ final class SortingMenuProvider {
       sortMenu.addItem(item)
     }
 
-    if isPullDownMenu {
+    if style == .pullDownMenu {
       // Ensure menuItems' title font is consistent with normal menus for
       // recessed pull-down button.
       for item in sortMenu.items[1...] {

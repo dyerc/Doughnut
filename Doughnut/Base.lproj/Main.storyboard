@@ -28,7 +28,7 @@
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11m-DT-422">
                                 <rect key="frame" x="20" y="136" width="462" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="http://" drawsBackground="YES" id="VTE-Nn-zhC">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="https://" drawsBackground="YES" id="VTE-Nn-zhC">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -114,14 +114,6 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tik-o9-CbK">
-                                <rect key="frame" x="189" y="19" width="71" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="inline" title="  Sort by" bezelStyle="inline" imagePosition="right" alignment="left" state="on" borderStyle="border" inset="2" id="qt4-9K-H4I">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="systemMedium" size="10"/>
-                                </buttonCell>
-                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -346,7 +338,7 @@ Gw
                                     <rect key="frame" x="0.0" y="0.0" width="251" height="480"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowHeight="55" viewBased="YES" id="aVy-1A-ODd" customClass="BaseTableView" customModule="Doughnut" customModuleProvider="target">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowHeight="55" viewBased="YES" id="aVy-1A-ODd" customClass="BaseTableView" customModule="Doughnut" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="251" height="480"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="0.0" height="4"/>
@@ -363,7 +355,7 @@ Gw
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="Caz-b2-UzS" customClass="PodcastCellView" customModule="Doughnut" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="2" width="231" height="55"/>
@@ -431,6 +423,7 @@ Gw
                                                                 <outlet property="episodeCount" destination="Pkl-Lr-qxa" id="A5q-iE-0c5"/>
                                                                 <outlet property="imageView" destination="WuW-3B-toC" id="qce-6g-Mlb"/>
                                                                 <outlet property="podcastUnplayedCount" destination="qSa-lt-Xvr" id="eZs-zW-Ttc"/>
+                                                                <outlet property="podcastUnplayedCountTrailingConstraint" destination="1o0-ea-oPQ" id="sIJ-Rk-cs4"/>
                                                                 <outlet property="title" destination="yFZ-qJ-tU0" id="WAu-w6-NGc"/>
                                                             </connections>
                                                         </tableCellView>
@@ -473,8 +466,7 @@ Gw
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="popUpContextualMenu:" target="ioO-eb-ohg" id="8sS-My-9LM"/>
-                                            <outlet property="menu" destination="HHi-Kh-WaX" id="iW8-Dh-6TZ"/>
+                                            <action selector="actionMenuClicked:" target="hBf-lZ-L6q" id="36J-CH-2si"/>
                                         </connections>
                                     </button>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Q9V-7G-TPX">
@@ -485,7 +477,7 @@ Gw
                                     </box>
                                     <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-jJ-Pmb" customClass="PodcastSearchField" customModule="Doughnut" customModuleProvider="target">
                                         <rect key="frame" x="30" y="3" width="217" height="22"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" maximumRecents="0" id="kGs-iR-hTg">
+                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Filter Podcasts" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" maximumRecents="0" id="kGs-iR-hTg">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -579,16 +571,6 @@ Gw
                         <outlet property="delegate" destination="Pkz-GU-AL9" id="ZaK-a7-6Wq"/>
                     </connections>
                 </menu>
-                <menu id="HHi-Kh-WaX">
-                    <items>
-                        <menuItem title="Sort By" identifier="podcastViewSortBy" id="dyf-fU-Ugh">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                    </items>
-                    <connections>
-                        <outlet property="delegate" destination="hBf-lZ-L6q" id="xzQ-ok-WgY"/>
-                    </connections>
-                </menu>
             </objects>
             <point key="canvasLocation" x="753.5" y="403"/>
         </scene>
@@ -606,7 +588,7 @@ Gw
                                     <rect key="frame" x="0.0" y="0.0" width="351" height="480"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowHeight="76" viewBased="YES" id="Xrx-cp-IWJ" customClass="BaseTableView" customModule="Doughnut" customModuleProvider="target">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowHeight="76" viewBased="YES" id="Xrx-cp-IWJ" customClass="BaseTableView" customModule="Doughnut" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="351" height="480"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -622,7 +604,7 @@ Gw
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="duq-gB-b2g" customClass="EpisodeCellView" customModule="Doughnut" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="0.0" width="331" height="76"/>

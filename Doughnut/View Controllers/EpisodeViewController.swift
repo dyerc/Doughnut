@@ -93,7 +93,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
       item: sortView!,
       attribute: .top,
       relatedBy: .equal,
-      toItem: view.comptableSafeAreaLayoutGuide,
+      toItem: view.compatibleSafeAreaLayoutGuide,
       attribute: .top,
       multiplier: 1,
       constant: 0
@@ -113,7 +113,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     sortingMenuProvider.sortDirection = sortDirection
     sortingMenuProvider.delegate = self
 
-    sortingButton.menu = sortingMenuProvider.buildPullDownMenu()
+    sortingButton.menu = sortingMenuProvider.build(forStyle: .pullDownMenu)
 
     filteringButton.contentTintColor = .secondaryLabelColor
 
@@ -139,6 +139,8 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
       bottom: 0,
       right: 0
     )
+
+    tableView.sizeLastColumnToFit()
   }
 
   private func updateFilteringButtonState() {
@@ -360,9 +362,9 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
 
       return !episodes.isEmpty
     case #selector(toggleFavourite(_:)):
-      let markedAsFavouritecount = episodes.filter({ $0.favourite }).count
-      let allMarkedAsFavourite = markedAsFavouritecount == episodes.count
-      let allMarkedAsUnFavourite = markedAsFavouritecount == 0
+      let markedAsFavouriteCount = episodes.filter({ $0.favourite }).count
+      let allMarkedAsFavourite = markedAsFavouriteCount == episodes.count
+      let allMarkedAsUnFavourite = markedAsFavouriteCount == 0
 
       menuItem.title = (!allMarkedAsFavourite || episodes.isEmpty) ? "Mark as Favourite" : "Unmark Favourite"
       menuItem.state = (!allMarkedAsFavourite && !allMarkedAsUnFavourite) ? .mixed : .off
@@ -409,7 +411,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     // Rebuild the pulldown menu after sorting to ensure its title being updated
     // We should have an another mechanism to trigger menu updates. For now it's
     // fine to keep it simple.
-    sortingButton.menu = sortingMenuProvider.buildPullDownMenu()
+    sortingButton.menu = sortingMenuProvider.build(forStyle: .pullDownMenu)
 
     reloadEpisodes()
   }

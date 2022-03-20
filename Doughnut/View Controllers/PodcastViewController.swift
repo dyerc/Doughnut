@@ -23,9 +23,9 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
   enum SortParameter: String {
     case title = "Title"
     case episodes = "Episodes"
-    case unplayed = "Unplayed"
-    case favourites = "Favourited"
-    case recentEpisodes = "Recent Episode"
+    case unplayed = "Unplayed Episodes"
+    case favourites = "Favourites"
+    case recentEpisodes = "Recently Updated"
   }
 
   struct Filter: Equatable {
@@ -129,6 +129,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       right: 0
     )
 
+    tableView.sizeLastColumnToFit()
     updateFilterBarSeperatorVisibility()
   }
 
@@ -431,6 +432,19 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     }
   }
 
+  @IBAction func actionMenuClicked(_ sender: Any) {
+    let menu = NSMenu()
+
+    menu.addItem(withTitle: "Sort Podcasts", action: nil, keyEquivalent: "")
+
+    for item in sortingMenuProvider.build(forStyle: .actionMenu).items {
+      item.indentationLevel = 1
+      menu.addItem(item)
+    }
+
+    (sender as? NSView)?.popUpContextualMenu(menu)
+  }
+
 }
 
 extension PodcastViewController: PodcastSearchFieldDelegate {
@@ -443,15 +457,6 @@ extension PodcastViewController: PodcastSearchFieldDelegate {
 
 extension PodcastViewController: NSMenuDelegate {
 
-  func menuNeedsUpdate(_ menu: NSMenu) {
-    for menuItem in menu.items {
-      switch menuItem.identifier?.rawValue {
-      case "podcastViewSortBy":
-        menuItem.submenu = sortingMenuProvider.buildMenu()
-      default:
-        break
-      }
-    }
-  }
+  func menuNeedsUpdate(_ menu: NSMenu) { }
 
 }

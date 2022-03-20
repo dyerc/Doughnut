@@ -20,11 +20,18 @@ import AppKit
 
 extension NSView {
 
-  var comptableSafeAreaLayoutGuide: Any {
+  var compatibleSafeAreaLayoutGuide: Any {
     if #available(macOS 11.0, *) {
       return safeAreaLayoutGuide
     }
     return self
+  }
+
+  func popUpContextualMenu(_ menu: NSMenu) {
+    guard let event = NSApp.currentEvent else {
+      return
+    }
+    NSMenu.popUpContextMenu(menu, with: event, for: self)
   }
 
 }
