@@ -38,6 +38,7 @@ final class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldD
     super.windowDidLoad()
 
     window?.titleVisibility = .hidden
+    window?.center()
 
     if #available(macOS 11.0, *) {
       window?.toolbarStyle = .unified

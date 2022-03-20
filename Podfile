@@ -10,6 +10,7 @@ target 'Doughnut' do
   pod 'FeedKit', '9.1.2'
   pod 'MASPreferences', :git => 'https://github.com/shpakovski/MASPreferences.git', :commit => '135869c'
   pod 'Sparkle', '1.27.1'
+  pod 'PLCrashReporter', '1.10.1'
 end
 
 target 'DoughnutTests' do
