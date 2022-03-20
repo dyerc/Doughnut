@@ -20,7 +20,8 @@ import XCTest
 
 @testable import Doughnut
 
-class LibraryTestCase: XCTestCase {
+class DoughnutTestCase: XCTestCase {
+
   func fixtureURL(_ name: String, type: String) -> URL {
     let bundle = Bundle(for: Swift.type(of: self))
     let filePath = bundle.path(forResource: name, ofType: type)
@@ -33,21 +34,10 @@ class LibraryTestCase: XCTestCase {
     if !Preference.testEnv() {
       fatalError("Not running in test mode")
     }
-
-    XCTAssertEqual(Library.global.connect(), true)
-    // print("Using library at \(Library.global.path)")
   }
 
   override func tearDown() {
     super.tearDown()
-
-    do {
-      try Library.global.dbQueue?.inDatabase({ db in
-        try Podcast.deleteAll(db)
-        try Episode.deleteAll(db)
-      })
-    } catch let error as NSError {
-      fatalError("Failed to remove database \(error.debugDescription)")
-    }
   }
+
 }
