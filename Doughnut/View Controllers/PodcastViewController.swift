@@ -233,8 +233,12 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       }
     }
 
-    let selectionIndices = podcastIdToIndexMap.compactMap { pair -> Int? in
+    var selectionIndices = podcastIdToIndexMap.compactMap { pair -> Int? in
       return selectedPodcastIdsBeforeReload.contains(pair.key) ? pair.value : nil
+    }
+
+    if selectionIndices.isEmpty, !podcastIdsAfterReload.isEmpty {
+      selectionIndices = [0]
     }
 
     tableView.selectRowIndexes(IndexSet(selectionIndices), byExtendingSelection: false)
