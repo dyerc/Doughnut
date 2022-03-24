@@ -53,6 +53,8 @@ class Preference {
 
     // Debuging
     static let debugMenuEnabled = Key("debugMenuEnabled")
+    static let debugSQLTraceEnabled = Key("debugSQLTraceEnabled")
+    static let debugDeveloperExtrasEnabled = Key("debugDeveloperExtrasEnabled")
   }
 
   enum AppIconStyle: Int {

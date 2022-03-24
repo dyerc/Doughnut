@@ -102,6 +102,9 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
 
     showBlank()
 
+    if Preference.bool(for: Preference.Key.debugDeveloperExtrasEnabled) {
+      webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
+    }
     webView.navigationDelegate = self
   }
 
