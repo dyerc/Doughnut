@@ -550,7 +550,7 @@
 				5D28D79F73E4F029E1F5DBB6 /* [CP] Check Pods Manifest.lock */,
 				838257C61F759F6F00DB4FD1 /* Sources */,
 				838257C71F759F6F00DB4FD1 /* Frameworks */,
-				83D454AE200BFDD50078CA3D /* Bump Build Number */,
+				83D454AE200BFDD50078CA3D /* Bump Bundle Version For Release Builds */,
 				838257C81F759F6F00DB4FD1 /* Resources */,
 				6B339CC727C9F1BD00181204 /* Remove Custom Bundle Icon */,
 				4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */,
@@ -811,19 +811,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		83D454AE200BFDD50078CA3D /* Bump Build Number */ = {
+		83D454AE200BFDD50078CA3D /* Bump Bundle Version For Release Builds */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Bump Build Number";
+			name = "Bump Bundle Version For Release Builds";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n  buildNumber=$(date +%s)\n  /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
 		};
 		A3819D0A54A45BF19A833E00 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
