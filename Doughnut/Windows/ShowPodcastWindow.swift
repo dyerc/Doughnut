@@ -173,7 +173,9 @@ class ShowPodcastViewController: NSViewController {
     podcast.copyright = copyrightInputView.stringValue
 
     if modifiedImage {
-      podcast.image = artworkLargeView.image
+      if let data = artworkLargeView.image?.tiffRepresentation {
+        podcast.storeImage(data)
+      }
     }
 
     if modifiedDescription {

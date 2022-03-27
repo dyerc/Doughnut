@@ -13,7 +13,7 @@
 		6B0233BD27B2CA6500500E28 /* ControlMenuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */; };
 		6B0605C52788627D00A8A91E /* NSMenu+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */; };
 		6B193AA427A286B800DB1379 /* ModalSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B193AA327A286B800DB1379 /* ModalSheetSegue.swift */; };
-		6B36624627CFB339008E1CA5 /* NSImage+Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36624527CFB339008E1CA5 /* NSImage+Tint.swift */; };
+		6B36624627CFB339008E1CA5 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36624527CFB339008E1CA5 /* NSImage+Extensions.swift */; };
 		6B3A75F8278F44F500F25578 /* NSView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */; };
 		6B571B4827E74C31008E1534 /* ModelTests.dnl in Resources */ = {isa = PBXBuildFile; fileRef = 6B571B4727E74C31008E1534 /* ModelTests.dnl */; };
 		6B571B4A27E7597A008E1534 /* EpisodeModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B571B4927E7597A008E1534 /* EpisodeModelTests.swift */; };
@@ -114,7 +114,7 @@
 		6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlMenuProvider.swift; sourceTree = "<group>"; };
 		6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+Extensions.swift"; sourceTree = "<group>"; };
 		6B193AA327A286B800DB1379 /* ModalSheetSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSheetSegue.swift; sourceTree = "<group>"; };
-		6B36624527CFB339008E1CA5 /* NSImage+Tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Tint.swift"; sourceTree = "<group>"; };
+		6B36624527CFB339008E1CA5 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
 		6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extensions.swift"; sourceTree = "<group>"; };
 		6B3ACC982773555700CF1EF1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6B571B4727E74C31008E1534 /* ModelTests.dnl */ = {isa = PBXFileReference; lastKnownFileType = file; path = ModelTests.dnl; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 				6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */,
 				6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */,
 				6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */,
-				6B36624527CFB339008E1CA5 /* NSImage+Tint.swift */,
+				6B36624527CFB339008E1CA5 /* NSImage+Extensions.swift */,
 			);
 			name = AppKit;
 			sourceTree = "<group>";
@@ -874,7 +874,7 @@
 				83659AB81F7D8A0300E09833 /* Podcast.swift in Sources */,
 				837D52BE1F8E622200C17514 /* TasksViewController.swift in Sources */,
 				8379899B1F81616C00234577 /* SeekSlider.swift in Sources */,
-				6B36624627CFB339008E1CA5 /* NSImage+Tint.swift in Sources */,
+				6B36624627CFB339008E1CA5 /* NSImage+Extensions.swift in Sources */,
 				837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */,
 				832FF90B1F8D60430065E593 /* DownloadManager.swift in Sources */,
 				83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */,
