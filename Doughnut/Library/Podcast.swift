@@ -32,13 +32,19 @@ class Podcast: Record {
   var language: String?
   var copyright: String?
   var pubDate: Date?
-  var image: NSImage?
+  private(set) var imageData: Data? {
+    didSet {
+      processThumbnailImage()
+    }
+  }
   var imageUrl: String?
   var lastParsed: Date?
   var subscribedAt: Date
   var autoDownload: Bool = false
-
   var reloadFrequency: Int = 0 // 0 is only manually reloaded
+
+  private(set) var image: NSImage?
+
   var manualReload: Bool {
     get {
       return reloadFrequency == -1
@@ -106,9 +112,8 @@ class Podcast: Record {
     copyright = row["copyright"]
     pubDate = row["pub_date"]
 
-    let imageData: DatabaseValue = row["image"]
-    if !imageData.isNull {
-      image = NSImage(data: row["image"])
+    if case let .blob(data) = (row["image"] as DatabaseValue).storage {
+      imageData = data
     }
 
     imageUrl = row["image_url"]
@@ -118,6 +123,8 @@ class Podcast: Record {
     autoDownload = row["auto_download"]
 
     super.init(row: row)
+
+    processThumbnailImage()
   }
 
   override func encode(to container: inout PersistenceContainer) {
@@ -131,7 +138,7 @@ class Podcast: Record {
     container["language"] = language
     container["copyright"] = copyright
     container["pub_date"] = pubDate
-    container["image"] = compressImage()
+    container["image"] = imageData
     container["image_url"] = imageUrl
     container["last_parsed"] = lastParsed
     container["subscribed_at"] = subscribedAt
@@ -202,17 +209,26 @@ class Podcast: Record {
 
   private func storeImage(_ url: URL) {
     imageUrl = url.absoluteString
-
-    if let downloaded = NSImage(contentsOf: url) {
-      image = Podcast.resizeArtwork(image: downloaded, w: 1024, h: 1024)
+    // TODO: Replace Data.init(contentsOf:options:) call with URLSessionDataTask
+    if let downloadData = try? Data(contentsOf: url) {
+      storeImage(downloadData)
     }
   }
 
-  private func compressImage() -> Data? {
-    guard let image = image else { return nil }
-    guard let tiffData = image.tiffRepresentation else { return nil }
-    guard let imageRep = NSBitmapImageRep(data: tiffData) else { return nil }
-    return imageRep.representation(using: .jpeg, properties: [:])
+  func storeImage(_ data: Data) {
+    autoreleasepool {
+      if
+        let image = NSImage.downSampledImage(withData: data, dimension: 1024, scale: 1.0),
+        let jpegData = image.jpegRepresentation()
+      {
+        imageData = jpegData
+      }
+    }
+  }
+
+  private func processThumbnailImage() {
+    guard let imageData = imageData else { return }
+    image = NSImage.downSampledImage(withData: imageData, dimension: 70, scale: 2.0)
   }
 
   // Called within subscribe or reload
@@ -329,18 +345,4 @@ class Podcast: Record {
     }
   }
 
-  static func resizeArtwork(image: NSImage, w: Int, h: Int) -> NSImage {
-    let destSize = CGSize(width: w, height: h)
-    let newImage = NSImage(size: destSize)
-    newImage.lockFocus()
-    image.draw(
-      in: CGRect(x: 0, y: 0, width: destSize.width, height: destSize.height),
-      from: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height),
-      operation: NSCompositingOperation.sourceOver,
-      fraction: CGFloat(1)
-    )
-    newImage.unlockFocus()
-    newImage.size = destSize
-    return NSImage(data: newImage.tiffRepresentation!)!
-  }
 }
