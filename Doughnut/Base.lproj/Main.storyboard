@@ -510,7 +510,7 @@ Gw
                         <viewLayoutGuide key="layoutMargins" id="8eP-ga-5Bq"/>
                     </view>
                     <connections>
-                        <outlet property="filterBarSeperator" destination="Q9V-7G-TPX" id="9In-cD-HGh"/>
+                        <outlet property="filterBarSeparator" destination="Q9V-7G-TPX" id="9In-cD-HGh"/>
                         <outlet property="moreButton" destination="Pkz-GU-AL9" id="O9K-hE-JvA"/>
                         <outlet property="searchField" destination="mtS-jJ-Pmb" id="OFh-oJ-WxW"/>
                         <outlet property="sortView" destination="Mge-rT-KIQ" id="UXl-BK-k3s"/>
