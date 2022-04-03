@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="20037"/>
         <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -855,7 +855,7 @@ Gw
                                 <rect key="frame" x="20" y="353" width="407" height="70"/>
                                 <subviews>
                                     <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fr6-xn-Y13">
-                                        <rect key="frame" x="0.0" y="9" width="337" height="61"/>
+                                        <rect key="frame" x="0.0" y="9" width="325" height="61"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jKU-pr-cPD">
                                                 <rect key="frame" x="-2" y="41" width="114" height="20"/>
@@ -907,7 +907,7 @@ Gw
                                     <constraint firstAttribute="trailing" secondItem="iMb-rx-aJo" secondAttribute="trailing" id="Mlf-wg-e4C"/>
                                     <constraint firstItem="iMb-rx-aJo" firstAttribute="top" secondItem="vM9-K9-FQW" secondAttribute="top" id="cmd-bW-V8E"/>
                                     <constraint firstAttribute="bottom" secondItem="iMb-rx-aJo" secondAttribute="bottom" id="iZA-cn-j6C"/>
-                                    <constraint firstItem="iMb-rx-aJo" firstAttribute="leading" secondItem="Fr6-xn-Y13" secondAttribute="trailing" id="o5r-Kf-62j"/>
+                                    <constraint firstItem="iMb-rx-aJo" firstAttribute="leading" secondItem="Fr6-xn-Y13" secondAttribute="trailing" constant="12" id="o5r-Kf-62j"/>
                                     <constraint firstItem="Fr6-xn-Y13" firstAttribute="top" secondItem="vM9-K9-FQW" secondAttribute="top" id="qR5-vH-IEf"/>
                                 </constraints>
                             </customView>
