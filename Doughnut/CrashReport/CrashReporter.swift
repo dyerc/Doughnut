@@ -28,13 +28,9 @@ final class CrashReporter {
 
   private static var sharedInstance = CrashReporter()
 
-  private var plCrashReporter: PLCrashReporter!
+  private var plCrashReporter: PLCrashReporter?
 
   private init() {
-    setup()
-  }
-
-  private func setup() {
     let config = PLCrashReporterConfig.defaultConfiguration()
     guard let plCrashReporter = PLCrashReporter(configuration: config) else {
       print("CrashReporter: could not create an instance of PLCrashReporter")
@@ -50,7 +46,10 @@ final class CrashReporter {
   }
 
   func getPendingCrashReport() -> String? {
-    guard plCrashReporter.hasPendingCrashReport() else {
+    guard
+      let plCrashReporter = plCrashReporter,
+      plCrashReporter.hasPendingCrashReport()
+    else {
       return nil
     }
 
