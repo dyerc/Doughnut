@@ -186,9 +186,8 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       case .unplayed:
         return a.unplayedCount < b.unplayedCount
       case .recentEpisodes:
-        guard let aD = a.latestEpisode?.pubDate else { return false }
-        guard let bD = b.latestEpisode?.pubDate else { return true }
-
+        guard let aD = a.latestEpisode?.pubDate else { return true }
+        guard let bD = b.latestEpisode?.pubDate else { return false }
         return aD < bD
       }
     }
