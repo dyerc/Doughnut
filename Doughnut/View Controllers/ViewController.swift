@@ -142,6 +142,14 @@ final class ViewController: NSSplitViewController, LibraryDelegate {
     episodeViewController.toggleFilter()
   }
 
+  func updateWindowTitleVisibility() {
+    if #available(macOS 11.0, *) {
+      let primaryColumnsWidth = episodeViewController.view.bounds.width + detailViewController.view.bounds.width
+      view.window?.titleVisibility = primaryColumnsWidth >= Self.minimumWidthToShowWindowTitle
+                                   ? .visible : .hidden
+    }
+  }
+
   private func updateWindowTitle() {
     if #available(macOS 11.0, *) {
       if let podcast = detailViewController.podcast {
@@ -182,11 +190,7 @@ final class ViewController: NSSplitViewController, LibraryDelegate {
 extension ViewController {
 
   override func splitViewDidResizeSubviews(_ notification: Notification) {
-    if #available(macOS 11.0, *) {
-      let primaryColumnsWidth = episodeViewController.view.bounds.width + detailViewController.view.bounds.width
-      view.window?.titleVisibility = primaryColumnsWidth >= Self.minimumWidthToShowWindowTitle
-                                   ? .visible : .hidden
-    }
+    updateWindowTitleVisibility()
   }
 
 }
