@@ -97,7 +97,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="OjC-eV-ZDg">
-                                        <rect key="frame" x="132" y="67" width="369" height="84"/>
+                                        <rect key="frame" x="132" y="56" width="369" height="95"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="84" id="Zgg-5I-3F9"/>
                                         </constraints>
@@ -167,6 +167,7 @@ Gw
                                     <constraint firstItem="9SF-g4-1B6" firstAttribute="baseline" secondItem="8KK-Xz-uxN" secondAttribute="baseline" id="TWA-GC-5hD"/>
                                     <constraint firstItem="OjC-eV-ZDg" firstAttribute="leading" secondItem="Y1w-sf-0J3" secondAttribute="trailing" constant="5" id="VFt-dz-ghx"/>
                                     <constraint firstItem="FHI-5Q-UFb" firstAttribute="leading" secondItem="OjC-eV-ZDg" secondAttribute="leading" id="WXA-la-hvH"/>
+                                    <constraint firstItem="8KK-Xz-uxN" firstAttribute="top" secondItem="OjC-eV-ZDg" secondAttribute="bottom" constant="16" id="XsX-WD-Zho"/>
                                     <constraint firstItem="TQ0-OQ-pOU" firstAttribute="leading" secondItem="9EL-Ve-wJp" secondAttribute="leading" id="Y9A-54-PLd"/>
                                     <constraint firstItem="OjC-eV-ZDg" firstAttribute="trailing" secondItem="8KK-Xz-uxN" secondAttribute="trailing" id="YRn-fh-aKi"/>
                                     <constraint firstItem="9EL-Ve-wJp" firstAttribute="leading" secondItem="awl-lT-INC" secondAttribute="trailing" constant="8" symbolic="YES" id="Yh2-9q-Etj"/>
