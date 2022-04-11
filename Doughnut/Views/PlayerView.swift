@@ -171,18 +171,6 @@ class PlayerView: NSView, PlayerDelegate {
   }
 
   func update(forEpisode episode: Episode?) {
-    let loadStatus = Player.global.loadStatus
-
-    if loadStatus == .loading {
-      loadingIdc.isHidden = false
-      loadingIdc.startAnimation(nil)
-      artworkImg.isHidden = true
-    } else {
-      loadingIdc.isHidden = true
-      loadingIdc.stopAnimation(nil)
-      artworkImg.isHidden = false
-    }
-
     artworkImg.image = episode?.podcast?.image
 
     if let image = episode?.artwork, image.isValid {
@@ -192,6 +180,17 @@ class PlayerView: NSView, PlayerDelegate {
 
   func updatePlayback() {
     let player = Player.global
+
+    let loadStatus = player.loadStatus
+    if loadStatus == .loading {
+      loadingIdc.isHidden = false
+      loadingIdc.startAnimation(nil)
+      artworkImg.isHidden = true
+    } else {
+      loadingIdc.isHidden = true
+      loadingIdc.stopAnimation(nil)
+      artworkImg.isHidden = false
+    }
 
     if player.isPlaying {
       playBtn.state = .on
