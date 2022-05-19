@@ -97,6 +97,7 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
     if Preference.bool(for: Preference.Key.debugDeveloperExtrasEnabled) {
       webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
     }
+    webView.configuration.preferences.javaScriptEnabled = true
     webView.navigationDelegate = self
   }
 
@@ -106,7 +107,7 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
     miniTitle.stringValue = ""
     coverImage.image = nil
 
-    webView.loadHTMLString(MarkupGenerator.blankMarkup(), baseURL: nil)
+    webView.loadHTMLString(MarkupGenerator.blankMarkup(), baseURL: Bundle.main.resourceURL)
   }
 
   func showPodcast() {
@@ -120,7 +121,7 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
     miniTitle.stringValue = podcast.link ?? ""
     coverImage.image = podcast.image
 
-    webView.loadHTMLString(MarkupGenerator.markup(forPodcast: podcast), baseURL: nil)
+    webView.loadHTMLString(MarkupGenerator.markup(forPodcast: podcast), baseURL: Bundle.main.resourceURL)
   }
 
   func showEpisode() {
@@ -142,7 +143,7 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
       coverImage.image = podcast?.image
     }
 
-    webView.loadHTMLString(MarkupGenerator.markup(forEpisode: episode), baseURL: nil)
+    webView.loadHTMLString(MarkupGenerator.markup(forEpisode: episode), baseURL: Bundle.main.resourceURL)
   }
 
   func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {

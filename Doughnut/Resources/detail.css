@@ -18,33 +18,46 @@
 
 :root {
   --text-primary: #777777;
+  --text-link: #fa469b;
   --background-primary: #ffffff;
-  --border-primary: #eeeeee;
+  --border-primary: #d8d8d8;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --text-primary: #eeeeee;
+    --text-link: #f558a2;
     --background-primary: #484445;
-    --border-primary: #000000;
+    --border-primary: #ababab;
   }
 }
 
-* {
-  margin: 0;
-  padding: 0;
+html {
+  font-size: 14px;
 }
 
 body {
   font-family: -apple-system, Helvetica, sans-serif;
-  font-size: 12px;
-  line-height: 19px;
+  line-height: 1.5;
   background: var(--background-primary);
+  margin: 0 20px 20px 20px;
+  color: var(--text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 p {
-  color: var(--text-primary);
-  margin: 10px 0;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 hr {
@@ -52,10 +65,44 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid var(--border-primary);
-  margin: 5px 0;
+  margin: 0.5rem 0;
   padding: 0;
 }
 
 img {
   max-width: 100%;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer; /* force the hand cursor for links even without href */
+}
+
+ol,
+ul {
+  padding-left: 2rem;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dd {
+  margin-bottom: 0.5rem;
+  margin-left: 0;
 }

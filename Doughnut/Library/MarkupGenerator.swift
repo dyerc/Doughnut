@@ -35,6 +35,12 @@ class MarkupGenerator {
     <html>
       <head>
         <style>\(styles)</style>
+        <script src="detail.js"></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function(event) {
+            processDetailPage();
+          });
+        </script>
       </head>
       <body>
         \(yield)
@@ -51,7 +57,6 @@ class MarkupGenerator {
     return template("""
       <hr />
       <p>\(podcast.description ?? "")</p>
-      <hr />
     """)
   }
 
@@ -59,7 +64,6 @@ class MarkupGenerator {
     return template("""
       <hr />
       <p>\(episode.description ?? "")</p>
-      <hr />
     """)
   }
 }

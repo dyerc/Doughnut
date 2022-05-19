@@ -37,6 +37,7 @@
 		6BC6396127A687E400535897 /* Player+NowPlayingInfoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC6396027A687E400535897 /* Player+NowPlayingInfoCenter.swift */; };
 		6BC6396427A68E2100535897 /* CMTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC6396327A68E2100535897 /* CMTime+Extensions.swift */; };
 		6BEB75D3280281FA00097BA6 /* NSAppearance+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB75D2280281FA00097BA6 /* NSAppearance+Extensions.swift */; };
+		6BF0902F283684B20035F99C /* detail.js in Resources */ = {isa = PBXBuildFile; fileRef = 6BADDDCB28367809006D763D /* detail.js */; };
 		6BF126D12780727100D840A4 /* EpisodeInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */; };
 		6BF126D32780742600D840A4 /* PodcastInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF126D22780742600D840A4 /* PodcastInfo.storyboard */; };
 		830A34031FF0447D00C13B1D /* PodcastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A34021FF0447D00C13B1D /* PodcastUITests.swift */; };
@@ -137,6 +138,7 @@
 		6BA21C56279D74D400CD3672 /* CrashReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportViewController.swift; sourceTree = "<group>"; };
 		6BA21C58279D74DC00CD3672 /* CrashReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CrashReport.storyboard; sourceTree = "<group>"; };
 		6BA21C5B279D7A1100CD3672 /* CrashReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReporter.swift; sourceTree = "<group>"; };
+		6BADDDCB28367809006D763D /* detail.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = detail.js; sourceTree = "<group>"; };
 		6BB11F9B27A29B6E009CBAF8 /* CrashReportWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportWindowController.swift; sourceTree = "<group>"; };
 		6BB5771D278602B400DFF99F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainMenu.storyboard; sourceTree = "<group>"; };
 		6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+RemoteCommandCenter.swift"; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				831EBAD927CC11E700F212B4 /* Credits.rtf */,
 				6BA06BCB27F07F8D006F9390 /* dsa_pub.pem */,
 				6B23829A28029A410015FFBD /* detail.css */,
+				6BADDDCB28367809006D763D /* detail.js */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				831EBADA27CC120000F212B4 /* Credits.rtf in Resources */,
 				6BA06BCC27F07F8D006F9390 /* dsa_pub.pem in Resources */,
 				6B9E154727C9EA5F00C919D5 /* AppIcon_Big_Sur.icns in Resources */,
+				6BF0902F283684B20035F99C /* detail.js in Resources */,
 				838257D51F759F6F00DB4FD1 /* Main.storyboard in Resources */,
 				83235C0D2009502D00BC356F /* Preferences.storyboard in Resources */,
 				6B23829B28029A410015FFBD /* detail.css in Resources */,
