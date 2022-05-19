@@ -79,8 +79,6 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let darkMode = DoughnutApp.darkMode()
-
     dateFormatter.dateStyle = .long
     view.wantsLayer = true
 
@@ -93,12 +91,6 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
       multiplier: 1,
       constant: 16
     ).isActive = true
-
-    if darkMode {
-      view.layer?.backgroundColor = NSColor(calibratedRed: 0.220, green: 0.204, blue: 0.208, alpha: 1.00).cgColor
-    } else {
-      view.layer?.backgroundColor = CGColor.white
-    }
 
     showBlank()
 

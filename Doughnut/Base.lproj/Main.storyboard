@@ -837,7 +837,7 @@ Gw
         <scene sceneID="IJf-sZ-gIZ">
             <objects>
                 <viewController id="7up-aR-l2X" customClass="DetailViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="vAG-6Q-UGH">
+                    <view key="view" id="vAG-6Q-UGH" customClass="BackgroundView" customModule="Doughnut" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="447" height="491"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

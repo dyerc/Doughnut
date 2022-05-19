@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="hJl-9H-saa">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="hJl-9H-saa">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +39,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="521" height="363"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="p5w-Zb-jPq" customClass="WhiteBackgroundView" customModule="Doughnut" customModuleProvider="target">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="p5w-Zb-jPq" customClass="BackgroundView" customModule="Doughnut" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="521" height="251"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="enh-Dd-54J">
@@ -241,6 +241,7 @@ Gw
                     <connections>
                         <outlet property="artworkView" destination="BIM-ZF-BIF" id="Alk-JX-Fc9"/>
                         <outlet property="authorLabelView" destination="6Re-bh-IOf" id="IaU-Fh-r3p"/>
+                        <outlet property="backgroundView" destination="p5w-Zb-jPq" id="JqV-Mb-g29"/>
                         <outlet property="descriptionInputView" destination="OjC-eV-ZDg" id="cDb-Qz-UhS"/>
                         <outlet property="guidInputView" destination="9EL-Ve-wJp" id="Zci-OZ-EZF"/>
                         <outlet property="podcastLabelView" destination="cDJ-RX-5h2" id="MW4-aB-2gz"/>
