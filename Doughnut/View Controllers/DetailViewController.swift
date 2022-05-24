@@ -79,8 +79,6 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let darkMode = DoughnutApp.darkMode()
-
     dateFormatter.dateStyle = .long
     view.wantsLayer = true
 
@@ -94,14 +92,12 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
       constant: 16
     ).isActive = true
 
-    if darkMode {
-      view.layer?.backgroundColor = NSColor(calibratedRed: 0.220, green: 0.204, blue: 0.208, alpha: 1.00).cgColor
-    } else {
-      view.layer?.backgroundColor = CGColor.white
-    }
-
     showBlank()
 
+    if Preference.bool(for: Preference.Key.debugDeveloperExtrasEnabled) {
+      webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
+    }
+    webView.configuration.preferences.javaScriptEnabled = true
     webView.navigationDelegate = self
   }
 
@@ -111,7 +107,7 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
     miniTitle.stringValue = ""
     coverImage.image = nil
 
-    webView.loadHTMLString(MarkupGenerator.blankMarkup(), baseURL: nil)
+    webView.loadHTMLString(MarkupGenerator.blankMarkup(), baseURL: Bundle.main.resourceURL)
   }
 
   func showPodcast() {
@@ -125,7 +121,7 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
     miniTitle.stringValue = podcast.link ?? ""
     coverImage.image = podcast.image
 
-    webView.loadHTMLString(MarkupGenerator.markup(forPodcast: podcast), baseURL: nil)
+    webView.loadHTMLString(MarkupGenerator.markup(forPodcast: podcast), baseURL: Bundle.main.resourceURL)
   }
 
   func showEpisode() {
@@ -147,7 +143,7 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
       coverImage.image = podcast?.image
     }
 
-    webView.loadHTMLString(MarkupGenerator.markup(forEpisode: episode), baseURL: nil)
+    webView.loadHTMLString(MarkupGenerator.markup(forEpisode: episode), baseURL: Bundle.main.resourceURL)
   }
 
   func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {

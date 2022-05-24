@@ -135,13 +135,12 @@ class PlayerView: NSView, PlayerDelegate {
     addSubview(playedRemainingLbl)
 
     wantsLayer = true
-    let backgroundColor = DoughnutApp.darkMode() ? NSColor.white.withAlphaComponent(0.04)
-                                                 : NSColor.black.withAlphaComponent(0.04)
+    updateBackgroundColor()
+
     var cornerRadius: CGFloat = 4
     if #available(macOS 11.0, *) {
       cornerRadius = 6
     }
-    layer?.backgroundColor = backgroundColor.cgColor
     layer?.cornerRadius = cornerRadius
   }
 
@@ -162,6 +161,16 @@ class PlayerView: NSView, PlayerDelegate {
     playedRemainingLbl.frame = NSRect(x: PlayerView.controlX(seekSlider) + 4, y: baseline + 6, width: 50, height: 14)
   }
 
+  override func viewDidChangeEffectiveAppearance() {
+    updateBackgroundColor()
+  }
+
+  private func updateBackgroundColor() {
+    let backgroundColor = NSApp.effectiveAppearance.isDarkMode ? NSColor.white.withAlphaComponent(0.04)
+                                                               : NSColor.black.withAlphaComponent(0.04)
+    layer?.backgroundColor = backgroundColor.cgColor
+  }
+
   func formatTime(total: Int) -> String {
     let hrs = Int(floor(Double(total / 3600)))
     let mins = Int(floor(Double((total % 3600) / 60)))
@@ -171,18 +180,6 @@ class PlayerView: NSView, PlayerDelegate {
   }
 
   func update(forEpisode episode: Episode?) {
-    let loadStatus = Player.global.loadStatus
-
-    if loadStatus == .loading {
-      loadingIdc.isHidden = false
-      loadingIdc.startAnimation(nil)
-      artworkImg.isHidden = true
-    } else {
-      loadingIdc.isHidden = true
-      loadingIdc.stopAnimation(nil)
-      artworkImg.isHidden = false
-    }
-
     artworkImg.image = episode?.podcast?.image
 
     if let image = episode?.artwork, image.isValid {
@@ -192,6 +189,17 @@ class PlayerView: NSView, PlayerDelegate {
 
   func updatePlayback() {
     let player = Player.global
+
+    let loadStatus = player.loadStatus
+    if loadStatus == .loading {
+      loadingIdc.isHidden = false
+      loadingIdc.startAnimation(nil)
+      artworkImg.isHidden = true
+    } else {
+      loadingIdc.isHidden = true
+      loadingIdc.stopAnimation(nil)
+      artworkImg.isHidden = false
+    }
 
     if player.isPlaying {
       playBtn.state = .on
@@ -210,6 +218,8 @@ class PlayerView: NSView, PlayerDelegate {
     seekSlider.doubleValue = position
     seekSlider.streamedValue = player.buffered
   }
+
+  // MARK: - Actions
 
   @objc func seek(_ sender: Any) {
     let event = NSApplication.shared.currentEvent

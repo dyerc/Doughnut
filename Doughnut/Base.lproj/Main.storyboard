@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="20037"/>
         <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -510,7 +510,7 @@ Gw
                         <viewLayoutGuide key="layoutMargins" id="8eP-ga-5Bq"/>
                     </view>
                     <connections>
-                        <outlet property="filterBarSeperator" destination="Q9V-7G-TPX" id="9In-cD-HGh"/>
+                        <outlet property="filterBarSeparator" destination="Q9V-7G-TPX" id="9In-cD-HGh"/>
                         <outlet property="moreButton" destination="Pkz-GU-AL9" id="O9K-hE-JvA"/>
                         <outlet property="searchField" destination="mtS-jJ-Pmb" id="OFh-oJ-WxW"/>
                         <outlet property="sortView" destination="Mge-rT-KIQ" id="UXl-BK-k3s"/>
@@ -837,12 +837,12 @@ Gw
         <scene sceneID="IJf-sZ-gIZ">
             <objects>
                 <viewController id="7up-aR-l2X" customClass="DetailViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="vAG-6Q-UGH">
+                    <view key="view" id="vAG-6Q-UGH" customClass="BackgroundView" customModule="Doughnut" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="447" height="491"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <wkWebView wantsLayer="YES" verticalHuggingPriority="750" allowsLinkPreview="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElX-b1-U2Z" customClass="DetailWebView" customModule="Doughnut" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="407" height="317"/>
+                                <rect key="frame" x="0.0" y="0.0" width="447" height="337"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="380" id="UWr-3h-3bo"/>
                                 </constraints>
@@ -855,7 +855,7 @@ Gw
                                 <rect key="frame" x="20" y="353" width="407" height="70"/>
                                 <subviews>
                                     <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fr6-xn-Y13">
-                                        <rect key="frame" x="0.0" y="9" width="337" height="61"/>
+                                        <rect key="frame" x="0.0" y="9" width="325" height="61"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jKU-pr-cPD">
                                                 <rect key="frame" x="-2" y="41" width="114" height="20"/>
@@ -907,19 +907,19 @@ Gw
                                     <constraint firstAttribute="trailing" secondItem="iMb-rx-aJo" secondAttribute="trailing" id="Mlf-wg-e4C"/>
                                     <constraint firstItem="iMb-rx-aJo" firstAttribute="top" secondItem="vM9-K9-FQW" secondAttribute="top" id="cmd-bW-V8E"/>
                                     <constraint firstAttribute="bottom" secondItem="iMb-rx-aJo" secondAttribute="bottom" id="iZA-cn-j6C"/>
-                                    <constraint firstItem="iMb-rx-aJo" firstAttribute="leading" secondItem="Fr6-xn-Y13" secondAttribute="trailing" id="o5r-Kf-62j"/>
+                                    <constraint firstItem="iMb-rx-aJo" firstAttribute="leading" secondItem="Fr6-xn-Y13" secondAttribute="trailing" constant="12" id="o5r-Kf-62j"/>
                                     <constraint firstItem="Fr6-xn-Y13" firstAttribute="top" secondItem="vM9-K9-FQW" secondAttribute="top" id="qR5-vH-IEf"/>
                                 </constraints>
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ElX-b1-U2Z" secondAttribute="trailing" constant="20" id="0Ag-DA-wYD"/>
+                            <constraint firstAttribute="trailing" secondItem="ElX-b1-U2Z" secondAttribute="trailing" id="0Ag-DA-wYD"/>
                             <constraint firstItem="vM9-K9-FQW" firstAttribute="leading" secondItem="vAG-6Q-UGH" secondAttribute="leading" constant="20" id="Gyp-Uc-Ret"/>
-                            <constraint firstAttribute="bottom" secondItem="ElX-b1-U2Z" secondAttribute="bottom" constant="20" id="HTP-AM-pQO"/>
+                            <constraint firstAttribute="bottom" secondItem="ElX-b1-U2Z" secondAttribute="bottom" id="HTP-AM-pQO"/>
                             <constraint firstAttribute="trailing" secondItem="vM9-K9-FQW" secondAttribute="trailing" constant="20" id="IOa-RW-gWX"/>
                             <constraint firstItem="vM9-K9-FQW" firstAttribute="top" secondItem="Mwf-BJ-1vu" secondAttribute="top" constant="16" placeholder="YES" id="Kji-tG-dJ7"/>
                             <constraint firstItem="ElX-b1-U2Z" firstAttribute="top" secondItem="vM9-K9-FQW" secondAttribute="bottom" constant="16" id="LAy-6d-87i"/>
-                            <constraint firstItem="ElX-b1-U2Z" firstAttribute="leading" secondItem="vAG-6Q-UGH" secondAttribute="leading" constant="20" id="ooZ-G1-JUu"/>
+                            <constraint firstItem="ElX-b1-U2Z" firstAttribute="leading" secondItem="vAG-6Q-UGH" secondAttribute="leading" id="ooZ-G1-JUu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mwf-BJ-1vu"/>
                         <viewLayoutGuide key="layoutMargins" id="fsL-5L-5se"/>

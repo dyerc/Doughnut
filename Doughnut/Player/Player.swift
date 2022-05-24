@@ -40,6 +40,7 @@ final class Player: NSObject {
   private(set) var loadStatus: PlayerLoadStatus = .none
   private(set) var avPlayer: AVPlayer?
   private(set) var currentEpisode: Episode?
+  private(set) var currentAVAsset: AVAsset?
   private(set) var currentPlaybackURL: URL?
 
   private(set) var position: Double = 0
@@ -89,18 +90,60 @@ final class Player: NSObject {
 
     destroyAVPlayerAndResetState()
 
+    let avAsset: AVAsset
+
     if episode.downloaded {
       guard let episodeUrl = episode.url() else { return }
 
       currentPlaybackURL = episodeUrl
-      avPlayer = AVPlayer(url: episodeUrl)
+      avAsset = AVAsset(url: episodeUrl)
     } else {
       guard let enclosureUrl = episode.enclosureUrl else { return }
       guard let url = URL(string: enclosureUrl) else { return }
 
       currentPlaybackURL = url
-      avPlayer = AVPlayer(url: url)
+      avAsset = AVAsset(url: url)
     }
+
+    currentAVAsset = avAsset
+    loadStatus = .loading
+    postPlaybackStatusUpdates()
+
+    avAsset.loadValuesAsynchronously(forKeys: ["playable"]) { [weak self] in
+      DispatchQueue.main.async {
+        guard let self = self, avAsset == self.currentAVAsset else { return }
+
+        var error: NSError?
+        let status = avAsset.statusOfValue(forKey: "playable", error: &error)
+
+        let cleanupLoadStatusOnFail: () -> Void = {
+          self.currentPlaybackURL = nil
+          self.currentAVAsset = nil
+          self.loadStatus = .none
+          self.postPlaybackStatusUpdates()
+        }
+
+        switch status {
+        case .loaded:
+          self.onAssetLoadingFinished(avAsset: avAsset, episode: episode)
+          return
+        case .loading:
+          assert(false, "'.loading' should not be returned in the completionHandler of loadValuesAsynchronously(forKeys:).")
+          break
+        default:
+          print("Failed to load the AVAsset failed with status: \(status), error: \(error?.localizedDescription ?? "nil").")
+          break
+        }
+        cleanupLoadStatusOnFail()
+      }
+    }
+  }
+
+  private func onAssetLoadingFinished(avAsset: AVAsset, episode: Episode) {
+    assert(avAsset == currentAVAsset)
+
+    let item = AVPlayerItem(asset: avAsset)
+    avPlayer = AVPlayer(playerItem: item)
 
     if let avPlayer = avPlayer, let episodeId = episode.id {
       var timeObserver: Any?
@@ -171,6 +214,8 @@ final class Player: NSObject {
   }
 
   private func destroyAVPlayerAndResetState() {
+    currentAVAsset = nil
+
     // Destroy any existing player
     if let avPlayer = avPlayer {
       // Destroy the existing player and let a new one be created
@@ -200,8 +245,6 @@ final class Player: NSObject {
     if object as? AVPlayer == avPlayer {
       if keyPath == "status" {
         switch avPlayer?.status {
-        case .unknown?:
-          loadStatus = .loading
         case .readyToPlay?:
           loadStatus = .playing
         default:
@@ -278,7 +321,7 @@ final class Player: NSObject {
     guard let av = avPlayer else { return }
 
     let currentTime = CMTimeGetSeconds(av.currentTime())
-    let skipDuration = seconds ?? Preference.double(for: Preference.Key.skipForwardDuration)
+    let skipDuration = seconds ?? Preference.double(for: Preference.Key.skipBackDuration)
     var targetTime = currentTime - skipDuration
 
     if targetTime < 0 {

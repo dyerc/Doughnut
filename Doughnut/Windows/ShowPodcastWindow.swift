@@ -57,6 +57,8 @@ class ShowPodcastViewController: NSViewController {
   @IBOutlet weak var tabBarView: NSSegmentedControl!
   @IBOutlet weak var tabView: NSTabView!
 
+  @IBOutlet weak var backgroundView: BackgroundView!
+
   // Details Tab
   @IBOutlet weak var titleInputView: NSTextField!
   @IBOutlet weak var authorInputView: NSTextField!
@@ -99,6 +101,8 @@ class ShowPodcastViewController: NSViewController {
     artworkView.layer?.borderColor = NSColor(calibratedWhite: 0.8, alpha: 1.0).cgColor
     artworkView.layer?.cornerRadius = 3.0
     artworkView.layer?.masksToBounds = true
+
+    backgroundView.isMovableByViewBackground = false
   }
 
   var podcast: Podcast? {
@@ -197,9 +201,11 @@ class ShowPodcastViewController: NSViewController {
 
       if Self.validate(forPodcast: podcast) {
         Library.global.update(podcast: podcast) { [weak self] _ in
-          // TODO: prompt for error on failure
-          NSApp.stopModal(withCode: .OK)
-          self?.view.window?.close()
+          DispatchQueue.main.async {
+            // TODO: prompt for error on failure
+            NSApp.stopModal(withCode: .OK)
+            self?.view.window?.close()
+          }
         }
       }
     } else {

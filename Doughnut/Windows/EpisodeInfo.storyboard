@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="hJl-9H-saa">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="hJl-9H-saa">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +39,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="521" height="363"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="p5w-Zb-jPq" customClass="WhiteBackgroundView" customModule="Doughnut" customModuleProvider="target">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="p5w-Zb-jPq" customClass="BackgroundView" customModule="Doughnut" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="521" height="251"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="enh-Dd-54J">
@@ -97,7 +97,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="OjC-eV-ZDg">
-                                        <rect key="frame" x="132" y="67" width="369" height="84"/>
+                                        <rect key="frame" x="132" y="56" width="369" height="95"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="84" id="Zgg-5I-3F9"/>
                                         </constraints>
@@ -167,6 +167,7 @@ Gw
                                     <constraint firstItem="9SF-g4-1B6" firstAttribute="baseline" secondItem="8KK-Xz-uxN" secondAttribute="baseline" id="TWA-GC-5hD"/>
                                     <constraint firstItem="OjC-eV-ZDg" firstAttribute="leading" secondItem="Y1w-sf-0J3" secondAttribute="trailing" constant="5" id="VFt-dz-ghx"/>
                                     <constraint firstItem="FHI-5Q-UFb" firstAttribute="leading" secondItem="OjC-eV-ZDg" secondAttribute="leading" id="WXA-la-hvH"/>
+                                    <constraint firstItem="8KK-Xz-uxN" firstAttribute="top" secondItem="OjC-eV-ZDg" secondAttribute="bottom" constant="16" id="XsX-WD-Zho"/>
                                     <constraint firstItem="TQ0-OQ-pOU" firstAttribute="leading" secondItem="9EL-Ve-wJp" secondAttribute="leading" id="Y9A-54-PLd"/>
                                     <constraint firstItem="OjC-eV-ZDg" firstAttribute="trailing" secondItem="8KK-Xz-uxN" secondAttribute="trailing" id="YRn-fh-aKi"/>
                                     <constraint firstItem="9EL-Ve-wJp" firstAttribute="leading" secondItem="awl-lT-INC" secondAttribute="trailing" constant="8" symbolic="YES" id="Yh2-9q-Etj"/>
@@ -240,6 +241,7 @@ Gw
                     <connections>
                         <outlet property="artworkView" destination="BIM-ZF-BIF" id="Alk-JX-Fc9"/>
                         <outlet property="authorLabelView" destination="6Re-bh-IOf" id="IaU-Fh-r3p"/>
+                        <outlet property="backgroundView" destination="p5w-Zb-jPq" id="JqV-Mb-g29"/>
                         <outlet property="descriptionInputView" destination="OjC-eV-ZDg" id="cDb-Qz-UhS"/>
                         <outlet property="guidInputView" destination="9EL-Ve-wJp" id="Zci-OZ-EZF"/>
                         <outlet property="podcastLabelView" destination="cDJ-RX-5h2" id="MW4-aB-2gz"/>

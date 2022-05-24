@@ -59,11 +59,7 @@ final class PodcastSearchField: NSSearchField {
     updateIconImages()
 
     let searchFieldCell = cell as? NSSearchFieldCell
-    searchFieldCell?.searchButtonCell?.image = filterImage
     searchFieldCell?.searchButtonCell?.imageScaling = .scaleProportionallyDown
-
-    searchFieldCell?.cancelButtonCell?.image = cancelImage
-    searchFieldCell?.cancelButtonCell?.alternateImage = controlSelectedImage
     searchFieldCell?.cancelButtonCell?.imageScaling = .scaleProportionallyDown
 
     target = self
@@ -84,12 +80,17 @@ final class PodcastSearchField: NSSearchField {
   }
 
   private func updateIconImages() {
-    // FIXME: refresh icon image on appearance or control tint color change.
     filterImage = NSImage(named: "PodcastFilter")?.tinted(with: .secondaryLabelColor)
     filterImageActive = NSImage(named: "PodcastFilterActive")?.tinted(with: .controlAccentColor)
 
     cancelImage = NSImage(named: NSImage.stopProgressFreestandingTemplateName)?.tinted(with: .secondaryLabelColor)
     controlSelectedImage = NSImage(named: NSImage.stopProgressFreestandingTemplateName)?.tinted(with: .labelColor)
+
+    let searchFieldCell = cell as? NSSearchFieldCell
+    searchFieldCell?.cancelButtonCell?.image = cancelImage
+    searchFieldCell?.cancelButtonCell?.alternateImage = controlSelectedImage
+
+    updateFilteringButtonState()
   }
 
   override func draw(_ dirtyRect: NSRect) {
@@ -113,6 +114,12 @@ final class PodcastSearchField: NSSearchField {
     rect.origin.x += Self.searchButtonSize.width - searchButtonRect.width
     rect.size.width -= Self.searchButtonSize.width - searchButtonRect.width
     return rect
+  }
+
+  override func viewDidChangeEffectiveAppearance() {
+    NSAppearance.withAppAppearance {
+      updateIconImages()
+    }
   }
 
   override func mouseDown(with event: NSEvent) {

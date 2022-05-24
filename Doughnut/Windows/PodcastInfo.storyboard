@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="bAt-a6-tCi">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="bAt-a6-tCi">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,7 +41,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="527" height="359"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cSi-4G-kZR" customClass="WhiteBackgroundView" customModule="Doughnut" customModuleProvider="target">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cSi-4G-kZR" customClass="BackgroundView" customModule="Doughnut" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="527" height="246"/>
                                 <subviews>
                                     <tabView drawsBackground="NO" type="noTabsNoBorder" initialItem="sin-fC-FYC" translatesAutoresizingMaskIntoConstraints="NO" id="Wnj-pM-HrH">
@@ -462,6 +462,7 @@ Gw
                         <outlet property="authorInputView" destination="HDO-1j-cqG" id="6Ee-Ln-MKZ"/>
                         <outlet property="authorLabelView" destination="oUH-Ad-v0q" id="R8e-uj-gdl"/>
                         <outlet property="autoDownloadCheckView" destination="Yvw-MU-tbI" id="4io-ii-eXy"/>
+                        <outlet property="backgroundView" destination="cSi-4G-kZR" id="pw4-kh-gV3"/>
                         <outlet property="capacityLabelView" destination="ejU-az-kIL" id="VLR-Vm-dnk"/>
                         <outlet property="copyrightInputView" destination="4Zy-61-Lj6" id="Zet-ik-Xj6"/>
                         <outlet property="copyrightLabelView" destination="mu8-0l-rfr" id="nLu-Da-qi9"/>
