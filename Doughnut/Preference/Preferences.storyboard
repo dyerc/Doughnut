@@ -188,20 +188,24 @@
                                     <binding destination="S6J-dJ-Xz8" name="value" keyPath="values.showDockBadge" id="NbF-3E-Y99"/>
                                 </connections>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GSM-Mc-ofi">
-                                <rect key="frame" x="215" y="46" width="261" height="25"/>
-                                <popUpButtonCell key="cell" type="push" title="Rounded" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="gvr-LP-eQs" id="bPr-R7-VOm">
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GSM-Mc-ofi">
+                                <rect key="frame" x="220" y="48" width="261" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="gvr-LP-eQs" id="bPr-R7-VOm">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="vcO-r8-oxE">
                                         <items>
-                                            <menuItem title="Rounded" state="on" image="PrefAppIcon/Icon_Catalina" id="gvr-LP-eQs">
+                                            <menuItem title="Default" state="on" image="PrefAppIcon/Icon_Catalina" id="gvr-LP-eQs">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem title="Square" image="PrefAppIcon/Icon_Big_Sur" tag="1" id="SFZ-Hl-RJ2">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                         </items>
+                                        <connections>
+                                            <outlet property="delegate" destination="eoZ-8V-Te0" id="A9o-bE-90O"/>
+                                        </connections>
                                     </menu>
                                 </popUpButtonCell>
                                 <connections>
@@ -227,6 +231,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="appIconPopupButton" destination="GSM-Mc-ofi" id="K2J-s4-r6w"/>
                         <outlet property="view" destination="PcR-69-Pzw" id="CsQ-lf-pAS"/>
                     </connections>
                 </viewController>

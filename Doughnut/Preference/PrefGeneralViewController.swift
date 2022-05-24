@@ -20,7 +20,7 @@ import Cocoa
 
 import MASPreferences
 
-final class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
+final class PrefGeneralViewController: NSViewController, MASPreferencesViewController, NSMenuDelegate {
 
   static func instantiate() -> PrefGeneralViewController {
     let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
@@ -46,11 +46,38 @@ final class PrefGeneralViewController: NSViewController, MASPreferencesViewContr
     }
   }
 
-  override func viewDidAppear() {
-    super.viewDidAppear()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.updateAppIconMenuImage()
   }
 
   @objc var hasResizableWidth: Bool = false
   @objc var hasResizableHeight: Bool = false
+
+  @IBOutlet weak var appIconPopupButton: NSPopUpButton!
+
+  private func updateAppIconMenuImage() {
+    /* App Icon Style
+        ◯ Default
+        ▢ Square
+     */
+    guard let firstMenuItem = appIconPopupButton.menu?.items.first else { return }
+
+    let isBigSurStyleIconSelected =
+      Preference.integer(for: Preference.Key.appIconStyle) == Preference.AppIconStyle.bigSur.rawValue
+
+    firstMenuItem.image = isBigSurStyleIconSelected
+      ? NSImage(named: "PrefAppIcon/Icon_Catalina")
+      : NSWorkspace.shared.icon(forFile: Bundle.main.bundlePath)
+          .downSampled(dimension: 16, scale: 2)
+  }
+
+  // MARK: - NSMenuDelegate
+
+  func menuNeedsUpdate(_ menu: NSMenu) {
+    if menu == appIconPopupButton.menu {
+      updateAppIconMenuImage()
+    }
+  }
 
 }
