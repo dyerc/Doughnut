@@ -135,13 +135,12 @@ class PlayerView: NSView, PlayerDelegate {
     addSubview(playedRemainingLbl)
 
     wantsLayer = true
-    let backgroundColor = DoughnutApp.darkMode() ? NSColor.white.withAlphaComponent(0.04)
-                                                 : NSColor.black.withAlphaComponent(0.04)
+    updateBackgroundColor()
+
     var cornerRadius: CGFloat = 4
     if #available(macOS 11.0, *) {
       cornerRadius = 6
     }
-    layer?.backgroundColor = backgroundColor.cgColor
     layer?.cornerRadius = cornerRadius
   }
 
@@ -160,6 +159,16 @@ class PlayerView: NSView, PlayerDelegate {
     playedDurationLbl.frame = NSRect(x: PlayerView.controlX(forwardBtn) + 2, y: baseline + 6, width: 50, height: 14)
     seekSlider.frame = NSRect(x: PlayerView.controlX(playedDurationLbl) + 4, y: baseline + 4, width: 200, height: 18)
     playedRemainingLbl.frame = NSRect(x: PlayerView.controlX(seekSlider) + 4, y: baseline + 6, width: 50, height: 14)
+  }
+
+  override func viewDidChangeEffectiveAppearance() {
+    updateBackgroundColor()
+  }
+
+  private func updateBackgroundColor() {
+    let backgroundColor = NSApp.effectiveAppearance.isDarkMode ? NSColor.white.withAlphaComponent(0.04)
+                                                               : NSColor.black.withAlphaComponent(0.04)
+    layer?.backgroundColor = backgroundColor.cgColor
   }
 
   func formatTime(total: Int) -> String {
@@ -210,6 +219,8 @@ class PlayerView: NSView, PlayerDelegate {
     seekSlider.doubleValue = position
     seekSlider.streamedValue = player.buffered
   }
+
+  // MARK: - Actions
 
   @objc func seek(_ sender: Any) {
     let event = NSApplication.shared.currentEvent

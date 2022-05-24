@@ -1,0 +1,108 @@
+/*
+ * Doughnut Podcast Client
+ * Copyright (C) 2017 - 2022 Chris Dyer
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+:root {
+  --text-primary: #777777;
+  --text-link: #fa469b;
+  --background-primary: #ffffff;
+  --border-primary: #d8d8d8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #eeeeee;
+    --text-link: #f558a2;
+    --background-primary: #484445;
+    --border-primary: #ababab;
+  }
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: -apple-system, Helvetica, sans-serif;
+  line-height: 1.5;
+  background: var(--background-primary);
+  margin: 0 20px 20px 20px;
+  color: var(--text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--border-primary);
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer; /* force the hand cursor for links even without href */
+}
+
+ol,
+ul {
+  padding-left: 2rem;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dd {
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+}

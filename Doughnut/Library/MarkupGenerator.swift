@@ -19,54 +19,28 @@
 import Foundation
 
 class MarkupGenerator {
-  static var styles: String {
-    get {
-      var optional = ""
 
-      if (DoughnutApp.darkMode()) {
-        optional += """
-        body { background-color: #484445; }
-        hr { border-top: #000000; }
-        p { color: #EEEEEE; }
-        """
-      }
-
-      return """
-      * { margin: 0; padding: 0; }
-      body {
-        font-family: -apple-system, Helvetica, sans-serif;
-        font-size: 12px;
-        line-height: 19px;
-      }
-
-      p {
-        color: #777777;
-        margin: 10px 0;
-      }
-
-      hr {
-        display: block;
-        height: 1px;
-        border: 0;
-        border-top: 1px solid #EEEEEE;
-        margin: 5px 0;
-        padding: 0;
-      }
-
-      img {
-        max-width: 100%;
-      }
-
-      \(optional)
-      """
+  static var styles: String = {
+    guard
+      let styleSheetPath = Bundle.main.path(forResource: "detail", ofType: "css"),
+      let styleSheet = try? String(contentsOf: URL(fileURLWithPath: styleSheetPath), encoding: .utf8)
+    else {
+      fatalError("Failed to load the default style sheet.")
     }
-  }
+    return styleSheet
+  }()
 
   static func template(_ yield: String) -> String {
     return """
     <html>
       <head>
         <style>\(styles)</style>
+        <script src="detail.js"></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function(event) {
+            processDetailPage();
+          });
+        </script>
       </head>
       <body>
         \(yield)
@@ -83,7 +57,6 @@ class MarkupGenerator {
     return template("""
       <hr />
       <p>\(podcast.description ?? "")</p>
-      <hr />
     """)
   }
 
@@ -91,7 +64,6 @@ class MarkupGenerator {
     return template("""
       <hr />
       <p>\(episode.description ?? "")</p>
-      <hr />
     """)
   }
 }
