@@ -18,14 +18,14 @@
 
 import Cocoa
 
-final class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldDelegate, DownloadManagerDelegate {
+final class WindowController: NSWindowController, NSTextFieldDelegate, DownloadManagerDelegate {
 
   @IBOutlet weak var filterEpisodesToolbarItem: NSToolbarItem!
   @IBOutlet weak var playerView: NSToolbarItem!
   @IBOutlet weak var searchInputView: NSTextField!
 
   var viewController: ViewController? {
-    return window?.contentViewController as? ViewController
+    return contentViewController as? ViewController
   }
 
   var subscribeViewController: SubscribeViewController {
@@ -118,6 +118,18 @@ final class WindowController: NSWindowController, NSWindowDelegate, NSTextFieldD
 //    }
 
     //self.downloadsViewController?.downloadFinished()
+  }
+
+}
+
+extension WindowController: NSWindowDelegate {
+
+  func windowDidEnterFullScreen(_ notification: Notification) {
+    viewController?.updateWindowTitleVisibility()
+  }
+
+  func windowDidExitFullScreen(_ notification: Notification) {
+    viewController?.updateWindowTitleVisibility()
   }
 
   func windowDidResignKey(_ notification: Notification) {

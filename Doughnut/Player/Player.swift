@@ -278,7 +278,7 @@ final class Player: NSObject {
     guard let av = avPlayer else { return }
 
     let currentTime = CMTimeGetSeconds(av.currentTime())
-    let skipDuration = seconds ?? Preference.double(for: Preference.Key.skipForwardDuration)
+    let skipDuration = seconds ?? Preference.double(for: Preference.Key.skipBackDuration)
     var targetTime = currentTime - skipDuration
 
     if targetTime < 0 {

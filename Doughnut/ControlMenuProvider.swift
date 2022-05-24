@@ -110,7 +110,7 @@ final class ControlMenuProvider {
     }
 
     if !isForDockMenu {
-      // Seperator
+      // Separator
       menuItems.append(.separator())
 
       // Volume Up

@@ -92,7 +92,13 @@ class Library: NSObject {
 
   func connect() -> Bool {
     do {
-      dbQueue = try DatabaseQueue(path: databaseFile().path)
+      var configuration = Configuration()
+      if Preference.bool(for: Preference.Key.debugSQLTraceEnabled) {
+        configuration.prepareDatabase { db in
+          db.trace { print($0) }
+        }
+      }
+      dbQueue = try DatabaseQueue(path: databaseFile().path, configuration: configuration)
 
       if let dbQueue = dbQueue {
         try LibraryMigrations.migrate(db: dbQueue)
