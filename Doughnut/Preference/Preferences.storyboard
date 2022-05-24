@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -119,11 +119,11 @@
             <objects>
                 <viewController storyboardIdentifier="PrefGeneralViewController" showSeguePresentationStyle="single" id="eoZ-8V-Te0" customClass="PrefGeneralViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="PcR-69-Pzw">
-                        <rect key="frame" x="0.0" y="0.0" width="620" height="124"/>
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="150"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bgc-a3-JKi">
-                                <rect key="frame" x="48" y="87" width="156" height="16"/>
+                                <rect key="frame" x="48" y="113" width="156" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Check for New Episodes:" id="9W0-lG-slR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -131,9 +131,9 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OrJ-V8-xVo">
-                                <rect key="frame" x="215" y="80" width="261" height="25"/>
+                                <rect key="frame" x="215" y="106" width="261" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="254" id="qdb-4l-4Eu"/>
+                                    <constraint firstAttribute="width" constant="254" id="woj-u7-jk9"/>
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Every 15 minutes" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="15" imageScaling="proportionallyDown" inset="2" selectedItem="qpW-wK-UaC" id="iWW-SZ-Fua">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -163,7 +163,7 @@
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cUa-0X-uyd">
-                                <rect key="frame" x="108" y="53" width="96" height="16"/>
+                                <rect key="frame" x="108" y="79" width="96" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="App Icon Style:" id="RED-YY-nxd">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -171,7 +171,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lNU-LA-elY">
-                                <rect key="frame" x="110" y="20" width="94" height="16"/>
+                                <rect key="frame" x="110" y="45" width="94" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Miscellaneous:" id="4pJ-4Z-3Kz">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -179,7 +179,7 @@
                                 </textFieldCell>
                             </textField>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="X7b-uP-CQb">
-                                <rect key="frame" x="216" y="19" width="266" height="18"/>
+                                <rect key="frame" x="216" y="44" width="266" height="18"/>
                                 <buttonCell key="cell" type="check" title="Display unplayed episode count in dock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="L7g-5A-Adh">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -188,9 +188,8 @@
                                     <binding destination="S6J-dJ-Xz8" name="value" keyPath="values.showDockBadge" id="NbF-3E-Y99"/>
                                 </connections>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GSM-Mc-ofi">
-                                <rect key="frame" x="220" y="48" width="261" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GSM-Mc-ofi">
+                                <rect key="frame" x="215" y="72" width="261" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="gvr-LP-eQs" id="bPr-R7-VOm">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -212,22 +211,34 @@
                                     <binding destination="S6J-dJ-Xz8" name="selectedTag" keyPath="values.appIconStyle" id="fac-sw-aIS"/>
                                 </connections>
                             </popUpButton>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="tS9-tj-49u">
+                                <rect key="frame" x="216" y="19" width="147" height="18"/>
+                                <buttonCell key="cell" type="check" title="Enable debug menu" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Rjm-tR-IUJ">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="dqJ-V2-9Ru" name="value" keyPath="values.debugMenuEnabled" id="WOq-t1-MCG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="OrJ-V8-xVo" firstAttribute="leading" secondItem="PcR-69-Pzw" secondAttribute="leading" constant="218" id="0ST-b6-d6B"/>
-                            <constraint firstItem="lNU-LA-elY" firstAttribute="trailing" secondItem="cUa-0X-uyd" secondAttribute="trailing" id="6ZD-PE-jTS"/>
-                            <constraint firstItem="OrJ-V8-xVo" firstAttribute="top" secondItem="PcR-69-Pzw" secondAttribute="top" constant="20" symbolic="YES" id="C5r-fW-tGv"/>
-                            <constraint firstItem="GSM-Mc-ofi" firstAttribute="leading" secondItem="OrJ-V8-xVo" secondAttribute="leading" id="ECP-lP-6Nh"/>
-                            <constraint firstItem="Bgc-a3-JKi" firstAttribute="firstBaseline" secondItem="OrJ-V8-xVo" secondAttribute="firstBaseline" id="Ejc-8q-nFb"/>
-                            <constraint firstItem="lNU-LA-elY" firstAttribute="firstBaseline" secondItem="X7b-uP-CQb" secondAttribute="firstBaseline" id="H2b-3E-Dm6"/>
-                            <constraint firstItem="cUa-0X-uyd" firstAttribute="firstBaseline" secondItem="GSM-Mc-ofi" secondAttribute="firstBaseline" id="KKa-nN-3AB"/>
-                            <constraint firstItem="OrJ-V8-xVo" firstAttribute="leading" secondItem="Bgc-a3-JKi" secondAttribute="trailing" constant="16" id="KeK-SS-oMZ"/>
-                            <constraint firstItem="GSM-Mc-ofi" firstAttribute="width" secondItem="OrJ-V8-xVo" secondAttribute="width" id="OsD-a7-lK0"/>
-                            <constraint firstItem="GSM-Mc-ofi" firstAttribute="top" secondItem="OrJ-V8-xVo" secondAttribute="bottom" constant="14" id="TL3-Dd-LNd"/>
-                            <constraint firstItem="cUa-0X-uyd" firstAttribute="trailing" secondItem="Bgc-a3-JKi" secondAttribute="trailing" id="ZF2-Gn-ho5"/>
-                            <constraint firstItem="X7b-uP-CQb" firstAttribute="leading" secondItem="GSM-Mc-ofi" secondAttribute="leading" id="flS-qk-ZiT"/>
-                            <constraint firstItem="X7b-uP-CQb" firstAttribute="top" secondItem="GSM-Mc-ofi" secondAttribute="bottom" constant="14" id="ppe-yh-ZEZ"/>
-                            <constraint firstAttribute="bottom" secondItem="X7b-uP-CQb" secondAttribute="bottom" constant="20" symbolic="YES" id="x6U-pX-EeD"/>
+                            <constraint firstItem="OrJ-V8-xVo" firstAttribute="leading" secondItem="Bgc-a3-JKi" secondAttribute="trailing" constant="16" id="1wT-xX-17C"/>
+                            <constraint firstItem="lNU-LA-elY" firstAttribute="baseline" secondItem="X7b-uP-CQb" secondAttribute="baseline" id="A4h-3u-XU7"/>
+                            <constraint firstItem="OrJ-V8-xVo" firstAttribute="top" secondItem="PcR-69-Pzw" secondAttribute="top" constant="20" symbolic="YES" id="Bgn-Nh-and"/>
+                            <constraint firstAttribute="bottom" secondItem="tS9-tj-49u" secondAttribute="bottom" constant="20" symbolic="YES" id="K1G-8R-vmT"/>
+                            <constraint firstItem="GSM-Mc-ofi" firstAttribute="top" secondItem="OrJ-V8-xVo" secondAttribute="bottom" constant="13" id="KjE-Oj-bhP"/>
+                            <constraint firstItem="X7b-uP-CQb" firstAttribute="leading" secondItem="tS9-tj-49u" secondAttribute="leading" id="KjE-uU-ulx"/>
+                            <constraint firstItem="Bgc-a3-JKi" firstAttribute="baseline" secondItem="OrJ-V8-xVo" secondAttribute="baseline" id="LRc-D5-URG"/>
+                            <constraint firstItem="tS9-tj-49u" firstAttribute="top" secondItem="X7b-uP-CQb" secondAttribute="bottom" constant="9" id="Sgu-PA-c5y"/>
+                            <constraint firstItem="cUa-0X-uyd" firstAttribute="trailing" secondItem="lNU-LA-elY" secondAttribute="trailing" id="VAT-bb-otR"/>
+                            <constraint firstItem="cUa-0X-uyd" firstAttribute="top" secondItem="Bgc-a3-JKi" secondAttribute="bottom" constant="18" id="XWv-tD-rk3"/>
+                            <constraint firstItem="GSM-Mc-ofi" firstAttribute="leading" secondItem="X7b-uP-CQb" secondAttribute="leading" id="YmP-80-y11"/>
+                            <constraint firstItem="Bgc-a3-JKi" firstAttribute="leading" secondItem="PcR-69-Pzw" secondAttribute="leading" constant="50" id="b9s-0H-4pf"/>
+                            <constraint firstItem="OrJ-V8-xVo" firstAttribute="trailing" secondItem="GSM-Mc-ofi" secondAttribute="trailing" id="eRO-uR-ymR"/>
+                            <constraint firstItem="OrJ-V8-xVo" firstAttribute="leading" secondItem="GSM-Mc-ofi" secondAttribute="leading" id="fxa-L0-8v4"/>
+                            <constraint firstItem="Bgc-a3-JKi" firstAttribute="trailing" secondItem="cUa-0X-uyd" secondAttribute="trailing" id="qa0-hh-OrM"/>
+                            <constraint firstItem="GSM-Mc-ofi" firstAttribute="baseline" secondItem="cUa-0X-uyd" secondAttribute="firstBaseline" id="t4f-fI-zVz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -237,8 +248,9 @@
                 </viewController>
                 <customObject id="hcm-qb-2SJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="S6J-dJ-Xz8"/>
+                <userDefaultsController id="dqJ-V2-9Ru"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="-4"/>
+            <point key="canvasLocation" x="-475" y="9"/>
         </scene>
         <!--Pref Playback View Controller-->
         <scene sceneID="XaY-V2-mys">

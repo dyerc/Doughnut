@@ -57,9 +57,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     // Register NSMenuDelegate for all main menu items
     NSApp.mainMenu?.items.forEach { item in
       if item.identifier == .doughnutMainMenuDebug {
-#if !DEBUG
         item.isHidden = !Preference.bool(for: .debugMenuEnabled)
-#endif
       }
       item.submenu?.delegate = self
     }
@@ -67,6 +65,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
 
     UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.appIconStyle.rawValue, options: [], context: nil)
+    UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.debugMenuEnabled.rawValue, options: [], context: nil)
 
     /*do {
       try Player.audioOutputDevices()
@@ -102,6 +101,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     switch keyPath {
     case Preference.Key.appIconStyle.rawValue?:
       updateAppIcon(canRemoveCustomIcon: true)
+    case Preference.Key.debugMenuEnabled.rawValue?:
+      NSApp.mainMenu?.items.forEach { item in
+        if item.identifier == .doughnutMainMenuDebug {
+          item.isHidden = !Preference.bool(for: .debugMenuEnabled)
+        }
+      }
     default:
       return
     }

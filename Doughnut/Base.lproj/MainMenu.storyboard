@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -443,9 +443,9 @@ CA
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Debug" id="Hwi-3h-UUh">
+                            <menuItem title="Debug" identifier="NSDoughnutMainMenuDebug" id="Hwi-3h-UUh">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Debug" identifier="NSDoughnutMainMenuDebug" id="G8T-am-4h4">
+                                <menu key="submenu" title="Debug" id="G8T-am-4h4">
                                     <items>
                                         <menuItem title="Trace SQL Statements" id="3HW-XB-yuZ">
                                             <modifierMask key="keyEquivalentModifierMask"/>

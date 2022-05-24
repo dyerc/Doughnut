@@ -51,7 +51,7 @@ class Preference {
     static let skipBackDuration = Key("skipBackDuration")
     static let replayAfterPause = Key("replayAfterPause")
 
-    // Debuging
+    // Debugging
     static let debugMenuEnabled = Key("debugMenuEnabled")
     static let debugSQLTraceEnabled = Key("debugSQLTraceEnabled")
     static let debugDeveloperExtrasEnabled = Key("debugDeveloperExtrasEnabled")
