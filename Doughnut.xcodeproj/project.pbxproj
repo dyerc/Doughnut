@@ -50,7 +50,6 @@
 		83235C072009473500BC356F /* PrefPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83235BFA200945D900BC356F /* PrefPlaybackViewController.swift */; };
 		83235C0D2009502D00BC356F /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83235BF7200945D900BC356F /* Preferences.storyboard */; };
 		832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A04331F76EBDC00C92D25 /* WindowController.swift */; };
-		832FF90B1F8D60430065E593 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FF90A1F8D60430065E593 /* DownloadManager.swift */; };
 		8335D48C1F856E120060D8D8 /* ValidFeedx3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8335D48B1F856E120060D8D8 /* ValidFeedx3.xml */; };
 		8335D48D1F8571150060D8D8 /* enclosure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 83D4CA5B1F7C3848002EDC36 /* enclosure.mp3 */; };
 		8335F3AF1F90B5F700722DBC /* LibrarySpyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8335F3AE1F90B5F700722DBC /* LibrarySpyDelegate.swift */; };
@@ -68,7 +67,6 @@
 		837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837068121F7BBD63007FE973 /* EpisodeCellView.swift */; };
 		8379899B1F81616C00234577 /* SeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379899A1F81616C00234577 /* SeekSlider.swift */; };
 		837D52BE1F8E622200C17514 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BD1F8E622200C17514 /* TasksViewController.swift */; };
-		837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D52BF1F8E683200C17514 /* DownloadCellView.swift */; };
 		838257CE1F759F6F00DB4FD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */; };
 		838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838257CF1F759F6F00DB4FD1 /* ViewController.swift */; };
 		838257D21F759F6F00DB4FD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 838257D11F759F6F00DB4FD1 /* Assets.xcassets */; };
@@ -159,7 +157,6 @@
 		83235BFA200945D900BC356F /* PrefPlaybackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefPlaybackViewController.swift; sourceTree = "<group>"; };
 		832A04331F76EBDC00C92D25 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Doughnut-Bridging-Header.h"; sourceTree = "<group>"; };
-		832FF90A1F8D60430065E593 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		8335D48B1F856E120060D8D8 /* ValidFeedx3.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ValidFeedx3.xml; sourceTree = "<group>"; };
 		8335F3AE1F90B5F700722DBC /* LibrarySpyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySpyDelegate.swift; sourceTree = "<group>"; };
 		8335F3B01F90B63F00722DBC /* LibraryTestsWithSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTestsWithSubscription.swift; sourceTree = "<group>"; };
@@ -176,7 +173,6 @@
 		837068121F7BBD63007FE973 /* EpisodeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCellView.swift; sourceTree = "<group>"; };
 		8379899A1F81616C00234577 /* SeekSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekSlider.swift; sourceTree = "<group>"; };
 		837D52BD1F8E622200C17514 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
-		837D52BF1F8E683200C17514 /* DownloadCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCellView.swift; sourceTree = "<group>"; };
 		838257CA1F759F6F00DB4FD1 /* Doughnut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doughnut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		838257CD1F759F6F00DB4FD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		838257CF1F759F6F00DB4FD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -349,7 +345,6 @@
 				837068121F7BBD63007FE973 /* EpisodeCellView.swift */,
 				83D9710B1F812E910091822A /* PlayerView.swift */,
 				8379899A1F81616C00234577 /* SeekSlider.swift */,
-				837D52BF1F8E683200C17514 /* DownloadCellView.swift */,
 				834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */,
 				839DBDA61FEEEA81007610EF /* BackgroundView.swift */,
 				6B9C30BA27B5708300D462BE /* BaseTableView.swift */,
@@ -529,7 +524,6 @@
 				8341B83A1F7BEB0500B50A5D /* Migrations.swift */,
 				83659AB71F7D8A0300E09833 /* Podcast.swift */,
 				83D59CF61F7ED15C00F25A66 /* Episode.swift */,
-				832FF90A1F8D60430065E593 /* DownloadManager.swift */,
 				83DB16DB1F93E34B0062B266 /* Utils.swift */,
 				834CC1AF1F95076F00A98DE9 /* MarkupGenerator.swift */,
 				83E95A5D1FFBCA3C00C6AABF /* Storage.swift */,
@@ -882,7 +876,6 @@
 				6B0233BD27B2CA6500500E28 /* ControlMenuProvider.swift in Sources */,
 				83D9710A1F812B270091822A /* Player.swift in Sources */,
 				6BA21C57279D74D400CD3672 /* CrashReportViewController.swift in Sources */,
-				837D52C01F8E683200C17514 /* DownloadCellView.swift in Sources */,
 				83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */,
 				83504DD61FFC377700375BA0 /* EpisodeDownloadTask.swift in Sources */,
 				83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */,
@@ -900,7 +893,6 @@
 				8379899B1F81616C00234577 /* SeekSlider.swift in Sources */,
 				6B36624627CFB339008E1CA5 /* NSImage+Extensions.swift in Sources */,
 				837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */,
-				832FF90B1F8D60430065E593 /* DownloadManager.swift in Sources */,
 				83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */,
 				6BC6396427A68E2100535897 /* CMTime+Extensions.swift in Sources */,
 				83D59CF71F7ED15C00F25A66 /* Episode.swift in Sources */,

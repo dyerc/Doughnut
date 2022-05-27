@@ -61,10 +61,6 @@ class Task: NSObject {
   }
 }
 
-// let task = DownloadTask(episode, porcast)
-// task.success =
-// Library.global.queue.push(task)
-
 protocol TaskQueueViewDelegate {
   func taskPushed(task: Task)
   func taskFinished(task: Task)

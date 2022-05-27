@@ -18,7 +18,7 @@
 
 import Cocoa
 
-final class WindowController: NSWindowController, NSTextFieldDelegate, DownloadManagerDelegate {
+final class WindowController: NSWindowController, NSTextFieldDelegate {
 
   @IBOutlet weak var filterEpisodesToolbarItem: NSToolbarItem!
   @IBOutlet weak var playerView: NSToolbarItem!
@@ -54,8 +54,6 @@ final class WindowController: NSWindowController, NSTextFieldDelegate, DownloadM
     )
 
     searchInputView.delegate = self
-
-    Library.global.downloadManager.delegate = self
   }
 
   // Subscribed to Search input changes
@@ -105,19 +103,6 @@ final class WindowController: NSWindowController, NSTextFieldDelegate, DownloadM
     popover.behavior = .transient
     popover.contentViewController = downloadsViewController
     popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)*/
-  }
-
-  func downloadStarted() {
-    //downloadsButton.view?.isHidden = false
-    //self.downloadsViewController?.downloadStarted()
-  }
-
-  func downloadFinished() {
-//    if Library.global.downloadManager.queueCount < 1 {
-//      downloadsButton.view?.isHidden = true
-//    }
-
-    //self.downloadsViewController?.downloadFinished()
   }
 
 }
