@@ -8,7 +8,7 @@ target 'Doughnut' do
   # Pods for Doughnut
   pod 'GRDB.swift', '5.17.0'
   pod 'FeedKit', '9.1.2'
-  pod 'MASPreferences', :git => 'https://github.com/shpakovski/MASPreferences.git', :commit => '135869c'
+  pod 'MASPreferences', '1.4.1'
   pod 'Sparkle', '1.27.1'
   pod 'PLCrashReporter', '1.10.1'
 end
