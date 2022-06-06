@@ -13,6 +13,7 @@
 		6B0233BD27B2CA6500500E28 /* ControlMenuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */; };
 		6B0605C52788627D00A8A91E /* NSMenu+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */; };
 		6B193AA427A286B800DB1379 /* ModalSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B193AA327A286B800DB1379 /* ModalSheetSegue.swift */; };
+		6B1D4AF9284B5AFA009CF566 /* PrefAdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1D4AF8284B5AFA009CF566 /* PrefAdvancedViewController.swift */; };
 		6B23829B28029A410015FFBD /* detail.css in Resources */ = {isa = PBXBuildFile; fileRef = 6B23829A28029A410015FFBD /* detail.css */; };
 		6B36624627CFB339008E1CA5 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36624527CFB339008E1CA5 /* NSImage+Extensions.swift */; };
 		6B3A75F8278F44F500F25578 /* NSView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */; };
@@ -118,6 +119,7 @@
 		6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlMenuProvider.swift; sourceTree = "<group>"; };
 		6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+Extensions.swift"; sourceTree = "<group>"; };
 		6B193AA327A286B800DB1379 /* ModalSheetSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSheetSegue.swift; sourceTree = "<group>"; };
+		6B1D4AF8284B5AFA009CF566 /* PrefAdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefAdvancedViewController.swift; sourceTree = "<group>"; };
 		6B23829A28029A410015FFBD /* detail.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = detail.css; sourceTree = "<group>"; };
 		6B36624527CFB339008E1CA5 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
 		6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extensions.swift"; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				83235BF8200945D900BC356F /* PrefGeneralViewController.swift */,
 				83235BF9200945D900BC356F /* PrefLibraryViewController.swift */,
 				83235BFA200945D900BC356F /* PrefPlaybackViewController.swift */,
+				6B1D4AF8284B5AFA009CF566 /* PrefAdvancedViewController.swift */,
 			);
 			path = Preference;
 			sourceTree = "<group>";
@@ -888,6 +891,7 @@
 				83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */,
 				832A04341F76EBDC00C92D25 /* WindowController.swift in Sources */,
 				6B94DF4C278968F500BCB149 /* NSTableView+Extensions.swift in Sources */,
+				6B1D4AF9284B5AFA009CF566 /* PrefAdvancedViewController.swift in Sources */,
 				6BB11F9C27A29B6E009CBAF8 /* CrashReportWindowController.swift in Sources */,
 				830B159B1F7B97910086C121 /* PodcastCellView.swift in Sources */,
 				83235C072009473500BC356F /* PrefPlaybackViewController.swift in Sources */,
