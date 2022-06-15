@@ -12,6 +12,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Doughnut" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <userDefaultsController representsSharedInstance="YES" id="dOE-xK-V6A"/>
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
@@ -442,14 +443,27 @@ CA
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Debug" id="Hwi-3h-UUh">
+                            <menuItem title="Debug" identifier="NSDoughnutMainMenuDebug" id="Hwi-3h-UUh">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Debug" identifier="NSDoughnutMainMenuDebug" id="G8T-am-4h4">
+                                <menu key="submenu" title="Debug" id="G8T-am-4h4">
                                     <items>
-                                        <menuItem title="Force Crash" id="3HW-XB-yuZ">
+                                        <menuItem title="Trace SQL Statements" id="3HW-XB-yuZ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="forceCrash:" target="Voe-Tx-rLC" id="Rdo-Iq-6uW"/>
+                                                <binding destination="dOE-xK-V6A" name="value" keyPath="values.debugSQLTraceEnabled" id="Y2P-t1-fz4"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Enable Web Inspector" id="26r-0f-rrH">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <binding destination="dOE-xK-V6A" name="value" keyPath="values.debugDeveloperExtrasEnabled" id="R0f-hy-c6G"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="cjW-a5-bYx"/>
+                                        <menuItem title="Force Crash" id="cI0-ZS-mxe">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="forceCrash:" target="Voe-Tx-rLC" id="Q5T-7z-67J"/>
                                             </connections>
                                         </menuItem>
                                     </items>

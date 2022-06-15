@@ -36,8 +36,18 @@ extension NSImage {
     guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else {
       return nil
     }
-    return NSImage(cgImage: downsampledImage, size: .zero)
+
+    let imageSize = CGSize(
+      width: CGFloat(downsampledImage.width) / scale,
+      height: CGFloat(downsampledImage.height) / scale
+    )
+    return NSImage(cgImage: downsampledImage, size: imageSize)
   }
+
+  func downSampled(dimension: CGFloat, scale: CGFloat) -> NSImage? {
+    guard let data = tiffRepresentation else { return nil }
+    return Self.downSampledImage(withData: data, dimension: dimension, scale: scale)
+ }
 
   func jpegRepresentation(withCompressionFactor compressionFactor: CGFloat = 1.0) -> Data? {
     guard let cgImage = cgImage(forProposedRect: nil, context: nil, hints: nil) else {

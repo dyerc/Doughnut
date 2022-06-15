@@ -54,6 +54,8 @@ class ShowEpisodeViewController: NSViewController {
   @IBOutlet weak var podcastLabelView: NSTextField!
   @IBOutlet weak var authorLabelView: NSTextField!
 
+  @IBOutlet weak var backgroundView: BackgroundView!
+
   @IBOutlet weak var titleInputView: NSTextField!
   @IBOutlet weak var guidInputView: NSTextField!
   @IBOutlet weak var descriptionInputView: NSTextField!
@@ -69,6 +71,8 @@ class ShowEpisodeViewController: NSViewController {
     artworkView.layer?.borderColor = NSColor(calibratedWhite: 0.8, alpha: 1.0).cgColor
     artworkView.layer?.cornerRadius = 3.0
     artworkView.layer?.masksToBounds = true
+
+    backgroundView.isMovableByViewBackground = false
   }
 
   var episode: Episode? {

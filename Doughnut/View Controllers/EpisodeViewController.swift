@@ -251,8 +251,12 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
       }
     }
 
-    let selectionIndices = episodeIdToIndexMap.compactMap { pair -> Int? in
+    var selectionIndices = episodeIdToIndexMap.compactMap { pair -> Int? in
       return selectedEpisodeIdsBeforeReload.contains(pair.key) ? pair.value : nil
+    }
+
+    if selectionIndices.isEmpty, !episodeIdsAfterReload.isEmpty {
+      selectionIndices = [0]
     }
 
     tableView.selectRowIndexes(IndexSet(selectionIndices), byExtendingSelection: false)
@@ -264,13 +268,16 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
   }
 
   func selectPodcast(_ selectedPodcast: Podcast?) {
-    podcast = selectedPodcast
+    let shouldClearSelection = (selectedPodcast?.id != podcast?.id)
 
+    podcast = selectedPodcast
     reloadEpisodes()
 
-    // Clear selection and reset table state
-    tableView.selectRowIndexes(IndexSet(), byExtendingSelection: false)
-    tableView.scrollRowToVisible(0)
+    if shouldClearSelection {
+      // Clear selection and reset table state
+      tableView.selectRowIndexes(IndexSet(), byExtendingSelection: false)
+      tableView.scrollRowToVisible(0)
+    }
   }
 
   @objc func podcastUpdated(_ notification: NSNotification) {

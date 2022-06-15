@@ -59,13 +59,13 @@ extension WindowController: NSToolbarDelegate {
       ]
     } else {
       return [
-       .doughnutRefresh,
-       .doughnutNewPodcast,
+        .doughnutRefresh,
+        .doughnutNewPodcast,
         .flexibleSpace,
-       .doughnutPlayerView,
-       .doughnutTaskManager,
+        .doughnutPlayerView,
+        .doughnutTaskManager,
         .flexibleSpace,
-       .doughnutSearch,
+        .doughnutSearch,
       ]
     }
   }

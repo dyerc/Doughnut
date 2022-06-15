@@ -52,7 +52,12 @@ final class PodcastModelTests: ModelTestCase {
       XCTAssertEqual(podcast.language, "en-us")
       XCTAssertEqual(podcast.copyright, "© 2017 Chris Dyer")
       XCTAssertEqual(podcast.pubDate, dateFormatter.date(from: "2017-09-25T23:30:07Z"))
-      XCTAssertEqual(podcast.image?.size, CGSize(width: 100, height: 100))
+
+      let imageRepresentation = podcast.image?.representations.first
+      XCTAssertNotNil(imageRepresentation)
+      XCTAssertEqual(imageRepresentation?.pixelsHigh, 100)
+      XCTAssertEqual(imageRepresentation?.pixelsWide, 100)
+
       XCTAssertEqual(podcast.imageUrl, "http://localhost/image.jpg")
       XCTAssertEqual(podcast.lastParsed, dateFormatter.date(from: "2022-03-20T08:09:09Z"))
       XCTAssertEqual(podcast.subscribedAt, dateFormatter.date(from: "2022-03-20T08:09:09Z"))

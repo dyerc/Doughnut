@@ -52,12 +52,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
+    updateAppIcon(canRemoveCustomIcon: false)
+
     // Register NSMenuDelegate for all main menu items
     NSApp.mainMenu?.items.forEach { item in
       if item.identifier == .doughnutMainMenuDebug {
-#if !DEBUG
         item.isHidden = !Preference.bool(for: .debugMenuEnabled)
-#endif
       }
       item.submenu?.delegate = self
     }
@@ -65,6 +65,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     UserDefaults.standard.register(defaults: Preference.defaultPreference)
 
     UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.appIconStyle.rawValue, options: [], context: nil)
+    UserDefaults.standard.addObserver(self, forKeyPath: Preference.Key.debugMenuEnabled.rawValue, options: [], context: nil)
 
     /*do {
       try Player.audioOutputDevices()
@@ -99,7 +100,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
     switch keyPath {
     case Preference.Key.appIconStyle.rawValue?:
-      updateAppIcon()
+      updateAppIcon(canRemoveCustomIcon: true)
+    case Preference.Key.debugMenuEnabled.rawValue?:
+      NSApp.mainMenu?.items.forEach { item in
+        if item.identifier == .doughnutMainMenuDebug {
+          item.isHidden = !Preference.bool(for: .debugMenuEnabled)
+        }
+      }
     default:
       return
     }
@@ -112,7 +119,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     mainWindowController?.showWindow(self)
   }
 
-  private func updateAppIcon() {
+  private func updateAppIcon(canRemoveCustomIcon: Bool) {
     guard let iconStyle = Preference.AppIconStyle(rawValue: Preference.integer(for: Preference.Key.appIconStyle)) else {
       return
     }
@@ -121,10 +128,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     switch iconStyle {
     case .catalina:
-      // Setting applicationIconImage to nil won't clear the icon if custom icon is set
-      let iconImage = NSImage(named: "AppIcon")
-      NSApp.applicationIconImage = iconImage
-      NSWorkspace.shared.setIcon(nil, forFile: bundlePath, options: [])
+      if canRemoveCustomIcon {
+        // Setting applicationIconImage to nil won't clear the icon if custom icon is set
+        let iconImage = NSImage(named: "AppIcon")
+        NSApp.applicationIconImage = iconImage
+        NSWorkspace.shared.setIcon(nil, forFile: bundlePath, options: [])
+      }
     case .bigSur:
       let iconImage = NSImage(named: "AppIcon_Big_Sur")
       NSApp.applicationIconImage = iconImage

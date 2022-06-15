@@ -16,17 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Cocoa
+// strip styles that may harm readability
+function stripStyles() {
+  // remove style tags
+  document.body
+    .querySelectorAll("style, link[rel=stylesheet]")
+    .forEach((element) => element.remove());
+  // strip inline styles
+  document.body
+    .querySelectorAll("[style]")
+    .forEach((element) => element.removeAttribute("style"));
+}
 
-@objc(DoughnutApp)
-class DoughnutApp: NSApplication {
-
-  override init() {
-    super.init()
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
+function processDetailPage() {
+  stripStyles();
 }

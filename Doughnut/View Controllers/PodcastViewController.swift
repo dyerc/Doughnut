@@ -49,7 +49,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
   @IBOutlet var sortView: NSView!
   @IBOutlet var moreButton: NSButton!
   @IBOutlet var searchField: PodcastSearchField!
-  @IBOutlet var filterBarSeperator: NSBox!
+  @IBOutlet var filterBarSeparator: NSBox!
 
   private var sortingMenuProvider: SortingMenuProvider {
     return SortingMenuProvider.Shared.podcasts
@@ -130,12 +130,12 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     )
 
     tableView.sizeLastColumnToFit()
-    updateFilterBarSeperatorVisibility()
+    updateFilterBarSeparatorVisibility()
   }
 
   override func viewDidLayout() {
     super.viewDidLayout()
-    updateFilterBarSeperatorVisibility()
+    updateFilterBarSeparatorVisibility()
   }
 
   func reloadPodcasts() {
@@ -186,9 +186,8 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       case .unplayed:
         return a.unplayedCount < b.unplayedCount
       case .recentEpisodes:
-        guard let aD = a.latestEpisode?.pubDate else { return false }
-        guard let bD = b.latestEpisode?.pubDate else { return true }
-
+        guard let aD = a.latestEpisode?.pubDate else { return true }
+        guard let bD = b.latestEpisode?.pubDate else { return false }
         return aD < bD
       }
     }
@@ -233,8 +232,12 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       }
     }
 
-    let selectionIndices = podcastIdToIndexMap.compactMap { pair -> Int? in
+    var selectionIndices = podcastIdToIndexMap.compactMap { pair -> Int? in
       return selectedPodcastIdsBeforeReload.contains(pair.key) ? pair.value : nil
+    }
+
+    if selectionIndices.isEmpty, !podcastIdsAfterReload.isEmpty {
+      selectionIndices = [0]
     }
 
     tableView.selectRowIndexes(IndexSet(selectionIndices), byExtendingSelection: false)
@@ -244,12 +247,12 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       viewController.selectPodcast(podcast: nil)
     }
 
-    updateFilterBarSeperatorVisibility()
+    updateFilterBarSeparatorVisibility()
   }
 
-  private func updateFilterBarSeperatorVisibility() {
-    let hidesSeperator = tableView.frame.height <= tableScrollView.contentView.frame.height
-    filterBarSeperator.isHidden = hidesSeperator
+  private func updateFilterBarSeparatorVisibility() {
+    let hidesSeparator = tableView.frame.height <= tableScrollView.contentView.frame.height
+    filterBarSeparator.isHidden = hidesSeparator
   }
 
   func numberOfRows(in tableView: NSTableView) -> Int {

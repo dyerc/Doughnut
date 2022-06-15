@@ -18,15 +18,40 @@
 
 import Cocoa
 
-@objc(DoughnutApp)
-class DoughnutApp: NSApplication {
+final class BackgroundView: NSView {
 
-  override init() {
-    super.init()
+  var backagroundColor = NSColor(named: "ViewBackground")! {
+    didSet {
+      needsDisplay = true
+    }
+  }
+
+  var isMovableByViewBackground: Bool?
+
+  override init(frame frameRect: NSRect) {
+    super.init(frame: frameRect)
+    commonInit()
   }
 
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    super.init(coder: coder)
+    commonInit()
+  }
+
+  private func commonInit() {
+    wantsLayer = true
+  }
+
+  override var wantsUpdateLayer: Bool {
+    return true
+  }
+
+  override func updateLayer() {
+    layer?.backgroundColor = backagroundColor.cgColor
+  }
+
+  override var mouseDownCanMoveWindow: Bool {
+    return isMovableByViewBackground ?? super.mouseDownCanMoveWindow
   }
 
 }

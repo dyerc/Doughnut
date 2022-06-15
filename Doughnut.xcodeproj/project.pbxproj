@@ -12,6 +12,7 @@
 		6B0233BD27B2CA6500500E28 /* ControlMenuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */; };
 		6B0605C52788627D00A8A91E /* NSMenu+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */; };
 		6B193AA427A286B800DB1379 /* ModalSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B193AA327A286B800DB1379 /* ModalSheetSegue.swift */; };
+		6B23829B28029A410015FFBD /* detail.css in Resources */ = {isa = PBXBuildFile; fileRef = 6B23829A28029A410015FFBD /* detail.css */; };
 		6B36624627CFB339008E1CA5 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36624527CFB339008E1CA5 /* NSImage+Extensions.swift */; };
 		6B3A75F8278F44F500F25578 /* NSView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */; };
 		6B571B4827E74C31008E1534 /* ModelTests.dnl in Resources */ = {isa = PBXBuildFile; fileRef = 6B571B4727E74C31008E1534 /* ModelTests.dnl */; };
@@ -24,6 +25,7 @@
 		6B96F45D27CE6F10001941BA /* PodcastSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96F45C27CE6F10001941BA /* PodcastSearchField.swift */; };
 		6B9C30BB27B5708300D462BE /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C30BA27B5708300D462BE /* BaseTableView.swift */; };
 		6B9E154727C9EA5F00C919D5 /* AppIcon_Big_Sur.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6B9E154627C9EA5F00C919D5 /* AppIcon_Big_Sur.icns */; };
+		6BA06BCC27F07F8D006F9390 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 6BA06BCB27F07F8D006F9390 /* dsa_pub.pem */; };
 		6BA21C4F279D690700CD3672 /* WindowController+Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */; };
 		6BA21C57279D74D400CD3672 /* CrashReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA21C56279D74D400CD3672 /* CrashReportViewController.swift */; };
 		6BA21C59279D74DC00CD3672 /* CrashReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BA21C58279D74DC00CD3672 /* CrashReport.storyboard */; };
@@ -33,6 +35,8 @@
 		6BC6395F27A6800500535897 /* Player+RemoteCommandCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */; };
 		6BC6396127A687E400535897 /* Player+NowPlayingInfoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC6396027A687E400535897 /* Player+NowPlayingInfoCenter.swift */; };
 		6BC6396427A68E2100535897 /* CMTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC6396327A68E2100535897 /* CMTime+Extensions.swift */; };
+		6BEB75D3280281FA00097BA6 /* NSAppearance+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB75D2280281FA00097BA6 /* NSAppearance+Extensions.swift */; };
+		6BF0902F283684B20035F99C /* detail.js in Resources */ = {isa = PBXBuildFile; fileRef = 6BADDDCB28367809006D763D /* detail.js */; };
 		6BF126D12780727100D840A4 /* EpisodeInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */; };
 		6BF126D32780742600D840A4 /* PodcastInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF126D22780742600D840A4 /* PodcastInfo.storyboard */; };
 		830A34031FF0447D00C13B1D /* PodcastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A34021FF0447D00C13B1D /* PodcastUITests.swift */; };
@@ -72,7 +76,7 @@
 		8389709C20069D720094795D /* SortingMenuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389709B20069D720094795D /* SortingMenuProvider.swift */; };
 		839A32811FF9831B002D2023 /* ShowEpisodeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */; };
 		839DBDA41FEEE658007610EF /* ShowPodcastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */; };
-		839DBDA71FEEEA81007610EF /* WhiteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */; };
+		839DBDA71FEEEA81007610EF /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DBDA61FEEEA81007610EF /* BackgroundView.swift */; };
 		83A0D4831FFC2FA400A376FD /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0D4821FFC2FA400A376FD /* TaskQueue.swift */; };
 		83BA22E31F994EA6006BF58A /* DoughnutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA22E21F994EA6006BF58A /* DoughnutApp.swift */; };
 		83D4CA561F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4CA551F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift */; };
@@ -114,6 +118,7 @@
 		6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlMenuProvider.swift; sourceTree = "<group>"; };
 		6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+Extensions.swift"; sourceTree = "<group>"; };
 		6B193AA327A286B800DB1379 /* ModalSheetSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSheetSegue.swift; sourceTree = "<group>"; };
+		6B23829A28029A410015FFBD /* detail.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = detail.css; sourceTree = "<group>"; };
 		6B36624527CFB339008E1CA5 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
 		6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extensions.swift"; sourceTree = "<group>"; };
 		6B3ACC982773555700CF1EF1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -128,16 +133,19 @@
 		6B96F45C27CE6F10001941BA /* PodcastSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSearchField.swift; sourceTree = "<group>"; };
 		6B9C30BA27B5708300D462BE /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		6B9E154627C9EA5F00C919D5 /* AppIcon_Big_Sur.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon_Big_Sur.icns; sourceTree = "<group>"; };
+		6BA06BCB27F07F8D006F9390 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Toolbar.swift"; sourceTree = "<group>"; };
 		6BA21C56279D74D400CD3672 /* CrashReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportViewController.swift; sourceTree = "<group>"; };
 		6BA21C58279D74DC00CD3672 /* CrashReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CrashReport.storyboard; sourceTree = "<group>"; };
 		6BA21C5B279D7A1100CD3672 /* CrashReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReporter.swift; sourceTree = "<group>"; };
+		6BADDDCB28367809006D763D /* detail.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = detail.js; sourceTree = "<group>"; };
 		6BB11F9B27A29B6E009CBAF8 /* CrashReportWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportWindowController.swift; sourceTree = "<group>"; };
 		6BB5771D278602B400DFF99F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainMenu.storyboard; sourceTree = "<group>"; };
 		6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+RemoteCommandCenter.swift"; sourceTree = "<group>"; };
 		6BC6396027A687E400535897 /* Player+NowPlayingInfoCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+NowPlayingInfoCenter.swift"; sourceTree = "<group>"; };
 		6BC6396327A68E2100535897 /* CMTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Extensions.swift"; sourceTree = "<group>"; };
 		6BE29F62CFF7B122D5C39998 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BEB75D2280281FA00097BA6 /* NSAppearance+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAppearance+Extensions.swift"; sourceTree = "<group>"; };
 		6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EpisodeInfo.storyboard; sourceTree = "<group>"; };
 		6BF126D22780742600D840A4 /* PodcastInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PodcastInfo.storyboard; sourceTree = "<group>"; };
 		830A34021FF0447D00C13B1D /* PodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastUITests.swift; sourceTree = "<group>"; };
@@ -184,7 +192,7 @@
 		8389709B20069D720094795D /* SortingMenuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingMenuProvider.swift; sourceTree = "<group>"; };
 		839A32801FF9831B002D2023 /* ShowEpisodeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEpisodeWindow.swift; sourceTree = "<group>"; };
 		839DBDA31FEEE658007610EF /* ShowPodcastWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPodcastWindow.swift; sourceTree = "<group>"; };
-		839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBackgroundView.swift; sourceTree = "<group>"; };
+		839DBDA61FEEEA81007610EF /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		83A0D4821FFC2FA400A376FD /* TaskQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQueue.swift; sourceTree = "<group>"; };
 		83BA22E21F994EA6006BF58A /* DoughnutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutApp.swift; sourceTree = "<group>"; };
 		83D4CA551F7C36DE002EDC36 /* LibraryTestsWithoutSubscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTestsWithoutSubscriptions.swift; sourceTree = "<group>"; };
@@ -259,6 +267,7 @@
 		6B0605C32788626F00A8A91E /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
+				6BEB75D2280281FA00097BA6 /* NSAppearance+Extensions.swift */,
 				6B5B39A227A448BF00234D82 /* NSButton+Extensions.swift */,
 				6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */,
 				6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */,
@@ -285,6 +294,17 @@
 				6B571B4627E74C31008E1534 /* Fixtures */,
 			);
 			path = ModelTests;
+			sourceTree = "<group>";
+		};
+		6BA06BCE27F07F9E006F9390 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */,
+				838257D61F759F6F00DB4FD1 /* Info.plist */,
+				838257D71F759F6F00DB4FD1 /* Doughnut-Debug.entitlements */,
+				6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		6BB11F9A27A292A3009CBAF8 /* CrashReport */ = {
@@ -331,7 +351,7 @@
 				8379899A1F81616C00234577 /* SeekSlider.swift */,
 				837D52BF1F8E683200C17514 /* DownloadCellView.swift */,
 				834CC1B21F950ABA00A98DE9 /* DetailWebView.swift */,
-				839DBDA61FEEEA81007610EF /* WhiteBackgroundView.swift */,
+				839DBDA61FEEEA81007610EF /* BackgroundView.swift */,
 				6B9C30BA27B5708300D462BE /* BaseTableView.swift */,
 				834998B51FF3E3F00035EF87 /* TaskManagerView.swift */,
 				830E99BC1FF50DD000B728BE /* ActivityIndicator.swift */,
@@ -367,6 +387,10 @@
 			isa = PBXGroup;
 			children = (
 				6B9E154627C9EA5F00C919D5 /* AppIcon_Big_Sur.icns */,
+				831EBAD927CC11E700F212B4 /* Credits.rtf */,
+				6BA06BCB27F07F8D006F9390 /* dsa_pub.pem */,
+				6B23829A28029A410015FFBD /* detail.css */,
+				6BADDDCB28367809006D763D /* detail.js */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -432,15 +456,11 @@
 				6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */,
 				832A04331F76EBDC00C92D25 /* WindowController.swift */,
 				6BA21C4E279D690700CD3672 /* WindowController+Toolbar.swift */,
-				832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */,
 				838257D11F759F6F00DB4FD1 /* Assets.xcassets */,
-				831EBAD927CC11E700F212B4 /* Credits.rtf */,
 				838257D31F759F6F00DB4FD1 /* Main.storyboard */,
 				6BB5771C278602B400DFF99F /* MainMenu.storyboard */,
-				838257D61F759F6F00DB4FD1 /* Info.plist */,
-				838257D71F759F6F00DB4FD1 /* Doughnut-Debug.entitlements */,
-				6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */,
 				83235C0A200947F200BC356F /* Resources */,
+				6BA06BCE27F07F9E006F9390 /* Supporting Files */,
 			);
 			path = Doughnut;
 			sourceTree = "<group>";
@@ -539,7 +559,7 @@
 				5D28D79F73E4F029E1F5DBB6 /* [CP] Check Pods Manifest.lock */,
 				838257C61F759F6F00DB4FD1 /* Sources */,
 				838257C71F759F6F00DB4FD1 /* Frameworks */,
-				83D454AE200BFDD50078CA3D /* Bump Build Number */,
+				83D454AE200BFDD50078CA3D /* Bump Bundle Version For Release Builds */,
 				838257C81F759F6F00DB4FD1 /* Resources */,
 				6B339CC727C9F1BD00181204 /* Remove Custom Bundle Icon */,
 				4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */,
@@ -603,7 +623,7 @@
 					Resources,
 				);
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1320;
 				ORGANIZATIONNAME = "Chris Dyer";
 				TargetAttributes = {
 					838257C91F759F6F00DB4FD1 = {
@@ -663,9 +683,12 @@
 				6BA21C59279D74DC00CD3672 /* CrashReport.storyboard in Resources */,
 				6BF126D12780727100D840A4 /* EpisodeInfo.storyboard in Resources */,
 				831EBADA27CC120000F212B4 /* Credits.rtf in Resources */,
+				6BA06BCC27F07F8D006F9390 /* dsa_pub.pem in Resources */,
 				6B9E154727C9EA5F00C919D5 /* AppIcon_Big_Sur.icns in Resources */,
+				6BF0902F283684B20035F99C /* detail.js in Resources */,
 				838257D51F759F6F00DB4FD1 /* Main.storyboard in Resources */,
 				83235C0D2009502D00BC356F /* Preferences.storyboard in Resources */,
+				6B23829B28029A410015FFBD /* detail.css in Resources */,
 				6BF126D32780742600D840A4 /* PodcastInfo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -799,19 +822,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		83D454AE200BFDD50078CA3D /* Bump Build Number */ = {
+		83D454AE200BFDD50078CA3D /* Bump Bundle Version For Release Builds */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Bump Build Number";
+			name = "Bump Bundle Version For Release Builds";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n  buildNumber=$(date +%s)\n  /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
 		};
 		A3819D0A54A45BF19A833E00 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -838,6 +861,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BEB75D3280281FA00097BA6 /* NSAppearance+Extensions.swift in Sources */,
 				8343426A1F802C1400913C0B /* EpisodeFilterViewController.swift in Sources */,
 				6B193AA427A286B800DB1379 /* ModalSheetSegue.swift in Sources */,
 				839A32811FF9831B002D2023 /* ShowEpisodeWindow.swift in Sources */,
@@ -869,7 +893,7 @@
 				83235C072009473500BC356F /* PrefPlaybackViewController.swift in Sources */,
 				830E99BD1FF50DD000B728BE /* ActivityIndicator.swift in Sources */,
 				6B3A75F8278F44F500F25578 /* NSView+Extensions.swift in Sources */,
-				839DBDA71FEEEA81007610EF /* WhiteBackgroundView.swift in Sources */,
+				839DBDA71FEEEA81007610EF /* BackgroundView.swift in Sources */,
 				838257D01F759F6F00DB4FD1 /* ViewController.swift in Sources */,
 				83659AB81F7D8A0300E09833 /* Podcast.swift in Sources */,
 				837D52BE1F8E622200C17514 /* TasksViewController.swift in Sources */,
@@ -1021,8 +1045,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Debug.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 70;
+				CURRENT_PROJECT_VERSION = 1653422958;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1033,7 +1058,7 @@
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "2.0.0-rc.1";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DTEST";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
@@ -1205,14 +1230,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Debug.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 70;
+				CURRENT_PROJECT_VERSION = 1653422958;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "2.0.0-rc.1";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1228,14 +1254,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Release.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 70;
+				CURRENT_PROJECT_VERSION = 1653422958;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "2.0.0-rc.1";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";

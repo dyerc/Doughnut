@@ -16,23 +16,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Cocoa
+import AppKit
 
-class WhiteBackgroundView: NSView {
-  override func draw(_ dirtyRect: NSRect) {
-    // Fill bottom of window with white bg
-    let rect = NSRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
+extension NSAppearance {
 
-    if (DoughnutApp.darkMode()) {
-      NSColor(calibratedRed: 0.220, green: 0.204, blue: 0.208, alpha: 1.00).setFill()
-    } else {
-      NSColor.white.setFill()
+  var isDarkMode: Bool {
+    return bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
+  }
+
+  // https://stackoverflow.com/questions/52504872/updating-for-dark-mode-nscolor-ignores-appearance-changes
+  static func withAppAppearance<T>(_ closure: () throws -> T) rethrows -> T {
+    let previousAppearance = NSAppearance.current
+    NSAppearance.current = NSApp.effectiveAppearance
+    defer {
+      NSAppearance.current = previousAppearance
     }
-
-    rect.fill()
+    return try closure()
   }
 
-  override var mouseDownCanMoveWindow: Bool {
-    return false
-  }
 }
