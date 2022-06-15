@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2AB07BF789841271ED80EA26 /* Pods_DoughnutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25D4796441E8F7922FCDAF9A /* Pods_DoughnutUITests.framework */; };
-		4125A143137AD05319B3DEFC /* Pods_Doughnut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */; };
 		5E0288D17E6858855545E02E /* Pods_DoughnutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE29F62CFF7B122D5C39998 /* Pods_DoughnutTests.framework */; };
 		6B0233BD27B2CA6500500E28 /* ControlMenuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */; };
 		6B0605C52788627D00A8A91E /* NSMenu+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */; };
@@ -17,10 +16,10 @@
 		6B3A75F8278F44F500F25578 /* NSView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */; };
 		6B571B4827E74C31008E1534 /* ModelTests.dnl in Resources */ = {isa = PBXBuildFile; fileRef = 6B571B4727E74C31008E1534 /* ModelTests.dnl */; };
 		6B571B4A27E7597A008E1534 /* EpisodeModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B571B4927E7597A008E1534 /* EpisodeModelTests.swift */; };
+		6B5B39A327A448BF00234D82 /* NSButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B39A227A448BF00234D82 /* NSButton+Extensions.swift */; };
 		6B816BE927E71A1A00EED863 /* ModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B816BE827E71A1A00EED863 /* ModelTestCase.swift */; };
 		6B816BEB27E71A2700EED863 /* DoughnutTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B816BEA27E71A2700EED863 /* DoughnutTestCase.swift */; };
 		6B816BED27E71A6700EED863 /* PodcastModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B816BEC27E71A6700EED863 /* PodcastModelTests.swift */; };
-		6B5B39A327A448BF00234D82 /* NSButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B39A227A448BF00234D82 /* NSButton+Extensions.swift */; };
 		6B94DF4C278968F500BCB149 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */; };
 		6B96F45D27CE6F10001941BA /* PodcastSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96F45C27CE6F10001941BA /* PodcastSearchField.swift */; };
 		6B9C30BB27B5708300D462BE /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C30BA27B5708300D462BE /* BaseTableView.swift */; };
@@ -87,6 +86,7 @@
 		83DB16E11F93FB460062B266 /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB16E01F93FB460062B266 /* SubscribeViewController.swift */; };
 		83E95A5E1FFBCA3C00C6AABF /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E95A5D1FFBCA3C00C6AABF /* Storage.swift */; };
 		83FB4EB81F7BD9A1001CD842 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB4EB71F7BD9A1001CD842 /* Library.swift */; };
+		C9B7506F2859B80000B91717 /* Pods_Doughnut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,7 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4125A143137AD05319B3DEFC /* Pods_Doughnut.framework in Frameworks */,
+				C9B7506F2859B80000B91717 /* Pods_Doughnut.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

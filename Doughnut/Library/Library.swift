@@ -213,8 +213,8 @@ class Library: NSObject {
     }
 
     if podcast.autoDownload {
-      if let latestEpisode = episodes.first {
-        latestEpisode.download()
+      for episode in episodes {
+        episode.download()
       }
     }
 
@@ -380,6 +380,16 @@ class Library: NSObject {
       podcast.loading = true
       DispatchQueue.main.async {
         self.delegate?.libraryUpdatingPodcast(podcast: podcast)
+      }
+
+      // Remove the oldest downloaded episodes if there are more than 4
+      while podcast.downloadedEpisodes.count > 4 {
+        if let oldestEpisode = podcast.downloadedEpisodes.first {
+          oldestEpisode.moveToTrash()
+          oldestEpisode.downloaded = false
+          Library.global.save(episode: oldestEpisode)
+          podcast.downloadedEpisodes.remove(at: podcast.downloadedEpisodes.startIndex)
+        }
       }
 
       let newEpisodes = podcast.fetch()

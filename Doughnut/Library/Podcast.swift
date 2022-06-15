@@ -40,7 +40,7 @@ class Podcast: Record {
   var imageUrl: String?
   var lastParsed: Date?
   var subscribedAt: Date
-  var autoDownload: Bool = false
+  var autoDownload: Bool = true
   var reloadFrequency: Int = 0 // 0 is only manually reloaded
 
   private(set) var image: NSImage?
@@ -58,6 +58,8 @@ class Podcast: Record {
   }
 
   var episodes = [Episode]()
+
+  var downloadedEpisodes = [Episode]()
 
   var unplayedCount: Int {
     get {
@@ -172,12 +174,18 @@ class Podcast: Record {
   func loadEpisodes(db: Database) {
     do {
       episodes = try Episode.filter(Column("podcast_id") == self.id).fetchAll(db)
-
       for e in episodes {
         if e.podcastId == self.id {
           e.podcast = self
         }
       }
+      // Downloaded epsiodes, with most recent last in the list
+      downloadedEpisodes = episodes
+        .filter({ (episode) -> Bool in return episode.downloaded } )
+        .sorted(by: { (a, b) -> Bool in
+          guard let aD = a.pubDate else { return false }
+          guard let bD = b.pubDate else { return true }
+          return aD < bD})
     } catch let error as DatabaseError {
       Library.handleDatabaseError(error)
     } catch {}

@@ -87,7 +87,7 @@ class EpisodeDownloadTask: Task, URLSessionDownloadDelegate {
       episode.fileName = fileName
 
       Library.global.save(episode: episode)
-
+      podcast.downloadedEpisodes.append(episode)
       completion(true, episode)
 
     } catch {

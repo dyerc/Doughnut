@@ -171,26 +171,13 @@ class Preference {
   }
 
   static func libraryPath() -> URL {
-    if testEnv() {
-      let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Doughtnut_test")
-      try? FileManager.default.removeItem(at: url)
-      createLibraryIfNotExists(url)
+    if let url = Preference.url(for: Key.libraryPath) {
+      if url == defaultLibraryPath {
+        createLibraryIfNotExists(url)
+      }
       return url
     } else {
-      #if DEBUG
-        let url = Preference.userMusicPath().appendingPathComponent("Doughnut_dev")
-        createLibraryIfNotExists(url)
-        return url
-      #else
-        if let url = Preference.url(for: Key.libraryPath) {
-          if url == defaultLibraryPath {
-            createLibraryIfNotExists(url)
-          }
-          return url
-        } else {
-          return defaultLibraryPath
-        }
-      #endif
+      return defaultLibraryPath
     }
   }
 
