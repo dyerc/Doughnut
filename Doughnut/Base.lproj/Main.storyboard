@@ -421,7 +421,6 @@ Gw
                                                                 <outlet property="artwork" destination="WuW-3B-toC" id="Lus-7p-rwp"/>
                                                                 <outlet property="author" destination="AHY-Ts-qj2" id="YF2-bT-zJ3"/>
                                                                 <outlet property="episodeCount" destination="Pkl-Lr-qxa" id="A5q-iE-0c5"/>
-                                                                <outlet property="imageView" destination="WuW-3B-toC" id="qce-6g-Mlb"/>
                                                                 <outlet property="podcastUnplayedCount" destination="qSa-lt-Xvr" id="eZs-zW-Ttc"/>
                                                                 <outlet property="podcastUnplayedCountTrailingConstraint" destination="1o0-ea-oPQ" id="sIJ-Rk-cs4"/>
                                                                 <outlet property="title" destination="yFZ-qJ-tU0" id="WAu-w6-NGc"/>

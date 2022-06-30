@@ -267,9 +267,9 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     result.author.stringValue = podcast.author ?? ""
 
     if podcast.image != nil && podcast.image!.isValid {
-      result.imageView?.image = podcast.image
+      result.artwork.image = podcast.image
     } else {
-      result.imageView?.image = NSImage(named: "PodcastPlaceholder")
+      result.artwork.image = NSImage(named: "PodcastPlaceholder")
     }
 
     result.episodeCount.stringValue = "\(podcast.episodes.count) episodes"
