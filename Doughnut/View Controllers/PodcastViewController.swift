@@ -143,11 +143,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
     tableView.scrollRowToVisible(tableView.selectedRow)
   }
 
-  func reload(forPodcast podcast: Podcast) {
-    reload(forChangedPodcasts: [podcast])
-  }
-
-  private func reload(forChangedPodcasts changedPodcasts: [Podcast]?) {
+  func reload(forChangedPodcasts changedPodcasts: [Podcast]?) {
     let availableRowIndicesRange = tableView.availableRowIndicesRange
 
     let podcastIdsBeforeReload = podcasts.map { $0.id }
@@ -344,7 +340,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       }
 
       // Manually trigger a view reload to make update seem instant
-      viewController.libraryUpdatedPodcast(podcast: podcast)
+      viewController.libraryUpdatedPodcasts(podcasts: [podcast])
 
       // Commit changes to library
       Library.global.update(podcast: podcast)
@@ -360,7 +356,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       }
 
       // Manually trigger a view reload to make update seem instant
-      viewController.libraryUpdatedPodcast(podcast: podcast)
+      viewController.libraryUpdatedPodcasts(podcasts: [podcast])
 
       // Commit changes to library
       Library.global.update(podcast: podcast)

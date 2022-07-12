@@ -108,29 +108,37 @@ final class ViewController: NSSplitViewController, LibraryDelegate {
     updateWindowTitleAndDockIcon()
   }
 
-  func libraryUpdatingPodcast(podcast: Podcast) {
-    podcastViewController.reload(forPodcast: podcast)
+  func libraryUpdatingPodcasts(podcasts: [Podcast]) {
+    podcastViewController.reload(forChangedPodcasts: podcasts)
     updateWindowTitleAndDockIcon()
   }
 
-  func libraryUpdatedPodcast(podcast: Podcast) {
-    podcastViewController.reload(forPodcast: podcast)
+  func libraryUpdatedPodcasts(podcasts: [Podcast]) {
+    podcastViewController.reload(forChangedPodcasts: podcasts)
 
-    if episodeViewController.podcast?.id == podcast.id {
+    if podcasts.contains(where: { episodeViewController.podcast?.id == $0.id }) {
       episodeViewController.reloadEpisodes()
     }
 
     updateWindowTitleAndDockIcon()
   }
 
-  func libraryUpdatedEpisode(episode: Episode) {
-    if episodeViewController.podcast?.id == episode.podcastId {
-      episodeViewController.reload(forEpisode: episode)
+  func libraryUpdatedEpisodes(episodes: [Episode]) {
+    let currentEpisodes = episodes.filter {
+      episodeViewController.podcast?.id == $0.podcastId
     }
 
-    if let podcast = episode.podcast {
-      podcastViewController.reload(forPodcast: podcast)
+    episodeViewController.reload(forChangedEpisodes: currentEpisodes)
+
+    var podcasts = [Podcast]()
+
+    for episode in episodes {
+      if let podcast = episode.podcast, !podcasts.contains(where: { $0 === podcast }) {
+        podcasts.append(podcast)
+      }
     }
+
+    podcastViewController.reload(forChangedPodcasts: podcasts)
 
     updateWindowTitleAndDockIcon()
   }

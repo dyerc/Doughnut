@@ -160,10 +160,6 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
     tableView.scrollRowToVisible(tableView.selectedRow)
   }
 
-  func reload(forEpisode episode: Episode) {
-    reload(forChangedEpisodes: [episode])
-  }
-
   func reload(forChangedEpisodes changedEpisodes: [Episode]?) {
     let availableRowIndicesRange = tableView.availableRowIndicesRange
 

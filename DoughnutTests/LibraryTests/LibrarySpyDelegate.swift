@@ -34,18 +34,18 @@ class LibrarySpyDelegate: LibraryDelegate {
   }
 
   var updatedPodcastExpectation: XCTestExpectation?
-  var updatedPodcastResult: Podcast?
-  func libraryUpdatedPodcast(podcast: Podcast) {
+  var updatedPodcastResults = [Podcast]()
+  func libraryUpdatedPodcasts(podcasts: [Podcast]) {
     guard let expectation = updatedPodcastExpectation else { return }
-    updatedPodcastResult = podcast
+    updatedPodcastResults = podcasts
     expectation.fulfill()
   }
 
   var updatedEpisodeExpectation: XCTestExpectation?
-  var updatedEpisodeResult: Episode?
-  func libraryUpdatedEpisode(episode: Episode) {
+  var updatedEpisodeResults = [Episode]()
+  func libraryUpdatedEpisodes(episodes: [Episode]) {
     guard let expectation = updatedEpisodeExpectation else { return }
-    updatedEpisodeResult = episode
+    updatedEpisodeResults = episodes
     expectation.fulfill()
   }
 
@@ -57,7 +57,7 @@ class LibrarySpyDelegate: LibraryDelegate {
     expectation.fulfill()
   }
 
-  func libraryUpdatingPodcast(podcast: Podcast) {
+  func libraryUpdatingPodcasts(podcasts: [Podcast]) {
 
   }
 }
