@@ -322,7 +322,7 @@ class Podcast: Record {
 
   // Detect either an iTunes podcast or RSS feed and call completion with resulting podcast
   static func detect(url: String, completion: @escaping (_ result: Podcast?) -> Void) -> Bool {
-    if url.contains("itunes.apple.com") {
+    if url.contains("itunes.apple.com") || url.contains("podcasts.apple.com") {
       return Utils.iTunesFeedUrl(iTunesUrl: url, completion: { (feedUrl) in
         guard let feedUrl = URL(string: feedUrl ?? "") else {
           return
