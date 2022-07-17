@@ -407,6 +407,60 @@ class Library: NSObject {
     }
   }
 
+  func batchUpdateEpisodes(favourite: Bool, episodes: [Episode], completion: ((Result<[Episode], LibraryError>) -> Void)? = nil) {
+    dbQueue?.asyncWrite({ db in
+      let keys = episodes.compactMap { $0.id }
+      try Episode.filter(keys: keys)
+        .updateAll(db, Column("favourite").set(to: favourite))
+    }, completion: { _, result in
+      episodes.forEach {
+        $0.favourite = favourite
+      }
+
+      switch result {
+      case .success:
+        DispatchQueue.main.async {
+          self.delegate?.libraryUpdatedEpisodes(episodes: episodes)
+        }
+        completion?(.success(episodes))
+      case let .failure(error):
+        if let error = error as? DatabaseError {
+          Library.handleDatabaseError(error)
+          completion?(.failure(.databaseError(error)))
+        } else {
+          completion?(.failure(.unknown(error)))
+        }
+      }
+    })
+  }
+
+  func batchUpdateEpisodes(played: Bool, episodes: [Episode], completion: ((Result<[Episode], LibraryError>) -> Void)? = nil) {
+    dbQueue?.asyncWrite({ db in
+      let keys = episodes.compactMap { $0.id }
+      try Episode.filter(keys: keys)
+        .updateAll(db, Column("played").set(to: played))
+    }, completion: { _, result in
+      episodes.forEach {
+        $0.played = played
+      }
+
+      switch result {
+      case .success:
+        DispatchQueue.main.async {
+          self.delegate?.libraryUpdatedEpisodes(episodes: episodes)
+        }
+        completion?(.success(episodes))
+      case let .failure(error):
+        if let error = error as? DatabaseError {
+          Library.handleDatabaseError(error)
+          completion?(.failure(.databaseError(error)))
+        } else {
+          completion?(.failure(.unknown(error)))
+        }
+      }
+    })
+  }
+
   // Async episode save and event emission
   func save(episode: Episode, completion: ((Result<Episode, LibraryError>) -> Void)? = nil) {
     dbQueue?.asyncWrite({ db in

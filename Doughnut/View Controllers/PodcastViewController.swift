@@ -333,34 +333,14 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
 
   @IBAction func markAllAsPlayed(_ sender: Any) {
     let podcasts = activePodcastsForAction()
-
-    for podcast in podcasts {
-      for episode in podcast.episodes {
-        episode.played = true
-      }
-
-      // Manually trigger a view reload to make update seem instant
-      viewController.libraryUpdatedPodcasts(podcasts: [podcast])
-
-      // Commit changes to library
-      Library.global.update(podcast: podcast)
-    }
+    let episodes = podcasts.flatMap { $0.episodes }
+    Library.global.batchUpdateEpisodes(played: true, episodes: episodes)
   }
 
   @IBAction func markAllAsUnplayed(_ sender: Any) {
     let podcasts = activePodcastsForAction()
-
-    for podcast in podcasts {
-      for episode in podcast.episodes {
-        episode.played = false
-      }
-
-      // Manually trigger a view reload to make update seem instant
-      viewController.libraryUpdatedPodcasts(podcasts: [podcast])
-
-      // Commit changes to library
-      Library.global.update(podcast: podcast)
-    }
+    let episodes = podcasts.flatMap { $0.episodes }
+    Library.global.batchUpdateEpisodes(played: false, episodes: episodes)
   }
 
   @IBAction func copyPodcastURL(_ sender: Any) {
