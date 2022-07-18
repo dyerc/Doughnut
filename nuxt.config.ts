@@ -10,6 +10,7 @@ export default defineNuxtConfig({
       ]
     }
   },
+  target: "static",
   tailwindcss: {
     jit: true,
     exposeConfig: true
