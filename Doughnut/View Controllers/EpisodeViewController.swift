@@ -255,7 +255,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
       return selectedEpisodeIdsBeforeReload.contains(pair.key) ? pair.value : nil
     }
 
-    if selectionIndices.isEmpty, !episodeIdsAfterReload.isEmpty {
+    if !selectedEpisodeIdsBeforeReload.isEmpty, selectionIndices.isEmpty, !episodeIdsAfterReload.isEmpty {
       selectionIndices = [0]
     }
 
