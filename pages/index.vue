@@ -1,5 +1,8 @@
 <template>
   <div>
+    <Head>
+      <Title>Doughnut ~ Podcast App for macOS</Title>
+    </Head>
     <div class="md:h-screen w-full relative overflow-hidden intro-gradient">
       <div class="absolute top-0 left-0 right-0">
         <svg class="mx-auto" width="1309px" height="977px" viewBox="0 0 1309 977" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -96,16 +99,7 @@
   </div>
 </template>
 
-<script>
-export default {
-/*
-  Flexible library options
-  - Network based library or multiple libraries
-  - Favourite episodes
-  - Search
-  - Create custom podcasts without an RSS feed
-*/
-}
+<script setup>
 </script>
 
 <style>
