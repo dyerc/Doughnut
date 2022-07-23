@@ -30,20 +30,16 @@ final class PrefLibraryViewController: NSViewController, MASPreferencesViewContr
   @objc var viewIdentifier: String = "PrefLibraryViewController"
 
   @objc var toolbarItemImage: NSImage? {
-    get {
-      if #available(macOS 11.0, *) {
-        return NSImage(systemSymbolName: "square.stack", accessibilityDescription: nil)!
-      } else {
-        return NSImage(named: "PrefIcon/Library")!
-      }
+    if #available(macOS 11.0, *) {
+      return NSImage(systemSymbolName: "square.stack", accessibilityDescription: nil)!
+    } else {
+      return NSImage(named: "PrefIcon/Library")!
     }
   }
 
   @objc var toolbarItemLabel: String? {
-    get {
-      view.layoutSubtreeIfNeeded()
-      return "Library"
-    }
+    view.layoutSubtreeIfNeeded()
+    return "Library"
   }
 
   override func viewDidAppear() {

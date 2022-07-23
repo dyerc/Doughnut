@@ -76,9 +76,7 @@ final class EpisodeViewController: NSViewController, NSTableViewDelegate, NSTabl
   }
 
   var viewController: ViewController {
-    get {
-      return parent as! ViewController
-    }
+    return parent as! ViewController
   }
 
   override func viewDidLoad() {

@@ -46,44 +46,34 @@ class Podcast: Record {
   private(set) var image: NSImage?
 
   var manualReload: Bool {
-    get {
-      return reloadFrequency == -1
-    }
+    return reloadFrequency == -1
   }
 
   var defaultReload: Bool {
-    get {
-      return reloadFrequency == 0
-    }
+    return reloadFrequency == 0
   }
 
   var episodes = [Episode]()
 
   var unplayedCount: Int {
-    get {
-      return episodes.reduce(0) {
-        $0 + ($1.played == false ? 1 : 0)
-      }
+    return episodes.reduce(0) {
+      $0 + ($1.played == false ? 1 : 0)
     }
   }
 
   var favouriteCount: Int {
-    get {
-      return episodes.reduce(0) {
-        $0 + ($1.favourite ? 1 : 0)
-      }
+    return episodes.reduce(0) {
+      $0 + ($1.favourite ? 1 : 0)
     }
   }
 
   var latestEpisode: Episode? {
-    get {
-      return episodes.sorted(by: { (a, b) -> Bool in
-        guard let aD = a.pubDate else { return false }
-        guard let bD = b.pubDate else { return true }
+    return episodes.sorted(by: { (a, b) -> Bool in
+      guard let aD = a.pubDate else { return false }
+      guard let bD = b.pubDate else { return true }
 
-        return aD < bD
-      }).last
-    }
+      return aD < bD
+    }).last
   }
 
   var loading = false

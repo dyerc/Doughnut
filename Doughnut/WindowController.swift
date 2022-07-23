@@ -29,9 +29,7 @@ final class WindowController: NSWindowController, NSTextFieldDelegate {
   }
 
   var subscribeViewController: SubscribeViewController {
-    get {
-      return self.storyboard!.instantiateController(withIdentifier: "SubscribeViewController") as! SubscribeViewController
-    }
+    return self.storyboard!.instantiateController(withIdentifier: "SubscribeViewController") as! SubscribeViewController
   }
 
   override func windowDidLoad() {

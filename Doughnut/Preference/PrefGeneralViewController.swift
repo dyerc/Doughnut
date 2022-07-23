@@ -30,20 +30,16 @@ final class PrefGeneralViewController: NSViewController, MASPreferencesViewContr
   @objc var viewIdentifier: String = "PrefGeneralViewController"
 
   @objc var toolbarItemImage: NSImage? {
-    get {
-      if #available(macOS 11.0, *) {
-        return NSImage(systemSymbolName: "gearshape", accessibilityDescription: nil)!
-      } else {
-        return NSImage(named: NSImage.preferencesGeneralName)
-      }
+    if #available(macOS 11.0, *) {
+      return NSImage(systemSymbolName: "gearshape", accessibilityDescription: nil)!
+    } else {
+      return NSImage(named: NSImage.preferencesGeneralName)
     }
   }
 
   @objc var toolbarItemLabel: String? {
-    get {
-      view.layoutSubtreeIfNeeded()
-      return "General"
-    }
+    view.layoutSubtreeIfNeeded()
+    return "General"
   }
 
   override func viewDidLoad() {
