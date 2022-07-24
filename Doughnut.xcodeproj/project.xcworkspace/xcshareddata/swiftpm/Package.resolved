@@ -1,0 +1,50 @@
+{
+  "pins" : [
+    {
+      "identity" : "feedkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nmdias/FeedKit.git",
+      "state" : {
+        "revision" : "68493a33d862c33c9a9f67ec729b3b7df1b20ade",
+        "version" : "9.1.2"
+      }
+    },
+    {
+      "identity" : "grdb.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/groue/GRDB.swift",
+      "state" : {
+        "revision" : "d63392799928d60679b90fbec6a7ecfde358cdf1",
+        "version" : "5.17.0"
+      }
+    },
+    {
+      "identity" : "maspreferences",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/shpakovski/MASPreferences",
+      "state" : {
+        "revision" : "56bafeeabffa78a18620f006f74efbbcde3c45e2",
+        "version" : "1.4.1"
+      }
+    },
+    {
+      "identity" : "plcrashreporter",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/microsoft/plcrashreporter.git",
+      "state" : {
+        "revision" : "6b27393cad517c067dceea85fadf050e70c4ceaa",
+        "version" : "1.10.1"
+      }
+    },
+    {
+      "identity" : "sparkle",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sparkle-project/Sparkle",
+      "state" : {
+        "revision" : "7918c1c8fc68baa37917eeaa67286b077ad5e393",
+        "version" : "1.27.1"
+      }
+    }
+  ],
+  "version" : 2
+}

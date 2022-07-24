@@ -44,8 +44,7 @@ Previously Doughnut was built on top of Electron which worked ok, but using 200+
 ### Get the code
 
 ```
-$ git clone git@github.com:dyerc/Doughnut.git
-$ cd Doughnut
-$ pod install
-$ open Doughnut.xcworkspace
+git clone git@github.com:dyerc/Doughnut.git
+cd Doughnut
+open Doughnut.xcodeproj
 ```

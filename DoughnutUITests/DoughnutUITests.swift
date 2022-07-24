@@ -18,8 +18,6 @@
 
 import XCTest
 
-@testable import Doughnut
-
 class DoughnutUITests: XCTestCase {
   override func setUp() {
     super.setUp()
