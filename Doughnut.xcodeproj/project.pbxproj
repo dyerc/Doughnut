@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -712,6 +712,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		6B339CC727C9F1BD00181204 /* Remove Custom Bundle Icon */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -730,6 +731,7 @@
 		};
 		6B3ACC992773569D00CF1EF1 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -748,6 +750,7 @@
 		};
 		83D454AE200BFDD50078CA3D /* Bump Bundle Version For Release Builds */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
