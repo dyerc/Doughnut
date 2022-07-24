@@ -118,13 +118,18 @@
 		6B193AA327A286B800DB1379 /* ModalSheetSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSheetSegue.swift; sourceTree = "<group>"; };
 		6B1D4AF8284B5AFA009CF566 /* PrefAdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefAdvancedViewController.swift; sourceTree = "<group>"; };
 		6B23829A28029A410015FFBD /* detail.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = detail.css; sourceTree = "<group>"; };
+		6B35C4D7283E5EC700F30984 /* Doughnut-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Doughnut-Debug.xcconfig"; sourceTree = "<group>"; };
+		6B35C4D8283E5EC700F30984 /* DoughnutCodeSigning-AdHoc.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "DoughnutCodeSigning-AdHoc.xcconfig"; sourceTree = "<group>"; };
+		6B35C4D9283E5EC700F30984 /* Doughnut-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Doughnut-Release.xcconfig"; sourceTree = "<group>"; };
+		6B35C4DA283E5EC700F30984 /* Doughnut.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Doughnut.xcconfig; sourceTree = "<group>"; };
+		6B35C4DB283E5EC700F30984 /* DoughnutCodeSigning-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "DoughnutCodeSigning-Release.xcconfig"; sourceTree = "<group>"; };
 		6B36624527CFB339008E1CA5 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
 		6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extensions.swift"; sourceTree = "<group>"; };
 		6B3ACC982773555700CF1EF1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6B571B4727E74C31008E1534 /* ModelTests.dnl */ = {isa = PBXFileReference; lastKnownFileType = file; path = ModelTests.dnl; sourceTree = "<group>"; };
 		6B571B4927E7597A008E1534 /* EpisodeModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeModelTests.swift; sourceTree = "<group>"; };
 		6B5B39A227A448BF00234D82 /* NSButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Extensions.swift"; sourceTree = "<group>"; };
-		6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Release.entitlements"; sourceTree = "<group>"; };
+		6B730B732767A90900FB5F84 /* Doughnut.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Doughnut.entitlements; sourceTree = "<group>"; };
 		6B816BE827E71A1A00EED863 /* ModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTestCase.swift; sourceTree = "<group>"; };
 		6B816BEA27E71A2700EED863 /* DoughnutTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutTestCase.swift; sourceTree = "<group>"; };
 		6B816BEC27E71A6700EED863 /* PodcastModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastModelTests.swift; sourceTree = "<group>"; };
@@ -180,7 +185,7 @@
 		838257D11F759F6F00DB4FD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		838257D41F759F6F00DB4FD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		838257D61F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		838257D71F759F6F00DB4FD1 /* Doughnut-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Debug.entitlements"; sourceTree = "<group>"; };
+		838257D71F759F6F00DB4FD1 /* Doughnut-AdHoc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-AdHoc.entitlements"; sourceTree = "<group>"; };
 		838257DC1F759F6F00DB4FD1 /* DoughnutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoughnutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		838257E21F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		838257E71F759F6F00DB4FD1 /* DoughnutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoughnutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,6 +282,18 @@
 			name = OSLog;
 			sourceTree = "<group>";
 		};
+		6B35C4D6283E5EC700F30984 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				6B35C4D7283E5EC700F30984 /* Doughnut-Debug.xcconfig */,
+				6B35C4D9283E5EC700F30984 /* Doughnut-Release.xcconfig */,
+				6B35C4DA283E5EC700F30984 /* Doughnut.xcconfig */,
+				6B35C4D8283E5EC700F30984 /* DoughnutCodeSigning-AdHoc.xcconfig */,
+				6B35C4DB283E5EC700F30984 /* DoughnutCodeSigning-Release.xcconfig */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		6B571B4627E74C31008E1534 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,8 +318,8 @@
 			children = (
 				832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */,
 				838257D61F759F6F00DB4FD1 /* Info.plist */,
-				838257D71F759F6F00DB4FD1 /* Doughnut-Debug.entitlements */,
-				6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */,
+				838257D71F759F6F00DB4FD1 /* Doughnut-AdHoc.entitlements */,
+				6B730B732767A90900FB5F84 /* Doughnut.entitlements */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -405,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				6B3ACC982773555700CF1EF1 /* .swiftlint.yml */,
+				6B35C4D6283E5EC700F30984 /* Configs */,
 				838257CC1F759F6F00DB4FD1 /* Doughnut */,
 				838257DF1F759F6F00DB4FD1 /* DoughnutTests */,
 				838257EA1F759F6F00DB4FD1 /* DoughnutUITests */,
@@ -898,7 +916,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -958,10 +975,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -982,14 +997,12 @@
 		};
 		838257F11F759F6F00DB4FD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B35C4D7283E5EC700F30984 /* Doughnut-Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Debug.entitlements";
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1666452871;
-				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -998,7 +1011,6 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 2.0.1;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
@@ -1008,16 +1020,12 @@
 		};
 		838257F21F759F6F00DB4FD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B35C4D9283E5EC700F30984 /* Doughnut-Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Release.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1666452871;
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
-				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Doughnut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1026,10 +1034,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 2.0.1;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
