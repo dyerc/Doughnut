@@ -4,7 +4,7 @@
       <Title>Doughnut ~ Podcast App for macOS</Title>
     </Head>
     <div class="md:h-screen w-full relative overflow-hidden intro-gradient">
-      <div class="absolute top-0 left-0 right-0">
+      <div class="absolute bottom-0 left-0">
         <svg class="mx-auto" width="1309px" height="977px" viewBox="0 0 1309 977" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g transform="translate(0.000000, -46.000000)" fill="#F5589D">
@@ -18,9 +18,8 @@
                 </g>
             </g>
         </svg>
-
-        <img src="~/assets/icon_underlay.png" class="logo-underlay" width="578" alt="">
       </div>
+      <img src="~/assets/icon_underlay.png" class="logo-underlay" width="578" alt="">
 
       <div class="relative md:h-full pt-6 pb-16 overflow-hidden">
         <div class="container md:h-full flex flex-col">
@@ -30,12 +29,12 @@
             </a>
           </div>
 
-          <div class="flex-grow md:flex md:items-center md:justify-center">
+          <div class="mt-8 md:mt-0 flex-grow md:flex md:items-center md:justify-center">
             <div class="mb-8 flex flex-col justify-center md:mb-0 md:w-5/12">
               <h1 class="font-title font-bold text-pink-500 text-5xl mb-2">Doughnut</h1>
-              <p class="text-xl text-pink-muted">Uncluttered podcast listening app for Mac.</p>
+              <p class="text-lg md:text-xl text-pink-muted">Uncluttered podcast listening app for Mac.</p>
 
-              <div class="mt-6 mb-4 space-y-2 space-x-2 sm:space-x-0 md:flex md:flex-wrap md:items-center lg:space-x-6 lg:flex-nowrap">
+              <div class="mt-6 mb-4 space-y-2 md:flex md:flex-wrap md:items-center lg:space-x-6 lg:flex-nowrap">
                 <a href="https://github.com/dyerc/Doughnut" rel="noopener" target="_blank" class="primary-link">
                   <svg class="w-5 h-5" viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.355 14.603c0 .075-.088.135-.2.135-.126.012-.214-.048-.214-.135 0-.075.088-.135.2-.135.114-.01.214.05.214.135Zm-1.191-.168c-.027.075.05.16.164.183.1.038.215 0 .238-.075.023-.075-.05-.16-.165-.195-.1-.026-.21.012-.237.087Zm1.693-.064c-.111.026-.188.097-.176.184.011.075.11.123.226.097.11-.026.187-.097.176-.172-.012-.072-.115-.12-.226-.11ZM9.377 0C4.064 0 0 3.949 0 9.15a9.419 9.419 0 0 0 6.493 8.971c.49.086.663-.21.663-.454 0-.232-.012-1.515-.012-2.302 0 0-2.681.562-3.244-1.118 0 0-.437-1.091-1.065-1.372 0 0-.878-.59.061-.578 0 0 .954.075 1.479.968.839 1.447 2.244 1.03 2.792.783.088-.6.337-1.016.613-1.263-2.141-.233-4.302-.537-4.302-4.144 0-1.032.291-1.55.904-2.21-.1-.243-.425-1.248.1-2.546.8-.244 2.643 1.013 2.643 1.013a9.181 9.181 0 0 1 2.406-.319c.816 0 1.64.109 2.405.319 0 0 1.843-1.26 2.643-1.013.525 1.302.2 2.303.1 2.547.613.663.988 1.181.988 2.209 0 3.618-2.256 3.907-4.397 4.144.352.296.651.858.651 1.74 0 1.263-.012 2.827-.012 3.135 0 .244.177.54.663.454C16.402 16.869 19 13.31 19 9.15 19 3.949 14.69 0 9.377 0ZM3.723 12.935c-.05.037-.038.123.027.195.061.06.15.086.2.037.05-.037.038-.124-.027-.195-.062-.06-.15-.086-.2-.037Zm-.413-.304c-.027.049.011.109.088.146.061.038.138.026.164-.026.027-.049-.011-.109-.088-.146-.076-.023-.138-.012-.164.026Zm1.24 1.335c-.06.049-.037.161.05.232.089.087.2.098.25.038.05-.049.026-.161-.05-.233-.084-.086-.2-.097-.25-.037Zm-.436-.551c-.061.037-.061.135 0 .22.061.087.165.125.215.087.06-.049.06-.146 0-.232-.054-.087-.154-.124-.215-.075Z" fill="#FFF" fill-rule="nonzero"/>
