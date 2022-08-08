@@ -4,8 +4,8 @@
       <div id="screenshot-gallery" data-glide-el="track" class="glide__track">
         <ul class="glide__slides">
           <li v-for="(slide, i) of screenshots" :key="i" class="glide__slide">
-            <a :href="`../assets/${slide.asset}`" :data-pswp-width="slide.width" :data-pswp-height="slide.height">
-              <img :src="`../assets/${slide.asset}`" alt="" />
+            <a :href="`/screenshots/${slide.asset}`" :data-pswp-width="slide.width" :data-pswp-height="slide.height">
+              <img :src="`/screenshots/${slide.asset}`" alt="" />
             </a>
           </li>
         </ul>
