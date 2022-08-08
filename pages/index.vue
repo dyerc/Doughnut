@@ -57,7 +57,7 @@
                 </a>
               </div>
 
-              <p class="text-xs">Requires OS X 10.11+, the latest macOS recommended</p>
+              <p class="text-xs">Requires OS X 10.15+, the latest macOS recommended</p>
             </div>
 
             <div class="md:w-7/12 md:relative main-screenshot">
@@ -93,6 +93,14 @@
             <i>(use a network location or even keep multiple libraries on your machine)</i>
           </li>
         </ul>
+      </div>
+
+      <carousel></carousel>
+    </div>
+
+    <div class="bg-pink-900 text-white text-sm pt-12 pb-16">
+      <div class="max-w-4xl text-center opacity-90 mx-auto px-6">
+        &copy; Copyright 2022 doughnutapp.com
       </div>
     </div>
   </div>
@@ -133,7 +141,7 @@
 }
 
 .primary-link {
-  @apply inline-flex items-baseline bg-pink-600 rounded-3xl py-3 px-7 text-white transition-colors duration-200 ease-in-out hover:bg-pink-500;
+  @apply inline-flex items-baseline bg-pink-600 rounded-3xl py-3 px-7 mr-4 lg:mr-0 text-white transition-colors duration-200 ease-in-out hover:bg-pink-500;
 
   svg {
     @apply translate-y-1;
