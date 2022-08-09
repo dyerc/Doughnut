@@ -34,7 +34,7 @@ final class PrefGeneralViewController: NSViewController, MASPreferencesViewContr
       if #available(macOS 11.0, *) {
         return NSImage(systemSymbolName: "gearshape", accessibilityDescription: nil)!
       } else {
-        return NSImage(named: "PrefIcon/General")!
+        return NSImage(named: NSImage.preferencesGeneralName)
       }
     }
   }

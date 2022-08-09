@@ -40,6 +40,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
       PrefGeneralViewController.instantiate(),
       PrefPlaybackViewController.instantiate(),
       PrefLibraryViewController.instantiate(),
+      PrefAdvancedViewController.instantiate(),
       ], title: nil)
   }()
 
