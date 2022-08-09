@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1653423049</string>
+	<string>1659991446</string>
 	<key>DoughnutCrashReportURL</key>
 	<string>https://github.com/dyerc/Doughnut/issues/new?template=crash_report.md</string>
 	<key>LSApplicationCategoryType</key>
@@ -41,5 +41,7 @@
 	<string>https://raw.githubusercontent.com/dyerc/Doughnut/master/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>SUPublicEDKey</key>
+	<string>mbflTORsPYe0weKyTWGD9n135yF5mJWxhrSeHfPuPBE=</string>
 </dict>
 </plist>
