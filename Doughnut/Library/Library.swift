@@ -401,55 +401,53 @@ class Library: NSObject {
     }
   }
 
-  // Synchronous episode save
-  func save(episode: Episode, completion: (_ result: Episode, _ error: Error?) -> Void) {
-    do {
-      try self.dbQueue?.inDatabase { db in
-        if episode.id != nil {
-          try episode.updateChanges(db)
-        } else {
-          try episode.save(db)
-        }
-      }
-
-      completion(episode, nil)
-    } catch let error as DatabaseError {
-      Library.handleDatabaseError(error)
-      completion(episode, error)
-    } catch {
-      completion(episode, error)
-    }
-  }
-
   // Async episode save and event emission
-  func save(episode: Episode) {
-    taskQueue.async {
-      self.save(episode: episode, completion: { (episode, error) in
-        guard error == nil else { return }
-
+  func save(episode: Episode, completion: ((Result<Episode, LibraryError>) -> Void)? = nil) {
+    dbQueue?.asyncWrite({ db in
+      if episode.id != nil {
+        try episode.updateChanges(db)
+      } else {
+        try episode.save(db)
+      }
+    }, completion: { _, result in
+      switch result {
+      case .success:
+        completion?(.success(episode))
         DispatchQueue.main.async {
           self.delegate?.libraryUpdatedEpisode(episode: episode)
         }
-      })
-    }
+      case let .failure(error):
+        if let error = error as? DatabaseError {
+          Library.handleDatabaseError(error)
+          completion?(.failure(.databaseError(error)))
+        } else {
+          completion?(.failure(.unknown(error)))
+        }
+      }
+    })
   }
 
-  func delete(episode: Episode) {
+  func delete(episode: Episode, completion: ((Result<Episode, LibraryError>) -> Void)? = nil) {
     guard let podcast = episode.podcast else { return }
 
-    taskQueue.async {
-      do {
-        _ = try self.dbQueue?.inDatabase { db in
-          try episode.delete(db)
-        }
-
+    dbQueue?.asyncWrite({ db in
+      try episode.delete(db)
+    }, completion: { _, result in
+      switch result {
+      case .success:
+        completion?(.success(episode))
         DispatchQueue.main.async {
           self.delegate?.libraryUpdatedPodcast(podcast: podcast)
         }
-      } catch let error as DatabaseError {
-        Library.handleDatabaseError(error)
-      } catch {}
-    }
+      case let .failure(error):
+        if let error = error as? DatabaseError {
+          Library.handleDatabaseError(error)
+          completion?(.failure(.databaseError(error)))
+        } else {
+          completion?(.failure(.unknown(error)))
+        }
+      }
+    })
   }
 
   // Async podcast insert
