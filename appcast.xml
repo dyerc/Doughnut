@@ -7,6 +7,24 @@
     <language>en</language>
 
     <item>
+      <title>Version 2.0.0</title>
+      <description><![CDATA[
+        <p>Doughnut 2.0.0 is a major new release utilising the latest macOS features. I would like to specifically thank <a href="https://github.com/GetToSet" target="_blank">@GetToSet</a> for all of his efforts over the past 6+ months, making this new release happen. New functionality, features and fixes include:</p>
+        <ul>
+          <li>Optimize appearance, menus and design for modern macOS.</li>
+          <li>Support for MediaPlayer framework and better macOS integration of playback controls.</li>
+          <li>Updates for image operations to reduce memory usage.</li>
+          <li>Load audio assets asynchronously.</li>
+          <li>Many, many, more bug fixes and minor improvements.</li>
+        </ul>
+      ]]></description>
+      <pubDate>Tue, 9 Aug 2022 16:38:00 +0000</pubDate>
+      <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/dyerc/Doughnut/releases/download/v2.0.0/Doughnut-2.0.0.dmg" sparkle:version="1659991446" sparkle:shortVersionString="2.0.0" sparkle:edSignature="MGdk0ke5tR9/VLcspX8LLceLCNySusKQ5CRePwaU3fMO9KEPkvMbZ6Nz0YmpfzXt9Ep6S9HyUk64Z33V6UeGDw==" length="6178594" type="application/octet-stream" sparkle:dsaSignature="MEQCIEUDDhzxxFU2uw48sWcr7U6jGuOI+9Hx12kIltXZ8e1qAiBgy1jr2IpGiQ+2
+AHNhEVEgQl4li6dkch4Fc4yh3yWqZg==" />
+    </item>
+
+    <item>
       <title>Version 1.1.1</title>
       <description><![CDATA[
         <p>Update Github links</p>
