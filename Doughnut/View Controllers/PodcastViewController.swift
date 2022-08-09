@@ -236,7 +236,7 @@ final class PodcastViewController: NSViewController, NSTableViewDelegate, NSTabl
       return selectedPodcastIdsBeforeReload.contains(pair.key) ? pair.value : nil
     }
 
-    if selectionIndices.isEmpty, !podcastIdsAfterReload.isEmpty {
+    if !selectedPodcastIdsBeforeReload.isEmpty, selectionIndices.isEmpty, !podcastIdsAfterReload.isEmpty {
       selectionIndices = [0]
     }
 
