@@ -184,6 +184,10 @@ class Episode: Record {
     pubDate = feedItem.pubDate
     link = feedItem.link
 
+    if let duration = feedItem.iTunes?.iTunesDuration {
+      self.duration = Int(duration)
+    }
+
     if let enclosure = feedItem.enclosure?.attributes {
       enclosureUrl = enclosure.url
       enclosureSize = enclosure.length
