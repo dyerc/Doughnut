@@ -31,7 +31,7 @@ final class CrashReporter {
   private var plCrashReporter: PLCrashReporter?
 
   private init() {
-    let config = PLCrashReporterConfig.defaultConfiguration()
+    let config = PLCrashReporterConfig(signalHandlerType: .BSD, symbolicationStrategy: .symbolTable)
     guard let plCrashReporter = PLCrashReporter(configuration: config) else {
       print("CrashReporter: could not create an instance of PLCrashReporter")
       return
