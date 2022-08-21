@@ -18,6 +18,7 @@
 
 import AVFoundation
 import Cocoa
+import OSLog
 
 protocol PlayerDelegate: AnyObject {
   func update(forEpisode episode: Episode?)
@@ -32,6 +33,8 @@ enum PlayerLoadStatus {
 
 final class Player: NSObject {
   static var global = Player()
+
+  static let log = OSLog.main(category: "Player")
 
   weak var delegate: PlayerDelegate?
 
@@ -131,7 +134,7 @@ final class Player: NSObject {
           assert(false, "'.loading' should not be returned in the completionHandler of loadValuesAsynchronously(forKeys:).")
           break
         default:
-          print("Failed to load the AVAsset failed with status: \(status), error: \(error?.localizedDescription ?? "nil").")
+          Player.log(level: .error, "Failed to load the AVAsset failed with status: \(status), error: \(error?.localizedDescription ?? "nil")")
           break
         }
         cleanupLoadStatusOnFail()
@@ -251,7 +254,7 @@ final class Player: NSObject {
           loadStatus = .none
         }
 
-        print("Playing")
+        Self.log(level: .debug, "Playing")
         postPlaybackStatusUpdates()
       }
     }
@@ -340,9 +343,9 @@ final class Player: NSObject {
     if #available(macOS 11.0, *) {
       AVAudioRoutingArbiter.shared.begin(category: .playback) { defaultDeviceChanged, error in
         if let error = error {
-          print("begins routing arbitration failed, defaultDeviceChanged: \(defaultDeviceChanged), error: \(error)")
+          Self.log(level: .error, "begins routing arbitration failed, defaultDeviceChanged: \(defaultDeviceChanged), error: \(error)")
         } else {
-          print("begins routing arbitration, defaultDeviceChanged: \(defaultDeviceChanged)")
+          Self.log(level: .debug, "begins routing arbitration, defaultDeviceChanged: \(defaultDeviceChanged)")
         }
       }
     }
@@ -351,7 +354,7 @@ final class Player: NSObject {
   private func leaveRoutingArbitration() {
     if #available(macOS 11.0, *) {
       AVAudioRoutingArbiter.shared.leave()
-      print("leaves routing arbitration")
+      Self.log(level: .debug, "leaves routing arbitration")
     }
   }
 
@@ -409,6 +412,7 @@ final class Player: NSObject {
 
       // If there are channels, it's an input device
 
+      // swiftlint:disable:next no_direct_standard_out_logs
       Swift.print("Found output device '\(name)' with \(channelCount) channels [\(id)]")
       inputDevices.append(id)
     }

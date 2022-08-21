@@ -37,8 +37,7 @@ extension Player {
   }
 
   func updateNowPlayingEpisodeInfo() {
-    // TODO: convert print statemenets to logs with levels.
-    print("[NowPlayingInfo]: updateNowPlayingEpisodeInfo")
+    Self.log(level: .debug, "[NowPlayingInfo]: updateNowPlayingEpisodeInfo called")
 
     guard let currentEpisode = currentEpisode else {
       nowPlayingEpisodeInfoDictionary = [:]
@@ -68,8 +67,7 @@ extension Player {
   }
 
   func updateNowPlayingPlaybackInfo() {
-    // TODO: convert print statemenets to logs with levels.
-    // print("[NowPlayingInfo]: updateNowPlayingPlaybackInfo")
+    // Self.logger.debug("[NowPlayingInfo]: updateNowPlayingPlaybackInfo called")
 
     // TODO: Limit the rate of sending the following values.
     let nowPlayingInfoDictionary = nowPlayingEpisodeInfoDictionary.merging([

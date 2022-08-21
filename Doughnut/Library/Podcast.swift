@@ -162,7 +162,7 @@ class Podcast: Record {
       do {
         try FileManager.default.createDirectory(at: pathUrl, withIntermediateDirectories: true, attributes: nil)
       } catch {
-        print("Failed to create directory \(error)")
+        Library.log(level: .error, "Failed to create directory \(error)")
       }
     }
 
@@ -295,7 +295,7 @@ class Podcast: Record {
       guard let rssFeed = feed.rssFeed else { return [] }
       return self.parse(feed: rssFeed)
     case .failure(let error):
-      print("Error reloading \(self.title): \(String(describing: error.localizedDescription))")
+      Library.log(level: .error, "Error reloading \(self.title): \(String(describing: error.localizedDescription))")
       return []
     }
   }

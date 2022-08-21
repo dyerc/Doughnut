@@ -56,7 +56,7 @@ class Utils {
           }
         }
       } catch let error {
-        print(error)
+        Library.log(level: .error, "Failed to parse iTunes feed with: \(error)")
       }
 
       completion(nil)

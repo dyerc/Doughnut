@@ -17,6 +17,7 @@
  */
 
 import Foundation
+import OSLog
 
 import FeedKit
 import GRDB
@@ -44,6 +45,8 @@ enum LibraryError: Error {
 class Library: NSObject {
   static var global = Library()
   static let databaseFilename = "Doughnut Library.dnl"
+
+  static let log = OSLog.main(category: "Library")
 
   enum Events: String {
     case Subscribed
@@ -94,7 +97,10 @@ class Library: NSObject {
       var configuration = Configuration()
       if Preference.bool(for: Preference.Key.debugSQLTraceEnabled) {
         configuration.prepareDatabase { db in
-          db.trace { print($0) }
+          db.trace {
+            // swiftlint:disable:next no_direct_standard_out_logs
+            print($0)
+          }
         }
       }
       dbQueue = try DatabaseQueue(path: databaseFile().path, configuration: configuration)
@@ -103,7 +109,7 @@ class Library: NSObject {
         try LibraryMigrations.migrate(db: dbQueue)
 
         if !Preference.testEnv() {
-          print("Connected to Doughnut library at \(path.path)")
+          Self.log(level: .info, "Connected to Doughnut library at \(path.path)")
         }
 
         try dbQueue.inDatabase({ db in
@@ -113,7 +119,7 @@ class Library: NSObject {
             podcast.loadEpisodes(db: db)
 
             #if DEBUG
-            print("Loading \(podcast.title) with \(podcast.episodes.count) episodes")
+              Self.log(level: .debug, "Loading \(podcast.title) with \(podcast.episodes.count) episodes")
             #endif
           }
 
@@ -188,7 +194,7 @@ class Library: NSObject {
   }
 
   static func handleDatabaseError(_ error: Error) {
-    print("Library: error \(error), stack trace: \(Thread.callStackSymbols)")
+    Self.log(level: .error, "Library: error \(error), stack trace: \(Thread.callStackSymbols)")
   }
 
   static func sanitizePath(_ path: String) -> String {
@@ -303,13 +309,13 @@ class Library: NSObject {
         if let storagePath = podcast.storagePath() {
           NSWorkspace.shared.recycle([storagePath], completionHandler: { (trashedFiles, error) in
             if let error = error {
-              print("Failed to move podcast data to trash: \(error.localizedDescription)")
+              Self.log(level: .error, "Failed to move podcast data to trash: \(error.localizedDescription)")
 
               let alert = NSAlert()
               alert.messageText = "Failed to trash data"
               alert.informativeText = error.localizedDescription
             } else {
-              print("Moved podcast data stored at \(trashedFiles) to trash")
+              Self.log(level: .info, "Moved podcast data stored at \(trashedFiles) to trash")
             }
           })
         }
