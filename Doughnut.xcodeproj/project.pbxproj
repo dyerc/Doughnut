@@ -23,6 +23,7 @@
 		6B816BE927E71A1A00EED863 /* ModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B816BE827E71A1A00EED863 /* ModelTestCase.swift */; };
 		6B816BEB27E71A2700EED863 /* DoughnutTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B816BEA27E71A2700EED863 /* DoughnutTestCase.swift */; };
 		6B816BED27E71A6700EED863 /* PodcastModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B816BEC27E71A6700EED863 /* PodcastModelTests.swift */; };
+		6B8745502842015000AB07CF /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B87454F2842015000AB07CF /* OSLog+Extensions.swift */; };
 		6B94DF4C278968F500BCB149 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */; };
 		6B96F45D27CE6F10001941BA /* PodcastSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96F45C27CE6F10001941BA /* PodcastSearchField.swift */; };
 		6B9C30BB27B5708300D462BE /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C30BA27B5708300D462BE /* BaseTableView.swift */; };
@@ -129,6 +130,7 @@
 		6B816BE827E71A1A00EED863 /* ModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTestCase.swift; sourceTree = "<group>"; };
 		6B816BEA27E71A2700EED863 /* DoughnutTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutTestCase.swift; sourceTree = "<group>"; };
 		6B816BEC27E71A6700EED863 /* PodcastModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastModelTests.swift; sourceTree = "<group>"; };
+		6B87454F2842015000AB07CF /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 		6B94DF4B278968F500BCB149 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
 		6B96F45C27CE6F10001941BA /* PodcastSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSearchField.swift; sourceTree = "<group>"; };
 		6B9C30BA27B5708300D462BE /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			children = (
 				6B0605C32788626F00A8A91E /* AppKit */,
 				6BC6396227A68E0C00535897 /* CoreMedia */,
+				6B209FD8284331BC006F3C23 /* OSLog */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -273,6 +276,14 @@
 				6B36624527CFB339008E1CA5 /* NSImage+Extensions.swift */,
 			);
 			name = AppKit;
+			sourceTree = "<group>";
+		};
+		6B209FD8284331BC006F3C23 /* OSLog */ = {
+			isa = PBXGroup;
+			children = (
+				6B87454F2842015000AB07CF /* OSLog+Extensions.swift */,
+			);
+			name = OSLog;
 			sourceTree = "<group>";
 		};
 		6B571B4627E74C31008E1534 /* Fixtures */ = {
@@ -896,6 +907,7 @@
 				837D52BE1F8E622200C17514 /* TasksViewController.swift in Sources */,
 				8379899B1F81616C00234577 /* SeekSlider.swift in Sources */,
 				6B36624627CFB339008E1CA5 /* NSImage+Extensions.swift in Sources */,
+				6B8745502842015000AB07CF /* OSLog+Extensions.swift in Sources */,
 				837068131F7BBD63007FE973 /* EpisodeCellView.swift in Sources */,
 				83667DF41F76D22600F1ABC0 /* DetailViewController.swift in Sources */,
 				6BC6396427A68E2100535897 /* CMTime+Extensions.swift in Sources */,

@@ -202,7 +202,7 @@ class Preference {
       do {
         try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
       } catch {
-        print("Failed to create directory \(error)")
+        Library.log(level: .error, "Failed to create directory \(error)")
       }
     }
   }

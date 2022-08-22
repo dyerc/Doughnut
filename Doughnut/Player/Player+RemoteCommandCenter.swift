@@ -29,25 +29,25 @@ extension Player {
     // Playback Commands
 
     remoteCommandCenter.pauseCommand.addTarget { [weak self] _ in
-      print("[RemoteCommand]: Receive pauseCommand")
+      Self.log(level: .debug, "[RemoteCommand]: Receive pauseCommand")
       self?.pause()
       return .success
     }
 
     remoteCommandCenter.playCommand.addTarget { [weak self] _ in
-      print("[RemoteCommand]: Receive playCommand")
+      Self.log(level: .debug, "[RemoteCommand]: Receive playCommand")
       self?.play()
       return .success
     }
 
     remoteCommandCenter.stopCommand.addTarget { [weak self] _ in
-      print("[RemoteCommand]: Receive stopCommand")
+      Self.log(level: .debug, "[RemoteCommand]: Receive stopCommand")
       self?.stop()
       return .success
     }
 
     remoteCommandCenter.togglePlayPauseCommand.addTarget { [weak self] _ in
-      print("[RemoteCommand]: Receive togglePlayPauseCommand")
+      Self.log(level: .debug, "[RemoteCommand]: Receive togglePlayPauseCommand")
       self?.togglePlay()
       return .success
     }
@@ -66,14 +66,14 @@ extension Player {
     // Skip Interval Commands
 
     remoteCommandCenter.skipForwardCommand.addTarget { [weak self] event in
-      print("[RemoteCommand]: Receive skipForwardCommand")
+      Self.log(level: .debug, "[RemoteCommand]: Receive skipForwardCommand")
       guard let event = event as? MPSkipIntervalCommandEvent else { return .commandFailed }
       self?.skipAhead(seconds: event.interval)
       return .success
     }
 
     remoteCommandCenter.skipBackwardCommand.addTarget { [weak self] event in
-      print("[RemoteCommand]: Receive skipBackwardCommand")
+      Self.log(level: .debug, "[RemoteCommand]: Receive skipBackwardCommand")
       guard let event = event as? MPSkipIntervalCommandEvent else { return .commandFailed }
       self?.skipBack(seconds: event.interval)
       return .success
@@ -86,7 +86,7 @@ extension Player {
     remoteCommandCenter.seekBackwardCommand.isEnabled = false
 
     remoteCommandCenter.changePlaybackPositionCommand.addTarget { [weak self] event in
-      print("[RemoteCommand]: Receive changePlaybackPositionCommand")
+      Self.log(level: .debug, "[RemoteCommand]: Receive changePlaybackPositionCommand")
       guard let event = event as? MPChangePlaybackPositionCommandEvent else { return .commandFailed }
       self?.seek(seconds: event.positionTime)
       return .success
