@@ -49,6 +49,7 @@ final class Player: NSObject {
   private(set) var position: Double = 0
   private(set) var buffered: Double = 0
   private(set) var duration: Double = 0
+  private(set) var isSeeking: Bool = false
 
   private(set) var pausedAt: TimeInterval? = nil
 
@@ -154,6 +155,9 @@ final class Player: NSObject {
       // Register to receive timing events
       timeObserver = avPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5), queue: .main) { [weak self] time in
         guard let self = self else { return }
+
+        guard !self.isSeeking else { return }
+
         self.position = time.seconds
         self.duration = avPlayer.currentItem?.asset.duration.seconds ?? 0
 
@@ -203,7 +207,7 @@ final class Player: NSObject {
 
       // Seek to existing position
       if episode.playPosition > 0 {
-        avPlayer.seek(to: CMTime(seconds: Double(episode.playPosition)))
+        seek(seconds: Double(episode.playPosition))
       }
 
       avPlayer.volume = volume
@@ -231,7 +235,7 @@ final class Player: NSObject {
 
     leaveRoutingArbitration()
 
-    // Reset lcoal states
+    // Reset local states
     loadStatus = .none
     currentEpisode = nil
     currentPlaybackURL = nil
@@ -239,6 +243,7 @@ final class Player: NSObject {
     buffered = 0
     position = 0
     pausedAt = nil
+    isSeeking = false
 
     postNowPlayingEpisodeUpdates()
     postPlaybackStatusUpdates()
@@ -316,7 +321,7 @@ final class Player: NSObject {
     let targetTime = currentTime + skipDuration
 
     if targetTime < (CMTimeGetSeconds(duration) - skipDuration) {
-      av.seek(to: CMTime(seconds: targetTime))
+      seek(seconds: targetTime)
     }
   }
 
@@ -331,12 +336,21 @@ final class Player: NSObject {
       targetTime = 0
     }
 
-    av.seek(to: CMTime(seconds: targetTime))
+    seek(seconds: targetTime)
   }
 
   func seek(seconds: Double) {
     guard let av = avPlayer else { return }
-    av.seek(to: CMTime(seconds: seconds))
+
+    isSeeking = true
+    Self.log(level: .debug, "seek started")
+    av.seek(to: CMTime(seconds: seconds)) { [weak self] finished in
+      guard let self = self else { return }
+      Self.log(level: .debug, "seek completionHandler called, finished: \(finished)")
+      if finished == true {
+        self.isSeeking = false
+      }
+    }
   }
 
   private func beginRoutingArbitration() {
