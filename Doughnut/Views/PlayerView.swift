@@ -121,7 +121,6 @@ class PlayerView: NSView, PlayerDelegate {
     seekSlider.maxValue = 1
     seekSlider.doubleValue = 0
     seekSlider.streamedValue = 0.1
-    seekSlider.cell = SeekSliderCell()
     seekSlider.target = self
     seekSlider.action = #selector(seek)
     addSubview(seekSlider)
