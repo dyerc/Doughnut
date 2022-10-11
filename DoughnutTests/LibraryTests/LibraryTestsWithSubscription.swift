@@ -50,12 +50,9 @@ class LibraryTestsWithSubscription: LibraryTestCase {
     Library.global.reload(podcast: sub!)
 
     self.waitForExpectations(timeout: 10) { _ in
-      guard let podcast = spy.updatedPodcastResult else {
-        XCTFail("Expected delegate to be called")
-        return
-      }
-
-      XCTAssertEqual(podcast.episodes.count, 2)
+      let podcasts = spy.updatedPodcastResults
+      XCTAssertEqual(podcasts.count, 1)
+      XCTAssertEqual(podcasts.first!.episodes.count, 2)
     }
   }
 
@@ -76,10 +73,11 @@ class LibraryTestsWithSubscription: LibraryTestCase {
     Library.global.reload(podcast: sub!)
 
     self.waitForExpectations(timeout: 10) { _ in
-      guard let podcast = spy.updatedPodcastResult else {
-        XCTFail("Expected delegate to be called")
-        return
-      }
+      let podcasts = spy.updatedPodcastResults
+
+      XCTAssertEqual(podcasts.count, 1)
+
+      let podcast = podcasts.first!
 
       XCTAssertEqual(podcast.episodes.count, 3)
 
