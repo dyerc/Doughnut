@@ -246,11 +246,11 @@
             <objects>
                 <viewController storyboardIdentifier="PrefPlaybackViewController" id="Fq1-jU-rl7" customClass="PrefPlaybackViewController" customModule="Doughnut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="xec-XO-2PT">
-                        <rect key="frame" x="0.0" y="0.0" width="620" height="124"/>
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="173"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-sH-TcM">
-                                <rect key="frame" x="215" y="80" width="261" height="25"/>
+                                <rect key="frame" x="215" y="129" width="261" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="254" id="P4v-cI-nU3"/>
                                 </constraints>
@@ -282,7 +282,7 @@
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-9o-kBm">
-                                <rect key="frame" x="90" y="53" width="114" height="16"/>
+                                <rect key="frame" x="90" y="102" width="114" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Skipping Forward:" id="VFU-LC-tba">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -290,7 +290,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fNE-Uq-c2K">
-                                <rect key="frame" x="215" y="46" width="261" height="25"/>
+                                <rect key="frame" x="215" y="95" width="261" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="5 seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="5" imageScaling="proportionallyDown" inset="2" selectedItem="cEg-Mp-Dyu" id="Yr7-db-C5M">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -318,8 +318,37 @@
                                     <binding destination="THH-sN-3K5" name="selectedTag" keyPath="values.skipForwardDuration" id="7ve-9C-IXm"/>
                                 </connections>
                             </popUpButton>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GRL-4e-Ubc">
+                                <rect key="frame" x="215" y="61" width="261" height="25"/>
+                                <popUpButtonCell key="cell" type="push" title="100% Played" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="100" imageScaling="proportionallyDown" inset="2" selectedItem="fol-9p-FHe" id="h4n-ZZ-rLx">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="hgX-Lp-zAQ">
+                                        <items>
+                                            <menuItem title="100% Played" state="on" tag="100" id="fol-9p-FHe"/>
+                                            <menuItem title="99% Played" tag="99" id="OSs-Ul-vcd"/>
+                                            <menuItem title="98% Played" tag="98" id="Bqt-6D-FIr"/>
+                                            <menuItem title="95% Played" tag="95" id="29Z-rD-0Cd">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="90% Played" tag="90" id="pI1-jq-JRM">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="75% Played" tag="75" id="wA2-lt-9rB">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="50% Played" tag="50" id="2I5-cc-3us">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <binding destination="Tje-XR-vg1" name="selectedTag" keyPath="values.markAsPlayedAfter" id="fHH-jM-Jf6"/>
+                                </connections>
+                            </popUpButton>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="TIb-gL-zwy">
-                                <rect key="frame" x="216" y="19" width="139" height="18"/>
+                                <rect key="frame" x="216" y="36" width="139" height="18"/>
                                 <buttonCell key="cell" type="check" title="Replay after pause" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="TWS-bO-89n">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -329,8 +358,16 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cfx-Y9-KLY">
-                                <rect key="frame" x="110" y="87" width="94" height="16"/>
+                                <rect key="frame" x="110" y="136" width="94" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Skipping Back:" id="2zt-dd-ER4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TXT-5S-CfA">
+                                <rect key="frame" x="71" y="68" width="133" height="16"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Mark as Played After:" id="SVr-QB-dcd">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -341,22 +378,27 @@
                             <constraint firstItem="fNE-Uq-c2K" firstAttribute="top" secondItem="FKO-sH-TcM" secondAttribute="bottom" constant="14" id="4Hs-KO-zBh"/>
                             <constraint firstItem="FKO-sH-TcM" firstAttribute="leading" secondItem="xec-XO-2PT" secondAttribute="leading" constant="218" id="9FK-gP-6kf"/>
                             <constraint firstItem="FKO-sH-TcM" firstAttribute="leading" secondItem="Cfx-Y9-KLY" secondAttribute="trailing" constant="16" id="BXQ-kf-mJs"/>
+                            <constraint firstItem="GRL-4e-Ubc" firstAttribute="top" secondItem="fNE-Uq-c2K" secondAttribute="bottom" constant="14" id="IOO-Jb-L4j"/>
                             <constraint firstItem="FKO-sH-TcM" firstAttribute="top" secondItem="xec-XO-2PT" secondAttribute="top" constant="20" symbolic="YES" id="K1X-qs-Jvm"/>
-                            <constraint firstAttribute="bottom" secondItem="TIb-gL-zwy" secondAttribute="bottom" constant="20" symbolic="YES" id="ROd-Yo-Mq0"/>
+                            <constraint firstItem="GRL-4e-Ubc" firstAttribute="leading" secondItem="TIb-gL-zwy" secondAttribute="leading" id="Q1Q-w8-2gO"/>
+                            <constraint firstItem="TXT-5S-CfA" firstAttribute="trailing" secondItem="Aq9-9o-kBm" secondAttribute="trailing" id="RM8-bj-Kgq"/>
                             <constraint firstItem="fNE-Uq-c2K" firstAttribute="leading" secondItem="FKO-sH-TcM" secondAttribute="leading" id="Vwq-hn-SsN"/>
-                            <constraint firstItem="TIb-gL-zwy" firstAttribute="top" secondItem="fNE-Uq-c2K" secondAttribute="bottom" constant="14" id="bvs-gn-K3r"/>
+                            <constraint firstItem="TXT-5S-CfA" firstAttribute="baseline" secondItem="GRL-4e-Ubc" secondAttribute="baseline" id="aBa-n2-zcp"/>
                             <constraint firstItem="Cfx-Y9-KLY" firstAttribute="firstBaseline" secondItem="FKO-sH-TcM" secondAttribute="firstBaseline" id="dIW-UU-Zd7"/>
+                            <constraint firstItem="GRL-4e-Ubc" firstAttribute="leading" secondItem="fNE-Uq-c2K" secondAttribute="leading" id="f79-e2-0SK"/>
                             <constraint firstItem="fNE-Uq-c2K" firstAttribute="width" secondItem="FKO-sH-TcM" secondAttribute="width" id="j8Z-Gf-oMY"/>
                             <constraint firstItem="Aq9-9o-kBm" firstAttribute="trailing" secondItem="Cfx-Y9-KLY" secondAttribute="trailing" id="kvN-fH-a8X"/>
-                            <constraint firstItem="TIb-gL-zwy" firstAttribute="leading" secondItem="fNE-Uq-c2K" secondAttribute="leading" id="qsK-Ty-4ER"/>
+                            <constraint firstItem="TIb-gL-zwy" firstAttribute="top" secondItem="GRL-4e-Ubc" secondAttribute="bottom" constant="12" id="tGc-4X-YZJ"/>
                             <constraint firstItem="fNE-Uq-c2K" firstAttribute="firstBaseline" secondItem="Aq9-9o-kBm" secondAttribute="firstBaseline" id="wcl-b9-slr"/>
+                            <constraint firstItem="GRL-4e-Ubc" firstAttribute="trailing" secondItem="fNE-Uq-c2K" secondAttribute="trailing" id="yWR-2A-lcu"/>
                         </constraints>
                     </view>
                 </viewController>
                 <customObject id="DTs-nT-24u" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="THH-sN-3K5"/>
+                <userDefaultsController id="Tje-XR-vg1"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="299.5"/>
+            <point key="canvasLocation" x="-475" y="323.5"/>
         </scene>
         <!--Pref Advanced View Controller-->
         <scene sceneID="yuw-Cp-dRO">
