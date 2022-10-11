@@ -18,7 +18,13 @@
 
 import Cocoa
 
-class SeekSlider: NSSlider {
+final class SeekSlider: NSSlider {
+
+   override class var cellClass: AnyClass? {
+     get { SeekSliderCell.self }
+     set {}
+   }
+
   override var knobThickness: CGFloat {
     get {
       return 3.0
@@ -32,9 +38,13 @@ class SeekSlider: NSSlider {
       }
     }
   }
+
+  fileprivate(set) var isTracking: Bool = false
+
 }
 
-class SeekSliderCell: NSSliderCell {
+private class SeekSliderCell: NSSliderCell {
+
   var streamed: Double = 0
 
   override var knobThickness: CGFloat {
@@ -44,6 +54,8 @@ class SeekSliderCell: NSSliderCell {
   let knobWidth: CGFloat = 4.0
   let knobHeight: CGFloat = 17.0
   let knobRadius: CGFloat = 2.0
+
+  fileprivate var isTracking: Bool = false
 
   override init() {
     super.init()
@@ -130,4 +142,17 @@ class SeekSliderCell: NSSliderCell {
       height: rect.height
     )
   }
+
+  override func startTracking(at startPoint: NSPoint, in controlView: NSView) -> Bool {
+    let slider = controlView as! SeekSlider
+    slider.isTracking = true
+    return super.startTracking(at: startPoint, in: controlView)
+  }
+
+  override func stopTracking(last lastPoint: NSPoint, current stopPoint: NSPoint, in controlView: NSView, mouseIsUp flag: Bool) {
+    let slider = controlView as! SeekSlider
+    slider.isTracking = false
+    super.stopTracking(last: lastPoint, current: stopPoint, in: controlView, mouseIsUp: flag)
+  }
+
 }

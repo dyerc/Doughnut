@@ -121,7 +121,6 @@ class PlayerView: NSView, PlayerDelegate {
     seekSlider.maxValue = 1
     seekSlider.doubleValue = 0
     seekSlider.streamedValue = 0.1
-    seekSlider.cell = SeekSliderCell()
     seekSlider.target = self
     seekSlider.action = #selector(seek)
     addSubview(seekSlider)
@@ -210,26 +209,34 @@ class PlayerView: NSView, PlayerDelegate {
     let duration = player.duration
     let position = player.position
 
-    playedDurationLbl.stringValue = formatTime(total: Int(position))
-    playedRemainingLbl.stringValue = formatTime(total: Int(duration - position))
-
     seekSlider.minValue = 0
     seekSlider.maxValue = duration
-    seekSlider.doubleValue = position
     seekSlider.streamedValue = player.buffered
+    if !seekSlider.isTracking {
+      playedDurationLbl.stringValue = formatTime(total: Int(position))
+      playedRemainingLbl.stringValue = formatTime(total: Int(duration - position))
+      seekSlider.doubleValue = position
+    }
   }
 
   // MARK: - Actions
 
   @objc func seek(_ sender: Any) {
-    let event = NSApplication.shared.currentEvent
-    // Only react to dragging so that we don't skip back after slider release
-    if event?.type == .leftMouseDragged {
-      Player.global.seek(seconds: seekSlider.doubleValue)
-    }
+    guard let event = NSApplication.shared.currentEvent else { return }
 
-    if event?.type == .leftMouseUp {
-      // Handle a single click
+    let player = Player.global
+
+    switch event.type {
+    case .leftMouseDragged:
+      guard player.duration > 0 else { return }
+
+      let position = seekSlider.doubleValue
+      playedDurationLbl.stringValue = formatTime(total: Int(position))
+      playedRemainingLbl.stringValue = formatTime(total: Int(player.duration - position))
+    case .leftMouseUp:
+      player.seek(seconds: seekSlider.doubleValue)
+    default:
+      break
     }
   }
 
