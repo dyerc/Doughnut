@@ -38,8 +38,6 @@ final class Player: NSObject {
 
   weak var delegate: PlayerDelegate?
 
-  private static let playedThreshold: Double = 0.9
-
   private(set) var loadStatus: PlayerLoadStatus = .none
   private(set) var avPlayer: AVPlayer?
   private(set) var currentEpisode: Episode?
@@ -52,6 +50,18 @@ final class Player: NSObject {
   private(set) var isSeeking: Bool = false
 
   private(set) var pausedAt: TimeInterval? = nil
+
+  var playedThreshold: Double {
+    get {
+      let prefPercentage = Preference.double(for: Preference.Key.markAsPlayedAfter)
+
+      if prefPercentage <= 100 && prefPercentage >= 50 {
+        return prefPercentage / 100
+      } else {
+        return 1
+      }
+    }
+  }
 
   var volume: Float = 0.6 { //UserDefaults.standard.float(forKey: Preference.kVolume) {
     didSet {
@@ -182,7 +192,7 @@ final class Player: NSObject {
           episode.playPosition = Int(time.seconds)
           episode.duration = Int(avPlayer.currentItem?.asset.duration.seconds ?? 0)
 
-          if episode.duration > 0, (Double(episode.playPosition) / Double(episode.duration)) > Self.playedThreshold {
+          if episode.duration > 0, (Double(episode.playPosition) / Double(episode.duration)) > self.playedThreshold {
             episode.played = true
           }
 
@@ -193,6 +203,7 @@ final class Player: NSObject {
 
       // Register to receive status events
       avPlayer.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions(rawValue: 0), context: nil)
+      NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying(notification:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: avPlayer)
 
       // Extract any useful metadata from the audio file
       let metadata = avPlayer.currentItem?.asset.metadata ?? []
@@ -269,6 +280,16 @@ final class Player: NSObject {
         Self.log(level: .debug, "Playing")
         postPlaybackStatusUpdates()
       }
+    }
+  }
+
+  @objc func playerDidFinishPlaying(notification: NSNotification) {
+    if let episode = currentEpisode {
+      // If the mark as played threshold is 100%, this notification observer will be sure to
+      // catch it. Otherwise the position / duration calculation may not mark as played because
+      // of rounding.
+      episode.played = true
+      Library.global.save(episode: episode)
     }
   }
 

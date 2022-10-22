@@ -50,6 +50,7 @@ class Preference {
     static let skipForwardDuration = Key("skipForwardDuration")
     static let skipBackDuration = Key("skipBackDuration")
     static let replayAfterPause = Key("replayAfterPause")
+    static let markAsPlayedAfter = Key("markAsPlayedAfter")
 
     // Debugging
     static let debugMenuEnabled = Key("debugMenuEnabled")
@@ -82,6 +83,7 @@ class Preference {
 
     Key.skipBackDuration.rawValue: 30,
     Key.skipForwardDuration.rawValue: 30,
+    Key.markAsPlayedAfter.rawValue: 100,
 
     Key.showDockBadge.rawValue: true,
   ]
