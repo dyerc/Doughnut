@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<string>1666453501</string>
 	<key>DoughnutCrashReportURL</key>
 	<string>https://github.com/dyerc/Doughnut/issues/new?template=crash_report.md</string>
 	<key>LSApplicationCategoryType</key>

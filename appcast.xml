@@ -5,6 +5,31 @@
     <link>https://raw.githubusercontent.com/dyerc/Doughnut/master/appcast.xml</link>
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
+	
+    <item>
+      <title>Version 2.0.1</title>
+      <description><![CDATA[
+		<ul>
+		  <li>Remove redundant DownloadManager related code. by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/83">https://github.com/dyerc/Doughnut/pull/83</a></li>
+		  <li>Update MASPreferences to 1.4.1. by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/84">https://github.com/dyerc/Doughnut/pull/84</a></li>
+		  <li>Remove taskQueue wrapper for episode DB operations to prevent queueing. by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/86">https://github.com/dyerc/Doughnut/pull/86</a></li>
+		  <li>Fix: sidebar images dimmed out when window not active on macOS 13 beta. by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/89">https://github.com/dyerc/Doughnut/pull/89</a></li>
+		  <li>Move advanced preference controls to a separate pane. by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/90">https://github.com/dyerc/Doughnut/pull/90</a></li>
+		  <li>Support for subscribing podcasts.apple.com URLs. by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/94">https://github.com/dyerc/Doughnut/pull/94</a></li>
+		  <li>Fix first episode being accidentally selected on reload. by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/96">https://github.com/dyerc/Doughnut/pull/96</a></li>
+		  <li>Assign duration information so it&#39;s available in episode list view wi… by @woj-tek in <a href="https://github.com/dyerc/Doughnut/pull/105">https://github.com/dyerc/Doughnut/pull/105</a></li>
+		  <li>Enable symbolication for PLCrashReporter by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/107">https://github.com/dyerc/Doughnut/pull/107</a></li>
+		  <li>Support for Apple’s unified logging system. by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/109">https://github.com/dyerc/Doughnut/pull/109</a></li>
+		  <li>Performance improvements for batch (un)marking played or favourite. by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/95">https://github.com/dyerc/Doughnut/pull/95</a></li>
+		  <li>Fix: unable to seek through current episode with the playback slider by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/110">https://github.com/dyerc/Doughnut/pull/110</a></li>
+		  <li>Implement custom User-Agent for media playback by @GetToSet in <a href="https://github.com/dyerc/Doughnut/pull/92">https://github.com/dyerc/Doughnut/pull/92</a></li>
+		  <li>Add a playback threshold percentage at which point to mark an episode as played by @dyerc in <a href="https://github.com/dyerc/Doughnut/pull/111">https://github.com/dyerc/Doughnut/pull/111</a></li>
+		</ul>
+      ]]></description>
+      <pubDate>Sat, 22 Oct 2022 16:53:00 +0000</pubDate>
+      <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/dyerc/Doughnut/releases/download/v2.0.1/Doughnut-2.0.1.dmg" sparkle:version="1666453501" sparkle:shortVersionString="2.0.1" sparkle:edSignature="Dl1AuVQ1kJlZfCepizznSwxTdBni48VDVonrldj70CvQXEeRYn2h7N909LDXNevQFnXJOrgUIwnEPT7WTrOpCw==" length="6181010" type="application/octet-stream" sparkle:dsaSignature="MEQCIBiI3biujWtsUDPOPIxMnUL2vz97KwXjL4jP8GCrnx34AiB9LKKs8aeIiVv4OfAYzOzWUMdVnVe9AyRjImiiBDrG0Q==" />
+    </item>
 
     <item>
       <title>Version 2.0.0</title>
