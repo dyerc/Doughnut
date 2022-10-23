@@ -44,7 +44,7 @@
                   <span>GPLv3</span>
                 </a>
 
-                <a href="https://github.com/dyerc/Doughnut/releases/download/v2.0.0/Doughnut-2.0.0.dmg" class="primary-link">
+                <a href="https://github.com/dyerc/Doughnut/releases/download/v2.0.1/Doughnut-2.0.1.dmg" class="primary-link">
                   <svg class="w-5 h-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg">
                     <g fill="#FFF" fill-rule="nonzero">
                       <path d="M20.003 8.014a4.85 4.85 0 0 0-1.475-3.467 4.75 4.75 0 0 0-2.875-1.325.208.208 0 0 1-.158-.1 6.4 6.4 0 0 0-11.75 1.917.208.208 0 0 1-.184.158 3.883 3.883 0 0 0-2.15.833A3.825 3.825 0 0 0 .003 9.014a3.608 3.608 0 0 0 1.033 2.675 4.65 4.65 0 0 0 3 1.15.833.833 0 1 0 0-1.667 2.8 2.8 0 0 1-1.808-.675 1.958 1.958 0 0 1-.558-1.483 2.15 2.15 0 0 1 2.6-2.109.833.833 0 0 0 .675-.158.833.833 0 0 0 .325-.608 4.733 4.733 0 0 1 9.016-1.742c.143.3.451.487.784.475a3.05 3.05 0 0 1 2.3.875c.62.59.97 1.41.966 2.267a3.192 3.192 0 0 1-2.866 3.158.84.84 0 1 0 .216 1.667 4.85 4.85 0 0 0 4.317-4.825Z"/>
@@ -53,11 +53,11 @@
                   </svg>
 
                   <strong>Download</strong>
-                  <span>v2.0.0</span>
+                  <span>v2.0.1</span>
                 </a>
               </div>
 
-              <p class="text-xs">Requires OS X 10.15+, the latest macOS recommended</p>
+              <p class="text-xs">Requires macOS 10.15+, the latest macOS recommended</p>
             </div>
 
             <div class="md:w-7/12 md:relative main-screenshot">
