@@ -1,0 +1,33 @@
+{
+  "node_modules/nuxt/dist/app/entry.mjs": {
+    "file": "entry-3f012633.mjs",
+    "src": "node_modules/nuxt/dist/app/entry.mjs",
+    "isEntry": true,
+    "dynamicImports": [
+      "pages/index.vue"
+    ],
+    "css": [
+      "entry.9d2810da.css"
+    ],
+    "assets": [
+      "icon_underlay.10fe9ad9.png",
+      "main_screenshot.380734d3.png"
+    ]
+  },
+  "pages/index.vue": {
+    "file": "index-21172916.mjs",
+    "src": "pages/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.mjs"
+    ],
+    "dynamicImports": [
+      "node_modules/photoswipe/dist/photoswipe.esm.js"
+    ]
+  },
+  "node_modules/photoswipe/dist/photoswipe.esm.js": {
+    "file": "photoswipe.esm-c51be35d.mjs",
+    "src": "node_modules/photoswipe/dist/photoswipe.esm.js",
+    "isDynamicEntry": true
+  }
+}
