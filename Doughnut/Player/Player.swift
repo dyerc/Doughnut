@@ -361,11 +361,13 @@ final class Player: NSObject {
 
     let currentTime = CMTimeGetSeconds(av.currentTime())
     let skipDuration = seconds ?? Preference.double(for: Preference.Key.skipForwardDuration)
-    let targetTime = currentTime + skipDuration
+    var targetTime = currentTime + skipDuration
 
-    if targetTime < (CMTimeGetSeconds(duration) - skipDuration) {
-      seek(seconds: targetTime)
+    if targetTime > CMTimeGetSeconds(duration) {
+      targetTime = CMTimeGetSeconds(duration)
     }
+
+    seek(seconds: targetTime)
   }
 
   func skipBack(seconds: Double? = nil) {
