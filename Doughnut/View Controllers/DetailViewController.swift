@@ -92,6 +92,9 @@ final class DetailViewController: NSViewController, WKNavigationDelegate {
       constant: 16
     ).isActive = true
 
+    detailTitle.maximumNumberOfLines = 3
+    secondaryTitle.maximumNumberOfLines = 2
+
     showBlank()
 
     if Preference.bool(for: Preference.Key.debugDeveloperExtrasEnabled) {
