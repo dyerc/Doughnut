@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="21507"/>
         <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -939,9 +939,9 @@ Gw
     </scenes>
     <resources>
         <image name="FilterInactive" width="80" height="80"/>
-        <image name="NSActionTemplate" width="15" height="15"/>
-        <image name="NSAddTemplate" width="14" height="13"/>
-        <image name="NSRefreshTemplate" width="14" height="16"/>
+        <image name="NSActionTemplate" width="20" height="20"/>
+        <image name="NSAddTemplate" width="18" height="17"/>
+        <image name="NSRefreshTemplate" width="18" height="21"/>
         <image name="PlaceholderIcon" width="79" height="78.5"/>
     </resources>
 </document>
