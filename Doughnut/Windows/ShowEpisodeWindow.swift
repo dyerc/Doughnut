@@ -40,9 +40,7 @@ final class ShowEpisodeWindowController: NSWindowController {
 
 class ShowEpisodeWindow: NSWindow {
   override var canBecomeKey: Bool {
-    get {
-      return true
-    }
+    return true
   }
 }
 

@@ -69,17 +69,13 @@ final class Player: NSObject {
   }
 
   var isPlaying: Bool {
-    get {
-      guard let av = avPlayer else { return false }
-      return av.rate != 0 && av.error == nil
-    }
+    guard let av = avPlayer else { return false }
+    return av.rate != 0 && av.error == nil
   }
 
   var canPlay: Bool {
-    get {
-      guard let av = avPlayer else { return false }
-      return av.error == nil
-    }
+    guard let av = avPlayer else { return false }
+    return av.error == nil
   }
 
   var nowPlayingEpisodeInfoDictionary = [String: Any]()

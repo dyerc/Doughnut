@@ -30,20 +30,16 @@ final class PrefPlaybackViewController: NSViewController, MASPreferencesViewCont
   @objc var viewIdentifier: String = "PrefPlaybackViewController"
 
   @objc var toolbarItemImage: NSImage? {
-    get {
-      if #available(macOS 11.0, *) {
-        return NSImage(systemSymbolName: "play.circle", accessibilityDescription: nil)!
-      } else {
-        return NSImage(named: "PrefIcon/Playback")
-      }
+    if #available(macOS 11.0, *) {
+      return NSImage(systemSymbolName: "play.circle", accessibilityDescription: nil)!
+    } else {
+      return NSImage(named: "PrefIcon/Playback")
     }
   }
 
   @objc var toolbarItemLabel: String? {
-    get {
-      view.layoutSubtreeIfNeeded()
-      return "Playback"
-    }
+    view.layoutSubtreeIfNeeded()
+    return "Playback"
   }
 
   @objc var hasResizableWidth: Bool = false

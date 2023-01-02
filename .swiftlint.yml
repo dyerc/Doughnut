@@ -1,4 +1,5 @@
-# https://github.com/airbnb/swift
+# This file is based on the Airbnb's Swift Style Guide
+# https://github.com/airbnb/swift/blob/master/Sources/AirbnbSwiftFormatTool/swiftlint.yml
 
 only_rules:
   - closure_spacing
@@ -7,11 +8,9 @@ only_rules:
   - extension_access_modifier
   - fatal_error_message
   - file_header
-  # - force_cast
   - force_try
-  # - force_unwrapping
-  # - implicitly_unwrapped_optional
   - generic_type_name
+  - implicit_getter
   - legacy_cggeometry_functions
   - legacy_constant
   - legacy_constructor

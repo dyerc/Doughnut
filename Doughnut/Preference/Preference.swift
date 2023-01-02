@@ -67,9 +67,7 @@ class Preference {
   static let kVolume = "Volume"
 
   static var defaultLibraryPath: URL {
-    get {
-      return Preference.userMusicPath().appendingPathComponent("Doughnut")
-    }
+    return Preference.userMusicPath().appendingPathComponent("Doughnut")
   }
 
   static let defaultPreference: [String: Any] = [

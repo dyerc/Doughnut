@@ -31,21 +31,15 @@ final class ViewController: NSSplitViewController, LibraryDelegate {
   }
 
   var podcastViewController: PodcastViewController {
-    get {
-      return splitViewItems[0].viewController as! PodcastViewController
-    }
+    return splitViewItems[0].viewController as! PodcastViewController
   }
 
   var episodeViewController: EpisodeViewController {
-    get {
-      return splitViewItems[1].viewController as! EpisodeViewController
-    }
+    return splitViewItems[1].viewController as! EpisodeViewController
   }
 
   var detailViewController: DetailViewController {
-    get {
-      return splitViewItems[2].viewController as! DetailViewController
-    }
+    return splitViewItems[2].viewController as! DetailViewController
   }
 
   override func viewDidLoad() {

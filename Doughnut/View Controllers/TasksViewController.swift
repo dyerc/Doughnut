@@ -69,9 +69,7 @@ class TaskView: NSView, TaskProgressDelegate {
   }
 
   override var intrinsicContentSize: NSSize {
-    get {
-      return NSSize(width: bounds.size.width, height: TASK_VIEW_HEIGHT)
-    }
+    return NSSize(width: bounds.size.width, height: TASK_VIEW_HEIGHT)
   }
 
   func progressed() {
