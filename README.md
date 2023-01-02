@@ -44,8 +44,13 @@ Previously Doughnut was built on top of Electron which worked ok, but using 200+
 ### Get the code
 
 ```
-$ git clone git@github.com:dyerc/Doughnut.git
-$ cd Doughnut
-$ pod install
-$ open Doughnut.xcworkspace
+git clone git@github.com:dyerc/Doughnut.git
+cd Doughnut
+open Doughnut.xcodeproj
 ```
+
+### Building
+
+* `Debug` configuration can be directly built once Xcode finishes fetching all the packages.
+
+* To build for `Release` configuration, update the code signing configurations in `Configs/DoughnutCodeSigning-Release.xcconfig` to desired values, or switch to the ad-hoc configurations within `Configs/Doughnut-Release.xcconfig`.

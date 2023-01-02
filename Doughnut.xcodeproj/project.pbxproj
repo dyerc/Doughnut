@@ -3,13 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2AB07BF789841271ED80EA26 /* Pods_DoughnutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25D4796441E8F7922FCDAF9A /* Pods_DoughnutUITests.framework */; };
-		4125A143137AD05319B3DEFC /* Pods_Doughnut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */; };
-		5E0288D17E6858855545E02E /* Pods_DoughnutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE29F62CFF7B122D5C39998 /* Pods_DoughnutTests.framework */; };
 		6B0233BD27B2CA6500500E28 /* ControlMenuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */; };
 		6B0605C52788627D00A8A91E /* NSMenu+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */; };
 		6B193AA427A286B800DB1379 /* ModalSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B193AA327A286B800DB1379 /* ModalSheetSegue.swift */; };
@@ -33,6 +30,11 @@
 		6BA21C57279D74D400CD3672 /* CrashReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA21C56279D74D400CD3672 /* CrashReportViewController.swift */; };
 		6BA21C59279D74DC00CD3672 /* CrashReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BA21C58279D74DC00CD3672 /* CrashReport.storyboard */; };
 		6BA21C5C279D7A1100CD3672 /* CrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA21C5B279D7A1100CD3672 /* CrashReporter.swift */; };
+		6BA984A9283E591400DDCCCC /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA984A8283E591400DDCCCC /* GRDB */; };
+		6BA984AC283E593400DDCCCC /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA984AB283E593400DDCCCC /* FeedKit */; };
+		6BA984AF283E596100DDCCCC /* MASPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA984AE283E596100DDCCCC /* MASPreferences */; };
+		6BA984B2283E59FA00DDCCCC /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA984B1283E59FA00DDCCCC /* Sparkle */; };
+		6BA984B5283E5A0C00DDCCCC /* CrashReporter in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA984B4283E5A0C00DDCCCC /* CrashReporter */; };
 		6BB11F9C27A29B6E009CBAF8 /* CrashReportWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB11F9B27A29B6E009CBAF8 /* CrashReportWindowController.swift */; };
 		6BB5771E278602B400DFF99F /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BB5771C278602B400DFF99F /* MainMenu.storyboard */; };
 		6BC6395F27A6800500535897 /* Player+RemoteCommandCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */; };
@@ -111,22 +113,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		25D4796441E8F7922FCDAF9A /* Pods_DoughnutUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doughnut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		368B5540FC7D1B6258BCF776 /* Pods-DoughnutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.debug.xcconfig"; sourceTree = "<group>"; };
 		6B0233BC27B2CA6500500E28 /* ControlMenuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlMenuProvider.swift; sourceTree = "<group>"; };
 		6B0605C42788627D00A8A91E /* NSMenu+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+Extensions.swift"; sourceTree = "<group>"; };
 		6B193AA327A286B800DB1379 /* ModalSheetSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSheetSegue.swift; sourceTree = "<group>"; };
 		6B1D4AF8284B5AFA009CF566 /* PrefAdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefAdvancedViewController.swift; sourceTree = "<group>"; };
 		6B23829A28029A410015FFBD /* detail.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = detail.css; sourceTree = "<group>"; };
+		6B35C4D7283E5EC700F30984 /* Doughnut-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Doughnut-Debug.xcconfig"; sourceTree = "<group>"; };
+		6B35C4D8283E5EC700F30984 /* DoughnutCodeSigning-AdHoc.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "DoughnutCodeSigning-AdHoc.xcconfig"; sourceTree = "<group>"; };
+		6B35C4D9283E5EC700F30984 /* Doughnut-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Doughnut-Release.xcconfig"; sourceTree = "<group>"; };
+		6B35C4DA283E5EC700F30984 /* Doughnut.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Doughnut.xcconfig; sourceTree = "<group>"; };
+		6B35C4DB283E5EC700F30984 /* DoughnutCodeSigning-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "DoughnutCodeSigning-Release.xcconfig"; sourceTree = "<group>"; };
 		6B36624527CFB339008E1CA5 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
 		6B3A75F7278F44F500F25578 /* NSView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extensions.swift"; sourceTree = "<group>"; };
 		6B3ACC982773555700CF1EF1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6B571B4727E74C31008E1534 /* ModelTests.dnl */ = {isa = PBXFileReference; lastKnownFileType = file; path = ModelTests.dnl; sourceTree = "<group>"; };
 		6B571B4927E7597A008E1534 /* EpisodeModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeModelTests.swift; sourceTree = "<group>"; };
 		6B5B39A227A448BF00234D82 /* NSButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Extensions.swift"; sourceTree = "<group>"; };
-		6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Release.entitlements"; sourceTree = "<group>"; };
+		6B730B732767A90900FB5F84 /* Doughnut.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Doughnut.entitlements; sourceTree = "<group>"; };
 		6B816BE827E71A1A00EED863 /* ModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTestCase.swift; sourceTree = "<group>"; };
 		6B816BEA27E71A2700EED863 /* DoughnutTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughnutTestCase.swift; sourceTree = "<group>"; };
 		6B816BEC27E71A6700EED863 /* PodcastModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastModelTests.swift; sourceTree = "<group>"; };
@@ -146,7 +149,6 @@
 		6BC6395E27A6800500535897 /* Player+RemoteCommandCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+RemoteCommandCenter.swift"; sourceTree = "<group>"; };
 		6BC6396027A687E400535897 /* Player+NowPlayingInfoCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+NowPlayingInfoCenter.swift"; sourceTree = "<group>"; };
 		6BC6396327A68E2100535897 /* CMTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Extensions.swift"; sourceTree = "<group>"; };
-		6BE29F62CFF7B122D5C39998 /* Pods_DoughnutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoughnutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BEB75D2280281FA00097BA6 /* NSAppearance+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAppearance+Extensions.swift"; sourceTree = "<group>"; };
 		6BF126D02780727100D840A4 /* EpisodeInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EpisodeInfo.storyboard; sourceTree = "<group>"; };
 		6BF126D22780742600D840A4 /* PodcastInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PodcastInfo.storyboard; sourceTree = "<group>"; };
@@ -183,7 +185,7 @@
 		838257D11F759F6F00DB4FD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		838257D41F759F6F00DB4FD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		838257D61F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		838257D71F759F6F00DB4FD1 /* Doughnut-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-Debug.entitlements"; sourceTree = "<group>"; };
+		838257D71F759F6F00DB4FD1 /* Doughnut-AdHoc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Doughnut-AdHoc.entitlements"; sourceTree = "<group>"; };
 		838257DC1F759F6F00DB4FD1 /* DoughnutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoughnutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		838257E21F759F6F00DB4FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		838257E71F759F6F00DB4FD1 /* DoughnutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoughnutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,14 +210,6 @@
 		83DB16E01F93FB460062B266 /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
 		83E95A5D1FFBCA3C00C6AABF /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		83FB4EB71F7BD9A1001CD842 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
-		83FB4EBA1F7BD9DF001CD842 /* FeedKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FeedKit.framework; path = Carthage/Build/Mac/FeedKit.framework; sourceTree = "<group>"; };
-		BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.release.xcconfig"; sourceTree = "<group>"; };
-		BB240160D5A85A2E90992A2D /* Pods-DoughnutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests.debug.xcconfig"; sourceTree = "<group>"; };
-		BEF72BD12131100ABCE132D0 /* Pods-DoughnutUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E8FE469000F310C792708BC9 /* Pods-DoughnutUITests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutUITests.test.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutUITests/Pods-DoughnutUITests.test.xcconfig"; sourceTree = "<group>"; };
-		F3B8FFE666B9868F9A10D249 /* Pods-DoughnutTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests.test.xcconfig"; sourceTree = "<group>"; };
-		F42DD5B957A39D2CA878BEA8 /* Pods-Doughnut.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doughnut.test.xcconfig"; path = "Pods/Target Support Files/Pods-Doughnut/Pods-Doughnut.test.xcconfig"; sourceTree = "<group>"; };
-		F9F9819E5AC05F35AC9BF7E6 /* Pods-DoughnutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoughnutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoughnutTests/Pods-DoughnutTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +217,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4125A143137AD05319B3DEFC /* Pods_Doughnut.framework in Frameworks */,
+				6BA984A9283E591400DDCCCC /* GRDB in Frameworks */,
+				6BA984B5283E5A0C00DDCCCC /* CrashReporter in Frameworks */,
+				6BA984B2283E59FA00DDCCCC /* Sparkle in Frameworks */,
+				6BA984AC283E593400DDCCCC /* FeedKit in Frameworks */,
+				6BA984AF283E596100DDCCCC /* MASPreferences in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +229,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E0288D17E6858855545E02E /* Pods_DoughnutTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +236,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AB07BF789841271ED80EA26 /* Pods_DoughnutUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +282,18 @@
 			name = OSLog;
 			sourceTree = "<group>";
 		};
+		6B35C4D6283E5EC700F30984 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				6B35C4D7283E5EC700F30984 /* Doughnut-Debug.xcconfig */,
+				6B35C4D9283E5EC700F30984 /* Doughnut-Release.xcconfig */,
+				6B35C4DA283E5EC700F30984 /* Doughnut.xcconfig */,
+				6B35C4D8283E5EC700F30984 /* DoughnutCodeSigning-AdHoc.xcconfig */,
+				6B35C4DB283E5EC700F30984 /* DoughnutCodeSigning-Release.xcconfig */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		6B571B4627E74C31008E1534 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,8 +318,8 @@
 			children = (
 				832BB7511F95184700988AE8 /* Doughnut-Bridging-Header.h */,
 				838257D61F759F6F00DB4FD1 /* Info.plist */,
-				838257D71F759F6F00DB4FD1 /* Doughnut-Debug.entitlements */,
-				6B730B732767A90900FB5F84 /* Doughnut-Release.entitlements */,
+				838257D71F759F6F00DB4FD1 /* Doughnut-AdHoc.entitlements */,
+				6B730B732767A90900FB5F84 /* Doughnut.entitlements */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -333,22 +341,6 @@
 				6BC6396327A68E2100535897 /* CMTime+Extensions.swift */,
 			);
 			name = CoreMedia;
-			sourceTree = "<group>";
-		};
-		6F37DC96B4D6909BC9F7B09C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */,
-				BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */,
-				BB240160D5A85A2E90992A2D /* Pods-DoughnutTests.debug.xcconfig */,
-				F9F9819E5AC05F35AC9BF7E6 /* Pods-DoughnutTests.release.xcconfig */,
-				368B5540FC7D1B6258BCF776 /* Pods-DoughnutUITests.debug.xcconfig */,
-				BEF72BD12131100ABCE132D0 /* Pods-DoughnutUITests.release.xcconfig */,
-				F42DD5B957A39D2CA878BEA8 /* Pods-Doughnut.test.xcconfig */,
-				F3B8FFE666B9868F9A10D249 /* Pods-DoughnutTests.test.xcconfig */,
-				E8FE469000F310C792708BC9 /* Pods-DoughnutUITests.test.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		830B15991F7B97250086C121 /* Views */ = {
@@ -430,12 +422,11 @@
 			isa = PBXGroup;
 			children = (
 				6B3ACC982773555700CF1EF1 /* .swiftlint.yml */,
+				6B35C4D6283E5EC700F30984 /* Configs */,
 				838257CC1F759F6F00DB4FD1 /* Doughnut */,
 				838257DF1F759F6F00DB4FD1 /* DoughnutTests */,
 				838257EA1F759F6F00DB4FD1 /* DoughnutUITests */,
 				838257CB1F759F6F00DB4FD1 /* Products */,
-				83FB4EB91F7BD9DF001CD842 /* Frameworks */,
-				6F37DC96B4D6909BC9F7B09C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -489,8 +480,8 @@
 			isa = PBXGroup;
 			children = (
 				838257EB1F759F6F00DB4FD1 /* DoughnutUITests.swift */,
-				838257ED1F759F6F00DB4FD1 /* Info.plist */,
 				830A34021FF0447D00C13B1D /* PodcastUITests.swift */,
+				838257ED1F759F6F00DB4FD1 /* Info.plist */,
 			);
 			path = DoughnutUITests;
 			sourceTree = "<group>";
@@ -546,17 +537,6 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		83FB4EB91F7BD9DF001CD842 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				83FB4EBA1F7BD9DF001CD842 /* FeedKit.framework */,
-				2661E19A57B17099FC4ECCDD /* Pods_Doughnut.framework */,
-				25D4796441E8F7922FCDAF9A /* Pods_DoughnutUITests.framework */,
-				6BE29F62CFF7B122D5C39998 /* Pods_DoughnutTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -564,14 +544,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 838257F01F759F6F00DB4FD1 /* Build configuration list for PBXNativeTarget "Doughnut" */;
 			buildPhases = (
-				5D28D79F73E4F029E1F5DBB6 /* [CP] Check Pods Manifest.lock */,
 				838257C61F759F6F00DB4FD1 /* Sources */,
 				838257C71F759F6F00DB4FD1 /* Frameworks */,
 				83D454AE200BFDD50078CA3D /* Bump Bundle Version For Release Builds */,
 				838257C81F759F6F00DB4FD1 /* Resources */,
 				6B339CC727C9F1BD00181204 /* Remove Custom Bundle Icon */,
-				4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */,
-				433D2BC19A40DB2041D544F1 /* [CP] Copy Pods Resources */,
 				6B3ACC992773569D00CF1EF1 /* Run SwiftLint */,
 			);
 			buildRules = (
@@ -579,6 +556,13 @@
 			dependencies = (
 			);
 			name = Doughnut;
+			packageProductDependencies = (
+				6BA984A8283E591400DDCCCC /* GRDB */,
+				6BA984AB283E593400DDCCCC /* FeedKit */,
+				6BA984AE283E596100DDCCCC /* MASPreferences */,
+				6BA984B1283E59FA00DDCCCC /* Sparkle */,
+				6BA984B4283E5A0C00DDCCCC /* CrashReporter */,
+			);
 			productName = Doughnut;
 			productReference = 838257CA1F759F6F00DB4FD1 /* Doughnut.app */;
 			productType = "com.apple.product-type.application";
@@ -587,7 +571,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 838257F31F759F6F00DB4FD1 /* Build configuration list for PBXNativeTarget "DoughnutTests" */;
 			buildPhases = (
-				6F9C7ADA61728CAC04952B62 /* [CP] Check Pods Manifest.lock */,
 				838257D81F759F6F00DB4FD1 /* Sources */,
 				838257D91F759F6F00DB4FD1 /* Frameworks */,
 				838257DA1F759F6F00DB4FD1 /* Resources */,
@@ -606,7 +589,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 838257F61F759F6F00DB4FD1 /* Build configuration list for PBXNativeTarget "DoughnutUITests" */;
 			buildPhases = (
-				A3819D0A54A45BF19A833E00 /* [CP] Check Pods Manifest.lock */,
 				838257E31F759F6F00DB4FD1 /* Sources */,
 				838257E41F759F6F00DB4FD1 /* Frameworks */,
 				838257E51F759F6F00DB4FD1 /* Resources */,
@@ -631,7 +613,7 @@
 					Resources,
 				);
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Chris Dyer";
 				TargetAttributes = {
 					838257C91F759F6F00DB4FD1 = {
@@ -669,6 +651,13 @@
 				Base,
 			);
 			mainGroup = 838257C11F759F6F00DB4FD1;
+			packageReferences = (
+				6BA984A7283E591400DDCCCC /* XCRemoteSwiftPackageReference "GRDB" */,
+				6BA984AA283E593400DDCCCC /* XCRemoteSwiftPackageReference "FeedKit" */,
+				6BA984AD283E596100DDCCCC /* XCRemoteSwiftPackageReference "MASPreferences" */,
+				6BA984B0283E59FA00DDCCCC /* XCRemoteSwiftPackageReference "Sparkle" */,
+				6BA984B3283E5A0C00DDCCCC /* XCRemoteSwiftPackageReference "plcrashreporter" */,
+			);
 			productRefGroup = 838257CB1F759F6F00DB4FD1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -721,62 +710,9 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		433D2BC19A40DB2041D544F1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/MASPreferences/MASPreferences.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MASPreferences.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4811B8B252A5287D2295B6A8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Doughnut/Pods-Doughnut-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5D28D79F73E4F029E1F5DBB6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Doughnut-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6B339CC727C9F1BD00181204 /* Remove Custom Bundle Icon */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -795,6 +731,7 @@
 		};
 		6B3ACC992773569D00CF1EF1 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -811,26 +748,9 @@
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		6F9C7ADA61728CAC04952B62 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DoughnutTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		83D454AE200BFDD50078CA3D /* Bump Bundle Version For Release Builds */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -842,24 +762,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n  buildNumber=$(date +%s)\n  /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
-		};
-		A3819D0A54A45BF19A833E00 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DoughnutUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -985,138 +887,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		830E12E51F7E43F500B35FD0 /* Test */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Test;
-		};
-		830E12E61F7E43F500B35FD0 /* Test */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F42DD5B957A39D2CA878BEA8 /* Pods-Doughnut.test.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Debug.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1666452871;
-				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-					"TEST=1",
-				);
-				INFOPLIST_FILE = Doughnut/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.0.1;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DTEST";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Test;
-		};
-		830E12E71F7E43F500B35FD0 /* Test */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3B8FFE666B9868F9A10D249 /* Pods-DoughnutTests.test.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-					"TEST=1",
-				);
-				INFOPLIST_FILE = DoughnutTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				OTHER_SWIFT_FLAGS = "-DTEST";
-				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Doughnut.app/Contents/MacOS/Doughnut";
-			};
-			name = Test;
-		};
-		830E12E81F7E43F500B35FD0 /* Test */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8FE469000F310C792708BC9 /* Pods-DoughnutUITests.test.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-					"TEST=1",
-				);
-				INFOPLIST_FILE = DoughnutUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Doughnut;
-			};
-			name = Test;
-		};
 		838257EE1F759F6F00DB4FD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1124,7 +894,6 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -1149,7 +918,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1184,7 +952,6 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -1209,10 +976,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1226,27 +991,25 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
 		838257F11F759F6F00DB4FD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E1DC050EEE121FD033C44DF /* Pods-Doughnut.debug.xcconfig */;
+			baseConfigurationReference = 6B35C4D7283E5EC700F30984 /* Doughnut-Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Debug.entitlements";
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1666452871;
-				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Doughnut/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MARKETING_VERSION = 2.0.1;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
@@ -1256,26 +1019,20 @@
 		};
 		838257F21F759F6F00DB4FD1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA7A57F62DAF0A2C3DA2C7AF /* Pods-Doughnut.release.xcconfig */;
+			baseConfigurationReference = 6B35C4D9283E5EC700F30984 /* Doughnut-Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Doughnut/Doughnut-Release.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1666452871;
-				DEVELOPMENT_TEAM = Y8C2QHZQ3Q;
-				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Doughnut/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MARKETING_VERSION = 2.0.1;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdyer.doughnut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Doughnut/Doughnut-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1283,17 +1040,10 @@
 		};
 		838257F41F759F6F00DB4FD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB240160D5A85A2E90992A2D /* Pods-DoughnutTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-				);
 				INFOPLIST_FILE = DoughnutTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1303,13 +1053,10 @@
 		};
 		838257F51F759F6F00DB4FD1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9F9819E5AC05F35AC9BF7E6 /* Pods-DoughnutTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DoughnutTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1319,16 +1066,9 @@
 		};
 		838257F71F759F6F00DB4FD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 368B5540FC7D1B6258BCF776 /* Pods-DoughnutUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-				);
 				INFOPLIST_FILE = DoughnutUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1338,12 +1078,9 @@
 		};
 		838257F81F759F6F00DB4FD1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEF72BD12131100ABCE132D0 /* Pods-DoughnutUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DoughnutUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cdyer.DoughnutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1358,7 +1095,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				838257EE1F759F6F00DB4FD1 /* Debug */,
-				830E12E51F7E43F500B35FD0 /* Test */,
 				838257EF1F759F6F00DB4FD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1368,7 +1104,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				838257F11F759F6F00DB4FD1 /* Debug */,
-				830E12E61F7E43F500B35FD0 /* Test */,
 				838257F21F759F6F00DB4FD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1378,7 +1113,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				838257F41F759F6F00DB4FD1 /* Debug */,
-				830E12E71F7E43F500B35FD0 /* Test */,
 				838257F51F759F6F00DB4FD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1388,13 +1122,83 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				838257F71F759F6F00DB4FD1 /* Debug */,
-				830E12E81F7E43F500B35FD0 /* Test */,
 				838257F81F759F6F00DB4FD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6BA984A7283E591400DDCCCC /* XCRemoteSwiftPackageReference "GRDB" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift";
+			requirement = {
+				kind = exactVersion;
+				version = 5.17.0;
+			};
+		};
+		6BA984AA283E593400DDCCCC /* XCRemoteSwiftPackageReference "FeedKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nmdias/FeedKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = 9.1.2;
+			};
+		};
+		6BA984AD283E596100DDCCCC /* XCRemoteSwiftPackageReference "MASPreferences" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/shpakovski/MASPreferences";
+			requirement = {
+				kind = exactVersion;
+				version = 1.4.1;
+			};
+		};
+		6BA984B0283E59FA00DDCCCC /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = exactVersion;
+				version = 1.27.1;
+			};
+		};
+		6BA984B3283E5A0C00DDCCCC /* XCRemoteSwiftPackageReference "plcrashreporter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/microsoft/plcrashreporter.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6BA984A8283E591400DDCCCC /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6BA984A7283E591400DDCCCC /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
+		};
+		6BA984AB283E593400DDCCCC /* FeedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6BA984AA283E593400DDCCCC /* XCRemoteSwiftPackageReference "FeedKit" */;
+			productName = FeedKit;
+		};
+		6BA984AE283E596100DDCCCC /* MASPreferences */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6BA984AD283E596100DDCCCC /* XCRemoteSwiftPackageReference "MASPreferences" */;
+			productName = MASPreferences;
+		};
+		6BA984B1283E59FA00DDCCCC /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6BA984B0283E59FA00DDCCCC /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		6BA984B4283E5A0C00DDCCCC /* CrashReporter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6BA984B3283E5A0C00DDCCCC /* XCRemoteSwiftPackageReference "plcrashreporter" */;
+			productName = CrashReporter;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 838257C21F759F6F00DB4FD1 /* Project object */;
 }

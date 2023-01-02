@@ -19,6 +19,4 @@
 #ifndef Doughnut_Bridging_Header_h
 #define Doughnut_Bridging_Header_h
 
-#import <MASPreferences/MASPreferencesViewController.h>
-
 #endif /* Doughnut_Bridging_Header_h */
